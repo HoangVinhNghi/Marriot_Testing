@@ -14,11 +14,9 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.util.List;
-import java.util.Random;
-
 import java.util.concurrent.TimeUnit;
 
-public class ENU_ extends AbstractPage {
+public class DEU extends AbstractPage {
     WebDriver driver;
     Actions action;
 
@@ -27,7 +25,7 @@ public class ENU_ extends AbstractPage {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         // Set language
-        options.addArguments("--lang=en");
+        options.addArguments("--lang=de");
 
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(12, TimeUnit.SECONDS);
@@ -64,7 +62,7 @@ public class ENU_ extends AbstractPage {
         sleepInSecond(2);
         clickToElement(driver, "//li[@data-testid='option-1']");
         sleepInSecond(2);
-        takeSnapShotWithHighlight(driver, "//div[@data-testid=\"dialog\"]//div[@data-testid=\"name-editor-element\"]", GlobalConstants.WORKFRONT_20221114 + "\\ENU\\01_X9L.png");
+        takeSnapShotWithHighlight(driver, "//div[@data-testid=\"dialog\"]//div[@data-testid=\"name-editor-element\"]", GlobalConstants.WORKFRONT_20221114 + "\\DEU\\01_X9L.png");
 
     }
 
@@ -81,24 +79,23 @@ public class ENU_ extends AbstractPage {
 
         driver.get("https://adobeloctesting.devtest.workfront-dev.com/home/worklist");
 
+        List<WebElement> pinCurrentPage = driver.findElements(By.xpath("//button[@data-testid='pin-current-page']"));
 
-
-        if (isElementDisplayed(driver,"//button[@data-testid='pin-current-page']")) {
+        if (pinCurrentPage.size() != 0) {
             clickToElement(driver, "//button[@data-testid='pin-current-page']");
         }
-
         action = new Actions(driver);
         hoverToElement(driver, "//div[@data-testid='pin-actions-trigger']");
         clickToElement(driver, "//div[@data-testid='pin-actions-trigger']");
         sleepInSecond(2);
-        takeSnapShotWithHighlight(driver, "//li[@data-testid='option-1']", GlobalConstants.WORKFRONT_20221114 + "\\ENU\\02_YBL.png");
+        takeSnapShotWithHighlight(driver, "//li[@data-testid='option-1']", GlobalConstants.WORKFRONT_20221114 + "\\DEU\\02_YBL.png");
         clickToElement(driver,"//li[@data-testid='option-1']");
     }
 
 
     @AfterClass(alwaysRun = true)
     public void afterClass() {
-//        driver.quit();
+        driver.quit();
     }
 
 }

@@ -1341,7 +1341,10 @@ public class AbstractPage {
             error.printStackTrace();
         }
     }
-
+    public int generateRandomNumber() {
+        Random rand = new Random();
+        return rand.nextInt(9999);
+    }
     private Alert alert;
     private Select select;
     private Actions action;
