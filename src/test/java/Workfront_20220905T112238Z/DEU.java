@@ -62,7 +62,7 @@ public class DEU extends AbstractPage {
         sleepInSecond(2);
         clickToElement(driver, "//li[@data-testid='option-1']");
         sleepInSecond(2);
-        takeSnapShotWithHighlight(driver, "//div[@data-testid=\"dialog\"]//div[@data-testid=\"name-editor-element\"]", GlobalConstants.WORKFRONT_20221114 + "\\DEU\\01_X9L.png");
+        takeSnapShotWithHighlight(driver, "//div[@data-testid=\"dialog\"]//div[@data-testid=\"name-editor-element\"]", GlobalConstants.WF_20220905T112238Z + "\\DEU\\01_X9L.png");
 
     }
 
@@ -88,7 +88,7 @@ public class DEU extends AbstractPage {
         hoverToElement(driver, "//div[@data-testid='pin-actions-trigger']");
         clickToElement(driver, "//div[@data-testid='pin-actions-trigger']");
         sleepInSecond(2);
-        takeSnapShotWithHighlight(driver, "//li[@data-testid='option-1']", GlobalConstants.WORKFRONT_20221114 + "\\DEU\\02_YBL.png");
+        takeSnapShotWithHighlight(driver, "//li[@data-testid='option-1']", GlobalConstants.WF_20220905T112238Z + "\\DEU\\02_YBL.png");
         clickToElement(driver,"//li[@data-testid='option-1']");
     }
 

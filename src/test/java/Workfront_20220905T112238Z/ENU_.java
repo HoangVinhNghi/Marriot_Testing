@@ -3,18 +3,13 @@ package Workfront_20220905T112238Z;
 import common.AbstractPage;
 import common.GlobalConstants;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
-import java.util.List;
-import java.util.Random;
 
 import java.util.concurrent.TimeUnit;
 
@@ -64,7 +59,7 @@ public class ENU_ extends AbstractPage {
         sleepInSecond(2);
         clickToElement(driver, "//li[@data-testid='option-1']");
         sleepInSecond(2);
-        takeSnapShotWithHighlight(driver, "//div[@data-testid=\"dialog\"]//div[@data-testid=\"name-editor-element\"]", GlobalConstants.WORKFRONT_20221114 + "\\ENU\\01_X9L.png");
+        takeSnapShotWithHighlight(driver, "//div[@data-testid=\"dialog\"]//div[@data-testid=\"name-editor-element\"]", GlobalConstants.WF_20220905T112238Z + "\\ENU\\01_X9L.png");
 
     }
 
@@ -91,7 +86,7 @@ public class ENU_ extends AbstractPage {
         hoverToElement(driver, "//div[@data-testid='pin-actions-trigger']");
         clickToElement(driver, "//div[@data-testid='pin-actions-trigger']");
         sleepInSecond(2);
-        takeSnapShotWithHighlight(driver, "//li[@data-testid='option-1']", GlobalConstants.WORKFRONT_20221114 + "\\ENU\\02_YBL.png");
+        takeSnapShotWithHighlight(driver, "//li[@data-testid='option-1']", GlobalConstants.WF_20220905T112238Z + "\\ENU\\02_YBL.png");
         clickToElement(driver,"//li[@data-testid='option-1']");
     }
 

@@ -20,7 +20,9 @@ public class GlobalConstants {
     public static final String BUILDING_OUT_WORK = System.getProperty("user.dir") + "\\Screenshot\\3a_Building_out_work";
     public static final String CREATE_A_RULE = System.getProperty("user.dir") + "\\Screenshot\\_29_Create_A_Rule";
 
-    public static final String WORKFRONT_20221114 = System.getProperty("user.dir") + "\\Screenshot\\Workfront_20220905T112238Z";
+    public static final String WF_20220905T112238Z = System.getProperty("user.dir") + "\\Screenshot\\Workfront_20220905T112238Z";
+    public static final String WF_20220703T103435Z = System.getProperty("user.dir") + "\\Screenshot\\Workfront_20220703T103435Z";
+
 
     public static final String ACCOUNT = "adobeloctesting@workfront.com";
     public static final String PASSWORD = "2wsx#EDC";

@@ -422,6 +422,7 @@ public class AbstractPage {
     public void hoverToElement(WebDriver driver, String locator) {
         action = new Actions(driver);
         action.moveToElement(getElement(driver, locator)).perform();
+        sleepInSecond(1);
     }
 
     public void clickToElementByAction(WebDriver driver, String locator) {
@@ -460,7 +461,26 @@ public class AbstractPage {
 
     public void dragAndDropElement(WebDriver driver, String sourceLocator, String targetLocator) {
         action = new Actions(driver);
-        action.dragAndDrop(getElement(driver, sourceLocator), getElement(driver, targetLocator)).perform();
+        action.dragAndDrop(getElement(driver, sourceLocator), getElement(driver, targetLocator)).build().perform();
+    }
+
+    public void dragAndDropElementByJS(WebDriver driver, String sourceLocator, String targetLocator) {
+        WebElement From = getElement(driver,sourceLocator);
+        WebElement To = getElement(driver,targetLocator);
+
+        //HTML 5
+        final String java_script =
+                "var src=arguments[0],tgt=arguments[1];var dataTransfer={dropEffe" +
+                        "ct:'',effectAllowed:'all',files:[],items:{},types:[],setData:fun" +
+                        "ction(format,data){this.items[format]=data;this.types.append(for" +
+                        "mat);},getData:function(format){return this.items[format];},clea" +
+                        "rData:function(format){}};var emit=function(event,target){var ev" +
+                        "t=document.createEvent('Event');evt.initEvent(event,true,false);" +
+                        "evt.dataTransfer=dataTransfer;target.dispatchEvent(evt);};emit('" +
+                        "dragstart',src);emit('dragenter',tgt);emit('dragover',tgt);emit(" +
+                        "'drop',tgt);emit('dragend',src);";
+
+        ((JavascriptExecutor)driver).executeScript(java_script, From, To);
     }
 
     public void pressKeyToElement(WebDriver driver, String locator, Keys key) {
@@ -514,7 +534,7 @@ public class AbstractPage {
         jsExecutor = (JavascriptExecutor) driver;
         WebElement element = getElement(driver, locator, value);
         String originalStyle = element.getAttribute("style");
-        jsExecutor.executeScript("arguments[0].setAttribute(arguments[1], arguments[2])", element, "style", "border: 2px solid red; border-style: dashed;");
+        jsExecutor.executeScript("arguments[0].setAttribute(arguments[1], arguments[2])", element, "style", originalStyle + "border: 2px solid red; border-style: dashed;");
         sleepInMiliSecond(500);
         jsExecutor.executeScript("arguments[0].setAttribute(arguments[1], arguments[2])", element, "style", originalStyle);
     }
@@ -523,7 +543,7 @@ public class AbstractPage {
         jsExecutor = (JavascriptExecutor) driver;
         WebElement element = getElement(driver, locator);
         String originalStyle = element.getAttribute("style");
-        jsExecutor.executeScript("arguments[0].setAttribute(arguments[1], arguments[2])", element, "style", "border: 2px solid red; border-style: solid;");
+        jsExecutor.executeScript("arguments[0].setAttribute(arguments[1], arguments[2])", element, "style", originalStyle + "border: 2px solid red; border-style: solid;");
         sleepInMiliSecond(2000);
 
     }
@@ -532,7 +552,7 @@ public class AbstractPage {
         jsExecutor = (JavascriptExecutor) driver;
         WebElement element = getElement(driver, locator);
         String originalStyle = element.getAttribute("style");
-        jsExecutor.executeScript("arguments[0].setAttribute(arguments[1], arguments[2])", element, "style", "border: 2px solid red; border-style: dashed;");
+        jsExecutor.executeScript("arguments[0].setAttribute(arguments[1], arguments[2])", element, "style",originalStyle + "border: 2px solid red; border-style: dashed;");
         sleepInMiliSecond(1000);
 
         try {
