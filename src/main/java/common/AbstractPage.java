@@ -464,7 +464,7 @@ public class AbstractPage {
         action.dragAndDrop(getElement(driver, sourceLocator), getElement(driver, targetLocator)).build().perform();
     }
 
-    public void dragAndDropElementByJS(WebDriver driver, String sourceLocator, String targetLocator) {
+    public void dragAndDropHTML5ByJS(WebDriver driver, String sourceLocator, String targetLocator) {
         WebElement From = getElement(driver,sourceLocator);
         WebElement To = getElement(driver,targetLocator);
 

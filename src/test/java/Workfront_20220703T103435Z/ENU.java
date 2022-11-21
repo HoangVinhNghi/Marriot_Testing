@@ -6,7 +6,6 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -120,7 +119,7 @@ public class ENU extends AbstractPage {
         sleepInSecond(1);
         sendKeyToElement(driver,"//input[@id='configuration-search-input']","Year");
         sleepInSecond(2);
-        dragAndDropElementByJS(driver,"//li[@id='YEAR']","//div[@data-testid='dropzone-canvas']");
+        dragAndDropHTML5ByJS(driver,"//li[@id='YEAR']","//div[@data-testid='dropzone-canvas']");
         sleepInSecond(2);
         takeSnapShotWithHighlight(driver, "//div[@type='formula']/div[2]/div/div/div", GlobalConstants.WF_20220703T103435Z + "/ENU/X+M.png");
 
