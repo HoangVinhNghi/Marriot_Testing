@@ -1,6 +1,7 @@
 package common;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -22,12 +23,22 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.awt.Dimension;
+import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import javax.imageio.ImageIO;
+import javax.xml.bind.DatatypeConverter;
+
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.*;
@@ -43,6 +54,27 @@ public class AbstractPage {
 
     public AbstractPage() {
         log = LogFactory.getLog(getClass());
+    }
+
+    public static void stringToHashMD5 (String args) throws NoSuchAlgorithmException {
+        String password = "DeftBlog";
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        md.update(password.getBytes());
+        byte[] digest = md.digest();
+        String myHash = DatatypeConverter
+                .printHexBinary(digest).toUpperCase();
+        System.out.println("My Hash: " + myHash);
+
+    }
+
+    public static void verifyHashMd5(String args[]) {
+        String hash = "2B95EBA6BA37DAB56CC03660404AA729";
+        String password = "DeftBlog";
+
+        String md5Hex = DigestUtils
+                .md5Hex(password).toUpperCase();
+        System.out.println("Hash: " + md5Hex);
+        System.out.println("Verify: " + hash.equals(md5Hex));
     }
 
     public static AbstractPage getBasePage() {
@@ -459,6 +491,25 @@ public class AbstractPage {
         action.click(getElement(driver, locator)).perform();
     }
 
+    public void inspectElement(WebDriver driver, String locator) throws AWTException {
+        action = new Actions(driver);
+        Robot robot = new Robot();
+        rightClickToElement(driver,locator);
+        robot.keyPress(KeyEvent.VK_UP);
+        sleepInSecond(1);
+        robot.keyPress(KeyEvent.VK_ENTER);
+
+        sleepInSecond(10);
+
+        rightClickToElement(driver,locator);
+        robot.keyPress(KeyEvent.VK_UP);
+        sleepInSecond(1);
+        robot.keyPress(KeyEvent.VK_ENTER);
+        sleepInSecond(2);
+    }
+
+
+
     public void dragAndDropElement(WebDriver driver, String sourceLocator, String targetLocator) {
         action = new Actions(driver);
         action.dragAndDrop(getElement(driver, sourceLocator), getElement(driver, targetLocator)).build().perform();
@@ -545,6 +596,16 @@ public class AbstractPage {
         String originalStyle = element.getAttribute("style");
         jsExecutor.executeScript("arguments[0].setAttribute(arguments[1], arguments[2])", element, "style", originalStyle + "border: 2px solid red; border-style: solid;");
         sleepInMiliSecond(2000);
+
+    }
+
+    public void captureScreen(String fileName) throws Exception {
+
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        Rectangle screenRectangle = new Rectangle(screenSize);
+        Robot robot = new Robot();
+        BufferedImage image = robot.createScreenCapture(screenRectangle);
+        ImageIO.write(image, "png", new File(fileName));
 
     }
 
