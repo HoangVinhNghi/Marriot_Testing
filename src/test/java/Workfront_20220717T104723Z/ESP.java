@@ -18,7 +18,7 @@ import org.testng.annotations.Test;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class ENU extends AbstractPage {
+public class ESP extends AbstractPage {
     WebDriver driver;
     Actions action;
     WebDriverWait explicitWait;
@@ -28,7 +28,7 @@ public class ENU extends AbstractPage {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         // Set language
-        options.addArguments("--lang=en");
+        options.addArguments("--lang=es");
 
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(12, TimeUnit.SECONDS);
@@ -75,11 +75,11 @@ public class ENU extends AbstractPage {
         sendKeyToElement(driver, "//input[@data-testid='phoenix-input-name']", "test_" + generateRandomNumber());
         sleepInSecond(2);
         clickToElement(driver, "//button[@data-testid='create-submit-button']");
-        sleepInSecond(3);
+        waitForPageToLoadCompletely(driver,30);
         scrollToElement(driver,"//div[@data-testid='absolute-lifetime-section']");
         sleepInSecond(2);
-        takeSnapShotWithHighlight(driver, "//div[@data-testid='inactivity-lifetime-section']/span", GlobalConstants.SCREENSHOTS + "\\Workfront_20220717T104723Z\\ENU\\01_X+0.png");
-        takeSnapShotWithHighlight(driver, "//div[@data-testid='absolute-lifetime-section']/span", GlobalConstants.SCREENSHOTS + "\\Workfront_20220717T104723Z\\ENU\\07_X+z.png");
+        takeSnapShotWithHighlight(driver, "//div[@data-testid='inactivity-lifetime-section']/span", GlobalConstants.SCREENSHOTS + "\\Workfront_20220717T104723Z\\ESP\\01_X+0.png");
+        takeSnapShotWithHighlight(driver, "//div[@data-testid='absolute-lifetime-section']/span", GlobalConstants.SCREENSHOTS + "\\Workfront_20220717T104723Z\\ESP\\07_X+z.png");
         sleepInSecond(1);
         clickToElement(driver,"//button[@data-testid='cancel']");
 
@@ -112,7 +112,7 @@ public class ENU extends AbstractPage {
         sleepInSecond(2);
         dragAndDropHTML5ByJS(driver,"//li[@id='IN']","//div[@data-testid='dropzone-canvas']");
         sleepInSecond(2);
-        takeSnapShotWithHighlight(driver, "//div[@type='formula']/div[2]/div/div[3]/div", GlobalConstants.SCREENSHOTS + "\\Workfront_20220717T104723Z\\ENU\\02_X+1.png");
+        takeSnapShotWithHighlight(driver, "//div[@type='formula']/div[2]/div/div[3]/div", GlobalConstants.SCREENSHOTS + "\\Workfront_20220717T104723Z\\ESP\\02_X+1.png");
     }
     @Test
     public void String_003_X_2() {
@@ -141,7 +141,7 @@ public class ENU extends AbstractPage {
         sleepInSecond(2);
         dragAndDropHTML5ByJS(driver,"//li[@id='IN']","//div[@data-testid='dropzone-canvas']");
         sleepInSecond(2);
-        takeSnapShotWithHighlight(driver, "//div[@type='formula']/div[2]/div/div[4]/div[2]/span", GlobalConstants.SCREENSHOTS + "\\Workfront_20220717T104723Z\\ENU\\03_X+2.png");
+        takeSnapShotWithHighlight(driver, "//div[@type='formula']/div[2]/div/div[4]/div[2]/span", GlobalConstants.SCREENSHOTS + "\\Workfront_20220717T104723Z\\ESP\\03_X+2.png");
     }
 
     @Test
@@ -171,7 +171,7 @@ public class ENU extends AbstractPage {
         sleepInSecond(2);
         dragAndDropHTML5ByJS(driver,"//li[@id='IN']","//div[@data-testid='dropzone-canvas']");
         sleepInSecond(2);
-        takeSnapShotWithHighlight(driver, "//div[@type='formula']/div[2]/div/div[2]/span", GlobalConstants.SCREENSHOTS + "\\Workfront_20220717T104723Z\\ENU\\04_X+3.png");
+        takeSnapShotWithHighlight(driver, "//div[@type='formula']/div[2]/div/div[2]/span", GlobalConstants.SCREENSHOTS + "\\Workfront_20220717T104723Z\\ESP\\04_X+3.png");
     }
     @Test
     public void String_005_X_4() {
@@ -198,7 +198,7 @@ public class ENU extends AbstractPage {
         sleepInSecond(1);
         sendKeyToElement(driver,"//input[@id='configuration-search-input']","IN");
         sleepInSecond(2);
-        takeSnapShotWithHighlight(driver, "//li[@id='IN']/div/div/span[1]", GlobalConstants.SCREENSHOTS + "\\Workfront_20220717T104723Z\\ENU\\05_X+4.png");
+        takeSnapShotWithHighlight(driver, "//li[@id='IN']/div/div/span[1]", GlobalConstants.SCREENSHOTS + "\\Workfront_20220717T104723Z\\ESP\\05_X+4.png");
     }
     @Test
     public void String_006_X_5() {
@@ -216,7 +216,7 @@ public class ENU extends AbstractPage {
         waitForElementVisible(driver,"//span[@data-testid='timestamp']");
         clickToElement(driver, "//button[@data-testid='button-label']");
         sleepInSecond(1);
-        takeSnapShotWithHighlight(driver, "//div[@data-testid='button-options']//li[@data-testid='option-6']", GlobalConstants.SCREENSHOTS + "\\Workfront_20220717T104723Z\\ENU\\06_X+5.png");
+        takeSnapShotWithHighlight(driver, "//div[@data-testid='button-options']//li[@data-testid='option-6']", GlobalConstants.SCREENSHOTS + "\\Workfront_20220717T104723Z\\ESP\\06_X+5.png");
     }
 
     @AfterClass(alwaysRun = true)
