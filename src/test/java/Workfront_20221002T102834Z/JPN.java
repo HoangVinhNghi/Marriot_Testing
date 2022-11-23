@@ -8,14 +8,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-public class ENU extends AbstractPage {
+public class JPN extends AbstractPage {
     WebDriver driver;
     Actions action;
 
@@ -24,7 +23,7 @@ public class ENU extends AbstractPage {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         // Set language
-        options.addArguments("--lang=en");
+        options.addArguments("--lang=ja-JP");
 
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(12, TimeUnit.SECONDS);
@@ -62,13 +61,13 @@ public class ENU extends AbstractPage {
         waitForElementVisible(driver,"//span[@data-testid='user-on-this-project']");
         hoverToElement(driver,"//span[@data-testid='user-on-this-project']");
         sleepInSecond(2);
-        takeSnapShotWithHighlight(driver, "//div[@data-testid='tooltip-styled']//span", GlobalConstants.SCREENSHOTS + "\\Workfront_20221002T102834Z\\ENU\\01_YE0.png");
+        takeSnapShotWithHighlight(driver, "//div[@data-testid='tooltip-styled']//span", GlobalConstants.SCREENSHOTS + "\\Workfront_20221002T102834Z\\JPN\\01_YE0.png");
         waitForElementVisible(driver,"//button[@data-testid='setting-iconPROJ']");
         clickToElement(driver,"//button[@data-testid='setting-iconPROJ']");
         waitForElementVisible(driver,"//input[@data-testid='field-select-input']");
         clickToElement(driver,"//input[@data-testid='field-select-input']");
         waitForElementVisible(driver,"//div[@data-testid='field-select-options']//li[@role='presentation']");
-        takeSnapShotWithHighlight(driver, "//div[@data-testid='field-select-options']//li[@role='presentation']", GlobalConstants.SCREENSHOTS + "\\Workfront_20221002T102834Z\\ENU\\02_YE1.png");
+        takeSnapShotWithHighlight(driver, "//div[@data-testid='field-select-options']//li[@role='presentation']", GlobalConstants.SCREENSHOTS + "\\Workfront_20221002T102834Z\\JPN\\02_YE1.png");
     }
 
     @Test
@@ -87,14 +86,14 @@ public class ENU extends AbstractPage {
         driver.get("https://adobeloctesting.devtest.workfront-dev.com/goal/e070fcfa-0ff7-43d6-828f-643299cc03da/progress-indicators");
 
         waitForElementVisible(driver, "//div[@data-valuefield='actualProgress']");
-        takeSnapShotWithHighlight(driver, "//div[@data-valuefield='actualProgress']", GlobalConstants.SCREENSHOTS + "\\Workfront_20221002T102834Z\\ENU\\03_YEa.png");
+        takeSnapShotWithHighlight(driver, "//div[@data-valuefield='actualProgress']", GlobalConstants.SCREENSHOTS + "\\Workfront_20221002T102834Z\\JPN\\03_YEa.png");
 
         if (driver.findElement(By.xpath("//div[contains(@id,'/progress-indicators')]/span")).isDisplayed()) {
-            takeSnapShotWithHighlight(driver, "//div[contains(@id,'/progress-indicators')]", GlobalConstants.SCREENSHOTS + "\\Workfront_20221002T102834Z\\ENU\\04_YEZ.png");
+            takeSnapShotWithHighlight(driver, "//div[contains(@id,'/progress-indicators')]", GlobalConstants.SCREENSHOTS + "\\Workfront_20221002T102834Z\\JPN\\04_YEZ.png");
         } else {
             clickToElement(driver, "//button[@data-testid='toolbar-tabs-toggle']");
             sleepInSecond(2);
-            takeSnapShotWithHighlight(driver, "//div[contains(@id,'/progress-indicators')]", GlobalConstants.SCREENSHOTS + "\\Workfront_20221002T102834Z\\ENU\\04_YEZ.png");
+            takeSnapShotWithHighlight(driver, "//div[contains(@id,'/progress-indicators')]", GlobalConstants.SCREENSHOTS + "\\Workfront_20221002T102834Z\\JPN\\04_YEZ.png");
         }
     }
 

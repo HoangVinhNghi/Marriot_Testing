@@ -495,6 +495,7 @@ public class AbstractPage {
         action = new Actions(driver);
         Robot robot = new Robot();
         rightClickToElement(driver,locator);
+        sleepInSecond(1);
         robot.keyPress(KeyEvent.VK_UP);
         sleepInSecond(1);
         robot.keyPress(KeyEvent.VK_ENTER);
@@ -502,6 +503,7 @@ public class AbstractPage {
         sleepInSecond(10);
 
         rightClickToElement(driver,locator);
+        sleepInSecond(1);
         robot.keyPress(KeyEvent.VK_UP);
         sleepInSecond(1);
         robot.keyPress(KeyEvent.VK_ENTER);
@@ -606,6 +608,8 @@ public class AbstractPage {
         Robot robot = new Robot();
         BufferedImage image = robot.createScreenCapture(screenRectangle);
         ImageIO.write(image, "png", new File(fileName));
+        sleepInSecond(1);
+        robot.keyPress(KeyEvent.VK_F12);
 
     }
 
