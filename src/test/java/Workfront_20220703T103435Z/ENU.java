@@ -199,6 +199,7 @@ public class ENU extends AbstractPage {
         driver.switchTo().defaultContent();
         sleepInSecond(1);
 
+
         switchToIframeByElement(driver,"//iframe[@id='content-lucid-share']");
         clickToElement(driver,"//button[@aria-haspopup='listbox']");
         takeSnapShotWithHighlight(driver, "//li[@data-value='editableSystemWide']//div[@class='sublabel']", GlobalConstants.WF_20220703T103435Z + "/ENU/07_R-w.png");

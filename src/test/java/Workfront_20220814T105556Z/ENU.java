@@ -232,6 +232,10 @@ public class ENU extends AbstractPage {
         sleepInSecond(3);
         inspectElement(driver,"//label[@data-testid='projectstatus_theme_button']//input");
         captureScreen(GlobalConstants.SCREENSHOTS + "\\Workfront_20220814T105556Z\\ENU\\11_YBU.png");
+        sleepInSecond(1);
+
+        closeChromeDevTool(driver);
+
 
     }
 
@@ -269,7 +273,7 @@ public class ENU extends AbstractPage {
     @AfterClass(alwaysRun = true)
     public void afterClass() {
 
-        driver.quit();
+//        driver.quit();
     }
 
 }

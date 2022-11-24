@@ -23,7 +23,7 @@ public class GlobalConstants {
     public static final String WF_20220905T112238Z = System.getProperty("user.dir") + "\\Screenshot\\Workfront_20220905T112238Z";
     public static final String WF_20220703T103435Z = System.getProperty("user.dir") + "\\Screenshot\\Workfront_20220703T103435Z";
 
-    public static final String SCREENSHOTS = System.getProperty("user.dir") + "\\Screenshot";
+    public static final String SCREENSHOTS = System.getProperty("user.dir") + "/Screenshot";
 
 
     public static final String ACCOUNT = "adobeloctesting@workfront.com";

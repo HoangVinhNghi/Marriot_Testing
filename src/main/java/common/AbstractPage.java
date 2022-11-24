@@ -492,7 +492,6 @@ public class AbstractPage {
     }
 
     public void inspectElement(WebDriver driver, String locator) throws AWTException {
-        action = new Actions(driver);
         Robot robot = new Robot();
         rightClickToElement(driver,locator);
         sleepInSecond(1);
@@ -508,6 +507,12 @@ public class AbstractPage {
         sleepInSecond(1);
         robot.keyPress(KeyEvent.VK_ENTER);
         sleepInSecond(2);
+    }
+
+    public void closeChromeDevTool (WebDriver driver) {
+        action = new Actions(driver);
+        action.sendKeys(Keys.F12);
+
     }
 
 
@@ -608,9 +613,6 @@ public class AbstractPage {
         Robot robot = new Robot();
         BufferedImage image = robot.createScreenCapture(screenRectangle);
         ImageIO.write(image, "png", new File(fileName));
-        sleepInSecond(1);
-        robot.keyPress(KeyEvent.VK_F12);
-
     }
 
     public void takeSnapShotWithHighlight(WebDriver driver,String locator, String fileWithPath) {
