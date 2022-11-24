@@ -102,7 +102,7 @@ public class ENU extends AbstractPage {
     }
 
     @Test
-    public void String_004()  {
+    public void String_004() {
 //        MockID: X+M
 //        Core string: Year
 //        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
@@ -114,21 +114,21 @@ public class ENU extends AbstractPage {
         driver.get("https://adobeloctesting.devtest.workfront-dev.com/reporting-canvas");
         clickToElement(driver, "//button[@data-testid='new-report-button']");
         sleepInSecond(1);
-        doubleClickToElement(driver,"//li[@data-testid='builder-layout-table']");
+        doubleClickToElement(driver, "//li[@data-testid='builder-layout-table']");
         sleepInSecond(2);
-        clickToElement(driver,"//button[@data-testid='empty-table-edit-icon']");
-        clickToElement(driver,"(//div[@data-testid='fields-panel']//button)[1]");
+        clickToElement(driver, "//button[@data-testid='empty-table-edit-icon']");
+        clickToElement(driver, "(//div[@data-testid='fields-panel']//button)[1]");
         sleepInSecond(1);
-        sendKeyToElement(driver,"//input[@id='configuration-search-input']","Year");
+        sendKeyToElement(driver, "//input[@id='configuration-search-input']", "Year");
         sleepInSecond(2);
-        dragAndDropHTML5ByJS(driver,"//li[@id='YEAR']","//div[@data-testid='dropzone-canvas']");
+        dragAndDropHTML5ByJS(driver, "//li[@id='YEAR']", "//div[@data-testid='dropzone-canvas']");
         sleepInSecond(2);
         takeSnapShotWithHighlight(driver, "//div[@type='formula']/div[2]/div/div/div", GlobalConstants.WF_20220703T103435Z + "/ENU/04_X+M.png");
 
     }
 
     @Test
-    public void String_005()  {
+    public void String_005() {
 //        MockID: X+L
 //        Core string: YEAR
 //        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
@@ -139,12 +139,12 @@ public class ENU extends AbstractPage {
         driver.get("https://adobeloctesting.devtest.workfront-dev.com/reporting-canvas");
         clickToElement(driver, "//button[@data-testid='new-report-button']");
         sleepInSecond(1);
-        doubleClickToElement(driver,"//li[@data-testid='builder-layout-table']");
+        doubleClickToElement(driver, "//li[@data-testid='builder-layout-table']");
         sleepInSecond(2);
-        clickToElement(driver,"//button[@data-testid='empty-table-edit-icon']");
-        clickToElement(driver,"(//div[@data-testid='fields-panel']//button)[1]");
+        clickToElement(driver, "//button[@data-testid='empty-table-edit-icon']");
+        clickToElement(driver, "(//div[@data-testid='fields-panel']//button)[1]");
         sleepInSecond(2);
-        scrollToElement(driver,"//li[@id='YEAR']");
+        scrollToElement(driver, "//li[@id='YEAR']");
         sleepInSecond(2);
         takeSnapShotWithHighlight(driver, "//li[@id='YEAR']", GlobalConstants.WF_20220703T103435Z + "/ENU/05_X+L.png");
 
@@ -174,12 +174,15 @@ public class ENU extends AbstractPage {
         sendKeyToElement(driver, "//input[@data-testid='dma-api-select-input']", "Admin Admin");
         clickToElement(driver, "//div[@data-testid='avatar']");
         sleepInSecond(1);
-        inspectElement(driver,"//div[@data-testid='delegate-work-container']//div[@role='dialog']");
+        inspectElement(driver, "//div[@data-testid='delegate-work-container']//div[@role='dialog']");
+        sleepInSecond(1);
         captureScreen(GlobalConstants.WF_20220703T103435Z + "/ENU/06_Xb3.png");
+        sleepInSecond(1);
+        closeChromeDevTool();
     }
 
     @Test
-    public void String_007()  {
+    public void String_007() {
 //        MockID: R/w
 //        Core string: so that everyone in Workfront can edit it.
 //        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
@@ -189,19 +192,19 @@ public class ENU extends AbstractPage {
 //        3. Select 'share.make.editable.system.wide.sublabel' field and press 'Share' button 4. Click on cog icon
 
         driver.get("https://adobeloctesting.devtest.workfront-dev.com/setup/custom-forms");
-        switchToIframeByElement(driver,"//iframe[@data-testid='kamino-shim']");
+        switchToIframeByElement(driver, "//iframe[@data-testid='kamino-shim']");
 
-        clickToElement(driver,"//a[@data-name='list-custom-fields']");
+        clickToElement(driver, "//a[@data-name='list-custom-fields']");
         sleepInSecond(2);
-        checkToCheckboxOrRadio(driver,"//a[text()='share.make.editable.system.wide.sublabel']/ancestor::div[@data-valuefield='name']/preceding-sibling::div/descendant::div[@data-test-id='row-checkbox']");
-        clickToElement(driver,"//button[@id='shareLucidToolbar']");
+        checkToCheckboxOrRadio(driver, "//a[text()='share.make.editable.system.wide.sublabel']/ancestor::div[@data-valuefield='name']/preceding-sibling::div/descendant::div[@data-test-id='row-checkbox']");
+        clickToElement(driver, "//button[@id='shareLucidToolbar']");
 
         driver.switchTo().defaultContent();
         sleepInSecond(1);
 
 
-        switchToIframeByElement(driver,"//iframe[@id='content-lucid-share']");
-        clickToElement(driver,"//button[@aria-haspopup='listbox']");
+        switchToIframeByElement(driver, "//iframe[@id='content-lucid-share']");
+        clickToElement(driver, "//button[@aria-haspopup='listbox']");
         takeSnapShotWithHighlight(driver, "//li[@data-value='editableSystemWide']//div[@class='sublabel']", GlobalConstants.WF_20220703T103435Z + "/ENU/07_R-w.png");
 
     }

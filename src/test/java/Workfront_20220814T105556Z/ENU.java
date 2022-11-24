@@ -174,6 +174,8 @@ public class ENU extends AbstractPage {
         waitForElementVisible(driver,"//button[contains(@data-testid,'remove-intake-filter-button')]");
         inspectElement(driver,"//button[contains(@data-testid,'remove-intake-filter-button')]");
         captureScreen(GlobalConstants.SCREENSHOTS + "\\Workfront_20220814T105556Z\\ENU\\07_YBm.png");
+        sleepInSecond(2);
+        closeChromeDevTool();
 
     }
 
@@ -234,7 +236,7 @@ public class ENU extends AbstractPage {
         captureScreen(GlobalConstants.SCREENSHOTS + "\\Workfront_20220814T105556Z\\ENU\\11_YBU.png");
         sleepInSecond(1);
 
-        closeChromeDevTool(driver);
+        closeChromeDevTool();
 
 
     }
