@@ -25,6 +25,8 @@ public class GlobalConstants {
 
     public static final String SCREENSHOTS = System.getProperty("user.dir") + "/Screenshot";
 
+    public static final String TOUPLOAD = System.getProperty("user.dir") + "\\toUpload\\";
+
 
     public static final String ACCOUNT = "adobeloctesting@workfront.com";
     public static final String PASSWORD = "2wsx#EDC";

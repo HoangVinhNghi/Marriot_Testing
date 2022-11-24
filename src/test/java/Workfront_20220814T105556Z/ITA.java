@@ -82,6 +82,49 @@ public class ITA extends AbstractPage {
     }
 
     @Test
+    public void String_004_005() throws Exception {
+//        MockID: YBe, YBg
+//        Core string: 	The attachment of {fileName} has been removed
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//         Direct link: https://adobeloctesting.devtest.workfront-dev.com/requests/submitted
+//         1. Go to Main Menu -> Requests
+//         2. Click New Request and select any project
+//         3. Upload any file
+//         4. RMB -> Inspect on document panel
+//         5. Click on 'X' to remove the file (SR string)
+
+        driver.get("https://adobeloctesting.devtest.workfront-dev.com/requests/submitted");
+
+        waitForElementVisible(driver, "//button[@data-testid='new-request-button']");
+        clickToElement(driver,"//button[@data-testid='new-request-button']");
+
+        waitForElementVisible(driver,"//input[@data-testid='queue-select-input']");
+        clickToElement(driver,"//input[@data-testid='queue-select-input']");
+
+        waitForElementVisible(driver,"//div[@data-testid='request-queue-option']");
+        clickToElement(driver,"(//div[@data-testid='request-queue-option'])[1]");
+
+        scrollToElementBotton(driver,"//div[@data-testid='document-drop-cover']");
+        sleepInSecond(3);
+        uploadFileByDriver(driver,"img01.jpg");
+
+        scrollToElementBotton(driver,"//div[@data-testid='document-preview-container']");
+
+        inspectElement(driver,"//*[local-name()='svg' and @data-testid='close-icon']");
+        captureScreen(GlobalConstants.SCREENSHOTS + "\\Workfront_20220814T105556Z\\ITA\\05_YBg.png");
+
+        sleepInSecond(5);
+        clickToElement(driver,"//*[local-name()='svg' and @data-testid='close-icon']");
+        inspectElement(driver,"//div[@data-testid='document-info']");
+        captureScreen(GlobalConstants.SCREENSHOTS + "\\Workfront_20220814T105556Z\\ITA\\04_YBe.png");
+        
+
+    }
+
+
+
+    @Test
     public void String_006() {
 //        MockID: YBh
 //        Core string: 	FLOOR
@@ -172,6 +215,7 @@ public class ITA extends AbstractPage {
         waitForElementVisible(driver,"//button[contains(@data-testid,'remove-intake-filter-button')]");
         inspectElement(driver,"//button[contains(@data-testid,'remove-intake-filter-button')]");
         captureScreen(GlobalConstants.SCREENSHOTS + "\\Workfront_20220814T105556Z\\ITA\\07_YBm.png");
+        
 
     }
 
@@ -201,6 +245,7 @@ public class ITA extends AbstractPage {
         sleepInSecond(3);
         inspectElement(driver,"//label[@data-testid='project_theme_button']//input");
         captureScreen(GlobalConstants.SCREENSHOTS + "\\Workfront_20220814T105556Z\\ITA\\10_YBT.png");
+        
 
     }
 
@@ -230,6 +275,10 @@ public class ITA extends AbstractPage {
         sleepInSecond(3);
         inspectElement(driver,"//label[@data-testid='projectstatus_theme_button']//input");
         captureScreen(GlobalConstants.SCREENSHOTS + "\\Workfront_20220814T105556Z\\ITA\\11_YBU.png");
+        sleepInSecond(1);
+
+        
+
 
     }
 
@@ -259,6 +308,7 @@ public class ITA extends AbstractPage {
         sleepInSecond(3);
         inspectElement(driver,"//label[@data-testid='default_theme_button']//input");
         captureScreen(GlobalConstants.SCREENSHOTS + "\\Workfront_20220814T105556Z\\ITA\\12_YBX.png");
+        
 
     }
 

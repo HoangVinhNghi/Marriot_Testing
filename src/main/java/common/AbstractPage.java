@@ -676,6 +676,11 @@ public class AbstractPage {
         jsExecutor.executeScript("arguments[0].scrollIntoView(true);", getElement(driver, locator));
     }
 
+    public void scrollToElementBotton(WebDriver driver, String locator) {
+        jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("arguments[0].scrollIntoView(false);", getElement(driver, locator));
+    }
+
     public void sendKeyToElementByJS(WebDriver driver, String locator, String value) {
         jsExecutor = (JavascriptExecutor) driver;
         jsExecutor.executeScript("arguments[0].setAttribute('value', '" + value + "')", getElement(driver, locator));
@@ -1432,6 +1437,28 @@ public class AbstractPage {
         Random rand = new Random();
         return rand.nextInt(9999);
     }
+
+    public void uploadFileByRobot (String filePath) throws AWTException {
+        copyToClipboard(filePath);
+        Robot robot = new Robot();
+        sleepInSecond(1);
+
+        robot.keyPress(KeyEvent.VK_CONTROL);
+        robot.keyPress(KeyEvent.VK_V);
+
+        robot.keyRelease(KeyEvent.VK_CONTROL);
+        robot.keyRelease(KeyEvent.VK_V);
+
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.keyRelease(KeyEvent.VK_ENTER);
+
+    }
+
+    public void uploadFileByDriver (WebDriver driver,String fileName) {
+        driver.findElement(By.xpath("//input[@type='file']")).sendKeys(GlobalConstants.TOUPLOAD + fileName);
+
+    }
+
     private Alert alert;
     private Select select;
     private Actions action;
