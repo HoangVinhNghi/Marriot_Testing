@@ -32,7 +32,6 @@ public class ENU extends AbstractPage {
         sendKeyToElement(driver, "//input[@id='password']", GlobalConstants.PASSWORD);
         clickToElement(driver, "//button[@type='submit']");
         waitForElementVisible(driver, "//img[@data-testid='empty-state-child-img']");
-
     }
 
     @Test
@@ -90,7 +89,6 @@ public class ENU extends AbstractPage {
             clickToElement(driver, "//button[@data-testid='toast-close-btn']");
             sleepInSecond(2);
             clickToElement(driver, "//button[@data-testid='delegations-modal-button']");
-
         }
 
         sendKeyToElement(driver, "//input[@data-testid='dma-api-select-input']", "Admin Admin");
@@ -147,7 +145,6 @@ public class ENU extends AbstractPage {
         scrollToElement(driver, "//li[@id='YEAR']");
         sleepInSecond(2);
         takeSnapShotWithHighlight(driver, "//li[@id='YEAR']", GlobalConstants.WF_20220703T103435Z + "/ENU/05_X+L.png");
-
     }
 
     @Test
@@ -168,7 +165,6 @@ public class ENU extends AbstractPage {
             clickToElement(driver, "//button[@data-testid='toast-close-btn']");
             sleepInSecond(2);
             clickToElement(driver, "//button[@data-testid='delegations-modal-button']");
-
         }
 
         sendKeyToElement(driver, "//input[@data-testid='dma-api-select-input']", "Admin Admin");
@@ -201,7 +197,6 @@ public class ENU extends AbstractPage {
 
         driver.switchTo().defaultContent();
         sleepInSecond(1);
-
 
         switchToIframeByElement(driver, "//iframe[@id='content-lucid-share']");
         clickToElement(driver, "//button[@aria-haspopup='listbox']");
