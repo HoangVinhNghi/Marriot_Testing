@@ -10,11 +10,9 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import java.awt.*;
-import java.awt.event.KeyEvent;
 import java.util.concurrent.TimeUnit;
 
-public class ENU extends AbstractPage {
+public class ESP extends AbstractPage {
     WebDriver driver;
 
     @BeforeClass
@@ -22,7 +20,7 @@ public class ENU extends AbstractPage {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         // Set language
-        options.addArguments("--lang=en");
+        options.addArguments("--lang=es");
 
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(12, TimeUnit.SECONDS);
@@ -51,7 +49,7 @@ public class ENU extends AbstractPage {
         sleepInSecond(2);
         clickToElement(driver, "//a[contains(@href,'progress-indicators')]");
         sleepInSecond(2);
-        takeSnapShotWithHighlight(driver, "//div[@data-colindex='6']", GlobalConstants.WF_20220703T103435Z + "/ENU/01_X+o.png");
+        takeSnapShotWithHighlight(driver, "//div[@data-colindex='6']", GlobalConstants.WF_20220703T103435Z + "/ESP/01_X+o.png");
 
     }
 
@@ -67,7 +65,7 @@ public class ENU extends AbstractPage {
         clickToElement(driver, "//a[contains(@href,'/overview')]");
         sleepInSecond(1);
         hoverToElement(driver, "//div[@data-testid='field-progress-label']/following-sibling::span");
-        takeSnapShotWithHighlight(driver, "//div[@data-testid='tooltip-styled']", GlobalConstants.WF_20220703T103435Z + "/ENU/02_X+k.png");
+        takeSnapShotWithHighlight(driver, "//div[@data-testid='tooltip-styled']", GlobalConstants.WF_20220703T103435Z + "/ESP/02_X+k.png");
 
     }
 
@@ -95,7 +93,7 @@ public class ENU extends AbstractPage {
         clickToElement(driver, "//div[@data-testid='avatar']");
         sleepInSecond(1);
         clickToElement(driver, "//button[@data-testid='save-btn']");
-        takeSnapShotWithHighlight(driver, "//button[@data-testid='go-to-work-delegations']", GlobalConstants.WF_20220703T103435Z + "/ENU/03_X+S.png");
+        takeSnapShotWithHighlight(driver, "//button[@data-testid='go-to-work-delegations']", GlobalConstants.WF_20220703T103435Z + "/ESP/03_X+S.png");
 
     }
 
@@ -121,7 +119,7 @@ public class ENU extends AbstractPage {
         sleepInSecond(2);
         dragAndDropHTML5ByJS(driver, "//li[@id='YEAR']", "//div[@data-testid='dropzone-canvas']");
         sleepInSecond(2);
-        takeSnapShotWithHighlight(driver, "//div[@type='formula']/div[2]/div/div/div", GlobalConstants.WF_20220703T103435Z + "/ENU/04_X+M.png");
+        takeSnapShotWithHighlight(driver, "//div[@type='formula']/div[2]/div/div/div", GlobalConstants.WF_20220703T103435Z + "/ESP/04_X+M.png");
 
     }
 
@@ -144,7 +142,7 @@ public class ENU extends AbstractPage {
         sleepInSecond(2);
         scrollToElement(driver, "//li[@id='YEAR']");
         sleepInSecond(2);
-        takeSnapShotWithHighlight(driver, "//li[@id='YEAR']", GlobalConstants.WF_20220703T103435Z + "/ENU/05_X+L.png");
+        takeSnapShotWithHighlight(driver, "//li[@id='YEAR']", GlobalConstants.WF_20220703T103435Z + "/ESP/05_X+L.png");
     }
 
     @Test
@@ -172,7 +170,7 @@ public class ENU extends AbstractPage {
         sleepInSecond(1);
         inspectElement(driver, "//div[@data-testid='delegate-work-container']//div[@role='dialog']");
         sleepInSecond(1);
-        captureScreen(GlobalConstants.WF_20220703T103435Z + "/ENU/06_Xb3.png");
+        captureScreen(GlobalConstants.WF_20220703T103435Z + "/ESP/06_Xb3.png");
         sleepInSecond(1);
         closeChromeDevTool();
     }
@@ -200,7 +198,7 @@ public class ENU extends AbstractPage {
 
         switchToIframeByElement(driver, "//iframe[@id='content-lucid-share']");
         clickToElement(driver, "//button[@aria-haspopup='listbox']");
-        takeSnapShotWithHighlight(driver, "//li[@data-value='editableSystemWide']//div[@class='sublabel']", GlobalConstants.WF_20220703T103435Z + "/ENU/07_R-w.png");
+        takeSnapShotWithHighlight(driver, "//li[@data-value='editableSystemWide']//div[@class='sublabel']", GlobalConstants.WF_20220703T103435Z + "/ESP/07_R-w.png");
 
     }
 
