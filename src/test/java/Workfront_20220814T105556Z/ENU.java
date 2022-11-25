@@ -234,7 +234,7 @@ public class ENU extends AbstractPage {
         captureScreen(GlobalConstants.SCREENSHOTS + "\\Workfront_20220814T105556Z\\ENU\\11_YBU.png");
         sleepInSecond(1);
 
-        closeChromeDevTool(driver);
+        closeChromeDevTool();
 
 
     }
