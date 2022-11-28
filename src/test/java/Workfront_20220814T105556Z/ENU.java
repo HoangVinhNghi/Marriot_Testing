@@ -202,7 +202,7 @@ public class ENU extends AbstractPage {
 
         sleepInSecond(3);
         inspectElement(driver,"//label[@data-testid='project_theme_button']//input");
-        captureScreen(GlobalConstants.SCREENSHOTS + "\\Workfront_20220814T105556Z\\ENU\\10_YBT.png");
+        captureScreen(GlobalConstants.SCREENSHOTS + "/Workfront_20220814T105556Z/ENU/10_YBT.png");
 
     }
 
