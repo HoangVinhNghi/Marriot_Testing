@@ -107,7 +107,7 @@ public class ESP extends AbstractPage {
 
         scrollToElementBotton(driver,"//div[@data-testid='document-drop-cover']");
         sleepInSecond(3);
-        uploadFileByDriver(driver,"img01.jpg");
+        uploadFileByDriver(driver,"//input[@type='file']", GlobalConstants.TOUPLOAD+ "img01.jpg");
 
         scrollToElementBotton(driver,"//div[@data-testid='document-preview-container']");
 

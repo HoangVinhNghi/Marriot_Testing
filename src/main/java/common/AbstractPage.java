@@ -1454,8 +1454,8 @@ public class AbstractPage {
 
     }
 
-    public void uploadFileByDriver (WebDriver driver,String fileName) {
-        driver.findElement(By.xpath("//input[@type='file']")).sendKeys(GlobalConstants.TOUPLOAD + fileName);
+    public void uploadFileByDriver (WebDriver driver, String locator, String fileName) {
+        sendKeyToElement(driver, locator, fileName);
 
     }
 
