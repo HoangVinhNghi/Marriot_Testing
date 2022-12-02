@@ -80,7 +80,8 @@ public class ENU extends AbstractPage {
         waitForElementVisible(driver,"//button[contains(@data-testid,'accordion_button')]");
         clickToElement(driver,"//button[contains(@data-testid,'accordion_button')]");
         waitForElementVisible(driver,"//a[@data-testid='see-project-link']/parent::div/preceding-sibling::div/div[2]/div");
-        takeSnapShotWithHighlight(driver, "//a[@data-testid='see-project-link']/parent::div/preceding-sibling::div/div[2]/div", GlobalConstants.SCREENSHOTS + "\\Workfront_20220814T105556Z\\ENU\\03_YBd.png");
+        takeSnapShotWithHighlight(driver, "//a[@data-testid='see-project-link']/parent::div/preceding-sibling::div/div[2]/div",
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220814T105556Z\\ENU\\03_YBd.png");
     }
 
     @Test

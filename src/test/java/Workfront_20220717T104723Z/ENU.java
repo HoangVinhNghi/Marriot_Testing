@@ -141,7 +141,8 @@ public class ENU extends AbstractPage {
         sleepInSecond(2);
         dragAndDropHTML5ByJS(driver,"//li[@id='IN']","//div[@data-testid='dropzone-canvas']");
         sleepInSecond(2);
-        takeSnapShotWithHighlight(driver, "//div[@type='formula']/div[2]/div/div[4]/div[2]/span", GlobalConstants.SCREENSHOTS + "\\Workfront_20220717T104723Z\\ENU\\03_X+2.png");
+        takeSnapShotWithHighlight(driver, "//div[@type='formula']/div[2]/div/div[4]/div[2]/span",
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220717T104723Z\\ENU\\03_X+2.png");
     }
 
     @Test

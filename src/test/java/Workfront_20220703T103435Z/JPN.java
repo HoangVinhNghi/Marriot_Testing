@@ -49,7 +49,7 @@ public class JPN extends AbstractPage {
         sleepInSecond(2);
         clickToElement(driver, "//a[contains(@href,'progress-indicators')]");
         sleepInSecond(2);
-        takeSnapShotWithHighlight(driver, "//div[@data-colindex='6']", GlobalConstants.WF_20220703T103435Z + "/JPN/01_X+o.png");
+        takeSnapShotWithHighlight(driver, "//div[@data-colindex='6']", GlobalConstants.WF_20220703T103435Z + "/JPN/01_X+i_X+Z.png");
 
     }
 
