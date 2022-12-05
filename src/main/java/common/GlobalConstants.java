@@ -1,7 +1,7 @@
 package common;
 
 public class GlobalConstants {
-    public static final String APP_URL = "https://adobeloctesting.devtest.workfront-dev.com/";
+    public static final String APP_URL = "https://adobeloctesting.devtest.workfront-dev.com/home";
 
     public static final long SHORT_TIMEOUT = 30;
     public static final long LONG_TIMEOUT = 60;

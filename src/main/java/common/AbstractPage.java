@@ -766,6 +766,7 @@ public class AbstractPage {
         explicitWait.until(ExpectedConditions.invisibilityOfElementLocated(getByXpath(locator)));
     }
 
+
     public void waitForElementInvisible(WebDriver driver, String locator, String... params) {
         locator = getDynamicLocator(locator, params);
         explicitWait = new WebDriverWait(driver, shortTimeout);

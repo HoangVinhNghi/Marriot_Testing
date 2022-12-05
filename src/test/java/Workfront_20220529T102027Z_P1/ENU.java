@@ -322,7 +322,7 @@ public class ENU extends AbstractPage {
         waitForElementVisible(driver,"//button[@data-testid='add-goal-button']");
         clickToElement(driver,"//button[@data-testid='add-goal-button']");
 
-        // create a new goal
+        // creating a new goal
         waitForElementVisible(driver,"//input[@data-testid='name-input']");
         sendKeyToElement(driver,"//input[@data-testid='name-input']","Test goal_" + generateRandomNumber());
         clickToElement(driver,"//button[@data-testid='create-new-task']");
