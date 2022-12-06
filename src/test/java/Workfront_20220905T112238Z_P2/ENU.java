@@ -16,12 +16,11 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class ENU extends AbstractPage {
     WebDriver driver;
-    Actions action;
-    WebDriverWait explicitWait;
 
     @BeforeClass
     public void beforeClass() {
@@ -37,7 +36,7 @@ public class ENU extends AbstractPage {
         sendKeyToElement(driver, "//input[@id='username']", GlobalConstants.ACCOUNT);
         sendKeyToElement(driver, "//input[@id='password']", GlobalConstants.PASSWORD);
         clickToElement(driver, "//button[@type='submit']");
-        waitForElementVisible(driver, "//img[@data-testid='empty-state-child-img']");
+        sleepInSecond(5);
 
     }
 
@@ -986,11 +985,708 @@ public class ENU extends AbstractPage {
         clickToElement(driver,"//div[@data-testid='modal']//button[@data-variant='accent']");
     }
 
+    @Test
+    public void String_026() {
+//        MockID: YCl
+//        Core string: The client app generates one-time keys Code verifier and Code challenge.
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//        Direct link: https://adobeloctesting.devtest.workfront-dev.com/setup/oauth2-apps/633eb136f10e5831b770b795
+//        Steps:
+//        1. Go to Workfront
+//        2. Go to Setup > System > OAuth2 Applications > Create/Edit Single Page Web Application
 
+        driver.get("https://adobeloctesting.devtest.workfront-dev.com/setup/oauth2-apps");
+
+        // Check if max New OAuth2 application items > delete one
+        waitForElementInvisible(driver,"//div[@data-testid='spinner']");
+        sleepInSecond(3);
+        List<WebElement> listOauth2Items = getElements(driver,"//div[contains(@class,'mdc-layout-grid__inner')]");
+        System.out.println(listOauth2Items.size());
+        if (listOauth2Items.size()==11) {
+            hoverToElement(driver,"(//div[contains(@class,'mdc-layout-grid__inner')])[2]");
+            sleepInSecond(2);
+            clickToElement(driver,"(//div[contains(@class,'mdc-layout-grid__inner')])[2]/div[5]/div/button");
+            sleepInSecond(1);
+            clickToElement(driver,"//footer[@data-testid='dialog-dialog-footer']/button[1]");
+        }
+
+        // Create New OAuth2 application with Single Page Web Application
+        clickToElement(driver, "//button[@data-testid='create-button']");
+        waitForElementVisible(driver,"//div[@data-testid='authorization-method-section']/fieldset/div[2]//span/span");
+        clickToElement(driver,"//input[@data-testid='authorization-code-flow-pkce-radio-button']");
+        sendKeyToElement(driver, "//input[@data-testid='phoenix-input-name']", "test_" + generateRandomNumber());
+        sleepInSecond(2);
+        clickToElement(driver, "//button[@data-testid='create-submit-button']");
+
+        //Take screenshot
+        waitForElementVisible(driver,"//div[@data-testid='redirect-uri-section']");
+        sleepInSecond(1);
+        takeSnapShotWithHighlight(driver, "//div[@data-testid='redirect-uri-section']/preceding-sibling::div[1]//ul/li[1]",
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\26_YCl.png");
+
+    }
+
+    @Test
+    public void String_027() {
+//        MockID: YCL
+//        Core string: Days
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//        Direct link: https://adobeloctesting.devtest.workfront-dev.com/boards/633eb9cd5fa223ee5112728b
+//        1. Login to Workfront
+//        2. Go to Main Menu -> Boards
+//        3. Create a new board
+//        4. Click Configure and enable 'Automatically remove cards from the board' trigger
+//        5. Click on 'Weeks' dropdown field
+
+        driver.get("https://adobeloctesting.devtest.workfront-dev.com/boards/");
+
+        //Click on create new
+        waitForElementVisible(driver,"//button[@data-testid='dashboard-create-board-button']");
+        sleepInSecond(1);
+        clickToElement(driver,"//button[@data-testid='dashboard-create-board-button']");
+
+        //CLick to Configure
+        waitForElementVisible(driver,"//div[@data-testid='board-configure-button']//button");
+        sleepInSecond(1);
+        clickToElement(driver,"//div[@data-testid='board-configure-button']//button");
+
+        //CLick to Cards
+        waitForElementVisible(driver,"//div[@data-testid='configure-board-accordion-card']");
+        sleepInSecond(1);
+        clickToElement(driver,"//div[@data-testid='configure-board-accordion-card']");
+
+        //Enable Automatically archive cards from the board
+        waitForElementVisible(driver,"//input[@data-testid='card-falloff-switch']");
+        sleepInSecond(1);
+        clickToElement(driver,"//input[@data-testid='card-falloff-switch']");
+
+        //CLick on week dropdown
+        waitForElementVisible(driver,"//button[@data-testid='card-falloff-date-range']");
+        sleepInSecond(1);
+        clickToElement(driver,"//button[@data-testid='card-falloff-date-range']");
+
+        //Take screenshots
+        sleepInSecond(1);
+        takeSnapShotWithHighlight(driver, "(//div[@role='option'])[1]",
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\27_YCL.png");
+
+        //Delete created board
+        sleepInSecond(2);
+        clickToElement(driver,"(//div[@role='option'])[1]");
+        sleepInSecond(1);
+        clickToElement(driver,"//button[@data-testid='board-menu-button']");
+        sleepInSecond(1);
+        clickToElement(driver,"//li[@data-key='delete']");
+        waitForElementVisible(driver,"//div[@data-testid='modal']//button[@data-variant='accent']");
+        clickToElement(driver,"//div[@data-testid='modal']//button[@data-variant='accent']");
+    }
+
+    @Test
+    public void String_028() {
+//        MockID: YCm
+//        Core string: Code verifier is a random URL-safe string with a minimum length of 43 characters
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//        Direct link: https://adobeloctesting.devtest.workfront-dev.com/setup/oauth2-apps/633eb136f10e5831b770b795
+//        Steps:
+//        1. Go to Workfront
+//        2. Go to Setup > System > OAuth2 Applications > Create/Edit Single Page Web Application
+
+        driver.get("https://adobeloctesting.devtest.workfront-dev.com/setup/oauth2-apps");
+
+        // Check if max New OAuth2 application items > delete one
+        waitForElementInvisible(driver,"//div[@data-testid='spinner']");
+        sleepInSecond(5);
+        List<WebElement> listOauth2Items = getElements(driver,"//div[contains(@class,'mdc-layout-grid__inner')]");
+        System.out.println(listOauth2Items.size());
+        if (listOauth2Items.size()==11) {
+            hoverToElement(driver,"(//div[contains(@class,'mdc-layout-grid__inner')])[2]");
+            sleepInSecond(2);
+            clickToElement(driver,"(//div[contains(@class,'mdc-layout-grid__inner')])[2]/div[5]/div/button");
+            sleepInSecond(1);
+            clickToElement(driver,"//footer[@data-testid='dialog-dialog-footer']/button[1]");
+        }
+
+        // Create New OAuth2 application with Single Page Web Application
+        clickToElement(driver, "//button[@data-testid='create-button']");
+        waitForElementVisible(driver,"//div[@data-testid='authorization-method-section']/fieldset/div[2]//span/span");
+        clickToElement(driver,"//input[@data-testid='authorization-code-flow-pkce-radio-button']");
+        sendKeyToElement(driver, "//input[@data-testid='phoenix-input-name']", "test_" + generateRandomNumber());
+        sleepInSecond(2);
+        clickToElement(driver, "//button[@data-testid='create-submit-button']");
+
+        //Take screenshot
+        waitForElementVisible(driver,"//div[@data-testid='redirect-uri-section']");
+        sleepInSecond(1);
+        takeSnapShotWithHighlight(driver, "//div[@data-testid='redirect-uri-section']/preceding-sibling::div[1]//ul/li[2]",
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\28_YCm.png");
+
+    }
+
+    @Test
+    public void String_029() {
+//        MockID: YCn
+//        Core string: Code challenge is Base64 URL-encoded SHA-256 hash of the code verifier
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//        Direct link: https://adobeloctesting.devtest.workfront-dev.com/setup/oauth2-apps/633eb136f10e5831b770b795
+//        Steps:
+//        1. Go to Workfront
+//        2. Go to Setup > System > OAuth2 Applications > Create/Edit Single Page Web Application
+
+        driver.get("https://adobeloctesting.devtest.workfront-dev.com/setup/oauth2-apps");
+
+        // Check if max New OAuth2 application items > delete one
+        waitForElementInvisible(driver,"//div[@data-testid='spinner']");
+        sleepInSecond(5);
+        List<WebElement> listOauth2Items = getElements(driver,"//div[contains(@class,'mdc-layout-grid__inner')]");
+        System.out.println(listOauth2Items.size());
+        if (listOauth2Items.size()==11) {
+            hoverToElement(driver,"(//div[contains(@class,'mdc-layout-grid__inner')])[2]");
+            sleepInSecond(2);
+            clickToElement(driver,"(//div[contains(@class,'mdc-layout-grid__inner')])[2]/div[5]/div/button");
+            sleepInSecond(1);
+            clickToElement(driver,"//footer[@data-testid='dialog-dialog-footer']/button[1]");
+        }
+
+        // Create New OAuth2 application with Single Page Web Application
+        clickToElement(driver, "//button[@data-testid='create-button']");
+        waitForElementVisible(driver,"//div[@data-testid='authorization-method-section']/fieldset/div[2]//span/span");
+        clickToElement(driver,"//input[@data-testid='authorization-code-flow-pkce-radio-button']");
+        sendKeyToElement(driver, "//input[@data-testid='phoenix-input-name']", "test_" + generateRandomNumber());
+        sleepInSecond(2);
+        clickToElement(driver, "//button[@data-testid='create-submit-button']");
+
+        //Take screenshot
+        waitForElementVisible(driver,"//div[@data-testid='redirect-uri-section']");
+        sleepInSecond(1);
+        takeSnapShotWithHighlight(driver, "//div[@data-testid='redirect-uri-section']/preceding-sibling::div[1]//ul/li[3]",
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\29_YCn.png");
+
+    }
+
+    @Test
+    public void String_030() {
+//        MockID: YCo
+//        Core string: Sends Code challenge with authorizing request and Code verifier with the token request
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//        Direct link: https://adobeloctesting.devtest.workfront-dev.com/setup/oauth2-apps/633eb136f10e5831b770b795
+//        Steps:
+//        1. Go to Workfront
+//        2. Go to Setup > System > OAuth2 Applications > Create/Edit Single Page Web Application
+
+        driver.get("https://adobeloctesting.devtest.workfront-dev.com/setup/oauth2-apps");
+
+        // Check if max New OAuth2 application items > delete one
+        waitForElementInvisible(driver,"//div[@data-testid='spinner']");
+        sleepInSecond(5);
+        List<WebElement> listOauth2Items = getElements(driver,"//div[contains(@class,'mdc-layout-grid__inner')]");
+        System.out.println(listOauth2Items.size());
+        if (listOauth2Items.size()==11) {
+            hoverToElement(driver,"(//div[contains(@class,'mdc-layout-grid__inner')])[2]");
+            sleepInSecond(2);
+            clickToElement(driver,"(//div[contains(@class,'mdc-layout-grid__inner')])[2]/div[5]/div/button");
+            sleepInSecond(1);
+            clickToElement(driver,"//footer[@data-testid='dialog-dialog-footer']/button[1]");
+        }
+
+        // Create New OAuth2 application with Single Page Web Application
+        clickToElement(driver, "//button[@data-testid='create-button']");
+        waitForElementVisible(driver,"//div[@data-testid='authorization-method-section']/fieldset/div[2]//span/span");
+        clickToElement(driver,"//input[@data-testid='authorization-code-flow-pkce-radio-button']");
+        sendKeyToElement(driver, "//input[@data-testid='phoenix-input-name']", "test_" + generateRandomNumber());
+        sleepInSecond(2);
+        clickToElement(driver, "//button[@data-testid='create-submit-button']");
+
+        //Take screenshot
+        waitForElementVisible(driver,"//div[@data-testid='redirect-uri-section']");
+        sleepInSecond(1);
+        takeSnapShotWithHighlight(driver, "//div[@data-testid='redirect-uri-section']/preceding-sibling::div[1]//ul/li[4]",
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\30_YCo.png");
+
+    }
+
+    @Test
+    public void String_031() {
+//        MockID: YCO
+//        Core string: Weeks
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//        Direct link: https://adobeloctesting.devtest.workfront-dev.com/boards/633eb9cd5fa223ee5112728b
+//        1. Login to Workfront
+//        2. Go to Main Menu -> Boards
+//        3. Create a new board
+//        4. Click Configure and enable 'Automatically remove cards from the board' trigger
+//        5. Click on 'Weeks' dropdown field
+
+        driver.get("https://adobeloctesting.devtest.workfront-dev.com/boards/");
+
+        //Click on create new
+        waitForElementVisible(driver,"//button[@data-testid='dashboard-create-board-button']");
+        sleepInSecond(1);
+        clickToElement(driver,"//button[@data-testid='dashboard-create-board-button']");
+
+        //CLick to Configure
+        waitForElementVisible(driver,"//div[@data-testid='board-configure-button']//button");
+        sleepInSecond(1);
+        clickToElement(driver,"//div[@data-testid='board-configure-button']//button");
+
+        //CLick to Cards
+        waitForElementVisible(driver,"//div[@data-testid='configure-board-accordion-card']");
+        sleepInSecond(1);
+        clickToElement(driver,"//div[@data-testid='configure-board-accordion-card']");
+
+        //Enable Automatically archive cards from the board
+        waitForElementVisible(driver,"//input[@data-testid='card-falloff-switch']");
+        sleepInSecond(1);
+        clickToElement(driver,"//input[@data-testid='card-falloff-switch']");
+
+        //CLick on week dropdown
+        waitForElementVisible(driver,"//button[@data-testid='card-falloff-date-range']");
+        sleepInSecond(1);
+        clickToElement(driver,"//button[@data-testid='card-falloff-date-range']");
+
+        //Take screenshots
+        sleepInSecond(1);
+        takeSnapShotWithHighlight(driver, "(//div[@role='option'])[2]",
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\31_YCO.png");
+
+        //Delete created board
+        sleepInSecond(2);
+        clickToElement(driver,"(//div[@role='option'])[2]");
+        sleepInSecond(1);
+        clickToElement(driver,"//button[@data-testid='board-menu-button']");
+        sleepInSecond(1);
+        clickToElement(driver,"//li[@data-key='delete']");
+        waitForElementVisible(driver,"//div[@data-testid='modal']//button[@data-variant='accent']");
+        clickToElement(driver,"//div[@data-testid='modal']//button[@data-variant='accent']");
+    }
+
+    @Test
+    public void String_032() {
+//        MockID: YCp
+//        Core string: Recommended size: 120 x 120px
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//        Direct link: https://adobeloctesting.devtest.workfront-dev.com/setup/oauth2-apps/633eb136f10e5831b770b795
+//        Steps:
+//        1. Go to Workfront
+//        2. Go to Setup > System > OAuth2 Applications > Create/Edit Single Page Web Application
+
+        driver.get("https://adobeloctesting.devtest.workfront-dev.com/setup/oauth2-apps");
+
+        // Check if max New OAuth2 application items > delete one
+        waitForElementInvisible(driver,"//div[@data-testid='spinner']");
+        sleepInSecond(3);
+        List<WebElement> listOauth2Items = getElements(driver,"//div[contains(@class,'mdc-layout-grid__inner')]");
+        System.out.println(listOauth2Items.size());
+        if (listOauth2Items.size()==11) {
+            hoverToElement(driver,"(//div[contains(@class,'mdc-layout-grid__inner')])[2]");
+            sleepInSecond(2);
+            clickToElement(driver,"(//div[contains(@class,'mdc-layout-grid__inner')])[2]/div[5]/div/button");
+            sleepInSecond(1);
+            clickToElement(driver,"//footer[@data-testid='dialog-dialog-footer']/button[1]");
+        }
+
+        // Create New OAuth2 application with Single Page Web Application
+        clickToElement(driver, "//button[@data-testid='create-button']");
+        waitForElementVisible(driver,"//div[@data-testid='authorization-method-section']/fieldset/div[2]//span/span");
+        clickToElement(driver,"//input[@data-testid='authorization-code-flow-pkce-radio-button']");
+        sendKeyToElement(driver, "//input[@data-testid='phoenix-input-name']", "test_" + generateRandomNumber());
+        sleepInSecond(2);
+        clickToElement(driver, "//button[@data-testid='create-submit-button']");
+
+        //Take screenshot
+        waitForElementVisible(driver,"//div[@data-testid='redirect-uri-section']");
+        sleepInSecond(1);
+        scrollToElement(driver,"//div[@data-testid='logo-upload-section']");
+        sleepInSecond(1);
+        takeSnapShotWithHighlight(driver, "//div[@data-testid='logo-upload-section']//span[3]",
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\32_YCp.png");
+
+    }
+
+    @Test
+    public void String_033() {
+//        MockID: YCq
+//        Core string: Maximum file size: 2 MB
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//        Direct link: https://adobeloctesting.devtest.workfront-dev.com/setup/oauth2-apps/633eb136f10e5831b770b795
+//        Steps:
+//        1. Go to Workfront
+//        2. Go to Setup > System > OAuth2 Applications > Create/Edit Single Page Web Application
+
+        driver.get("https://adobeloctesting.devtest.workfront-dev.com/setup/oauth2-apps");
+
+        // Check if max New OAuth2 application items > delete one
+        waitForElementInvisible(driver,"//div[@data-testid='spinner']");
+        sleepInSecond(3);
+        List<WebElement> listOauth2Items = getElements(driver,"//div[contains(@class,'mdc-layout-grid__inner')]");
+        System.out.println(listOauth2Items.size());
+        if (listOauth2Items.size()==11) {
+            hoverToElement(driver,"(//div[contains(@class,'mdc-layout-grid__inner')])[2]");
+            sleepInSecond(2);
+            clickToElement(driver,"(//div[contains(@class,'mdc-layout-grid__inner')])[2]/div[5]/div/button");
+            sleepInSecond(1);
+            clickToElement(driver,"//footer[@data-testid='dialog-dialog-footer']/button[1]");
+        }
+
+        // Create New OAuth2 application with Single Page Web Application
+        clickToElement(driver, "//button[@data-testid='create-button']");
+        waitForElementVisible(driver,"//div[@data-testid='authorization-method-section']/fieldset/div[2]//span/span");
+        clickToElement(driver,"//input[@data-testid='authorization-code-flow-pkce-radio-button']");
+        sendKeyToElement(driver, "//input[@data-testid='phoenix-input-name']", "test_" + generateRandomNumber());
+        sleepInSecond(2);
+        clickToElement(driver, "//button[@data-testid='create-submit-button']");
+
+        //Take screenshot
+        waitForElementVisible(driver,"//div[@data-testid='redirect-uri-section']");
+        sleepInSecond(1);
+        scrollToElement(driver,"//div[@data-testid='logo-upload-section']");
+        sleepInSecond(1);
+        takeSnapShotWithHighlight(driver, "//div[@data-testid='logo-upload-section']//span[2]",
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\33_YCq.png");
+
+    }
+
+    @Test
+    public void String_034() {
+//        MockID: YCQ
+//        Core string: Information Alert
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//        Direct link: https://adobeloctesting.devtest.workfront-dev.com/timesheet/6321b4350001fbd3d9667fa4ba03f129/overview
+//        1. Login to Workfront
+//        2. Click on Main Menu -> Timesheets and open any timesheet
+
+        driver.get("https://adobeloctesting.devtest.workfront-dev.com/timesheet/6321b4350001fbd3d9667fa4ba03f129/overview");
+
+        //Take screenshot
+        waitForElementVisible(driver, "//span[@data-testid='save-button-info-line']/preceding-sibling::span");
+        sleepInSecond(1);
+        takeSnapShotWithHighlight(driver, "//span[@data-testid='save-button-info-line']/preceding-sibling::span",
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\34_YCQ.png");
+
+    }
+
+    @Test
+    public void String_035() {
+//        MockID: YCr
+//        Core string: Use Proof Key for Code Exchange (PKCE) instead of a client secret:
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//        Direct link: https://adobeloctesting.devtest.workfront-dev.com/setup/oauth2-apps/633eb136f10e5831b770b795
+//        Steps:
+//        1. Go to Workfront
+//        2. Go to Setup > System > OAuth2 Applications > Create/Edit Single Page Web Application
+
+        driver.get("https://adobeloctesting.devtest.workfront-dev.com/setup/oauth2-apps");
+
+        // Check if max New OAuth2 application items > delete one
+        waitForElementInvisible(driver,"//div[@data-testid='spinner']");
+        sleepInSecond(3);
+        List<WebElement> listOauth2Items = getElements(driver,"//div[contains(@class,'mdc-layout-grid__inner')]");
+        System.out.println(listOauth2Items.size());
+        if (listOauth2Items.size()==11) {
+            hoverToElement(driver,"(//div[contains(@class,'mdc-layout-grid__inner')])[2]");
+            sleepInSecond(2);
+            clickToElement(driver,"(//div[contains(@class,'mdc-layout-grid__inner')])[2]/div[5]/div/button");
+            sleepInSecond(1);
+            clickToElement(driver,"//footer[@data-testid='dialog-dialog-footer']/button[1]");
+        }
+
+        // Create New OAuth2 application with Single Page Web Application
+        clickToElement(driver, "//button[@data-testid='create-button']");
+        waitForElementVisible(driver,"//div[@data-testid='authorization-method-section']/fieldset/div[2]//span/span");
+        clickToElement(driver,"//input[@data-testid='authorization-code-flow-pkce-radio-button']");
+        sendKeyToElement(driver, "//input[@data-testid='phoenix-input-name']", "test_" + generateRandomNumber());
+        sleepInSecond(2);
+        clickToElement(driver, "//button[@data-testid='create-submit-button']");
+
+        //Take screenshot
+        waitForElementVisible(driver,"//div[@data-testid='redirect-uri-section']");
+        sleepInSecond(1);
+        takeSnapShotWithHighlight(driver, "//div[@data-testid='redirect-uri-section']/preceding-sibling::div[1]/div/span[1]",
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\35_YCr.png");
+
+    }
+
+    @Test
+    public void String_036() {
+//        MockID: YCR
+//        Core string: The job role associated with time that you previously logged has changed. Logging time for new dates will associate it with a different job role. You must manually save your changes until there are no more conflicting entries between the two roles.
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//        Direct link: https://adobeloctesting.devtest.workfront-dev.com/timesheet/6321b4350001fbd3d9667fa4ba03f129/overview
+//        1. Login to Workfront
+//        2. Click on Main Menu -> Timesheets and open any timesheet
+
+        driver.get("https://adobeloctesting.devtest.workfront-dev.com/timesheet/6321b4350001fbd3d9667fa4ba03f129/overview");
+
+        //Take screenshot
+        waitForElementVisible(driver, "//span[@data-testid='save-button-info-line']");
+        sleepInSecond(1);
+        takeSnapShotWithHighlight(driver, "//span[@data-testid='save-button-info-line']",
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\36_YCR.png");
+
+    }
+
+    @Test
+    public void String_037() {
+//        MockID: YCS
+//        Core string: Saved at {0}
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//        Direct link: https://adobeloctesting.devtest.workfront-dev.com/timesheet/6336f6400001f6307dbdd473e26f4f51/overview
+//        1. Login to Workfront
+//        2. Go to Main Menu -> Timesheets and open any timesheet
+//        3. Enter some hours and press Save
+
+        driver.get("https://adobeloctesting.devtest.workfront-dev.com/timesheet/6321b4350001fbd3d9667fa4ba03f129/overview");
+
+        //Enter some hours
+
+
+        waitForElementVisible(driver,"//input[contains(@data-testid,'hour-input')]");
+        sendKeyToElement(driver,"//input[contains(@data-testid,'hour-input')]",rand());
+
+        //Click to save button
+        clickToElement(driver,"//button[@data-testid='button-manual-save']");
+
+        //Take screenshot
+        waitForElementVisible(driver, "//div[@data-testid='auto-save-succeed']");
+        sleepInSecond(1);
+        takeSnapShotWithHighlight(driver, "//div[@data-testid='auto-save-succeed']",
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\37_YCS.png");
+
+    }
+
+    @Test
+    public void String_038() {
+//        MockID: YCT
+//        Core string: Leave
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//         Direct link: https://adobeloctesting.devtest.workfront-dev.com/timesheet/6321b4350001fbd3d9667fa4ba03f129/overview
+//         1. Login to Workfront
+//         2. Click on Main Menu -> Timesheets and open any timesheet
+//         3. Enter some hours, do not save
+//         4. Click on Updates tab
+
+        driver.get("https://adobeloctesting.devtest.workfront-dev.com/timesheet/6321b4350001fbd3d9667fa4ba03f129/overview");
+
+        //Enter some hours
+        waitForElementVisible(driver,"//input[contains(@data-testid,'hour-input')]");
+        sendKeyToElement(driver,"//input[contains(@data-testid,'hour-input')]",rand());
+
+        //Click to Update
+        clickToElement(driver,"//div[@data-testid='navitem-updates ']");
+
+        //Take screenshot
+        waitForElementVisible(driver, "//button[@data-testid='deny-button-confirm-dialog']");
+        sleepInSecond(1);
+        takeSnapShotWithHighlight(driver, "//button[@data-testid='deny-button-confirm-dialog']",
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\38_YCT.png");
+
+    }
+
+    @Test
+    public void String_039() {
+//        MockID: YCU
+//        Core string: Keep editing
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//         Direct link: https://adobeloctesting.devtest.workfront-dev.com/timesheet/6321b4350001fbd3d9667fa4ba03f129/overview
+//         1. Login to Workfront
+//         2. Click on Main Menu -> Timesheets and open any timesheet
+//         3. Enter some hours, do not save
+//         4. Click on Updates tab
+
+        driver.get("https://adobeloctesting.devtest.workfront-dev.com/timesheet/6321b4350001fbd3d9667fa4ba03f129/overview");
+
+        //Enter some hours
+        waitForElementVisible(driver,"//input[contains(@data-testid,'hour-input')]");
+        sendKeyToElement(driver,"//input[contains(@data-testid,'hour-input')]",rand());
+
+        //Click to Update
+        clickToElement(driver,"//div[@data-testid='navitem-updates ']");
+
+        //Take screenshot
+        waitForElementVisible(driver, "//button[@data-testid='confirm-button-confirm-dialog']");
+        sleepInSecond(1);
+        takeSnapShotWithHighlight(driver, "//button[@data-testid='confirm-button-confirm-dialog']",
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\39_YCU.png");
+
+    }
+
+    @Test
+    public void String_040() {
+//        MockID: YCV
+//        Core string: To make changes on the billing record set the status to Not Billed
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//         Direct link: https://adobeloctesting.devtest.workfront-dev.com/billingrecord/633eb71a0007233b844d852fa932a1aa/overview
+//         Steps:
+//         1. Go to Workfront
+//         2. Create a new Project and go to Billing Records tab
+//         3. Add a new billing record and set it state to Not Billed
+//         4. Click on billing record name to open its details
+
+        driver.get("https://adobeloctesting.devtest.workfront-dev.com/billingrecord/633eb71a0007233b844d852fa932a1aa/overview");
+
+
+        //Take screenshot
+        waitForElementVisible(driver, "//div[@id='page-header']/div[1]/span");
+        sleepInSecond(1);
+        takeSnapShotWithHighlight(driver, "//div[@id='page-header']/div[1]/span",
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\40_YCV.png");
+
+    }
+
+    @Test
+    public void String_041() {
+//        MockID: YCW
+//        Core string: LANDING PAGE
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//        Direct link: https://adobeloctesting.devtest.workfront-dev.com/blueprints
+//        1. Login to Workfront
+//        2. Go to Main Menu -> Blueprints
+
+        driver.get("https://adobeloctesting.devtest.workfront-dev.com/blueprints");
+
+
+        //Take screenshot
+        waitForElementVisible(driver, "//span[contains(@class,'font-semibold letterTitle')]");
+        sleepInSecond(1);
+        takeSnapShotWithHighlight(driver, "//span[contains(@class,'font-semibold letterTitle')]",
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\41_YCW.png");
+
+    }
+
+    @Test
+    public void String_042() {
+//        MockID: YCX
+//        Core string: INSTALLATION STATUS
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//        Direct link: https://adobeloctesting.devtest.workfront-dev.com/blueprints
+//        1. Login to Workfront
+//        2. Go to Main Menu -> Blueprints
+//        3. Click on any Install -> Continue
+//        4. Click Install as is
+
+        driver.get("https://adobeloctesting.devtest.workfront-dev.com/blueprints");
+
+        // Click on any Install button
+        waitForElementVisible(driver,"//button[@data-testid='blueprints-card-install-button']");
+        sleepInSecond(1);
+        clickToElement(driver,"//button[@data-testid='blueprints-card-install-button']");
+
+        //click on Continue button
+        waitForElementVisible(driver,"//button[@data-testid='install-continue-button']");
+        sleepInSecond(1);
+        clickToElement(driver,"//button[@data-testid='install-continue-button']");
+
+        //click on Install as is button
+        waitForElementVisible(driver,"//button[@data-testid='asis-installation']");
+        sleepInSecond(1);
+        clickToElement(driver,"//button[@data-testid='asis-installation']");
+
+        // click on expand button
+        waitForElementVisible(driver,"//div[@data-testid='history-header']");
+        clickToElement(driver,"(//button[@data-testid='breadcrumbs-expand-button'])[1]");
+
+        //Take screenshot
+        waitForElementVisible(driver, "(//div[@data-testid='crumb-obj-label'])[4]");
+        sleepInSecond(1);
+        takeSnapShotWithHighlight(driver, "(//div[@data-testid='crumb-obj-label'])[4]",
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\42_YCX.png");
+
+    }
+
+    @Test
+    public void String_043() {
+//        MockID: YCY
+//        Core string: CONFIGURATION
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//        Direct link: https://adobeloctesting.devtest.workfront-dev.com/blueprints
+//        1. Login to Workfront
+//        2. Go to Main Menu -> Blueprints
+//        3. Click on any Install -> Continue
+
+        driver.get("https://adobeloctesting.devtest.workfront-dev.com/blueprints");
+
+        // Click on any Install button
+        waitForElementVisible(driver,"//button[@data-testid='blueprints-card-install-button']");
+        sleepInSecond(1);
+        clickToElement(driver,"//button[@data-testid='blueprints-card-install-button']");
+
+        //click on Continue button
+        waitForElementVisible(driver,"//button[@data-testid='install-continue-button']");
+        sleepInSecond(1);
+        clickToElement(driver,"//button[@data-testid='install-continue-button']");
+
+        // click on expand button
+        waitForElementVisible(driver,"(//button[@data-testid='breadcrumbs-expand-button'])[1]");
+        clickToElement(driver,"(//button[@data-testid='breadcrumbs-expand-button'])[1]");
+
+        //Take screenshot
+        waitForElementVisible(driver, "(//div[@data-testid='crumb-obj-label'])[3]");
+        sleepInSecond(1);
+        takeSnapShotWithHighlight(driver, "(//div[@data-testid='crumb-obj-label'])[3]",
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\43_YCY.png");
+
+    }
+
+    @Test
+    public void String_044() {
+//        MockID: YCZ
+//        Core string: DETAILS
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//        Direct link: https://adobeloctesting.devtest.workfront-dev.com/blueprints
+//        1. Login to Workfront
+//        2. Go to Main Menu -> Blueprints
+//        3. Click on any Install -> Continue
+
+        driver.get("https://adobeloctesting.devtest.workfront-dev.com/blueprints");
+
+        // Click on any Install button
+        waitForElementVisible(driver,"//button[@data-testid='blueprints-card-install-button']");
+        sleepInSecond(1);
+        clickToElement(driver,"//button[@data-testid='blueprints-card-install-button']");
+
+        //click on Continue button
+        waitForElementVisible(driver,"//button[@data-testid='install-continue-button']");
+        sleepInSecond(1);
+        clickToElement(driver,"//button[@data-testid='install-continue-button']");
+
+        // click on expand button
+        waitForElementVisible(driver,"(//button[@data-testid='breadcrumbs-expand-button'])[1]");
+        clickToElement(driver,"(//button[@data-testid='breadcrumbs-expand-button'])[1]");
+
+        //Take screenshot
+        waitForElementVisible(driver, "(//div[@data-testid='crumb-obj-label'])[2]");
+        sleepInSecond(1);
+        takeSnapShotWithHighlight(driver, "(//div[@data-testid='crumb-obj-label'])[2]",
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\44_YCZ.png");
+
+    }
+
+    private String rand() {
+        Random rand = new Random(10);
+        rand.nextInt(10);
+        return rand.toString();
+    }
 
     @AfterClass(alwaysRun = true)
     public void afterClass() {
-
         driver.quit();
     }
 
