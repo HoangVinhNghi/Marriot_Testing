@@ -3,14 +3,10 @@ package Workfront_20220905T112238Z_P2;
 import common.AbstractPage;
 import common.GlobalConstants;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -19,7 +15,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-public class ENU extends AbstractPage {
+public class FRA extends AbstractPage {
     WebDriver driver;
 
     @BeforeClass
@@ -27,7 +23,7 @@ public class ENU extends AbstractPage {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         // Set language
-        options.addArguments("--lang=en");
+        options.addArguments("--lang=fr");
 
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(12, TimeUnit.SECONDS);
@@ -59,7 +55,7 @@ public class ENU extends AbstractPage {
         waitForElementVisible(driver,"//div[@data-testid='configure-board-accordion-card']");
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver, "//div[@data-testid='configure-board-accordion-card']",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\01_Xpa.png");
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\FRA\\3360821\\FRA\\01_Xpa.png");
     }
 
     @Test
@@ -79,7 +75,7 @@ public class ENU extends AbstractPage {
         sleepInSecond(1);
         scrollToElement(driver,"//div[@id='installationStatus']//button");
         takeSnapShotWithHighlight(driver, "//div[@id='installationStatus']//button",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\02_XRX.png");
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\FRA\\3360821\\FRA\\02_XRX.png");
     }
 
     @Test
@@ -99,7 +95,7 @@ public class ENU extends AbstractPage {
         sleepInSecond(1);
         scrollToElement(driver,"//div[@id='blueprintTypes']//button");
         takeSnapShotWithHighlight(driver, "//div[@id='blueprintTypes']//button",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\03_Xsv.png");
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\FRA\\3360821\\FRA\\03_Xsv.png");
     }
 
     @Test
@@ -138,7 +134,7 @@ public class ENU extends AbstractPage {
         // Take screenshots
         waitForElementVisible(driver,"//li[@data-testid='option-1']");
         takeSnapShotWithHighlight(driver,"//li[@data-testid='option-1']",
-                GlobalConstants.SCREENSHOTS+"\\Workfront_20220905T112238Z_P2\\ENU\\04_YB-.png");
+                GlobalConstants.SCREENSHOTS+"\\Workfront_20220905T112238Z_P2\\FRA\\3360821\\FRA\\04_YB-.png");
 
         // Delete this goal
         sleepInSecond(1);
@@ -185,7 +181,7 @@ public class ENU extends AbstractPage {
         // Take screenshots
         waitForElementVisible(driver,"//li[@data-testid='option-2']");
         takeSnapShotWithHighlight(driver,"//li[@data-testid='option-2']",
-                GlobalConstants.SCREENSHOTS+"\\Workfront_20220905T112238Z_P2\\ENU\\05_YB+.png");
+                GlobalConstants.SCREENSHOTS+"\\Workfront_20220905T112238Z_P2\\FRA\\3360821\\FRA\\05_YB+.png");
 
         // Delete this goal
         sleepInSecond(1);
@@ -235,7 +231,7 @@ public class ENU extends AbstractPage {
         waitForElementVisible(driver,"//button[@data-testid='save-card-falloff-button']");
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver, "//button[@data-testid='save-card-falloff-button']",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\06_YC0.png");
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\FRA\\3360821\\FRA\\06_YC0.png");
     }
 
     @Test
@@ -271,7 +267,7 @@ public class ENU extends AbstractPage {
         waitForElementVisible(driver,"//div[@data-testid='select-box']");
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver, "//div[@data-testid='select-box']",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\07_YC4.png");
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\FRA\\3360821\\FRA\\07_YC4.png");
     }
 
     @Test
@@ -299,7 +295,7 @@ public class ENU extends AbstractPage {
         scrollToElement(driver,"(//div[contains(@data-testid,'filter-group-heading-')])[5]");
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver, "(//div[contains(@data-testid,'filter-group-options-')])[5]/div[2]",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\08_YC5.png");
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\FRA\\3360821\\FRA\\08_YC5.png");
     }
 
     @Test
@@ -332,7 +328,7 @@ public class ENU extends AbstractPage {
         waitForElementVisible(driver,"//div[@data-testid='group-by-tittle']/div[1]");
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver, "//div[@data-testid='group-by-tittle']/div[1]",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\09_YC6.png");
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\FRA\\3360821\\FRA\\09_YC6.png");
     }
 
     @Test
@@ -365,7 +361,7 @@ public class ENU extends AbstractPage {
         waitForElementVisible(driver,"//div[@data-testid='group-by-tittle']/div[1]");
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver, "//div[@data-testid='group-by-tittle']/div[1]",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\10_YC7.png");
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\FRA\\3360821\\FRA\\10_YC7.png");
     }
 
     @Test
@@ -408,7 +404,7 @@ public class ENU extends AbstractPage {
         //Take screenshots
         sleepInSecond(2);
         takeSnapShotWithHighlight(driver, "//div[@data-testid='select-box']",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\11_YC8.png");
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\FRA\\3360821\\FRA\\11_YC8.png");
 
         //Close Card detail box
         sleepInSecond(1);
@@ -454,7 +450,7 @@ public class ENU extends AbstractPage {
         waitForElementVisible(driver,"//input[@data-testid='group-by-ASSIGNMENT']/ancestor::div[@role='radiogroup']/preceding-sibling::span");
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver, "//input[@data-testid='group-by-ASSIGNMENT']/ancestor::div[@role='radiogroup']/preceding-sibling::span",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\12_YC9.png");
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\FRA\\3360821\\FRA\\12_YC9.png");
 
         //Delete created board
         sleepInSecond(2);
@@ -486,7 +482,7 @@ public class ENU extends AbstractPage {
         waitForElementVisible(driver,"//a[@data-testid='workrecords.plural']/span");
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver, "//a[@data-testid='workrecords.plural']/span",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\13_YCa.png");
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\FRA\\3360821\\FRA\\13_YCa.png");
 
     }
 
@@ -535,7 +531,7 @@ public class ENU extends AbstractPage {
         // Take screenshots
         waitForElementVisible(driver,"(//div[@data-testid='BodyInnerCell'])[3]");
         takeSnapShotWithHighlight(driver,"(//div[@data-testid='BodyInnerCell'])[3]",
-                GlobalConstants.SCREENSHOTS+"\\Workfront_20220905T112238Z_P2\\ENU\\14_YCA.png");
+                GlobalConstants.SCREENSHOTS+"\\Workfront_20220905T112238Z_P2\\FRA\\3360821\\FRA\\14_YCA.png");
 
         // Delete this goal
         sleepInSecond(1);
@@ -584,7 +580,7 @@ public class ENU extends AbstractPage {
         // Take screenshots
         waitForElementVisible(driver,"//div[@data-testid='sliding-pane-header']/span");
         takeSnapShotWithHighlight(driver,"//div[@data-testid='sliding-pane-header']/span",
-                GlobalConstants.SCREENSHOTS+"\\Workfront_20220905T112238Z_P2\\ENU\\15_YCB.png");
+                GlobalConstants.SCREENSHOTS+"\\Workfront_20220905T112238Z_P2\\FRA\\3360821\\FRA\\15_YCB.png");
 
         // Closed add project window
         sleepInSecond(1);
@@ -620,7 +616,7 @@ public class ENU extends AbstractPage {
         waitForElementVisible(driver,"//a[@data-testid='workrecord.templates.plural']/span");
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver, "//a[@data-testid='workrecord.templates.plural']/span",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\16_YCc.png");
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\FRA\\3360821\\FRA\\16_YCc.png");
 
     }
 
@@ -645,7 +641,7 @@ public class ENU extends AbstractPage {
         waitForElementVisible(driver,"//a[@data-testid='marketing.calendar']/span");
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver, "//a[@data-testid='marketing.calendar']/span",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\17_YCd.png");
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\FRA\\3360821\\FRA\\17_YCd.png");
 
     }
 
@@ -678,7 +674,7 @@ public class ENU extends AbstractPage {
         //Take screenshots
         sleepInSecond(2);
         takeSnapShotWithHighlight(driver, "//li[contains(@class,'spectrum-Breadcrumbs-item_')]",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\18_YCe.png");
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\FRA\\3360821\\FRA\\18_YCe.png");
 
         //Close search box
         sleepInSecond(1);
@@ -724,7 +720,7 @@ public class ENU extends AbstractPage {
         //Take screenshots
         sleepInSecond(2);
         takeSnapShotWithHighlight(driver, "//div[@data-testid='modal']//button[@data-variant='accent']",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\19_YCf.png");
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\FRA\\3360821\\FRA\\19_YCf.png");
 
     }
 
@@ -759,7 +755,7 @@ public class ENU extends AbstractPage {
         //Take screenshots
         sleepInSecond(2);
         takeSnapShotWithHighlight(driver, "//div[@data-testid='modal']//button[@data-variant='accent']",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\20_YCg.png");
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\FRA\\3360821\\FRA\\20_YCg.png");
 
     }
 
@@ -803,7 +799,7 @@ public class ENU extends AbstractPage {
         scrollToElement(driver,"//div[@data-testid='logo-upload-section']");
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver, "//div[@data-testid='logo-upload-section']//span[4]",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\21_YCi.png");
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\FRA\\3360821\\FRA\\21_YCi.png");
 
     }
 
@@ -847,7 +843,7 @@ public class ENU extends AbstractPage {
         scrollToElement(driver,"//div[@data-testid='logo-upload-section']");
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver, "//div[@data-testid='logo-upload-section']//span[1]",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\22_YCj.png");
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\FRA\\3360821\\FRA\\22_YCj.png");
 
     }
 
@@ -883,7 +879,7 @@ public class ENU extends AbstractPage {
         //Take screenshots
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver, "//div[@data-testid='configure-board-accordion-card']/following-sibling::div",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\23_YCJ.png");
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\FRA\\3360821\\FRA\\23_YCJ.png");
 
         //Delete created board
         sleepInSecond(2);
@@ -932,7 +928,7 @@ public class ENU extends AbstractPage {
         waitForElementVisible(driver,"//div[@data-testid='redirect-uri-section']");
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver, "//div[@data-testid='redirect-uri-section']/preceding-sibling::div[1]/div/span[2]",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\24_YCk.png");
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\FRA\\3360821\\FRA\\24_YCk.png");
 
     }
 
@@ -973,7 +969,7 @@ public class ENU extends AbstractPage {
         //Take screenshots
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver, "(//div[@data-testid='configure-board-accordion-card']/following-sibling::div//span[contains(@class,'spectrum-FieldLabel_')])[2]",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\25_YCK.png");
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\FRA\\3360821\\FRA\\25_YCK.png");
 
         //Delete created board
         sleepInSecond(2);
@@ -1022,7 +1018,7 @@ public class ENU extends AbstractPage {
         waitForElementVisible(driver,"//div[@data-testid='redirect-uri-section']");
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver, "//div[@data-testid='redirect-uri-section']/preceding-sibling::div[1]//ul/li[1]",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\26_YCl.png");
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\FRA\\3360821\\FRA\\26_YCl.png");
 
     }
 
@@ -1069,7 +1065,7 @@ public class ENU extends AbstractPage {
         //Take screenshots
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver, "(//div[@role='option'])[1]",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\27_YCL.png");
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\FRA\\3360821\\FRA\\27_YCL.png");
 
         //Delete created board
         sleepInSecond(2);
@@ -1120,7 +1116,7 @@ public class ENU extends AbstractPage {
         waitForElementVisible(driver,"//div[@data-testid='redirect-uri-section']");
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver, "//div[@data-testid='redirect-uri-section']/preceding-sibling::div[1]//ul/li[2]",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\28_YCm.png");
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\FRA\\3360821\\FRA\\28_YCm.png");
 
     }
 
@@ -1162,7 +1158,7 @@ public class ENU extends AbstractPage {
         waitForElementVisible(driver,"//div[@data-testid='redirect-uri-section']");
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver, "//div[@data-testid='redirect-uri-section']/preceding-sibling::div[1]//ul/li[3]",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\29_YCn.png");
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\FRA\\3360821\\FRA\\29_YCn.png");
 
     }
 
@@ -1204,7 +1200,7 @@ public class ENU extends AbstractPage {
         waitForElementVisible(driver,"//div[@data-testid='redirect-uri-section']");
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver, "//div[@data-testid='redirect-uri-section']/preceding-sibling::div[1]//ul/li[4]",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\30_YCo.png");
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\FRA\\3360821\\FRA\\30_YCo.png");
 
     }
 
@@ -1251,7 +1247,7 @@ public class ENU extends AbstractPage {
         //Take screenshots
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver, "(//div[@role='option'])[2]",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\31_YCO.png");
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\FRA\\3360821\\FRA\\31_YCO.png");
 
         //Delete created board
         sleepInSecond(2);
@@ -1304,7 +1300,7 @@ public class ENU extends AbstractPage {
         scrollToElement(driver,"//div[@data-testid='logo-upload-section']");
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver, "//div[@data-testid='logo-upload-section']//span[3]",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\32_YCp.png");
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\FRA\\3360821\\FRA\\32_YCp.png");
 
     }
 
@@ -1348,7 +1344,7 @@ public class ENU extends AbstractPage {
         scrollToElement(driver,"//div[@data-testid='logo-upload-section']");
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver, "//div[@data-testid='logo-upload-section']//span[2]",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\33_YCq.png");
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\FRA\\3360821\\FRA\\33_YCq.png");
 
     }
 
@@ -1368,7 +1364,7 @@ public class ENU extends AbstractPage {
         waitForElementVisible(driver, "//span[@data-testid='save-button-info-line']/preceding-sibling::span");
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver, "//span[@data-testid='save-button-info-line']/preceding-sibling::span",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\34_YCQ.png");
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\FRA\\3360821\\FRA\\34_YCQ.png");
 
     }
 
@@ -1410,7 +1406,7 @@ public class ENU extends AbstractPage {
         waitForElementVisible(driver,"//div[@data-testid='redirect-uri-section']");
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver, "//div[@data-testid='redirect-uri-section']/preceding-sibling::div[1]/div/span[1]",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\35_YCr.png");
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\FRA\\3360821\\FRA\\35_YCr.png");
 
     }
 
@@ -1430,7 +1426,7 @@ public class ENU extends AbstractPage {
         waitForElementVisible(driver, "//span[@data-testid='save-button-info-line']");
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver, "//span[@data-testid='save-button-info-line']",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\36_YCR.png");
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\FRA\\3360821\\FRA\\36_YCR.png");
 
     }
 
@@ -1460,7 +1456,7 @@ public class ENU extends AbstractPage {
         waitForElementVisible(driver, "//div[@data-testid='auto-save-succeed']");
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver, "//div[@data-testid='auto-save-succeed']",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\37_YCS.png");
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\FRA\\3360821\\FRA\\37_YCS.png");
 
     }
 
@@ -1489,7 +1485,7 @@ public class ENU extends AbstractPage {
         waitForElementVisible(driver, "//button[@data-testid='deny-button-confirm-dialog']");
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver, "//button[@data-testid='deny-button-confirm-dialog']",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\38_YCT.png");
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\FRA\\3360821\\FRA\\38_YCT.png");
 
         //click to keep editting
         sleepInSecond(1);
@@ -1527,7 +1523,7 @@ public class ENU extends AbstractPage {
         waitForElementVisible(driver, "//button[@data-testid='confirm-button-confirm-dialog']");
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver, "//button[@data-testid='confirm-button-confirm-dialog']",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\39_YCU.png");
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\FRA\\3360821\\FRA\\39_YCU.png");
 
         //click to keep editting
         sleepInSecond(1);
@@ -1560,7 +1556,7 @@ public class ENU extends AbstractPage {
         waitForElementVisible(driver, "//div[@id='page-header']/div[1]/span");
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver, "//div[@id='page-header']/div[1]/span",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\40_YCV.png");
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\FRA\\3360821\\FRA\\40_YCV.png");
 
     }
 
@@ -1581,7 +1577,7 @@ public class ENU extends AbstractPage {
         waitForElementVisible(driver, "//span[contains(@class,'font-semibold letterTitle')]");
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver, "//span[contains(@class,'font-semibold letterTitle')]",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\41_YCW.png");
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\FRA\\3360821\\FRA\\41_YCW.png");
 
     }
 
@@ -1622,7 +1618,7 @@ public class ENU extends AbstractPage {
         waitForElementVisible(driver, "(//div[@data-testid='crumb-obj-label'])[4]");
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver, "(//div[@data-testid='crumb-obj-label'])[4]",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\42_YCX.png");
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\FRA\\3360821\\FRA\\42_YCX.png");
 
     }
 
@@ -1657,7 +1653,7 @@ public class ENU extends AbstractPage {
         waitForElementVisible(driver, "(//div[@data-testid='crumb-obj-label'])[3]");
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver, "(//div[@data-testid='crumb-obj-label'])[3]",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\43_YCY.png");
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\FRA\\3360821\\FRA\\43_YCY.png");
 
     }
 
@@ -1692,7 +1688,7 @@ public class ENU extends AbstractPage {
         waitForElementVisible(driver, "(//div[@data-testid='crumb-obj-label'])[2]");
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver, "(//div[@data-testid='crumb-obj-label'])[2]",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\ENU\\44_YCZ.png");
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220905T112238Z_P2\\FRA\\3360821\\FRA\\44_YCZ.png");
 
     }
 
