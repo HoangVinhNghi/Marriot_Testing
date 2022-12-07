@@ -63,7 +63,7 @@ public class ENU extends AbstractPage {
         sleepInSecond(1);
         clickToElement(driver,"//label[text()='bu']/following-sibling::a");
         takeSnapShotWithHighlight(driver,"//div[@class='ContextMessagePanel warning otherGroupsRemoveInfoPanel']",
-                GlobalConstants.SCREENSHOTS+"\\Workfront_20220529T102027Z_P1\\ENU\\001_VNb.png");
+                GlobalConstants.SCREENSHOTS+"\\Workfront_20220529T102027Z\\ENU\\001_VNb.png");
     }
 
     @Test
@@ -95,7 +95,7 @@ public class ENU extends AbstractPage {
         waitForElementVisible(driver,"//div[@data-testid='sliding-pane-header']/span");
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver,"//div[@data-testid='sliding-pane-header']/span",
-                GlobalConstants.SCREENSHOTS+"\\Workfront_20220529T102027Z_P1\\ENU\\002_X1e.png");
+                GlobalConstants.SCREENSHOTS+"\\Workfront_20220529T102027Z\\ENU\\002_X1e.png");
 
         // Close and delete created Campaign
         clickToElement(driver,"//button[@data-testid='close-dialog']");
@@ -136,7 +136,7 @@ public class ENU extends AbstractPage {
         waitForElementVisible(driver,"//div[@data-testid='sliding-pane-header']/span");
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver,"//div[@data-testid='sliding-pane-header']/span",
-                GlobalConstants.SCREENSHOTS+"\\Workfront_20220529T102027Z_P1\\ENU\\003_X1P.png");
+                GlobalConstants.SCREENSHOTS+"\\Workfront_20220529T102027Z\\ENU\\003_X1P.png");
 
         // Close and delete created Campaign
         clickToElement(driver,"//button[@data-testid='close-dialog']");
@@ -180,7 +180,7 @@ public class ENU extends AbstractPage {
         waitForElementVisible(driver,"//section[@data-testid='confirm-dialog-dialog-body']");
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver,"//section[@data-testid='confirm-dialog-dialog-body']",
-                GlobalConstants.SCREENSHOTS+"\\Workfront_20220529T102027Z_P1\\ENU\\004_X1t.png");
+                GlobalConstants.SCREENSHOTS+"\\Workfront_20220529T102027Z\\ENU\\004_X1t.png");
         clickToElement(driver,"//button[@data-testid='confirm-button-confirm-dialog']");
 
 
@@ -218,7 +218,7 @@ public class ENU extends AbstractPage {
         waitForElementVisible(driver,"//section[@data-testid='confirm-dialog-dialog-body']");
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver,"//section[@data-testid='confirm-dialog-dialog-body']",
-                GlobalConstants.SCREENSHOTS+"\\Workfront_20220529T102027Z_P1\\ENU\\005_X1x.png");
+                GlobalConstants.SCREENSHOTS+"\\Workfront_20220529T102027Z\\ENU\\005_X1x.png");
         clickToElement(driver,"//button[@data-testid='confirm-button-confirm-dialog']");
     }
 
@@ -254,7 +254,7 @@ public class ENU extends AbstractPage {
         waitForElementVisible(driver,"//div[@data-name='header-cell']/parent::div/following-sibling::div");
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver,"//div[@data-name='header-cell']/parent::div/following-sibling::div",
-                GlobalConstants.SCREENSHOTS+"\\Workfront_20220529T102027Z_P1\\ENU\\006_X2-.png");
+                GlobalConstants.SCREENSHOTS+"\\Workfront_20220529T102027Z\\ENU\\006_X2-.png");
     }
 
     @Test
@@ -293,7 +293,7 @@ public class ENU extends AbstractPage {
         // Take screenshots
         waitForElementVisible(driver,"//div[@data-testid='toast-notification']");
         takeSnapShotWithHighlight(driver,"//span[@data-testid='body']",
-                GlobalConstants.SCREENSHOTS+"\\Workfront_20220529T102027Z_P1\\ENU\\008_X23.png");
+                GlobalConstants.SCREENSHOTS+"\\Workfront_20220529T102027Z\\ENU\\008_X23.png");
 
         // Delete this goal
         waitForElementVisible(driver,"//div[@data-testid='field-description']");
@@ -340,7 +340,7 @@ public class ENU extends AbstractPage {
         // Take screenshots
         waitForElementVisible(driver,"//div[@data-testid='toast-notification']");
         takeSnapShotWithHighlight(driver,"//span[@data-testid='body']",
-                GlobalConstants.SCREENSHOTS+"\\Workfront_20220529T102027Z_P1\\ENU\\009_X24.png");
+                GlobalConstants.SCREENSHOTS+"\\Workfront_20220529T102027Z\\ENU\\009_X24.png");
 
         // Delete this goal
         waitForElementVisible(driver,"//div[@data-testid='field-description']");
@@ -380,7 +380,7 @@ public class ENU extends AbstractPage {
         sendKeyToElement(driver,"//input[@id='configuration-search-input']","RIGHT");
         waitForElementVisible(driver,"//li[@id='RIGHT']");
         takeSnapShotWithHighlight(driver, "//li[@id='RIGHT']",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220529T102027Z_P1\\ENU\\010_X25.png");
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220529T102027Z\\ENU\\010_X25.png");
     }
 
     @Test
@@ -412,7 +412,7 @@ public class ENU extends AbstractPage {
         sendKeyToElement(driver,"//input[@id='configuration-search-input']","MONTH");
         waitForElementVisible(driver,"//li[@id='MONTH']");
         takeSnapShotWithHighlight(driver, "//li[@id='MONTH']",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220529T102027Z_P1\\ENU\\011_X27.png");
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220529T102027Z\\ENU\\011_X27.png");
     }
 
     @Test
@@ -444,7 +444,79 @@ public class ENU extends AbstractPage {
         sendKeyToElement(driver,"//input[@id='configuration-search-input']","LEFT");
         waitForElementVisible(driver,"//li[@id='LEFT']");
         takeSnapShotWithHighlight(driver, "//li[@id='LEFT']",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220529T102027Z_P1\\ENU\\012_X28.png");
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220529T102027Z\\ENU\\012_X28.png");
+    }
+
+    @Test
+    public void String_014() {
+//        MockID: X2a
+//        Core string: Select Destination {__mlm_up_project}
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//        Direct link: https://adobeloctesting.devtest.workfront-dev.com/projects/all
+//        1. Login to Workfront
+//        2. Go to Projects -> New Project
+//        3. Switch to Issues tab and add any issue
+//        4. Select created Issue
+//        5. Click three dots -> Convert to task
+
+        driver.get("https://adobeloctesting.devtest.workfront-dev.com/projects/all");
+
+        //Create new project
+        waitForElementVisible(driver,"//div[@data-testid='button-options-trigger']//button");
+        sleepInSecond(1);
+        clickToElement(driver,"//div[@data-testid='button-options-trigger']//button");
+        sleepInSecond(1);
+        clickToElement(driver,"//li[@data-testid='option-0']");
+
+        //Switch to Issues tab
+        waitForElementVisible(driver,"//div[@data-testid='navitem-qs-tab-project-optasks ']");
+        sleepInSecond(1);
+        clickToElement(driver,"//div[@data-testid='navitem-qs-tab-project-optasks ']");
+
+        // Click to New Issue button
+        waitForElementVisible(driver,"//button[@data-testid='add']");
+        sleepInSecond(1);
+        clickToElement(driver,"//button[@data-testid='add']");
+
+
+        // Creating a new issue
+        switchToIframeByElement(driver,"//iframe[@id='content-issue-add']");
+        waitForElementVisible(driver,"//li[@name='name']/div[@class='edit']/input");
+        sendKeyToElement(driver,"//li[@name='name']/div[@class='edit']/input","a");
+        waitForElementClickable(driver,"//button[@id='new-issue-button']");
+        clickToElement(driver,"//button[@id='new-issue-button']");
+        switchToDefaultContent(driver);
+
+        // Select created issues
+        waitForElementVisible(driver,"//div[@data-testid='row-checkbox']");
+        sleepInSecond(1);
+        clickToElement(driver,"//div[@data-testid='row-checkbox']");
+
+        // Click three dots button > Convert to task
+        waitForElementVisible(driver,"//button[@data-testid='issue-more-dropdown']");
+        sleepInSecond(1);
+        clickToElement(driver,"//button[@data-testid='issue-more-dropdown']");
+        sleepInSecond(2);
+        clickToElement(driver,"//li[@data-testid='option-4']");
+
+        //Take screenshot
+        waitForElementVisible(driver,"//div[@data-testid='field-destinationProject-label']");
+        takeSnapShotWithHighlight(driver, "//div[@data-testid='field-destinationProject-label']",
+                GlobalConstants.SCREENSHOTS + "\\Workfront_20220529T102027Z\\ENU\\014_X2a.png");
+
+        //CLick to cancel
+        sleepInSecond(1);
+        clickToElement(driver,"//button[@data-testid='cancel-button']");
+
+        //Delete this project
+        waitForElementVisible(driver,"//button[@data-testid='picklist-button-label']");
+        sleepInSecond(1);
+        clickToElement(driver,"//button[@data-testid='picklist-button-label']");
+        sleepInSecond(1);
+        clickToElement(driver,"//li[@data-testid='delete']");
+        waitForElementVisible(driver,"//button[@data-testid='confirm-button-confirm-dialog']");
+        clickToElement(driver,"//button[@data-testid='confirm-button-confirm-dialog']");
     }
 
 
