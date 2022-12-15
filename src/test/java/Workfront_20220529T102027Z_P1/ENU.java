@@ -183,6 +183,8 @@ public class ENU extends AbstractPage {
                 GlobalConstants.SCREENSHOTS+"\\Workfront_20220529T102027Z\\ENU\\004_X1t.png");
         clickToElement(driver,"//button[@data-testid='confirm-button-confirm-dialog']");
 
+        selectDropdownByOptionsValue(driver,"//section[@data-testid='dropdown-menu-dialog']","3" );
+
 
     }
 
@@ -518,7 +520,35 @@ public class ENU extends AbstractPage {
         waitForElementVisible(driver,"//button[@data-testid='confirm-button-confirm-dialog']");
         clickToElement(driver,"//button[@data-testid='confirm-button-confirm-dialog']");
     }
+    @Test
+    public void String_258() throws Exception {
+//        MockID: X7m
+//        Core string: Edit {__mlm_low_goal}
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//        Direct link: https://adobeloctesting.devtest.workfront-dev.com/projects/all
+//        1. Login to Workfront 2. Go to Projects -> New Project 3. Switch to Issues tab and add any issue 4. Select created Issue 5. Click three dots -> Convert to task
 
+        openPageUrl(driver,"https://adobeloctesting.devtest.workfront-dev.com/goals/goal-list");
+        // Click to new goal
+        waitForElementVisible(driver,"//button[@data-testid='add-goal-button']");
+        clickToElement(driver,"//button[@data-testid='add-goal-button']");
+
+        // create a new goal
+        waitForElementVisible(driver,"//input[@data-testid='name-input']");
+        sendKeyToElement(driver,"//input[@data-testid='name-input']","Test goal_" + generateRandomNumber());
+        clickToElement(driver,"//button[@data-testid='create-new-task']");
+
+        // click on three dots > edit
+        waitForElementVisible(driver,"//div[@data-testid='field-description']");
+        clickToElement(driver,"//button[@data-testid='picklist-button-label']");
+        sleepInSecond(1);
+        clickToElement(driver,"//li[@data-testid='edit']");
+
+        takeSnapShotWithHighlight(driver,"//h1[@data-testid='dialog-dialog-header-text']//div[@data-testid='name-editor-element']/div",
+                GlobalConstants.SCREENSHOTS+"\\Workfront_20220529T102027Z\\ENU\\258_X7m.png");
+
+    }
 
     @AfterClass(alwaysRun = true)
     public void afterClass() {
