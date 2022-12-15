@@ -32,7 +32,7 @@ public class ITA extends AbstractPage {
         sendKeyToElement(driver, "//input[@id='username']", GlobalConstants.ACCOUNT);
         sendKeyToElement(driver, "//input[@id='password']", GlobalConstants.PASSWORD);
         clickToElement(driver, "//button[@type='submit']");
-        waitForElementVisible(driver, "//img[@data-testid='empty-state-child-img']");
+        waitForElementVisible(driver, "//div[@data-testid='user-page-title']");
 
     }
 
