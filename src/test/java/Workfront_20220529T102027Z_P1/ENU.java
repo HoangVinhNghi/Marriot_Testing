@@ -850,24 +850,30 @@ public class ENU extends AbstractPage {
 //        Direct link: https://adobeloctesting.devtest.workfront-dev.com/projects/all
 //        1. Login to Workfront 2. Go to Projects -> New Project 3. Switch to Issues tab and add any issue 4. Select created Issue 5. Click three dots -> Convert to task
 
-        openPageUrl(driver,"https://adobeloctesting.devtest.workfront-dev.com/goals/goal-list");
-        // Click to new goal
-        waitForElementVisible(driver,"//button[@data-testid='add-goal-button']");
-        clickToElement(driver,"//button[@data-testid='add-goal-button']");
+        openPageUrl(driver,"https://adobeloctesting.devtest.workfront-dev.com/projects/all");
+        // Click to new Project
+        clickToElement(driver,"//button[@id='dropdown-button']");
+        clickToElement(driver,"//span[@data-testid='option__create-project']");
 
-        // create a new goal
-        waitForElementVisible(driver,"//input[@data-testid='name-input']");
-        sendKeyToElement(driver,"//input[@data-testid='name-input']","Test goal_" + generateRandomNumber());
-        clickToElement(driver,"//button[@data-testid='create-new-task']");
+        // Switch to Issue Tab
+        clickToElement(driver,"//a[contains(@href,'/issues')]");
 
-        // click on three dots > edit
-        waitForElementVisible(driver,"//div[@data-testid='field-description']");
+        //Add any issue
+        clickToElement(driver,"//button[@data-testid='add']");
+        switchToIframeByElement(driver,"//iframe[@id='content-issue-add']");
+        sendKeyToElement(driver,"//input[@name='name']","Test Issue" + generateRandomNumber());
+        sleepInSecond(1);
+        clickToElement(driver,"//button[@id='new-issue-button']");
+        driver.switchTo().defaultContent();
+
+        // click open Issue and then click on three dots > Convert to Task
+        clickToElement(driver,"//a[@data-test-id='LinkSimple' and contains(@href,'/issue/')]");
         clickToElement(driver,"//button[@data-testid='picklist-button-label']");
         sleepInSecond(1);
-        clickToElement(driver,"//li[@data-testid='edit']");
+        clickToElement(driver,"//li[@data-testid='convertToTask']");
 
-        takeSnapShotWithHighlight(driver,"//h1[@data-testid='dialog-dialog-header-text']//div[@data-testid='name-editor-element']/div",
-                GlobalConstants.SCREENSHOTS+"\\Workfront_20220529T102027Z\\ENU\\258_X7m.png");
+        takeSnapShotWithHighlight(driver,"//h2[@data-testid='lightbox-text-section-destinationProjectSection']",
+                GlobalConstants.SCREENSHOTS+"\\Workfront_20220529T102027Z\\ENU\\258_Xuf.png");
 
     }
 
