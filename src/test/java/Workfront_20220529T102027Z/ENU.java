@@ -32,7 +32,7 @@ public class ENU extends AbstractPage {
         waitForElementVisible(driver, "//div[@id='page-content']");
     }
     @Test
-    public void String_253() throws Exception {
+    public void String_234() throws Exception {
 //        MockID: X7h
 //        Core string: We could not add your {__mlm_low_project}. Try adding it again.
 //        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
@@ -125,32 +125,87 @@ public class ENU extends AbstractPage {
     }
 
     @Test
+    public void String_253() throws Exception {
+//        MockID: X7W
+//        Core string: End date
+//        Pre-condition: setup/task-issue > Allow user to delegate their tasks and issues
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//        Direct link: https://adobeloctesting.devtest.workfront-dev.com/home/worklist 1. Login to Workfront 2. Go to Home page and click Delegate
+
+        driver.get("https://adobeloctesting.devtest.workfront-dev.com/home/worklist");
+        clickToElement(driver, "//button[@data-testid='delegations-modal-button']");
+
+        if (isElementDisplayed(driver, "//button[contains(@class,'stopDelegationButtonStyles')]")) {
+            clickToElement(driver, "//button[contains(@class,'stopDelegationButtonStyles')]");
+            clickToElement(driver, "//button[@data-testid='confirm-button-confirm-dialog']");
+            clickToElement(driver, "//button[@data-testid='toast-close-btn']");
+            sleepInSecond(2);
+            clickToElement(driver, "//button[@data-testid='delegations-modal-button']");
+        }
+
+        sendKeyToElement(driver, "//input[@data-testid='dma-api-select-input']", "Admin Admin");
+        clickToElement(driver, "//div[@data-testid='avatar']");
+        sleepInSecond(1);
+        waitForElementVisible(driver,"//label[@id='endDate-label']");
+        takeSnapShotWithHighlight(driver,"//label[@id='endDate-label']",
+                GlobalConstants.SCREENSHOTS+"\\Workfront_20220529T102027Z\\ENU\\253_X7W.png");
+
+    }
+
+    @Test
+    public void String_255() throws Exception {
+//        MockID: X7Y
+//        Core string: Delete Campaigns
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//        Direct link: https://adobeloctesting.devtest.workfront-dev.com/campaigns 1. Login to Workfront 2. Go to Main Menu -> Campaigns
+//        3. Create some campaigns 4. Select two and click Delete
+
+        openPageUrl(driver,"https://adobeloctesting.devtest.workfront-dev.com/campaigns");
+        // Select 2 Campaigns
+        checkToCheckboxOrRadio(driver,"(//div[@data-test-id='row-checkbox'])[1]");
+        checkToCheckboxOrRadio(driver,"(//div[@data-test-id='row-checkbox'])[2]");
+
+        //Click Delete button
+        clickToElement(driver,"//button[@data-testid='delete']");
+
+        takeSnapShotWithHighlight(driver,"//h1[@id='confirm-dialog-dialog-header-text']",
+                GlobalConstants.SCREENSHOTS+"\\Workfront_20220529T102027Z\\ENU\\255_X7Y.png");
+
+    }
+
+    @Test
     public void String_258() throws Exception {
-//        MockID: X7m
-//        Core string: Edit {__mlm_low_goal}
+//        MockID: Xuf
+//        Core string: Destination {__mlm_up_project}
 //        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
 //        Test User: adobeloctesting@workfront.com / 2wsx#EDC
 //        Direct link: https://adobeloctesting.devtest.workfront-dev.com/projects/all
 //        1. Login to Workfront 2. Go to Projects -> New Project 3. Switch to Issues tab and add any issue 4. Select created Issue 5. Click three dots -> Convert to task
 
-        openPageUrl(driver,"https://adobeloctesting.devtest.workfront-dev.com/goals/goal-list");
-        // Click to new goal
-        waitForElementVisible(driver,"//button[@data-testid='add-goal-button']");
-        clickToElement(driver,"//button[@data-testid='add-goal-button']");
+        openPageUrl(driver,"https://adobeloctesting.devtest.workfront-dev.com/projects/all");
+        // Click to new Project
+        clickToElement(driver,"//button[@id='dropdown-button']");
+        clickToElement(driver,"//span[@data-testid='option__create-project']");
 
-        // create a new goal
-        waitForElementVisible(driver,"//input[@data-testid='name-input']");
-        sendKeyToElement(driver,"//input[@data-testid='name-input']","Test goal_" + generateRandomNumber());
-        clickToElement(driver,"//button[@data-testid='create-new-task']");
+        // Switch to Issue Tab
+        clickToElement(driver,"//a[contains(@href,'/issues')]");
 
-        // click on three dots > edit
-        waitForElementVisible(driver,"//div[@data-testid='field-description']");
+        //Add any issue
+        clickToElement(driver,"//button[@data-testid='add']");
+        switchToIframeByElement(driver,"//iframe[@id='content-issue-add']");
+        sendKeyToElement(driver,"//input[@name='name']","Test Issue" + generateRandomNumber());
+        sleepInSecond(1);
+        clickToElement(driver,"//button[@id='new-issue-button']");
+        driver.switchTo().defaultContent();
+
+        // click open Issue and then click on three dots > Convert to Task
+        clickToElement(driver,"//a[@data-test-id='LinkSimple' and contains(@href,'/issue/')]");
         clickToElement(driver,"//button[@data-testid='picklist-button-label']");
         sleepInSecond(1);
-        clickToElement(driver,"//li[@data-testid='edit']");
+        clickToElement(driver,"//li[@data-testid='convertToTask']");
 
-        takeSnapShotWithHighlight(driver,"//h1[@data-testid='dialog-dialog-header-text']//div[@data-testid='name-editor-element']/div",
-                GlobalConstants.SCREENSHOTS+"\\Workfront_20220529T102027Z\\ENU\\258_X7m.png");
+        takeSnapShotWithHighlight(driver,"//h2[@data-testid='lightbox-text-section-destinationProjectSection']",
+                GlobalConstants.SCREENSHOTS+"\\Workfront_20220529T102027Z\\ENU\\258_Xuf.png");
 
     }
 
