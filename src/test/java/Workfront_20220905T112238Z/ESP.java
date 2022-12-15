@@ -31,7 +31,7 @@ public class ESP extends AbstractPage {
         sendKeyToElement(driver, "//input[@id='username']", GlobalConstants.ACCOUNT);
         sendKeyToElement(driver, "//input[@id='password']", GlobalConstants.PASSWORD);
         clickToElement(driver, "//button[@type='submit']");
-        waitForElementVisible(driver, "//div[@data-testid='user-page-title']");
+        waitForElementVisible(driver, "//div[@id='page-content']");
 
     }
 
