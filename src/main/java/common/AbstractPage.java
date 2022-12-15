@@ -1111,9 +1111,9 @@ public class AbstractPage {
         return rand.nextInt(99999);
     }
 
-    public void copyToClipboard(String copyTo) {
+    public void copyToClipboard(String copyFrom) {
         Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-        StringSelection str = new StringSelection(copyTo);
+        StringSelection str = new StringSelection(copyFrom);
         clipboard.setContents(str, null);
     }
 
