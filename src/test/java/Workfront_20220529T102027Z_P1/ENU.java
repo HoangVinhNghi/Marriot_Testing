@@ -4,12 +4,14 @@ import common.AbstractPage;
 import common.GlobalConstants;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class ENU extends AbstractPage {
@@ -840,6 +842,333 @@ public class ENU extends AbstractPage {
 
     }
 
+    @Test
+    public void String_055() {
+//        MockID: X3o
+//        Core string: Object
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//        Direct link: https://adobeloctesting.devtest.workfront-dev.com/setup/audit-logs
+//        1. Login to Workfront
+//        2. Go to Setup -> System -> Audit Logs
+
+        openPageUrl(driver,"https://adobeloctesting.devtest.workfront-dev.com/setup/audit-logs");
+        switchToIframeByElement(driver,"//iframe[@id='main-frame']");
+
+        // Take screenshots
+        waitForElementVisible(driver,"//div[@data-name='header-cell'][1]");
+        takeSnapShotWithHighlight(driver,"//div[@data-name='header-cell'][1]",
+                GlobalConstants.SCREENSHOTS+"\\Workfront_20220529T102027Z\\ENU\\055_X3s.png");
+    }
+
+    @Test
+    public void String_066() {
+//        MockID: X3z
+//        Core string: Start typing name
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//        Direct link: https://adobeloctesting.devtest.workfront-dev.com/setup/audit-logs
+//        1. Login to Workfront
+//        2. Go to Setup -> System -> Audit Logs
+//        3. Click on 'Users' textfield
+
+        openPageUrl(driver,"https://adobeloctesting.devtest.workfront-dev.com/setup/audit-logs");
+        switchToIframeByElement(driver,"//iframe[@id='main-frame']");
+
+        waitForElementVisible(driver,"//button[@data-name='users-button']");
+        sleepInSecond(1);
+        clickToElement(driver,"//button[@data-name='users-button']");
+
+        // Take screenshots
+        waitForElementVisible(driver,"//input[contains(@class,'ta-input typeAheadInput_')]");
+        takeSnapShotWithHighlight(driver,"//input[contains(@class,'ta-input typeAheadInput_')]",
+                GlobalConstants.SCREENSHOTS+"\\Workfront_20220529T102027Z\\ENU\\066_X3z.png");
+    }
+
+    @Test
+    public void String_077() {
+//        MockID: X48
+//        Core string: Action Type
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//        Direct link: https://adobeloctesting.devtest.workfront-dev.com/setup/audit-logs
+//        1. Login to Workfront
+//        2. Go to Setup -> System -> Audit Logs
+
+        openPageUrl(driver,"https://adobeloctesting.devtest.workfront-dev.com/setup/audit-logs");
+        switchToIframeByElement(driver,"//iframe[@id='main-frame']");
+
+        // Take screenshots
+        waitForElementVisible(driver,"//button[@data-name='action-type-filter-button']/preceding-sibling::div");
+        takeSnapShotWithHighlight(driver,"//button[@data-name='action-type-filter-button']/preceding-sibling::div",
+                GlobalConstants.SCREENSHOTS+"\\Workfront_20220529T102027Z\\ENU\\077_X48.png");
+    }
+
+    @Test
+    public void String_097() {
+//        MockID: X4K
+//        Core string: All Log Types
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//        Direct link: https://adobeloctesting.devtest.workfront-dev.com/setup/audit-logs
+//        1. Login to Workfront
+//        2. Go to Setup -> System -> Audit Logs
+
+        openPageUrl(driver,"https://adobeloctesting.devtest.workfront-dev.com/setup/audit-logs");
+        switchToIframeByElement(driver,"//iframe[@id='main-frame']");
+
+        // Take screenshots
+        waitForElementVisible(driver,"//button[@data-name='log-filter-button']");
+        takeSnapShotWithHighlight(driver,"//button[@data-name='log-filter-button']",
+                GlobalConstants.SCREENSHOTS+"\\Workfront_20220529T102027Z\\ENU\\097_X4K.png");
+    }
+
+    @Test
+    public void String_116() {
+//        MockID: X4X
+//        Core string: Audit Logs
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//        Direct link: https://adobeloctesting.devtest.workfront-dev.com/setup/audit-logs
+//        1. Login to Workfront
+//        2. Go to Setup -> System -> Audit Logs
+
+        openPageUrl(driver,"https://adobeloctesting.devtest.workfront-dev.com/setup/audit-logs");
+
+        // Take screenshots
+        waitForElementVisible(driver,"//div[@data-testid='setup-header-container']//h2");
+        takeSnapShotWithHighlight(driver,"//div[@data-testid='setup-header-container']//h2",
+                GlobalConstants.SCREENSHOTS+"\\Workfront_20220529T102027Z\\ENU\\116_X4X.png");
+    }
+
+    @Test
+    public void String_131() {
+//        MockID: X5b
+//        Core string: Details
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//        Direct link: https://adobeloctesting.devtest.workfront-dev.com/setup/audit-logs
+//        1. Login to Workfront
+//        2. Go to Setup -> System -> Audit Logs
+
+        openPageUrl(driver,"https://adobeloctesting.devtest.workfront-dev.com/setup/audit-logs");
+        switchToIframeByElement(driver,"//iframe[@id='main-frame']");
+
+        // Take screenshots
+        waitForElementVisible(driver,"//div[@data-name='header-cell'][6]");
+        takeSnapShotWithHighlight(driver,"//div[@data-name='header-cell'][6]",
+                GlobalConstants.SCREENSHOTS+"\\Workfront_20220529T102027Z\\ENU\\131_X5b.png");
+    }
+
+    @Test
+    public void String_134() {
+//        MockID: X5C
+//        Core string: Action
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//        Direct link: https://adobeloctesting.devtest.workfront-dev.com/setup/audit-logs
+//        1. Login to Workfront
+//        2. Go to Setup -> System -> Audit Logs
+
+        openPageUrl(driver,"https://adobeloctesting.devtest.workfront-dev.com/setup/audit-logs");
+        switchToIframeByElement(driver,"//iframe[@id='main-frame']");
+
+        // Take screenshots
+        waitForElementVisible(driver,"//div[@data-name='header-cell'][4]");
+        takeSnapShotWithHighlight(driver,"//div[@data-name='header-cell'][4]",
+                GlobalConstants.SCREENSHOTS+"\\Workfront_20220529T102027Z\\ENU\\134_X5C.png");
+    }
+
+    @Test
+    public void String_137() {
+//        MockID: X5E
+//        Core string: User name
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//        Direct link: https://adobeloctesting.devtest.workfront-dev.com/setup/audit-logs
+//        1. Login to Workfront
+//        2. Go to Setup -> System -> Audit Logs
+
+        openPageUrl(driver,"https://adobeloctesting.devtest.workfront-dev.com/setup/audit-logs");
+        switchToIframeByElement(driver,"//iframe[@id='main-frame']");
+
+        // Take screenshots
+        waitForElementVisible(driver,"//div[@data-name='header-cell'][3]");
+        takeSnapShotWithHighlight(driver,"//div[@data-name='header-cell'][3]",
+                GlobalConstants.SCREENSHOTS+"\\Workfront_20220529T102027Z\\ENU\\137_X5E.png");
+    }
+
+    @Test
+    public void String_141() {
+//        MockID: X5G
+//        Core string: Apply
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//        Direct link: https://adobeloctesting.devtest.workfront-dev.com/setup/audit-logs
+//        1. Login to Workfront
+//        2. Go to Setup -> System -> Audit Logs
+
+        openPageUrl(driver,"https://adobeloctesting.devtest.workfront-dev.com/setup/audit-logs");
+        switchToIframeByElement(driver,"//iframe[@id='main-frame']");
+
+        // Take screenshots
+        waitForElementVisible(driver,"(//button[@data-name='apply-button'])[1]");
+        takeSnapShotWithHighlight(driver,"(//button[@data-name='apply-button'])[1]",
+                GlobalConstants.SCREENSHOTS+"\\Workfront_20220529T102027Z\\ENU\\141_X5G.png");
+    }
+
+    @Test
+    public void String_142() {
+//        MockID: X5h
+//        Core string: logs
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//        Direct link: https://adobeloctesting.devtest.workfront-dev.com/setup/audit-logs
+//        1. Login to Workfront
+//        2. Go to Setup -> System -> Audit Logs
+
+        openPageUrl(driver,"https://adobeloctesting.devtest.workfront-dev.com/setup/audit-logs");
+        switchToIframeByElement(driver,"//iframe[@id='main-frame']");
+
+        // Take screenshots
+        waitForElementVisible(driver,"//div[@data-name='count-picker-container']/parent::div");
+        takeSnapShotWithHighlight(driver,"//div[@data-name='count-picker-container']/parent::div",
+                GlobalConstants.SCREENSHOTS+"\\Workfront_20220529T102027Z\\ENU\\142_X5h.png");
+    }
+
+    @Test
+    public void String_144() {
+//        MockID: X5I
+//        Core string: Showing
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//        Direct link: https://adobeloctesting.devtest.workfront-dev.com/setup/audit-logs
+//        1. Login to Workfront
+//        2. Go to Setup -> System -> Audit Logs
+
+        openPageUrl(driver,"https://adobeloctesting.devtest.workfront-dev.com/setup/audit-logs");
+        switchToIframeByElement(driver,"//iframe[@id='main-frame']");
+
+        // Take screenshots
+        waitForElementVisible(driver,"//div[@data-name='count-picker-container']/parent::div");
+        takeSnapShotWithHighlight(driver,"//div[@data-name='count-picker-container']/parent::div",
+                GlobalConstants.SCREENSHOTS+"\\Workfront_20220529T102027Z\\ENU\\144_X5I.png");
+    }
+
+    @Test
+    public void String_146() {
+//        MockID: X5J
+//        Core string: Users
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//        Direct link: https://adobeloctesting.devtest.workfront-dev.com/setup/audit-logs
+//        1. Login to Workfront
+//        2. Go to Setup -> System -> Audit Logs
+
+        openPageUrl(driver,"https://adobeloctesting.devtest.workfront-dev.com/setup/audit-logs");
+        switchToIframeByElement(driver,"//iframe[@id='main-frame']");
+
+        // Take screenshots
+        waitForElementVisible(driver,"//button[@data-name='users-button']/parent::span/preceding-sibling::div");
+        takeSnapShotWithHighlight(driver,"//button[@data-name='users-button']/parent::span/preceding-sibling::div",
+                GlobalConstants.SCREENSHOTS+"\\Workfront_20220529T102027Z\\ENU\\146_X5J.png");
+    }
+
+    @Test
+    public void String_167() {
+//        MockID: X5W
+//        Core string: IP address
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//        Direct link: https://adobeloctesting.devtest.workfront-dev.com/setup/audit-logs
+//        1. Login to Workfront
+//        2. Go to Setup -> System -> Audit Logs
+
+        openPageUrl(driver,"https://adobeloctesting.devtest.workfront-dev.com/setup/audit-logs");
+        switchToIframeByElement(driver,"//iframe[@id='main-frame']");
+
+        // Take screenshots
+        waitForElementVisible(driver,"//div[@data-name='header-cell'][7]");
+        takeSnapShotWithHighlight(driver,"//div[@data-name='header-cell'][7]",
+                GlobalConstants.SCREENSHOTS+"\\Workfront_20220529T102027Z\\ENU\\167_X5W.png");
+    }
+
+    @Test
+    public void String_173() {
+//        MockID: X6/
+//        Core string: Action
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//         Direct link: https://adobeloctesting.devtest.workfront-dev.com/setup/audit-logs
+//         1. Login to Workfront
+//         2. Go to Setup -> System -> Audit Logs
+//         3. In the Action Type select exactly 1 action
+
+        openPageUrl(driver,"https://adobeloctesting.devtest.workfront-dev.com/setup/audit-logs");
+        switchToIframeByElement(driver,"//iframe[@id='main-frame']");
+
+        //Click to action filter button
+        waitForElementVisible(driver,"//button[@data-name='action-type-filter-button']");
+        clickToElement(driver,"//button[@data-name='action-type-filter-button']");
+
+        // Remove to all item selected
+        List<WebElement> listActionItem = getElements(driver,"//div[@class='css-6peed7']/div[@class=' css-16ovyoc']");
+        if (listActionItem.size() > 0) {
+            for (WebElement item : listActionItem) {
+                item.click();
+            }
+        }
+        // Take screenshots
+        sleepInSecond(1);
+        takeSnapShotWithHighlight(driver,"//button[@data-name='action-type-filter-button']",
+                GlobalConstants.SCREENSHOTS+"\\Workfront_20220529T102027Z\\ENU\\173_X6-.png");
+    }
+
+    @Test
+    public void String_179() {
+//        MockID: X64
+//        Core string: To
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//         Direct link: https://adobeloctesting.devtest.workfront-dev.com/setup/audit-logs
+//         1. Login to Workfront
+//         2. Go to Setup -> System -> Audit Logs
+
+        openPageUrl(driver,"https://adobeloctesting.devtest.workfront-dev.com/setup/audit-logs");
+        switchToIframeByElement(driver,"//iframe[@id='main-frame']");
+
+        // Take screenshots
+        waitForElementVisible(driver,"//div[@data-name='date-to']/div");
+        takeSnapShotWithHighlight(driver,"//div[@data-name='date-to']/div",
+                GlobalConstants.SCREENSHOTS+"\\Workfront_20220529T102027Z\\ENU\\179_X64.png");
+    }
+
+    @Test
+    public void String_196() {
+//        MockID: X6i
+//        Core string: Clear Filters
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//         Direct link: https://adobeloctesting.devtest.workfront-dev.com/setup/audit-logs
+//         1. Login to Workfront
+//         2. Go to Setup -> System -> Audit Logs
+
+        openPageUrl(driver,"https://adobeloctesting.devtest.workfront-dev.com/setup/audit-logs");
+        switchToIframeByElement(driver,"//iframe[@id='main-frame']");
+
+        waitForElementVisible(driver,"//button[@data-name='log-filter-button']");
+        clickToElement(driver,"//button[@data-name='log-filter-button']");
+        sleepInSecond(1);
+        clickToElement(driver,"//div[@data-name='ACCESS_LEVEL']");
+
+        // Take screenshots
+        waitForElementVisible(driver,"//a[@data-name='clear-filters']");
+        sleepInSecond(1);
+        takeSnapShotWithHighlight(driver,"//a[@data-name='clear-filters']",
+                GlobalConstants.SCREENSHOTS+"\\Workfront_20220529T102027Z\\ENU\\196_X6i.png");
+    }
+
+
 
     @Test
     public void String_258() throws Exception {
@@ -876,6 +1205,8 @@ public class ENU extends AbstractPage {
                 GlobalConstants.SCREENSHOTS+"\\Workfront_20220529T102027Z\\ENU\\258_Xuf.png");
 
     }
+
+
 
     @AfterClass(alwaysRun = true)
     public void afterClass() {
