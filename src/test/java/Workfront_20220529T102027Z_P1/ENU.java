@@ -184,10 +184,6 @@ public class ENU extends AbstractPage {
         takeSnapShotWithHighlight(driver,"//section[@data-testid='confirm-dialog-dialog-body']",
                 GlobalConstants.SCREENSHOTS+"\\Workfront_20220529T102027Z\\ENU\\004_X1t.png");
         clickToElement(driver,"//button[@data-testid='confirm-button-confirm-dialog']");
-
-        selectDropdownByOptionsValue(driver,"//section[@data-testid='dropdown-menu-dialog']","3" );
-
-
     }
 
     @Test
@@ -1166,6 +1162,166 @@ public class ENU extends AbstractPage {
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver,"//a[@data-name='clear-filters']",
                 GlobalConstants.SCREENSHOTS+"\\Workfront_20220529T102027Z\\ENU\\196_X6i.png");
+    }
+
+    @Test
+    public void String_207() {
+//        MockID: X6o
+//        Core string: Actions
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//        Direct link: https://adobeloctesting.devtest.workfront-dev.com/setup/audit-logs
+//        1. Login to Workfront
+//        2. Go to Setup -> System -> Audit Logs
+//        3. In the Action Type select 2 or more actions
+
+        openPageUrl(driver,"https://adobeloctesting.devtest.workfront-dev.com/setup/audit-logs");
+        switchToIframeByElement(driver,"//iframe[@id='main-frame']");
+
+        //Click to action filter button
+        waitForElementVisible(driver,"//button[@data-name='action-type-filter-button']");
+        clickToElement(driver,"//button[@data-name='action-type-filter-button']");
+
+        waitForElementVisible(driver,"//div[@class=' css-16ovyoc']");
+        clickToElement(driver,"//div[@class=' css-16ovyoc']");
+
+        // Take screenshots
+        sleepInSecond(1);
+        takeSnapShotWithHighlight(driver,"//button[@data-name='action-type-filter-button']",
+                GlobalConstants.SCREENSHOTS+"\\Workfront_20220529T102027Z\\ENU\\207_X6o.png");
+    }
+
+    @Test
+    public void String_218() {
+//        MockID: X6V
+//        Core string: {0} - {1} of {2} logs
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//         Direct link: https://adobeloctesting.devtest.workfront-dev.com/setup/audit-logs
+//         1. Login to Workfront
+//         2. Go to Setup -> System -> Audit Logs
+
+        openPageUrl(driver,"https://adobeloctesting.devtest.workfront-dev.com/setup/audit-logs");
+        switchToIframeByElement(driver,"//iframe[@id='main-frame']");
+
+        // Take screenshots
+        waitForElementVisible(driver,"//div[@data-name='count-picker-container']/parent::div/following-sibling::div[1]");
+        sleepInSecond(1);
+        takeSnapShotWithHighlight(driver,"//div[@data-name='count-picker-container']/parent::div/following-sibling::div[1]",
+                GlobalConstants.SCREENSHOTS+"\\Workfront_20220529T102027Z\\ENU\\218_X6V.png");
+    }
+
+    @Test
+    public void String_230() {
+//        MockID: X7e
+//        Core string: Start date
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//         Direct link: https://adobeloctesting.devtest.workfront-dev.com/home/calendar
+//         1. Login to Workfront
+//         2. Go to Home page and click Delegate
+
+        openPageUrl(driver,"https://adobeloctesting.devtest.workfront-dev.com/home/worklist");
+
+        // Click to delegation
+        waitForElementVisible(driver,"//button[@data-testid='delegations-modal-button']");
+        sleepInSecond(1);
+        clickToElement(driver,"//button[@data-testid='delegations-modal-button']");
+
+        waitForElementVisible(driver,"//div[@data-testid='dma-api-select-options']");
+        sleepInSecond(1);
+        clickToElement(driver,"//div[@data-testid='dma-api-select-options']");
+
+        // Take screenshots
+        sleepInSecond(1);
+        takeSnapShotWithHighlight(driver,"//label[@id='startDate-label']",
+                GlobalConstants.SCREENSHOTS+"\\Workfront_20220529T102027Z\\ENU\\230_X7e.png");
+    }
+
+    @Test
+    public void String_231() {
+//        MockID: X7f
+//        Core string: Feedback
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//         Direct link: https://adobeloctesting.devtest.workfront-dev.com/campaigns
+//         1. Login to Workfront
+//         2. Go to Main Menu -> Campaigns
+
+        openPageUrl(driver,"https://adobeloctesting.devtest.workfront-dev.com/campaigns");
+
+        waitForElementVisible(driver,"//button[contains(@class,'spectrum-ActionButton_')]");
+
+        // Take screenshots
+        sleepInSecond(1);
+        takeSnapShotWithHighlight(driver,"//button[contains(@class,'spectrum-ActionButton_')]",
+                GlobalConstants.SCREENSHOTS+"\\Workfront_20220529T102027Z\\ENU\\231_X7f.png");
+    }
+
+    @Test
+    public void String_235() {
+//        MockID: X7H
+//        Core string: When enabled, the {__mlm_low_results} from this {__mlm_low_goal} are copied to the new {__mlm_low_goal}
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//        Direct link: https://adobeloctesting.devtest.workfront-dev.com/goals/goal-list
+//        1. Login to Workfront
+//        2. Go to Main Menu -> Goals
+//        3. Click Create goal and confirm
+//        4. On the Goals page expand created goal and add some dummy result to it.
+//        5. Refresh details page of a created goal and mouse hover tooltip icon
+
+        driver.get("https://adobeloctesting.devtest.workfront-dev.com/goals/goal-list");
+
+        // Click to new goal
+        waitForElementVisible(driver,"//button[@data-testid='add-goal-button']");
+        clickToElement(driver,"//button[@data-testid='add-goal-button']");
+
+        // create a new goal
+        waitForElementVisible(driver,"//input[@data-testid='name-input']");
+        sendKeyToElement(driver,"//input[@data-testid='name-input']","Test goal_" + generateRandomNumber());
+        clickToElement(driver,"//button[@data-testid='create-new-task']");
+
+        // Click to Progress indicators
+        waitForElementVisible(driver,"//div[@data-testid='navitem-progress-indicators ']");
+        sleepInSecond(1);
+        clickToElement(driver,"//div[@data-testid='navitem-progress-indicators ']");
+
+
+        // Create New progress indicator
+        waitForElementVisible(driver,"//button[@data-testid='add-new-indicator-dropdown']");
+        sleepInSecond(1);
+        clickToElement(driver,"//button[@data-testid='add-new-indicator-dropdown']");
+        sleepInSecond(1);
+        clickToElement(driver,"//li[@data-testid='option-0']");
+        waitForElementVisible(driver,"//input[@data-testid='name-input']");
+        sleepInSecond(1);
+        sendKeyToElement(driver,"//input[@data-testid='name-input']","aa");
+        sendKeyToElement(driver,"//input[@data-testid='targetValue']","1");
+        clickToElement(driver,"//button[@data-testid='create-new-task']");
+
+        // Click to copy goal
+        sleepInSecond(2);
+        clickToElement(driver,"//button[@data-testid='picklist-button-label']");
+        sleepInSecond(1);
+        clickToElement(driver,"//li[@data-testid='copy']");
+
+        // Take screenshots
+        waitForElementVisible(driver,"//span[@data-testid='info-icon']");
+        hoverToElement(driver,"//span[@data-testid='info-icon']");
+        sleepInSecond(1);
+        takeSnapShotWithHighlight(driver,"//div[@data-testid='tooltip-styled']",
+                GlobalConstants.SCREENSHOTS+"\\Workfront_20220529T102027Z\\ENU\\235_X23.png");
+
+        clickToElement(driver,"//button[@data-testid='cancel']");
+
+        // Delete this goal
+        waitForElementVisible(driver,"//button[@data-testid='picklist-button-label']");
+        clickToElement(driver,"//button[@data-testid='picklist-button-label']");
+        sleepInSecond(1);
+        clickToElement(driver,"//li[@data-testid='delete']");
+        sleepInSecond(1);
+        clickToElement(driver,"//button[@data-testid='confirm-button-confirm-dialog']");
     }
 
 
