@@ -45,9 +45,11 @@ public class FRA extends AbstractPage {
 
         waitForElementInvisible(driver,"//div[@class='loader-icon']");
         sleepInSecond(1);
-        switchToIframeByElement(driver,"//iframe[@data-testid='goals-app-iframe']");
-        takeSnapShotWithHighlight(driver, "(//span[@id='team-stats-linear-diff-since-last-week']/parent::div)[1]",
-                GlobalConstants.WF_20220703T103435Z + "/Unblocked/FRA/01_X+i_X+Z.png");
+        takeSnapShotWithHighlight(driver, "(//div[@class='text-right'])[1]/following-sibling::span",
+                GlobalConstants.WF_20220703T103435Z + "/Unblocked/FRA/3170667/FRA/01_X+i.png");
+
+        takeSnapShotWithHighlight(driver, "(//div[@data-testid='legend-baseline'])[1]",
+                GlobalConstants.WF_20220703T103435Z + "/Unblocked/FRA/3170667/FRA/02_X+Z.png");
 
     }
 

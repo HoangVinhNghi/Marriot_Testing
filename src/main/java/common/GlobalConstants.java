@@ -11,8 +11,9 @@ public class GlobalConstants {
     //Screenshot
     public static final String WF_20220905T112238Z = System.getProperty("user.dir") + "\\Screenshot\\Workfront_20220905T112238Z";
     public static final String WF_20220703T103435Z = System.getProperty("user.dir") + "\\Screenshot\\Workfront_20220703T103435Z";
+    public static final String WF_20220529T102027Z = System.getProperty("user.dir") + "\\Screenshot\\Workfront_20220529T102027Z";
 
-    public static final String SCREENSHOTS = System.getProperty("user.dir") + "\\Screenshot";
+    public static final String SCREENSHOTS = System.getProperty("user.dir") + "/Screenshot";
     public static final String TOUPLOAD = System.getProperty("user.dir") + "\\toUpload\\";
 
 

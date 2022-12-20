@@ -45,9 +45,11 @@ public class ITA extends AbstractPage {
 
         waitForElementInvisible(driver,"//div[@class='loader-icon']");
         sleepInSecond(1);
-        switchToIframeByElement(driver,"//iframe[@data-testid='goals-app-iframe']");
-        takeSnapShotWithHighlight(driver, "(//span[@id='team-stats-linear-diff-since-last-week']/parent::div)[1]",
-                GlobalConstants.WF_20220703T103435Z + "/Unblocked/ITA/01_X+i_X+Z.png");
+        takeSnapShotWithHighlight(driver, "(//div[@class='text-right'])[1]/following-sibling::span",
+                GlobalConstants.WF_20220703T103435Z + "/Unblocked/ITA/3170653/ITA/01_X+i.png");
+
+        takeSnapShotWithHighlight(driver, "(//div[@data-testid='legend-baseline'])[1]",
+                GlobalConstants.WF_20220703T103435Z + "/Unblocked/ITA/3170653/ITA/02_X+Z.png");
 
     }
 
