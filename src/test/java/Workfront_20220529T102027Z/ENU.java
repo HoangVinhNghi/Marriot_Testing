@@ -413,17 +413,24 @@ public class ENU extends AbstractPage {
 //        Direct link: https://adobeloctesting.devtest.workfront-dev.com/home/worklist 1. Login to Workfront 2. Go to Home page and click Delegate
 
         driver.get("https://adobeloctesting.devtest.workfront-dev.com/home/worklist");
+
+        if(isElementDisplayed(driver,"//button[@data-tracking-id='new-home-opt-out']")){
+            clickToElement(driver,"//button[@data-tracking-id='new-home-opt-out']");
+            clickToElement(driver,"//button[@data-tracking-id='new-home-opt-out-dialog']");
+        }
         clickToElement(driver, "//button[@data-testid='delegations-modal-button']");
 
         if (isElementDisplayed(driver, "//button[contains(@class,'stopDelegationButtonStyles')]")) {
             clickToElement(driver, "//button[contains(@class,'stopDelegationButtonStyles')]");
-            clickToElement(driver, "//button[@data-testid='confirm-button-confirm-dialog']");
-            clickToElement(driver, "//button[@data-testid='toast-close-btn']");
             sleepInSecond(2);
-            clickToElement(driver, "//button[@data-testid='delegations-modal-button']");
+            clickToElement(driver, "//button[contains(@class,'stopDelegationButtonStyles')]");
+            sleepInSecond(2);
         }
 
+        clickToElement(driver, "//button[@data-testid='delegations-modal-button']");
+        sleepInSecond(1);
         sendKeyToElement(driver, "//input[@data-testid='dma-api-select-input']", "Admin Admin");
+        sleepInSecond(1);
         clickToElement(driver, "//div[@data-testid='avatar']");
         sleepInSecond(1);
         waitForElementVisible(driver,"//label[@id='endDate-label']");
