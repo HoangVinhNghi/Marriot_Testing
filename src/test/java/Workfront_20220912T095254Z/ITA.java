@@ -11,6 +11,8 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -67,7 +69,7 @@ public class ITA extends AbstractPage {
         waitForElementVisible(driver,"//span[@data-testid='goals-notfound-desc']");
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver, "//span[@data-testid='goals-notfound-desc']",
-                GlobalConstants.SCREENSHOTS + "\\01_YC-.png");
+                GlobalConstants.WF_20220912T095254Z_ITA + "\\01_YC-.png");
     }
 
     @Test
@@ -122,7 +124,7 @@ public class ITA extends AbstractPage {
         waitForElementVisible(driver,"//span[@data-testid='goals-notfound-title']");
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver, "//span[@data-testid='goals-notfound-title']",
-                GlobalConstants.SCREENSHOTS + "\\03_YDA.png");
+                GlobalConstants.WF_20220912T095254Z_ITA + "\\03_YDA.png");
     }
 
     @Test
@@ -151,7 +153,7 @@ public class ITA extends AbstractPage {
         waitForElementVisible(driver,"//div[@class='filterActiveIndicator']");
         sleepInSecond(1);
         inspectElement(driver,"//div[@class='filterActiveIndicator']");
-        captureScreen(GlobalConstants.SCREENSHOTS + "\\04_YDB.png");
+        captureScreen(GlobalConstants.WF_20220912T095254Z_ITA + "\\04_YDB.png");
 
     }
 
@@ -172,7 +174,7 @@ public class ITA extends AbstractPage {
         waitForElementVisible(driver,"//button[@data-testid='dashboard-sort-button']");
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver, "//button[@data-testid='dashboard-sort-button']",
-                GlobalConstants.SCREENSHOTS + "\\05_YDC.png");
+                GlobalConstants.WF_20220912T095254Z_ITA + "\\05_YDC.png");
     }
 
     @Test
@@ -196,7 +198,13 @@ public class ITA extends AbstractPage {
         // Take screenshot
         sleepInSecond(2);
         inspectElement(driver,"//header");
-        captureScreen(GlobalConstants.SCREENSHOTS + "\\06_YDD.png");
+        sleepInSecond(1);
+        Robot robot = new Robot();
+        robot.keyPress(KeyEvent.VK_UP);
+        sleepInSecond(1);
+        robot.keyPress(KeyEvent.VK_RIGHT);
+        sleepInSecond(1);
+        captureScreen(GlobalConstants.WF_20220912T095254Z_ITA + "\\06_YDD.png");
     }
 
     @Test
@@ -220,7 +228,13 @@ public class ITA extends AbstractPage {
         // Take screenshot
         sleepInSecond(2);
         inspectElement(driver,"//header");
-        captureScreen(GlobalConstants.SCREENSHOTS + "\\07_YDE.png");
+        sleepInSecond(1);
+        Robot robot = new Robot();
+        robot.keyPress(KeyEvent.VK_UP);
+        sleepInSecond(1);
+        robot.keyPress(KeyEvent.VK_RIGHT);
+        sleepInSecond(1);
+        captureScreen(GlobalConstants.WF_20220912T095254Z_ITA + "\\07_YDE.png");
     }
 
     @Test
@@ -274,7 +288,7 @@ public class ITA extends AbstractPage {
         waitForElementVisible(driver,"//div[@data-testid='toast-notification']//span");
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver, "//div[@data-testid='toast-notification']//span",
-                GlobalConstants.SCREENSHOTS + "\\08_YDI.png");
+                GlobalConstants.WF_20220912T095254Z_ITA + "\\08_YDI.png");
     }
 
     @Test
@@ -308,7 +322,7 @@ public class ITA extends AbstractPage {
         waitForElementVisible(driver,"//div[@data-valuefield='period']//div[@data-test-name='BodyInnerCell']");
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver, "//div[@data-valuefield='period']//div[@data-test-name='BodyInnerCell']",
-                GlobalConstants.SCREENSHOTS + "\\10_YDL.png");
+                GlobalConstants.WF_20220912T095254Z_ITA + "\\10_YDL.png");
     }
 
     @Test
@@ -333,7 +347,7 @@ public class ITA extends AbstractPage {
         waitForElementVisible(driver,"//div[@data-testid='tooltip-styled']");
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver, "//div[@data-testid='tooltip-styled']",
-                GlobalConstants.SCREENSHOTS + "\\11_YDP.png");
+                GlobalConstants.WF_20220912T095254Z_ITA + "\\11_YDP.png");
     }
 
     @AfterClass(alwaysRun = true)

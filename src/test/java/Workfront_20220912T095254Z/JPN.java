@@ -11,6 +11,8 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -196,6 +198,12 @@ public class JPN extends AbstractPage {
         // Take screenshot
         sleepInSecond(2);
         inspectElement(driver,"//header");
+        sleepInSecond(1);
+        Robot robot = new Robot();
+        robot.keyPress(KeyEvent.VK_UP);
+        sleepInSecond(1);
+        robot.keyPress(KeyEvent.VK_RIGHT);
+        sleepInSecond(1);
         captureScreen(GlobalConstants.WF_20220912T095254Z_JPN + "\\06_YDD.png");
     }
 
@@ -220,6 +228,12 @@ public class JPN extends AbstractPage {
         // Take screenshot
         sleepInSecond(2);
         inspectElement(driver,"//header");
+        sleepInSecond(1);
+        Robot robot = new Robot();
+        robot.keyPress(KeyEvent.VK_UP);
+        sleepInSecond(1);
+        robot.keyPress(KeyEvent.VK_RIGHT);
+        sleepInSecond(1);
         captureScreen(GlobalConstants.WF_20220912T095254Z_JPN + "\\07_YDE.png");
     }
 
