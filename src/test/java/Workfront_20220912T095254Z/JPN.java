@@ -67,7 +67,7 @@ public class JPN extends AbstractPage {
         waitForElementVisible(driver,"//span[@data-testid='goals-notfound-desc']");
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver, "//span[@data-testid='goals-notfound-desc']",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220912T095254Z\\JPN\\3381375\\JPN\\01_YC-.png");
+                GlobalConstants.WF_20220912T095254Z_JPN + "\\01_YC-.png");
     }
 
     @Test
@@ -87,7 +87,7 @@ public class JPN extends AbstractPage {
         waitForElementVisible(driver,"//button[@data-testid='add-goal-button']");
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver, "//button[@data-testid='add-goal-button']",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220912T095254Z\\JPN\\3381375\\JPN\\02_YC+.png");
+                GlobalConstants.WF_20220912T095254Z_JPN + "\\02_YC+.png");
     }
 
     @Test
@@ -122,7 +122,7 @@ public class JPN extends AbstractPage {
         waitForElementVisible(driver,"//span[@data-testid='goals-notfound-title']");
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver, "//span[@data-testid='goals-notfound-title']",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220912T095254Z\\JPN\\3381375\\JPN\\03_YDA.png");
+                GlobalConstants.WF_20220912T095254Z_JPN + "\\03_YDA.png");
     }
 
     @Test
@@ -151,7 +151,7 @@ public class JPN extends AbstractPage {
         waitForElementVisible(driver,"//div[@class='filterActiveIndicator']");
         sleepInSecond(1);
         inspectElement(driver,"//div[@class='filterActiveIndicator']");
-        captureScreen(GlobalConstants.SCREENSHOTS + "\\Workfront_20220912T095254Z\\JPN\\3381375\\JPN\\04_YDB.png");
+        captureScreen(GlobalConstants.WF_20220912T095254Z_JPN + "\\04_YDB.png");
 
     }
 
@@ -172,7 +172,7 @@ public class JPN extends AbstractPage {
         waitForElementVisible(driver,"//button[@data-testid='dashboard-sort-button']");
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver, "//button[@data-testid='dashboard-sort-button']",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220912T095254Z\\JPN\\3381375\\JPN\\05_YDC.png");
+                GlobalConstants.WF_20220912T095254Z_JPN + "\\05_YDC.png");
     }
 
     @Test
@@ -196,7 +196,7 @@ public class JPN extends AbstractPage {
         // Take screenshot
         sleepInSecond(2);
         inspectElement(driver,"//header");
-        captureScreen(GlobalConstants.SCREENSHOTS + "\\Workfront_20220912T095254Z\\JPN\\3381375\\JPN\\06_YDD.png");
+        captureScreen(GlobalConstants.WF_20220912T095254Z_JPN + "\\06_YDD.png");
     }
 
     @Test
@@ -220,7 +220,7 @@ public class JPN extends AbstractPage {
         // Take screenshot
         sleepInSecond(2);
         inspectElement(driver,"//header");
-        captureScreen(GlobalConstants.SCREENSHOTS + "\\Workfront_20220912T095254Z\\JPN\\3381375\\JPN\\07_YDE.png");
+        captureScreen(GlobalConstants.WF_20220912T095254Z_JPN + "\\07_YDE.png");
     }
 
     @Test
@@ -274,7 +274,7 @@ public class JPN extends AbstractPage {
         waitForElementVisible(driver,"//div[@data-testid='toast-notification']//span");
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver, "//div[@data-testid='toast-notification']//span",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220912T095254Z\\JPN\\3381375\\JPN\\08_YDI.png");
+                GlobalConstants.WF_20220912T095254Z_JPN + "\\08_YDI.png");
     }
 
     @Test
@@ -308,7 +308,7 @@ public class JPN extends AbstractPage {
         waitForElementVisible(driver,"//div[@data-valuefield='period']//div[@data-test-name='BodyInnerCell']");
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver, "//div[@data-valuefield='period']//div[@data-test-name='BodyInnerCell']",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220912T095254Z\\JPN\\3381375\\JPN\\10_YDL.png");
+                GlobalConstants.WF_20220912T095254Z_JPN + "\\10_YDL.png");
     }
 
     @Test
@@ -333,7 +333,7 @@ public class JPN extends AbstractPage {
         waitForElementVisible(driver,"//div[@data-testid='tooltip-styled']");
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver, "//div[@data-testid='tooltip-styled']",
-                GlobalConstants.SCREENSHOTS + "\\Workfront_20220912T095254Z\\JPN\\3381375\\JPN\\11_YDP.png");
+                GlobalConstants.WF_20220912T095254Z_JPN + "\\11_YDP.png");
     }
 
     @AfterClass(alwaysRun = true)
