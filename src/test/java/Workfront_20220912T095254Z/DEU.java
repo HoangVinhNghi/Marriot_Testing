@@ -154,7 +154,7 @@ public class DEU extends AbstractPage {
         waitForElementVisible(driver,"//div[@class='filterActiveIndicator']");
         sleepInSecond(1);
         inspectElement(driver,"//div[@class='filterActiveIndicator']");
-        captureScreen(GlobalConstants.WF_20220912T095254Z + "\\DEU\\04_YDB.png");
+        captureScreen(GlobalConstants.WF_20220912T095254Z + "\\DEU\\3381379\\DEU\\04_YDB.png");
 
     }
 
