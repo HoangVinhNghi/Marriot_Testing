@@ -6,12 +6,12 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
 import java.util.concurrent.TimeUnit;
 
 public class ENU extends AbstractPage {
@@ -106,18 +106,15 @@ public class ENU extends AbstractPage {
     }
 
     @Test
-    public void String_004_012()  {
-        // MockID:
-        //YFA	-- No folder --	None
-        //YFB	Import from	None
-        //YFC	Import files by clicking below	None
-        //YFD	Select folder...	None
-        //YFE	Add an update	None
-        //YFF	Start a new update...	None
-        //YFG	Drop here to add files	None
-        //YFI	Browse files	None
-        //YFJ	Drag and drop your file or Cmd/Ctrl + V to paste from your clipboard
+    public void String_004_012() throws AWTException {
+        // MockID String:
+        // YFD	Select folder...
+        // YFA	-- No folder --	None
+        // YFB	Import from
+        // YFF	Start a new update...
 
+
+        // NOTE: Click on "Add widget" and add "My Tasks" panel if there isn't any first to run this
 //        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
 //        Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/home/worklist
 //        1. Login to Workfront 2. Open up the browser JavaScript console 3. In the JavaScript console, type: localStorage.setItem('devtools', true) 4. Refresh the page
@@ -125,7 +122,33 @@ public class ENU extends AbstractPage {
 //        7. Open home page and click on "Try out the new home" 8. Click "Go back to current home" 9. Click on "Add widget" and add "My Tasks" panel if there isn't any
 //        10. Click on any Upload File icon in the table 11. Click on Select Folder button
 
-        // Blocking issue: There is no available widget to add
+        openPageUrl(driver,"https://adobeloctesting.devtest.workfront-dev.com/home/workspaces");
+        clickToElement(driver,"(//button[@data-tracking-id='tasks-upload-document'])[1]");
+        takeSnapShotWithHighlight(driver,"//span[contains(@class,'is-placeholder')]", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\004_YFD.png");
+
+        clickToElement(driver,"//button[contains(@class,'Dropdown-trigger')]");
+        sleepInSecond(1);
+        takeSnapShotWithHighlight(driver,"//div[contains(@class,'Menu-itemGrid')]", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\005_YFA.png");
+
+        clickToElementByJS(driver,"//section[contains(@class,'spectrum-IllustratedMessage-description')]//button");
+        takeSnapShotWithHighlight(driver,"//span[contains(@class,'Menu-sectionHeading')]", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\006_YFB.png");
+        clickToElementByJS(driver,"//section[contains(@class,'spectrum-IllustratedMessage-description')]//button");
+        clickToElement(driver,"//button[contains(@style,'margin-right: var(--spectrum-global-dimension-size-25, var(--spectrum-alias-size-25));')]");
+        sleepInSecond(1);
+
+        clickToElement(driver,"(//button[@data-tracking-id='tasks-upload-document'])[1]");
+        waitForElementVisible(driver,"//h3[contains(@class,'spectrum-IllustratedMessage')]");
+        sleepInSecond(1);
+        copyImageToClipboard("C:\\Users\\NghHo\\IdeaProjects\\WF_ALITE_TASK\\toUpload\\img01.jpg");
+        sleepInSecond(1);
+        pasteByRobot(driver);
+        sleepInSecond(1);
+        takeSnapShotWithHighlight(driver,"//div[contains(@class,'relative transition-all')]//h3", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\007_YFE.png");
+        takeSnapShotWithHighlight(driver,"//div[contains(@class,'DraftStyleDefault-ltr')]", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\008_YFF.png");
+
+        clickAndHoldElement(driver,"//img","//button[contains(@class,'right-2 top-2 group-hover')]");
+        takeSnapShotWithHighlight(driver,"//div[contains(@class,'inset-1/2 text-white')]", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\008_YFF.png");
+
     }
 
     @Test

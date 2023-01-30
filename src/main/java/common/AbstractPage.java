@@ -23,20 +23,18 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import javax.xml.bind.DatatypeConverter;
 import java.awt.Dimension;
 import java.awt.Rectangle;
-import java.awt.image.BufferedImage;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import javax.imageio.ImageIO;
-import javax.xml.bind.DatatypeConverter;
-
 import java.awt.*;
-import java.awt.datatransfer.Clipboard;
-import java.awt.datatransfer.StringSelection;
+import java.awt.datatransfer.*;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
@@ -519,6 +517,11 @@ public class AbstractPage {
     public void dragAndDropElement(WebDriver driver, String sourceLocator, String targetLocator) {
         action = new Actions(driver);
         action.dragAndDrop(getElement(driver, sourceLocator), getElement(driver, targetLocator)).build().perform();
+    }
+
+    public void clickAndHoldElement(WebDriver driver, String sourceLocator, String targetLocator) {
+        action = new Actions(driver);
+        action.clickAndHold(getElement(driver, sourceLocator)).moveToElement(getElement(driver, targetLocator)).perform();
     }
 
     public void dragAndDropHTML5ByJS(WebDriver driver, String sourceLocator, String targetLocator) {
@@ -1081,7 +1084,7 @@ public class AbstractPage {
         }
     }
 
-    public void pasteToTextboxByRobot(WebDriver webdriver) {
+    public void pasteByRobot(WebDriver webdriver) {
         try {
             robot = new Robot();
             robot.keyPress(KeyEvent.VK_CONTROL);
@@ -1111,11 +1114,36 @@ public class AbstractPage {
         return rand.nextInt(99999);
     }
 
-    public void copyToClipboard(String copyFrom) {
-        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+    public void copyStringToClipboard(String copyFrom) {
         StringSelection str = new StringSelection(copyFrom);
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
         clipboard.setContents(str, null);
     }
+    public void copyImageToClipboard(String copyFrom) {
+        ImageSelection imgSel = new ImageSelection(new ImageIcon(copyFrom).getImage());
+        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(imgSel, null);
+    }
+
+    public class ImageSelection implements Transferable {
+            private Image image;
+
+            public ImageSelection(Image image) {
+                this.image = image;
+            }
+            public DataFlavor[] getTransferDataFlavors() {
+                return new DataFlavor[] { DataFlavor.imageFlavor };
+            }
+            public boolean isDataFlavorSupported(DataFlavor flavor) {
+                return DataFlavor.imageFlavor.equals(flavor);
+            }
+            public Object getTransferData(DataFlavor flavor) throws UnsupportedFlavorException, IOException {
+                if (!DataFlavor.imageFlavor.equals(flavor)) {
+                    throw new UnsupportedFlavorException(flavor);
+                }
+                return image;
+            }
+    }
+
 
     public String dayOfWeekShortFormat() {
         Calendar calendar = Calendar.getInstance();
@@ -1440,7 +1468,7 @@ public class AbstractPage {
     }
 
     public void uploadFileByRobot (String filePath) throws AWTException {
-        copyToClipboard(filePath);
+        copyStringToClipboard(filePath);
         Robot robot = new Robot();
         sleepInSecond(1);
 
