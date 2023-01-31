@@ -12,6 +12,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.util.concurrent.TimeUnit;
 
 public class ENU extends AbstractPage {
@@ -106,14 +107,33 @@ public class ENU extends AbstractPage {
     }
 
     @Test
-    public void String_004_012() throws AWTException {
-        // MockID String:
-        // YFD	Select folder...
-        // YFA	-- No folder --	None
-        // YFB	Import from
-        // YFF	Start a new update...
+    public void String_004() throws Exception {
+        // String: YFC	Import files by clicking below
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/home/worklist
+//        1. Login to Workfront 2. Open up the browser JavaScript console 3. In the JavaScript console, type: localStorage.setItem('devtools', true)
+//        4. Refresh the page 5. You should now see a floating icon that when clicked will open the Workfront Inspector 6. Enable feature toggles: home-workspaces
+//        7. Open home page and click on "Try out the new home" 8. Click "Go back to current home" 9. Click on "Add widget" and add "My Tasks" panel if there isn't any
+//        10. Click on any Upload File icon in the table 11. Upload any txt file 12. Right click -> Inspect on a file icon (aria-label string)
+        openPageUrl(driver,"https://adobeloctesting.devtest.workfront-dev.com/home/workspaces");
+        clickToElement(driver,"(//button[@data-tracking-id='tasks-upload-document'])[1]");
+        clickToElementByJS(driver,"//section[contains(@class,'spectrum-IllustratedMessage-description')]//button");
+        clickToElement(driver,"//li[@data-key='BROWSE']");
+        uploadFileByRobot(GlobalConstants.TOUPLOAD+"test_txt.txt");
+        sleepInSecond(1);
+        inspectElement(driver,"(//figure//*[name()='svg'])[1]");
+        sleepInSecond(1);
+        Robot robot = new Robot();
+        robot.keyPress(KeyEvent.VK_RIGHT);        robot.keyRelease(KeyEvent.VK_RIGHT);
+        sleepInSecond(1);
+        robot.keyPress(KeyEvent.VK_DOWN);        robot.keyRelease(KeyEvent.VK_DOWN);
+        sleepInSecond(1);
+        captureScreen(GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\004_YFC.png");
 
 
+    }
+    @Test
+    public void String_005_012() throws AWTException {
         // NOTE: Click on "Add widget" and add "My Tasks" panel if there isn't any first to run this
 //        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
 //        Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/home/worklist
@@ -122,32 +142,44 @@ public class ENU extends AbstractPage {
 //        7. Open home page and click on "Try out the new home" 8. Click "Go back to current home" 9. Click on "Add widget" and add "My Tasks" panel if there isn't any
 //        10. Click on any Upload File icon in the table 11. Click on Select Folder button
 
+        // YFD	Select folder...
         openPageUrl(driver,"https://adobeloctesting.devtest.workfront-dev.com/home/workspaces");
         clickToElement(driver,"(//button[@data-tracking-id='tasks-upload-document'])[1]");
-        takeSnapShotWithHighlight(driver,"//span[contains(@class,'is-placeholder')]", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\004_YFD.png");
+        takeSnapShotWithHighlight(driver,"//span[contains(@class,'is-placeholder')]", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\005_YFD.png");
 
+        // YFA	-- No folder --	None
         clickToElement(driver,"//button[contains(@class,'Dropdown-trigger')]");
         sleepInSecond(1);
-        takeSnapShotWithHighlight(driver,"//div[contains(@class,'Menu-itemGrid')]", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\005_YFA.png");
+        takeSnapShotWithHighlight(driver,"//div[contains(@class,'Menu-itemGrid')]", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\006_YFA.png");
 
+        // YFJ	Drag and drop your file or Cmd/Ctrl + V to paste from your clipboard
+        takeSnapShotWithHighlight(driver,"//h3[contains(@class,'spectrum-IllustratedMessage-heading')]", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\007_YFJ.png");
+
+        // YFB	Import from
         clickToElementByJS(driver,"//section[contains(@class,'spectrum-IllustratedMessage-description')]//button");
-        takeSnapShotWithHighlight(driver,"//span[contains(@class,'Menu-sectionHeading')]", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\006_YFB.png");
+        sleepInSecond(1);
+        takeSnapShotWithHighlight(driver,"//span[contains(@class,'Menu-sectionHeading')]", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\008_YFB.png");
+
+        // YFI	Browse files
+        takeSnapShotWithHighlight(driver,"//li[@data-key='BROWSE']", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\009_YFB.png");
+
+        // YFE	Add an update
+        // YFF	Start a new update...
         clickToElementByJS(driver,"//section[contains(@class,'spectrum-IllustratedMessage-description')]//button");
         clickToElement(driver,"//button[contains(@style,'margin-right: var(--spectrum-global-dimension-size-25, var(--spectrum-alias-size-25));')]");
-        sleepInSecond(1);
-
         clickToElement(driver,"(//button[@data-tracking-id='tasks-upload-document'])[1]");
         waitForElementVisible(driver,"//h3[contains(@class,'spectrum-IllustratedMessage')]");
         sleepInSecond(1);
-        copyImageToClipboard("C:\\Users\\NghHo\\IdeaProjects\\WF_ALITE_TASK\\toUpload\\img01.jpg");
+        copyImageToClipboard(GlobalConstants.TOUPLOAD+"img01.jpg");
         sleepInSecond(1);
         pasteByRobot(driver);
         sleepInSecond(1);
-        takeSnapShotWithHighlight(driver,"//div[contains(@class,'relative transition-all')]//h3", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\007_YFE.png");
-        takeSnapShotWithHighlight(driver,"//div[contains(@class,'DraftStyleDefault-ltr')]", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\008_YFF.png");
+        takeSnapShotWithHighlight(driver,"//div[contains(@class,'relative transition-all')]//h3", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\010_YFE.png");
+        takeSnapShotWithHighlight(driver,"//div[contains(@class,'public-DraftStyleDefault')]", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\011_YFE.png");
 
-        clickAndHoldElement(driver,"//img","//button[contains(@class,'right-2 top-2 group-hover')]");
-        takeSnapShotWithHighlight(driver,"//div[contains(@class,'inset-1/2 text-white')]", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\008_YFF.png");
+        // YFG	Drop here to add files
+        dragAndHoldOverHTML5ByJS(driver,"//figure/img","//figure/img");
+        takeSnapShotWithHighlight(driver,"//div[contains(@class,'inset-1/2 text-white')]", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\012_YFG.png");
 
     }
 
@@ -241,18 +273,73 @@ public class ENU extends AbstractPage {
     }
 
     @Test
-    public void String_020()  {
-        // MockID: YIX	Blank project
+    public void String_020_021()  {
+        // String:
+        // YIX	Blank project
+        // YIY	From template
 //        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
 //        Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/home/worklist
 //        1. Login to Workfront 2. Open up the browser JavaScript console 3. In the JavaScript console, type: localStorage.setItem('devtools', true) 4. Refresh the page
 //        5. You should now see a floating icon that when clicked will open the Workfront Inspector 6. Enable feature toggles: home-workspaces
 //        7. Open home page and click on "Try out the new home" 8. Click "Go back to current home" 9. Click on "Add widget" and add My Projects panel 10. Click on New button there
 
-        System.out.println("Blocking issue: " +
-                "\n MockID: YIX" +
-                "\n String: Blank project " +
-                "\n Issue: There is no available Widget at this moment");
+        openPageUrl(driver,"https://adobeloctesting.devtest.workfront-dev.com/home/workspaces");
+        clickToElement(driver,"//div[@id='widget-projects-list']//button[@data-variant='secondary']"); //Click on New button
+        takeSnapShotWithHighlight(driver,"//li[@data-key='BLANK']", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\020_YIX.png");
+        takeSnapShotWithHighlight(driver,"//li[@data-key='TEMPLATE']", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\021_YIY.png");
+    }
+
+    @Test
+    public void String_022_025()  {
+        // String:
+        // YM0	Updates I've Been Mentioned In
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/home/worklist
+//        1. Login to Workfront 2. Open up the browser JavaScript console 3. In the JavaScript console, type: localStorage.setItem('devtools', true) 4. Refresh the page
+//        5. You should now see a floating icon that when clicked will open the Workfront Inspector 6. Enable feature toggles: home-workspaces
+//        7. Open home page and click on "Try out the new home" 8. Click "Go back to current home" 9. Click on "Add widget"
+
+        openPageUrl(driver,"https://adobeloctesting.devtest.workfront-dev.com/home/workspaces");
+        clickToElement(driver,"//div[contains(@class,'border-bottom')]/div[contains(@class,'flex gap')]/button"); //Click on Manage widgets
+        clickToElement(driver,"//button[@data-tracking-id='add-widget']"); //Click on Add Widget
+
+        // YM2	Mentions
+        takeSnapShotWithHighlight(driver,"//*[name()='path' and contains(@d,'M13 2.1a8.')]/ancestor::div[@class='spectrum-Card-preview']/following-sibling::div//div[contains(@class,'spectrum-Card-title')]",
+                GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\022_YM2.png");
+
+        // YM0	Updates I've Been Mentioned In
+        takeSnapShotWithHighlight(driver,"//*[name()='path' and contains(@d,'M13 2.1a8.')]/ancestor::div[@class='spectrum-Card-preview']/following-sibling::div//div[contains(@id,'subtitle')]",
+                GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\023_YM0.png");
+
+        // YM1	My Projects
+        takeSnapShotWithHighlight(driver,"//*[name()='path' and contains(@d,'M14,8H2V5A1')]/ancestor::div[@class='spectrum-Card-preview']/following-sibling::div//div[contains(@class,'spectrum-Card-title')]",
+                GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\024_YM1.png");
+
+        // YM3	Projects I Own And Projects I'm On
+        takeSnapShotWithHighlight(driver,"//*[name()='path' and contains(@d,'M14,8H2V5A1')]/ancestor::div[@class='spectrum-Card-preview']/following-sibling::div//div[contains(@id,'subtitle')]",
+                GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\025_YM3.png");
+
+    }
+
+    @Test
+    public void String_025()  {
+//      MockID: YMb	Add new field
+//      Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//      Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/form-builder/new?objTypes=PROJ
+//      1. Login to Workfront 2. Open up the browser JavaScript console 3. In the JavaScript console, type: localStorage.setItem('devtools', true) 4. Refresh the page
+//      5. You should now see a floating icon that when clicked will open the Workfront Inspector 6. Enable feature toggles: form-builder-redrock-data, form-builder-mfe
+//      7. Open URL from direct link above (Setup -> Custom Forms -> Switch to new view)
+
+        openPageUrl(driver,"https://adobeloctesting.devtest.workfront-dev.com/form-builder/new?objTypes=PROJ");
+        sleepInSecond(5);
+
+        if(isElementDisplayed(driver,"//iframe[@data-testid='kamino-shim']")){
+            switchToIframeByElement(driver,"//iframe[@data-testid='kamino-shim']");
+            clickToElement(driver,"//button[@data-test-id='switch-to-new']");
+        }
+
+        takeSnapShotWithHighlight(driver,"//div[@data-testid='Add new field']", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\025_YMb.png");
+
     }
 
     @AfterClass(alwaysRun = true)
