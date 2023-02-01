@@ -318,11 +318,10 @@ public class ENU extends AbstractPage {
         // YM3	Projects I Own And Projects I'm On
         takeSnapShotWithHighlight(driver,"//*[name()='path' and contains(@d,'M14,8H2V5A1')]/ancestor::div[@class='spectrum-Card-preview']/following-sibling::div//div[contains(@id,'subtitle')]",
                 GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\025_YM3.png");
-
     }
 
     @Test
-    public void String_025()  {
+    public void String_026_027()  {
 //      MockID: YMb	Add new field
 //      Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
 //      Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/form-builder/new?objTypes=PROJ
@@ -338,8 +337,26 @@ public class ENU extends AbstractPage {
             clickToElement(driver,"//button[@data-test-id='switch-to-new']");
         }
 
-        takeSnapShotWithHighlight(driver,"//div[@data-testid='Add new field']", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\025_YMb.png");
+        // YMb	Add new field
+        takeSnapShotWithHighlight(driver,"//div[@data-testid='Add new field']", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\026_YMb.png");
 
+        // YMO	Field library
+        takeSnapShotWithHighlight(driver,"//div[@data-testid='Field library']", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\027_YMO.png");
+
+        // YMe	Add description here
+        takeSnapShotWithHighlight(driver,"(//div[contains(@style,'flex-direction: column;')]//textarea)[2]", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\028_YMe.png");
+
+        // YMQ	Switch to old view
+        takeSnapShotWithHighlight(driver,"(//div[contains(@style,'canvas-header;')]//button)[2]", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\029_YMQ.png");
+
+        // YMT	Save and Close
+        takeSnapShotWithHighlight(driver,"(//div[contains(@style,'canvas-footer;')]//button)[2]", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\030_YMT.png");
+
+        // YMU	Object Types
+        takeSnapShotWithHighlight(driver,"(//div[contains(@style,'canvas-header;')]//span)[1]", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\031_YMU.png");
+
+        // YMV	Title is required
+        takeSnapShotWithHighlight(driver,"//textarea[@class='form-title']", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\032_YMV.png");
     }
 
     @AfterClass(alwaysRun = true)
