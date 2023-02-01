@@ -17,14 +17,14 @@ import java.util.concurrent.TimeUnit;
 
 public class ENU extends AbstractPage {
     WebDriver driver;
+    String folder = "\\Workfront_20221021T194141Z\\ENU\\"; // the path to store the captured images with  lang code can be changed accordingly
 
     @BeforeClass
     public void beforeClass() throws Exception {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         // Set language
-        options.addArguments("--lang=en");
-
+        options.addArguments("--lang=en"); //set browser language
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(12, TimeUnit.SECONDS);
         driver.manage().window().maximize();
@@ -55,7 +55,7 @@ public class ENU extends AbstractPage {
         sleepInSecond(1);
 
         // Take SS
-        takeSnapShotWithHighlight(driver,"//div[@data-testid='tooltip-styled']", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\001_YE+.png");
+        takeSnapShotWithHighlight(driver,"//div[@data-testid='tooltip-styled']", GlobalConstants.SCREENSHOTS+folder+"001_YE+.png");
 
     }
 
@@ -75,7 +75,7 @@ public class ENU extends AbstractPage {
         sleepInSecond(1);
 
         // Take SS
-        takeSnapShotWithHighlight(driver,"//div[@data-testid='tooltip-styled']", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\002_YE8.png");
+        takeSnapShotWithHighlight(driver,"//div[@data-testid='tooltip-styled']", GlobalConstants.SCREENSHOTS+folder+"002_YE8.png");
     }
 
     @Test
@@ -103,7 +103,7 @@ public class ENU extends AbstractPage {
         sleepInSecond(1);
 
         // Take SS
-        takeSnapShotWithHighlight(driver,"//div[@data-testid='tooltip-styled']", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\003_YE9.png");
+        takeSnapShotWithHighlight(driver,"//div[@data-testid='tooltip-styled']", GlobalConstants.SCREENSHOTS+folder+"003_YE9.png");
     }
 
     @Test
@@ -128,7 +128,7 @@ public class ENU extends AbstractPage {
         sleepInSecond(1);
         robot.keyPress(KeyEvent.VK_DOWN);        robot.keyRelease(KeyEvent.VK_DOWN);
         sleepInSecond(1);
-        captureScreen(GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\004_YFC.png");
+        captureScreen(GlobalConstants.SCREENSHOTS+folder+"004_YFC.png");
 
 
     }
@@ -145,23 +145,23 @@ public class ENU extends AbstractPage {
         // YFD	Select folder...
         openPageUrl(driver,"https://adobeloctesting.devtest.workfront-dev.com/home/workspaces");
         clickToElement(driver,"(//button[@data-tracking-id='tasks-upload-document'])[1]");
-        takeSnapShotWithHighlight(driver,"//span[contains(@class,'is-placeholder')]", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\005_YFD.png");
+        takeSnapShotWithHighlight(driver,"//span[contains(@class,'is-placeholder')]", GlobalConstants.SCREENSHOTS+folder+"005_YFD.png");
 
         // YFA	-- No folder --	None
         clickToElement(driver,"//button[contains(@class,'Dropdown-trigger')]");
         sleepInSecond(1);
-        takeSnapShotWithHighlight(driver,"//div[contains(@class,'Menu-itemGrid')]", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\006_YFA.png");
+        takeSnapShotWithHighlight(driver,"//div[contains(@class,'Menu-itemGrid')]", GlobalConstants.SCREENSHOTS+folder+"006_YFA.png");
 
         // YFJ	Drag and drop your file or Cmd/Ctrl + V to paste from your clipboard
-        takeSnapShotWithHighlight(driver,"//h3[contains(@class,'spectrum-IllustratedMessage-heading')]", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\007_YFJ.png");
+        takeSnapShotWithHighlight(driver,"//h3[contains(@class,'spectrum-IllustratedMessage-heading')]", GlobalConstants.SCREENSHOTS+folder+"007_YFJ.png");
 
         // YFB	Import from
         clickToElementByJS(driver,"//section[contains(@class,'spectrum-IllustratedMessage-description')]//button");
         sleepInSecond(1);
-        takeSnapShotWithHighlight(driver,"//span[contains(@class,'Menu-sectionHeading')]", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\008_YFB.png");
+        takeSnapShotWithHighlight(driver,"//span[contains(@class,'Menu-sectionHeading')]", GlobalConstants.SCREENSHOTS+folder+"008_YFB.png");
 
         // YFI	Browse files
-        takeSnapShotWithHighlight(driver,"//li[@data-key='BROWSE']", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\009_YFB.png");
+        takeSnapShotWithHighlight(driver,"//li[@data-key='BROWSE']", GlobalConstants.SCREENSHOTS+folder+"009_YFB.png");
 
         // YFE	Add an update
         // YFF	Start a new update...
@@ -174,12 +174,12 @@ public class ENU extends AbstractPage {
         sleepInSecond(1);
         pasteByRobot(driver);
         sleepInSecond(1);
-        takeSnapShotWithHighlight(driver,"//div[contains(@class,'relative transition-all')]//h3", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\010_YFE.png");
-        takeSnapShotWithHighlight(driver,"//div[contains(@class,'public-DraftStyleDefault')]", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\011_YFE.png");
+        takeSnapShotWithHighlight(driver,"//div[contains(@class,'relative transition-all')]//h3", GlobalConstants.SCREENSHOTS+folder+"010_YFE.png");
+        takeSnapShotWithHighlight(driver,"//div[contains(@class,'public-DraftStyleDefault')]", GlobalConstants.SCREENSHOTS+folder+"011_YFE.png");
 
         // YFG	Drop here to add files
         dragAndHoldOverHTML5ByJS(driver,"//figure/img","//figure/img");
-        takeSnapShotWithHighlight(driver,"//div[contains(@class,'inset-1/2 text-white')]", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\012_YFG.png");
+        takeSnapShotWithHighlight(driver,"//div[contains(@class,'inset-1/2 text-white')]", GlobalConstants.SCREENSHOTS+folder+"012_YFG.png");
 
     }
 
@@ -204,9 +204,9 @@ public class ENU extends AbstractPage {
         sleepInSecond(2);
 
         // Take SS
-        takeSnapShotWithHighlight(driver,"//input[@data-testid='card-count-switch']/parent::label", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\013_YIb.png");
+        takeSnapShotWithHighlight(driver,"//input[@data-testid='card-count-switch']/parent::label", GlobalConstants.SCREENSHOTS+folder+"013_YIb.png");
         sleepInSecond(1);
-        takeSnapShotWithHighlight(driver,"//div[@data-testid='configure-board-accordion-column']/following-sibling::div/h5", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\014_YIc.png");
+        takeSnapShotWithHighlight(driver,"//div[@data-testid='configure-board-accordion-column']/following-sibling::div/h5", GlobalConstants.SCREENSHOTS+folder+"014_YIc.png");
     }
 
     @Test
@@ -221,8 +221,8 @@ public class ENU extends AbstractPage {
         waitForPageToLoadCompletely(driver,60);
 
         // Take SS
-        takeSnapShotWithHighlight(driver,"//div[@data-testid='error-page']/h2", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\015_YIj.png");
-        takeSnapShotWithHighlight(driver,"//div[@data-testid='error-page']/h1", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\016_YIl.png");
+        takeSnapShotWithHighlight(driver,"//div[@data-testid='error-page']/h2", GlobalConstants.SCREENSHOTS+folder+"015_YIj.png");
+        takeSnapShotWithHighlight(driver,"//div[@data-testid='error-page']/h1", GlobalConstants.SCREENSHOTS+folder+"016_YIl.png");
     }
 
     @Test
@@ -252,8 +252,8 @@ public class ENU extends AbstractPage {
         waitForPageToLoadCompletely(driver,60);
 
         // Take SS
-        takeSnapShotWithHighlight(driver,"//h1[@data-testid='error-title']", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\017_YIk.png");
-        takeSnapShotWithHighlight(driver,"//h1[@data-testid='error-title']", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\018_YIm.png");
+        takeSnapShotWithHighlight(driver,"//h1[@data-testid='error-title']", GlobalConstants.SCREENSHOTS+folder+"017_YIk.png");
+        takeSnapShotWithHighlight(driver,"//h1[@data-testid='error-title']", GlobalConstants.SCREENSHOTS+folder+"018_YIm.png");
     }
 
     @Test
@@ -269,7 +269,7 @@ public class ENU extends AbstractPage {
         clickToElement(driver,"//button[@data-testid='install-continue-button']");
 
         // Take SS
-        takeSnapShotWithHighlight(driver,"//div[@id='wf-mfe__blueprints']//h3", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\019_YIn.png");
+        takeSnapShotWithHighlight(driver,"//div[@id='wf-mfe__blueprints']//h3", GlobalConstants.SCREENSHOTS+folder+"019_YIn.png");
     }
 
     @Test
@@ -285,8 +285,8 @@ public class ENU extends AbstractPage {
 
         openPageUrl(driver,"https://adobeloctesting.devtest.workfront-dev.com/home/workspaces");
         clickToElement(driver,"//div[@id='widget-projects-list']//button[@data-variant='secondary']"); //Click on New button
-        takeSnapShotWithHighlight(driver,"//li[@data-key='BLANK']", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\020_YIX.png");
-        takeSnapShotWithHighlight(driver,"//li[@data-key='TEMPLATE']", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\021_YIY.png");
+        takeSnapShotWithHighlight(driver,"//li[@data-key='BLANK']", GlobalConstants.SCREENSHOTS+folder+"020_YIX.png");
+        takeSnapShotWithHighlight(driver,"//li[@data-key='TEMPLATE']", GlobalConstants.SCREENSHOTS+folder+"021_YIY.png");
     }
 
     @Test
@@ -305,19 +305,19 @@ public class ENU extends AbstractPage {
 
         // YM2	Mentions
         takeSnapShotWithHighlight(driver,"//*[name()='path' and contains(@d,'M13 2.1a8.')]/ancestor::div[@class='spectrum-Card-preview']/following-sibling::div//div[contains(@class,'spectrum-Card-title')]",
-                GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\022_YM2.png");
+                GlobalConstants.SCREENSHOTS+folder+"022_YM2.png");
 
         // YM0	Updates I've Been Mentioned In
         takeSnapShotWithHighlight(driver,"//*[name()='path' and contains(@d,'M13 2.1a8.')]/ancestor::div[@class='spectrum-Card-preview']/following-sibling::div//div[contains(@id,'subtitle')]",
-                GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\023_YM0.png");
+                GlobalConstants.SCREENSHOTS+folder+"023_YM0.png");
 
         // YM1	My Projects
         takeSnapShotWithHighlight(driver,"//*[name()='path' and contains(@d,'M14,8H2V5A1')]/ancestor::div[@class='spectrum-Card-preview']/following-sibling::div//div[contains(@class,'spectrum-Card-title')]",
-                GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\024_YM1.png");
+                GlobalConstants.SCREENSHOTS+folder+"024_YM1.png");
 
         // YM3	Projects I Own And Projects I'm On
         takeSnapShotWithHighlight(driver,"//*[name()='path' and contains(@d,'M14,8H2V5A1')]/ancestor::div[@class='spectrum-Card-preview']/following-sibling::div//div[contains(@id,'subtitle')]",
-                GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\025_YM3.png");
+                GlobalConstants.SCREENSHOTS+folder+"025_YM3.png");
     }
 
     @Test
@@ -338,25 +338,25 @@ public class ENU extends AbstractPage {
         }
 
         // YMb	Add new field
-        takeSnapShotWithHighlight(driver,"//div[@data-testid='Add new field']", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\026_YMb.png");
+        takeSnapShotWithHighlight(driver,"//div[@data-testid='Add new field']", GlobalConstants.SCREENSHOTS+folder+"026_YMb.png");
 
         // YMO	Field library
-        takeSnapShotWithHighlight(driver,"//div[@data-testid='Field library']", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\027_YMO.png");
+        takeSnapShotWithHighlight(driver,"//div[@data-testid='Field library']", GlobalConstants.SCREENSHOTS+folder+"027_YMO.png");
 
         // YMe	Add description here
-        takeSnapShotWithHighlight(driver,"(//div[contains(@style,'flex-direction: column;')]//textarea)[2]", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\028_YMe.png");
+        takeSnapShotWithHighlight(driver,"(//div[contains(@style,'flex-direction: column;')]//textarea)[2]", GlobalConstants.SCREENSHOTS+folder+"028_YMe.png");
 
         // YMQ	Switch to old view
-        takeSnapShotWithHighlight(driver,"(//div[contains(@style,'canvas-header;')]//button)[2]", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\029_YMQ.png");
+        takeSnapShotWithHighlight(driver,"(//div[contains(@style,'canvas-header;')]//button)[2]", GlobalConstants.SCREENSHOTS+folder+"029_YMQ.png");
 
         // YMT	Save and Close
-        takeSnapShotWithHighlight(driver,"(//div[contains(@style,'canvas-footer;')]//button)[2]", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\030_YMT.png");
+        takeSnapShotWithHighlight(driver,"(//div[contains(@style,'canvas-footer;')]//button)[2]", GlobalConstants.SCREENSHOTS+folder+"030_YMT.png");
 
         // YMU	Object Types
-        takeSnapShotWithHighlight(driver,"(//div[contains(@style,'canvas-header;')]//span)[1]", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\031_YMU.png");
+        takeSnapShotWithHighlight(driver,"(//div[contains(@style,'canvas-header;')]//span)[1]", GlobalConstants.SCREENSHOTS+folder+"031_YMU.png");
 
         // YMV	Title is required
-        takeSnapShotWithHighlight(driver,"//textarea[@class='form-title']", GlobalConstants.SCREENSHOTS+"\\Workfront_20221021T194141Z\\ENU\\032_YMV.png");
+        takeSnapShotWithHighlight(driver,"//textarea[@class='form-title']", GlobalConstants.SCREENSHOTS+folder+"032_YMV.png");
     }
 
     @AfterClass(alwaysRun = true)
