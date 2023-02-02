@@ -163,7 +163,8 @@ public class ENU extends AbstractPage {
         takeSnapShotWithHighlight(driver,"//span[contains(@class,'is-placeholder')]", GlobalConstants.SCREENSHOTS+folder+"005_YFD.png");
 
         // YFA	-- No folder --	None
-        clickToElement(driver,"//button[contains(@class,'Dropdown-trigger')]");
+        waitForElementVisible(driver,"//section[contains(@class,'Dialog-content')]//button[contains(@class,'Dropdown-trigger')]");
+        clickToElement(driver,"//section[contains(@class,'Dialog-content')]//button[contains(@class,'Dropdown-trigger')]");
         sleepInSecond(1);
         waitForElementVisible(driver,"//div[contains(@class,'Menu-itemGrid')]");
         takeSnapShotWithHighlight(driver,"//div[contains(@class,'Menu-itemGrid')]", GlobalConstants.SCREENSHOTS+folder+"006_YFA.png");
