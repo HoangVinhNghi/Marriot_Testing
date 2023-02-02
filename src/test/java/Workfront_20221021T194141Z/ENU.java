@@ -3,7 +3,9 @@ package Workfront_20221021T194141Z;
 import common.AbstractPage;
 import common.GlobalConstants;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
@@ -13,6 +15,7 @@ import org.testng.annotations.Test;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class ENU extends AbstractPage {
@@ -144,12 +147,25 @@ public class ENU extends AbstractPage {
 
         // YFD	Select folder...
         openPageUrl(driver,"https://adobeloctesting.devtest.workfront-dev.com/home/workspaces");
+
+        if(isElementDisplayed(driver,"//button[@data-tracking-id='add-widget']")){
+            clickToElement(driver,"//button[@data-tracking-id='add-widget']"); //Click on Add Widget
+            checkToCheckboxOrRadio(driver,"//label/input[contains(@class,'spectrum-Checkbox-input')]");
+//            hoverToElement(driver,"//*[name()='path' and contains(@d,'M2,3V31a1')]/ancestor::div[@class='spectrum-Card-preview']");
+//            sleepInSecond(2);
+//            clickToElement(driver,"//div[@class='spectrum-Checkbox']");
+            clickToElement(driver,"//div[contains(@style,'pageHeader')]//button[@data-variant='accent']");
+
+        }
+
+        waitForElementVisible(driver,"(//button[@data-tracking-id='tasks-upload-document'])[1]");
         clickToElement(driver,"(//button[@data-tracking-id='tasks-upload-document'])[1]");
         takeSnapShotWithHighlight(driver,"//span[contains(@class,'is-placeholder')]", GlobalConstants.SCREENSHOTS+folder+"005_YFD.png");
 
         // YFA	-- No folder --	None
         clickToElement(driver,"//button[contains(@class,'Dropdown-trigger')]");
         sleepInSecond(1);
+        waitForElementVisible(driver,"//div[contains(@class,'Menu-itemGrid')]");
         takeSnapShotWithHighlight(driver,"//div[contains(@class,'Menu-itemGrid')]", GlobalConstants.SCREENSHOTS+folder+"006_YFA.png");
 
         // YFJ	Drag and drop your file or Cmd/Ctrl + V to paste from your clipboard
@@ -300,6 +316,13 @@ public class ENU extends AbstractPage {
 //        7. Open home page and click on "Try out the new home" 8. Click "Go back to current home" 9. Click on "Add widget"
 
         openPageUrl(driver,"https://adobeloctesting.devtest.workfront-dev.com/home/workspaces");
+        List <WebElement> e = getElements(driver,"//div[contains(@class,'my-draggable-handle')]");
+        int n = e.size();
+        while(n>0){
+            clickToElement(driver,"//div[contains(@class,'my-draggable-handle')]/button");
+            clickToElement(driver,"//li[@data-key='delete']");
+            n--;
+        }
         clickToElement(driver,"//div[contains(@class,'border-bottom')]/div[contains(@class,'flex gap')]/button"); //Click on Manage widgets
         clickToElement(driver,"//button[@data-tracking-id='add-widget']"); //Click on Add Widget
 
@@ -321,7 +344,7 @@ public class ENU extends AbstractPage {
     }
 
     @Test
-    public void String_026_027()  {
+    public void String_026_032()  {
 //      MockID: YMb	Add new field
 //      Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
 //      Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/form-builder/new?objTypes=PROJ
@@ -330,9 +353,9 @@ public class ENU extends AbstractPage {
 //      7. Open URL from direct link above (Setup -> Custom Forms -> Switch to new view)
 
         openPageUrl(driver,"https://adobeloctesting.devtest.workfront-dev.com/form-builder/new?objTypes=PROJ");
-        sleepInSecond(5);
+        sleepInSecond(1);
 
-        if(isElementDisplayed(driver,"//iframe[@data-testid='kamino-shim']")){
+        if(isElementEnabled(driver,"//iframe[@data-testid='kamino-shim']")){
             switchToIframeByElement(driver,"//iframe[@data-testid='kamino-shim']");
             clickToElement(driver,"//button[@data-test-id='switch-to-new']");
         }
@@ -358,6 +381,127 @@ public class ENU extends AbstractPage {
         // YMV	Title is required
         takeSnapShotWithHighlight(driver,"//textarea[@class='form-title']", GlobalConstants.SCREENSHOTS+folder+"032_YMV.png");
     }
+
+    @Test
+    public void String_033()  {
+//      MockID: YMm	Try out the new Home
+//      Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//      Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/home/worklist
+//      1. Login to Workfront 2. Open up the browser JavaScript console 3. In the JavaScript console, type: localStorage.setItem('devtools', true) 4. Refresh the page
+//      5. You should now see a floating icon that when clicked will open the Workfront Inspector 6. Enable feature toggles: home-workspaces 7. Open home page
+
+        sleepInSecond(1);
+        takeSnapShotWithHighlight(driver,"//button[@data-tracking-id='new-home-opt-in']", GlobalConstants.SCREENSHOTS+folder+"033_YMm.png");
+    }
+
+    @Test
+    public void String_034() throws AWTException {
+//      MockID: YMP	You have unfinished settings for some of your fields, review before saving your form
+//      Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//      Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/form-builder/new?objTypes=PROJ
+//      1. Login to Workfront 2. Open up the browser JavaScript console 3. In the JavaScript console, type: localStorage.setItem('devtools', true) 4. Refresh the page
+//      5. You should now see a floating icon that when clicked will open the Workfront Inspector 6. Enable feature toggles: form-builder-redrock-data, form-builder-mfe
+//      7. Open URL from direct link above (Setup -> Custom Forms -> Switch to new view) 8. Add some field and press "Savce and Close"
+
+        openPageUrl(driver,"https://adobeloctesting.devtest.workfront-dev.com/form-builder/new?objTypes=PROJ");
+        sleepInSecond(1);
+        waitForElementVisible(driver,"//div[@aria-roledescription='sortable']/div");
+        clickToElement(driver,"//div[@aria-roledescription='sortable']/div");
+        sleepInSecond(2);
+        waitForElementVisible(driver,"//button[@id='section.name']/following-sibling::div/input");
+        clearTextboxByRobot(driver,"//button[@id='section.name']/following-sibling::div/input");
+        sleepInSecond(1);
+        clickToElement(driver,"(//div[contains(@style,'canvas-footer;')]//button)[2]");
+        takeSnapShotWithHighlight(driver,"//div[@data-testid='toast-notification']//span", GlobalConstants.SCREENSHOTS+folder+"034_YMP.png");
+    }
+
+    @Test
+    public void String_035()  {
+//      MockID: YMo	Take this 1 minute survey:
+//      Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//      Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/home/worklist
+//      1. Login to Workfront 2. Open up the browser JavaScript console 3. In the JavaScript console, type: localStorage.setItem('devtools', true)
+//      4. Refresh the page 5. You should now see a floating icon that when clicked will open the Workfront Inspector 6. Enable feature toggles: home-workspaces
+//      7. Open home page and click on "Try out the new home" 8. Click "Go back to current home"
+
+        sleepInSecond(1);
+        clickToElement(driver,"//button[@data-tracking-id='new-home-opt-in']");
+        waitForElementVisible(driver,"//button[@data-tracking-id='new-home-opt-out']");
+        clickToElement(driver,"//button[@data-tracking-id='new-home-opt-out']");
+
+        // YMr	Do you have a minute to tell us why you're leaving?
+        takeSnapShotWithHighlight(driver,"(//section[contains(@class,'Dialog-content')]/p)[1]", GlobalConstants.SCREENSHOTS+folder+"035_YMr.png");
+
+        // YMo	Take this 1 minute survey:
+        takeSnapShotWithHighlight(driver,"(//section[contains(@class,'Dialog-content')]/p)[2]", GlobalConstants.SCREENSHOTS+folder+"036_YMo.png");
+
+        // YMq	New Home Survey
+        takeSnapShotWithHighlight(driver,"(//section[contains(@class,'Dialog-content')]/p)[2]/a", GlobalConstants.SCREENSHOTS+folder+"037_YMq.png");
+
+        clickToElement(driver,"//button[@data-tracking-id='new-home-opt-out-dialog']");
+    }
+
+    @Test
+    public void String_038() throws AWTException, InterruptedException {
+//      MockID: YMS	Only users with edit access can see the form description.
+//      Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//      Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/form-builder/new?objTypes=PROJ
+//      1. Login to Workfront 2. Open up the browser JavaScript console 3. In the JavaScript console, type: localStorage.setItem('devtools', true) 4. Refresh the page
+//      5. You should now see a floating icon that when clicked will open the Workfront Inspector 6. Enable feature toggles: form-builder-redrock-data, form-builder-mfe
+//      7. Open URL from direct link above (Setup -> Custom Forms -> Switch to new view) 8. Add some field and press "Savce and Close"
+
+        openPageUrl(driver,"https://adobeloctesting.devtest.workfront-dev.com/form-builder/new?objTypes=PROJ");
+        sleepInSecond(1);
+        waitForElementVisible(driver,"//div[@aria-roledescription='sortable']/div");
+        clickToElement(driver,"//div[@aria-roledescription='sortable']/div");
+        sleepInSecond(2);
+        waitForElementVisible(driver,"//button[@id='section.name']/following-sibling::div/input");
+        sendKeyToElement(driver,"(//div[contains(@style,'canvas-content;')]//textarea)[2]","aa");
+        sleepInSecond(1);
+        hoverToElementActionRobot(driver,"//button[@id='tooltip']");
+        sleepInSecond(2);
+        takeSnapShotWithHighlight(driver,"//div[@role='tooltip']/span", GlobalConstants.SCREENSHOTS+folder+"038_YMS.png");
+    }
+    @Test
+    public void String_039_040() throws AWTException, InterruptedException {
+//      MockID: YMu	To-dos
+//      Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//      Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/home/worklist
+//      1. Login to Workfront 2. Open up the browser JavaScript console 3. In the JavaScript console, type: localStorage.setItem('devtools', true) 4. Refresh the page
+//      5. You should now see a floating icon that when clicked will open the Workfront Inspector 6. Enable feature toggles: home-workspaces
+//      7. Open home page and click on "Try out the new home" 8. Click "Go back to current home" 9. Click on "Add widget"
+
+        openPageUrl(driver,"https://adobeloctesting.devtest.workfront-dev.com/home/workspaces");
+
+        List <WebElement> e = getElements(driver,"//div[contains(@class,'my-draggable-handle')]");
+        int n = e.size();
+        while(n>0){
+            clickToElement(driver,"//div[contains(@class,'my-draggable-handle')]/button");
+            clickToElement(driver,"//li[@data-key='delete']");
+            n--;
+        }
+
+        clickToElement(driver,"//div[contains(@class,'border-bottom')]/div[contains(@class,'flex gap')]/button"); //Click on Manage widgets
+        clickToElement(driver,"//button[@data-tracking-id='add-widget']"); //Click on Add Widget
+
+        // YMu	To-dos
+        takeSnapShotWithHighlight(driver,"//*[name()='path' and contains(@d,'M18.1,2.2A15')]/ancestor::div[@class='spectrum-Card-preview']/following-sibling::div//div[contains(@class,'Card-title')]",
+                GlobalConstants.SCREENSHOTS+folder+"039_YMu.png");
+
+        // YMv	Personal Reminders
+        takeSnapShotWithHighlight(driver,"//*[name()='path' and contains(@d,'M18.1,2.2A15')]/ancestor::div[@class='spectrum-Card-preview']/following-sibling::div//div[contains(@id,'subtitle')]",
+                GlobalConstants.SCREENSHOTS+folder+"040_YMv.png");
+
+        // YMx	My Tasks
+        takeSnapShotWithHighlight(driver,"//*[name()='path' and contains(@d,'M2,3V31a1')]/ancestor::div[@class='spectrum-Card-preview']/following-sibling::div//div[contains(@class,'Card-title')]",
+                GlobalConstants.SCREENSHOTS+folder+"039_YMu.png");
+
+        // YMw	Tasks Assigned To Me
+        takeSnapShotWithHighlight(driver,"//*[name()='path' and contains(@d,'M2,3V31a1')]/ancestor::div[@class='spectrum-Card-preview']/following-sibling::div//div[contains(@id,'subtitle')]",
+                GlobalConstants.SCREENSHOTS+folder+"040_YMv.png");
+
+    }
+
 
     @AfterClass(alwaysRun = true)
     public void afterClass() {

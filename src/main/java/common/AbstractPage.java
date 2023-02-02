@@ -6,6 +6,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openqa.selenium.*;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -255,6 +256,27 @@ public class AbstractPage {
         getElement(driver, locator).clear();
     }
 
+    public void clearTextboxByRobot(WebDriver webdriver, String locator) {
+        try {
+            clickToElement(webdriver, locator);
+            sleepInSecond(1);
+            robot = new Robot();
+            robot.keyPress(KeyEvent.VK_CONTROL);
+            robot.keyPress(KeyEvent.VK_A);
+            robot.keyRelease(KeyEvent.VK_CONTROL);
+            robot.keyRelease(KeyEvent.VK_A);
+            robot.keyPress(KeyEvent.VK_BACK_SPACE);
+            robot.keyRelease(KeyEvent.VK_BACK_SPACE);
+        } catch (AWTException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void clearTextBoxByJS(WebDriver driver, String locator) {
+        jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("arguments[0].value = '';", getElement(driver, locator));
+    }
+
 
     public int getElementSize(WebDriver driver, String locator) {
         return getElements(driver, locator).size();
@@ -455,17 +477,34 @@ public class AbstractPage {
         sleepInSecond(1);
     }
 
+    public void hoverToElement(WebDriver driver, String locator, String... value) {
+        action = new Actions(driver);
+        action.moveToElement(getElement(driver, locator, value)).perform();
+    }
+
+    public void hoverToElementActionRobot(WebDriver driver, String locator) throws AWTException {
+        action = new Actions(driver);
+        Robot robot = new Robot();
+        Point point = (getElement(driver, locator)).getLocation();
+        int x = point.getX();
+        int y = point.getY();
+        robot.mouseMove(x,y);
+        sleepInSecond(1);
+        action.moveToElement(getElement(driver, locator)).perform();
+        sleepInSecond(1);
+    }
+    public void hoverToElementBJS(WebDriver driver, String locator) {
+        jsExecutor = (JavascriptExecutor) driver;
+        String mouseOverScript = "if(document.createEvent){var evObj = document.createEvent('MouseEvents');evObj.initEvent('mouseover',true, false); arguments[0].dispatchEvent(evObj);} else if(document.createEventObject) { arguments[0].fireEvent('onmouseover');}";
+        jsExecutor.executeScript(mouseOverScript, getElement(driver, locator));
+    }
+
     public void clickToElementByAction(WebDriver driver, String locator) {
         action = new Actions(driver);
         action.moveToElement(getElement(driver, locator)).perform();
         sleepInSecond(1);
         action.click(getElement(driver, locator)).perform();
 
-    }
-
-    public void hoverToElement(WebDriver driver, String locator, String... value) {
-        action = new Actions(driver);
-        action.moveToElement(getElement(driver, locator, value)).perform();
     }
 
     public void doubleClickToElement(WebDriver driver, String locator) {
@@ -670,7 +709,7 @@ public class AbstractPage {
         }
     }
 
-        public void clickToElementByJS(WebDriver driver, String locator) {
+    public void clickToElementByJS(WebDriver driver, String locator) {
         jsExecutor = (JavascriptExecutor) driver;
         jsExecutor.executeScript("arguments[0].click();", getElement(driver, locator));
     }
@@ -1044,21 +1083,7 @@ public class AbstractPage {
             e.printStackTrace();
         }
     }
-    public void clearTextboxByRobot(WebDriver webdriver, String locator) {
-        try {
-            clickToElement(webdriver, locator);
-            sleepInSecond(1);
-            robot = new Robot();
-            robot.keyPress(KeyEvent.VK_CONTROL);
-            robot.keyPress(KeyEvent.VK_A);
-            robot.keyRelease(KeyEvent.VK_CONTROL);
-            robot.keyRelease(KeyEvent.VK_A);
-            robot.keyPress(KeyEvent.VK_BACK_SPACE);
-            robot.keyRelease(KeyEvent.VK_BACK_SPACE);
-        } catch (AWTException e) {
-            e.printStackTrace();
-        }
-    }
+
     public void pressEnterKeyByRobot(WebDriver webDriver) {
         try {
         robot = new Robot();
