@@ -3,12 +3,10 @@ package Workfront_20221021T194141Z;
 import common.AbstractPage;
 import common.GlobalConstants;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -18,16 +16,16 @@ import java.awt.event.KeyEvent;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class ENU extends AbstractPage {
+public class DEU extends AbstractPage {
     WebDriver driver;
-    String folder = "\\Workfront_20221021T194141Z\\ENU\\"; // the path to store the captured images with  lang code can be changed accordingly
+    String folder = "\\Workfront_20221021T194141Z\\DEU\\3500831\\DEU\\"; // the path to store the captured images with  lang code can be changed accordingly
 
     @BeforeClass
     public void beforeClass() throws Exception {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         // Set language
-        options.addArguments("--lang=en"); //set browser language
+        options.addArguments("--lang=de"); //set browser language
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(12, TimeUnit.SECONDS);
         driver.manage().window().maximize();
@@ -326,13 +324,13 @@ public class ENU extends AbstractPage {
         openPageUrl(driver,"https://adobeloctesting.devtest.workfront-dev.com/home/workspaces");
         List <WebElement> e = getElements(driver,"//div[contains(@class,'my-draggable-handle')]");
         int n = e.size();
-        if(n>0){
+        while(n>0){
             clickToElement(driver,"//div[contains(@class,'my-draggable-handle')]/button");
             clickToElement(driver,"//li[@data-key='delete']");
             n--;
         }
-        clickToElement(driver,"//div[contains(@class,'border-bottom')]/div[contains(@class,'flex gap')]/button"); //Click on Manage widgets
-//        clickToElement(driver,"//button[@data-tracking-id='add-widget']"); //Click on Add Widget
+//        clickToElement(driver,"//div[contains(@class,'border-bottom')]/div[contains(@class,'flex gap')]/button"); //Click on Manage widgets
+        clickToElement(driver,"//button[@data-tracking-id='add-widget']"); //Click on Add Widget
 
         // YM2	Mentions
         scrollToElement(driver,"//div[@id='react-spectrum-6-title']");
@@ -353,6 +351,22 @@ public class ENU extends AbstractPage {
         // YM3	Projects I Own And Projects I'm On
         takeSnapShotWithHighlight(driver,"//*[name()='path' and contains(@d,'M14,8H2V5A1')]/ancestor::div[@class='spectrum-Card-preview']/following-sibling::div//div[contains(@id,'subtitle')]",
                 GlobalConstants.SCREENSHOTS+folder+"025_YM3.png");
+
+        // YMu	To-dos
+        takeSnapShotWithHighlight(driver,"//*[name()='path' and contains(@d,'M18.1,2.2A15')]/ancestor::div[@class='spectrum-Card-preview']/following-sibling::div//div[contains(@class,'Card-title')]",
+                GlobalConstants.SCREENSHOTS+folder+"039_YMu.png");
+
+        // YMv	Personal Reminders
+        takeSnapShotWithHighlight(driver,"//*[name()='path' and contains(@d,'M18.1,2.2A15')]/ancestor::div[@class='spectrum-Card-preview']/following-sibling::div//div[contains(@id,'subtitle')]",
+                GlobalConstants.SCREENSHOTS+folder+"040_YMv.png");
+
+        // YMx	My Tasks
+        takeSnapShotWithHighlight(driver,"//*[name()='path' and contains(@d,'M2,3V31a1')]/ancestor::div[@class='spectrum-Card-preview']/following-sibling::div//div[contains(@class,'Card-title')]",
+                GlobalConstants.SCREENSHOTS+folder+"041_YMx.png");
+
+        // YMw	Tasks Assigned To Me
+        takeSnapShotWithHighlight(driver,"//*[name()='path' and contains(@d,'M2,3V31a1')]/ancestor::div[@class='spectrum-Card-preview']/following-sibling::div//div[contains(@id,'subtitle')]",
+                GlobalConstants.SCREENSHOTS+folder+"042_YMw.png");
     }
 
     @Test
@@ -436,8 +450,8 @@ public class ENU extends AbstractPage {
 //      4. Refresh the page 5. You should now see a floating icon that when clicked will open the Workfront Inspector 6. Enable feature toggles: home-workspaces
 //      7. Open home page and click on "Try out the new home" 8. Click "Go back to current home"
 
-        sleepInSecond(1);
         openPageUrl(driver,"https://adobeloctesting.devtest.workfront-dev.com/home/worklist");
+        sleepInSecond(1);
         clickToElement(driver,"//button[@data-tracking-id='new-home-opt-in']");
         waitForElementVisible(driver,"//button[@data-tracking-id='new-home-opt-out']");
         clickToElement(driver,"//button[@data-tracking-id='new-home-opt-out']");
@@ -474,45 +488,45 @@ public class ENU extends AbstractPage {
         sleepInSecond(2);
         takeSnapShotWithHighlight(driver,"//div[@role='tooltip']/span", GlobalConstants.SCREENSHOTS+folder+"038_YMS.png");
     }
-    @Test
-    public void String_039_042() throws AWTException, InterruptedException {
-//      MockID: YMu	To-dos
-//      Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
-//      Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/home/worklist
-//      1. Login to Workfront 2. Open up the browser JavaScript console 3. In the JavaScript console, type: localStorage.setItem('devtools', true) 4. Refresh the page
-//      5. You should now see a floating icon that when clicked will open the Workfront Inspector 6. Enable feature toggles: home-workspaces
-//      7. Open home page and click on "Try out the new home" 8. Click "Go back to current home" 9. Click on "Add widget"
-
-        openPageUrl(driver,"https://adobeloctesting.devtest.workfront-dev.com/home/workspaces");
-
-        List <WebElement> e = getElements(driver,"//div[contains(@class,'my-draggable-handle')]");
-        int n = e.size();
-        while(n>0){
-            clickToElement(driver,"//div[contains(@class,'my-draggable-handle')]/button");
-            clickToElement(driver,"//li[@data-key='delete']");
-            n--;
-        }
-
-//        clickToElement(driver,"//div[contains(@class,'border-bottom')]/div[contains(@class,'flex gap')]/button"); //Click on Manage widgets
-        clickToElement(driver,"//button[@data-tracking-id='add-widget']"); //Click on Add Widget
-
-        // YMu	To-dos
-        takeSnapShotWithHighlight(driver,"//*[name()='path' and contains(@d,'M18.1,2.2A15')]/ancestor::div[@class='spectrum-Card-preview']/following-sibling::div//div[contains(@class,'Card-title')]",
-                GlobalConstants.SCREENSHOTS+folder+"039_YMu.png");
-
-        // YMv	Personal Reminders
-        takeSnapShotWithHighlight(driver,"//*[name()='path' and contains(@d,'M18.1,2.2A15')]/ancestor::div[@class='spectrum-Card-preview']/following-sibling::div//div[contains(@id,'subtitle')]",
-                GlobalConstants.SCREENSHOTS+folder+"040_YMv.png");
-
-        // YMx	My Tasks
-        takeSnapShotWithHighlight(driver,"//*[name()='path' and contains(@d,'M2,3V31a1')]/ancestor::div[@class='spectrum-Card-preview']/following-sibling::div//div[contains(@class,'Card-title')]",
-                GlobalConstants.SCREENSHOTS+folder+"041_YMx.png");
-
-        // YMw	Tasks Assigned To Me
-        takeSnapShotWithHighlight(driver,"//*[name()='path' and contains(@d,'M2,3V31a1')]/ancestor::div[@class='spectrum-Card-preview']/following-sibling::div//div[contains(@id,'subtitle')]",
-                GlobalConstants.SCREENSHOTS+folder+"042_YMw.png");
-
-    }
+//    @Test
+//    public void String_039_042() throws AWTException, InterruptedException {
+////      MockID: YMu	To-dos
+////      Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+////      Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/home/worklist
+////      1. Login to Workfront 2. Open up the browser JavaScript console 3. In the JavaScript console, type: localStorage.setItem('devtools', true) 4. Refresh the page
+////      5. You should now see a floating icon that when clicked will open the Workfront Inspector 6. Enable feature toggles: home-workspaces
+////      7. Open home page and click on "Try out the new home" 8. Click "Go back to current home" 9. Click on "Add widget"
+//
+//        openPageUrl(driver,"https://adobeloctesting.devtest.workfront-dev.com/home/workspaces");
+//
+//        List <WebElement> e = getElements(driver,"//div[contains(@class,'my-draggable-handle')]");
+//        int n = e.size();
+//        while(n>0){
+//            clickToElement(driver,"//div[contains(@class,'my-draggable-handle')]/button");
+//            clickToElement(driver,"//li[@data-key='delete']");
+//            n--;
+//        }
+//
+////        clickToElement(driver,"//div[contains(@class,'border-bottom')]/div[contains(@class,'flex gap')]/button"); //Click on Manage widgets
+//        clickToElement(driver,"//button[@data-tracking-id='add-widget']"); //Click on Add Widget
+//
+//        // YMu	To-dos
+//        takeSnapShotWithHighlight(driver,"//*[name()='path' and contains(@d,'M18.1,2.2A15')]/ancestor::div[@class='spectrum-Card-preview']/following-sibling::div//div[contains(@class,'Card-title')]",
+//                GlobalConstants.SCREENSHOTS+folder+"039_YMu.png");
+//
+//        // YMv	Personal Reminders
+//        takeSnapShotWithHighlight(driver,"//*[name()='path' and contains(@d,'M18.1,2.2A15')]/ancestor::div[@class='spectrum-Card-preview']/following-sibling::div//div[contains(@id,'subtitle')]",
+//                GlobalConstants.SCREENSHOTS+folder+"040_YMv.png");
+//
+//        // YMx	My Tasks
+//        takeSnapShotWithHighlight(driver,"//*[name()='path' and contains(@d,'M2,3V31a1')]/ancestor::div[@class='spectrum-Card-preview']/following-sibling::div//div[contains(@class,'Card-title')]",
+//                GlobalConstants.SCREENSHOTS+folder+"041_YMx.png");
+//
+//        // YMw	Tasks Assigned To Me
+//        takeSnapShotWithHighlight(driver,"//*[name()='path' and contains(@d,'M2,3V31a1')]/ancestor::div[@class='spectrum-Card-preview']/following-sibling::div//div[contains(@id,'subtitle')]",
+//                GlobalConstants.SCREENSHOTS+folder+"042_YMw.png");
+//
+//    }
 
     @Test
     public void String_043() throws AWTException, InterruptedException {
@@ -522,9 +536,9 @@ public class ENU extends AbstractPage {
 //      1. Login to Workfront 2. Go to timesheets and create a new one with Admin user as target and approver 3. Make some change and send it for approval 4. Mouse hover any previously editable cell
 
         openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/timesheet/637ce0a0000229fd4cfc5aa8b280747e/overview");
-        waitForElementVisible(driver, "//input[@aria-rowindex='10' and @aria-colindex='5' and @value='23']");
         sleepInSecond(1);
-        hoverToElement(driver, "//input[@aria-rowindex='10' and @aria-colindex='5' and @value='23']");
+        waitForElementVisible(driver, "//input[@aria-rowindex='10' and @aria-colindex='5']");
+        hoverToElement(driver, "//input[@data-testid='hour-input-2023-01-28']");
 
         // YNG	The timesheet is awaiting approval. You must recall the timesheet to add time.
         takeSnapShotWithHighlight(driver, "//div[@data-testid='tooltip-styled']", GlobalConstants.SCREENSHOTS + folder + "043_YNG.png");
