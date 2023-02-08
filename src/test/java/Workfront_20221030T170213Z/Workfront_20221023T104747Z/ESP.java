@@ -1,24 +1,20 @@
-package Workfront_20221023T104747Z;
+package Workfront_20221030T170213Z.Workfront_20221023T104747Z;
 
 import common.AbstractPage;
 import common.GlobalConstants;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class ENU extends AbstractPage {
+public class ESP extends AbstractPage {
     WebDriver driver;
-    String folder = "\\Workfront_20221023T104747Z\\ENU\\"; // the path to store the captured images with  lang code can be changed accordingly
+    String folder = "\\Workfront_20221023T104747Z\\ESP\\3508163\\ESP\\"; // the path to store the captured images with  lang code can be changed accordingly
     // Select the lang code accordingly
     String lang_EN ="--lang=en\"";
     String lang_DE ="de";
@@ -33,7 +29,7 @@ public class ENU extends AbstractPage {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         // Set language
-        options.addArguments("--lang=en"); //set browser language
+        options.addArguments("--lang=es"); //set browser language
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(12, TimeUnit.SECONDS);
         driver.manage().window().maximize();
@@ -95,7 +91,7 @@ public class ENU extends AbstractPage {
         waitForPageToLoadCompletely(driver,30);
 
         // Open any project 3. Click on three dots in the toolbar > Copy
-        clickToElement(driver, "//div[@data-test-id='tab-header-System Activity']");
+        clickToElement(driver, "//div[@class='header-item ']");
         sleepInSecond(1);
 
         // Take SS: YQg	Yesterday at {date}
@@ -182,7 +178,7 @@ public class ENU extends AbstractPage {
 
     @AfterClass(alwaysRun = true)
     public void afterClass() {
-//        driver.quit();
+        driver.quit();
     }
 
 }
