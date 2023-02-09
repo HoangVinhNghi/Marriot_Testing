@@ -12,9 +12,9 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-public class ENU extends AbstractPage {
+public class JPN extends AbstractPage {
     WebDriver driver;
-    String folder = "\\Workfront_20221107T103800Z\\ENU\\"; // the path to store the captured images with  lang code can be changed accordingly
+    String folder = "\\Workfront_20221107T103800Z\\JPN\\3548153\\JPN"; // the path to store the captured images with  lang code can be changed accordingly
     // Select the lang code accordingly
     String lang_EN ="--lang=en\"";
     String lang_DE ="de";
@@ -29,7 +29,7 @@ public class ENU extends AbstractPage {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         // Set language
-        options.addArguments("--lang=en"); //set browser language
+        options.addArguments("--lang=ja-JP"); //set browser language
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(12, TimeUnit.SECONDS);
         driver.manage().window().maximize();
@@ -97,7 +97,7 @@ public class ENU extends AbstractPage {
         // 3. Click on Go back to the current Home
         clickToElement(driver,"//button[@data-tracking-id='new-home-opt-out']");
 
-         // Take SS: YRq
+        // Take SS: YRq
         takeSnapShotWithHighlight(driver,"//h2[contains(@id,'react-aria')]", GlobalConstants.SCREENSHOTS+folder+"003_YRq.png");
 
     }
