@@ -1,4 +1,4 @@
-package Workfront_20221030T170213Z.Workfront_20221023T104747Z;
+package Workfront_20221030T170213Z;
 
 import common.AbstractPage;
 import common.GlobalConstants;
@@ -14,9 +14,9 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.concurrent.TimeUnit;
 
-public class ENU extends AbstractPage {
+public class DEU extends AbstractPage {
     WebDriver driver;
-    String folder = "\\Workfront_20221030T170213Z\\ENU\\"; // the path to store the captured images with  lang code can be changed accordingly
+    String folder = "\\Workfront_20221030T170213Z\\DEU\\3526565\\DEU\\"; // the path to store the captured images with  lang code can be changed accordingly
     // Select the lang code accordingly
     String lang_EN ="--lang=en\"";
     String lang_DE ="de";
@@ -31,7 +31,7 @@ public class ENU extends AbstractPage {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         // Set language
-        options.addArguments("--lang=en"); //set browser language
+        options.addArguments("--lang=de"); //set browser language
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(12, TimeUnit.SECONDS);
         driver.manage().window().maximize();
@@ -98,9 +98,9 @@ public class ENU extends AbstractPage {
 
     @Test
     public void String_003() throws Exception {
-//        MockID: YRa	Clear date
+//        MockID: YQn	{author} made {owner} the owner
 //        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
-//        Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/goal/ebfbe5a0-ba19-4f7c-ab41-9fd86b127f9b/updates
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/goal/961e6f96-3907-4168-b081-983320082cbe/updates
 //        1. Login to Workfront 2. Go to Goals and create a new goal 3. In the toolbar change the Goal Owner 4. Go to Updates -> System Activity
 
         // NOTE: Go to https://adobeloctesting.devtest.workfront-dev.com/home/workspaces
@@ -155,7 +155,7 @@ public class ENU extends AbstractPage {
         captureScreen(GlobalConstants.SCREENSHOTS+folder+"008_YRK.png");
 
         // Take SS: YRL	To-do name
-        inspectElement(driver,"(//textarea[contains(@aria-label,'To-do')])[1]");
+        inspectElement(driver,"(//div[contains(@class,'spectrum-Field--positionTop')]/div/textarea)[1]");
         captureScreen(GlobalConstants.SCREENSHOTS+folder+"009_YRL.png");
 
         // Take SS: YRO	Is complete?
@@ -229,20 +229,43 @@ public class ENU extends AbstractPage {
         clickToElement(driver,"//button[@class='flex gap-2 items-center']");
         sendKeyToElement(driver,"//textarea[contains(@class,'spectrum-Textfield-input')]","aaaaa");
         clickToElement(driver,"//button[@class='flex gap-2 items-center']");
-        waitForElementVisible(driver,"//div[@id='snackbar-root']/div");
-        takeSnapShotWithHighlight(driver,"//div[@id='snackbar-root']/div", GlobalConstants.SCREENSHOTS+folder+"016_YRI.png");
+//        waitForElementVisible(driver,"//div[@id='snackbar-root']/div");
+        takeSnapShotWithHighlight(driver,"//div[@id='snackbar-root']/div/div", GlobalConstants.SCREENSHOTS+folder+"016_YRI.png");
 
         // Log out the User
         clickToElement(driver,"//h2[@data-testid='logged-in-as']/button");
         sleepInSecond(1);
     }
 
+    @Test
+    public void String_017_018() throws Exception {
+//        MockID:
+//        YRT	{author} converted the {__mlm_low_activity} {title} to {__mlm_low_goal} {goalName}
+//        YRS	{author} converted the {__mlm_low_result} {title} to {__mlm_low_goal} {goalName}
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/goal/ebfbe5a0-ba19-4f7c-ab41-9fd86b127f9b/updates
+//        1. Login to Workfront 2. Go to Goals and create a new goal 3. Go to Progress Indicators tab and add a new activity
+//        4. Select created activity and press "Convert to goal" button 5. Go to Updates -> System Activity
+
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/goal/e2fabe6f-a052-42a2-a453-8e729827adad/updates");
+        waitForPageToLoadCompletely(driver,30);
+
+        clickToElement(driver, "//div[@class='header-item ']");
+        sleepInSecond(1);
+
+        // Take SS: YRS	{author} converted the {__mlm_low_result} {title} to {__mlm_low_goal} {goalName}
+        takeSnapShotWithHighlight(driver,"(//div[contains(@style,'color: var(--spectrum-gray-600);')])[1]", GlobalConstants.SCREENSHOTS+folder+"0017_YRS.png");
+
+        // Take SS: YRT	{author} converted the {__mlm_low_activity} {title} to {__mlm_low_goal} {goalName}
+        takeSnapShotWithHighlight(driver,"(//div[contains(@style,'color: var(--spectrum-gray-600);')])[3]", GlobalConstants.SCREENSHOTS+folder+"018_YRT.png");
+    }
 
 
 
 
     @AfterClass(alwaysRun = true)
     public void afterClass() {
+
 //        driver.quit();
     }
 

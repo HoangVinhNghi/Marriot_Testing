@@ -1,4 +1,4 @@
-package Workfront_20221107T103800Z;
+package Workfront_20221114T111033Z;
 
 import common.AbstractPage;
 import common.GlobalConstants;
@@ -10,11 +10,15 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.time.Clock;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.util.concurrent.TimeUnit;
 
 public class ENU extends AbstractPage {
     WebDriver driver;
-    String folder = "\\Workfront_20221107T103800Z\\ENU\\"; // the path to store the captured images with  lang code can be changed accordingly
+    String folder = "\\Workfront_20221114T111033Z\\ENU\\"; // the path to store the captured images with  lang code can be changed accordingly
     // Select the lang code accordingly
     String lang_EN ="--lang=en\"";
     String lang_DE ="de";
@@ -26,6 +30,10 @@ public class ENU extends AbstractPage {
 
     @BeforeClass
     public void beforeClass() throws Exception {
+        String instantExpected = "2014-12-22T10:15:30Z";
+        Clock clock = Clock.fixed(Instant.parse(instantExpected), ZoneId.of("UTC"));
+        Instant instant = Instant.now(clock);
+
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         // Set language
@@ -42,29 +50,16 @@ public class ENU extends AbstractPage {
 
     @Test
     public void String_001() throws Exception {
-//        MockID: YRs	Are you sure you want to delete
+//        MockID: YRw	Good morning, {0}
 //        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
-//        Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/boards/63a01f089a30709d646d5680
-//        1. Login to Workfront 2. Go to Boards and open a new board 3. Click three dots -> Delete
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/home/workspaces
+//        1. Login to Workfront 2. Go to Home page and enter New Home 3. Set your PC time to 9 AM and refresh the page
 
-        // Go to Boards and open a new board
-        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/boards/63e0f237c77c8222346e76a3");
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/home/workspaces");
         waitForPageToLoadCompletely(driver,60);
 
-        // Open any existed Board
-//        waitForElementVisible(driver,"(//div[@data-testid='dashboard-board-container']//h4)[1]");
-//        clickToElement(driver,"(//div[@data-testid='dashboard-board-container']//h4)[1]");
-
-        // Click three dots button > Delete
-        sleepInSecond(1);
-        waitForElementVisible(driver,"//button[@data-testid='board-menu-button']");
-        clickToElement(driver,"//button[@data-testid='board-menu-button']");
-
-        waitForElementVisible(driver,"//li[@data-key='delete']");
-        clickToElement(driver,"//li[@data-key='delete']");
-
         // Take SS: YQy	Custom Data
-        takeSnapShotWithHighlight(driver,"//section[contains(@class,'spectrum-Dialog-content')]", GlobalConstants.SCREENSHOTS+folder+"001_YRs.png");
+        takeSnapShotWithHighlight(driver,"//h1", GlobalConstants.SCREENSHOTS+folder+"001_YRs.png");
 
     }
 
