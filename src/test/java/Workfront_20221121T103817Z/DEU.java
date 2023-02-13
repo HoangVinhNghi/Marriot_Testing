@@ -12,9 +12,9 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-public class ENU extends AbstractPage {
+public class DEU extends AbstractPage {
     WebDriver driver;
-    String folder = "\\Workfront_20221121T103817Z\\ENU\\"; // the path to store the captured images with  lang code can be changed accordingly
+    String folder = "\\Workfront_20221121T103817Z\\DEU\\3585969\\DEU\\"; // the path to store the captured images with  lang code can be changed accordingly
     // Select the lang code accordingly
     String lang_EN ="--lang=en\"";
     String lang_DE ="de";
@@ -29,7 +29,7 @@ public class ENU extends AbstractPage {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         // Set language
-        options.addArguments("--lang=en"); //set browser language
+        options.addArguments("--lang=de"); //set browser language
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(12, TimeUnit.SECONDS);
         driver.manage().window().maximize();
@@ -64,7 +64,7 @@ public class ENU extends AbstractPage {
         takeSnapShotWithHighlight(driver,"(//*[name()='path' and contains(@d,'M6.573 6.558c.056.055.092.13 0')])[2]/ancestor::label", GlobalConstants.SCREENSHOTS+folder+"002_YST.png");
 
         // Take SS: YSf
-        takeSnapShotWithHighlight(driver,"(//div[contains(@class,'spectrum-Textfield-wrapper')])[3]//label[contains(@id,'react-aria')]", GlobalConstants.SCREENSHOTS+folder+"003_YSf.png");
+        //takeSnapShotWithHighlight(driver,"(//div[contains(@class,'spectrum-Textfield-wrapper')])[3]//label[contains(@id,'react-aria')]", GlobalConstants.SCREENSHOTS+folder+"003_YSf.png");
 
         // Take SS: YSg
         takeSnapShotWithHighlight(driver,"//div[contains(@class,' spectrum-Field--positionTop_')]//span[contains(@id,'react-aria')]", GlobalConstants.SCREENSHOTS+folder+"004_YSg.png");
@@ -173,12 +173,48 @@ public class ENU extends AbstractPage {
         waitForElementVisible(driver,"//li[@data-testid='deactivate']");
         clickToElement(driver,"//li[@data-testid='deactivate']");
         takeSnapShotWithHighlight(driver,"//span[@data-testid='body']", GlobalConstants.SCREENSHOTS+folder+"010_YSC.png");
+
+    }
+    @Test
+    public void String_011() throws Exception {
+//     s   MockID:  YSC	You deactivated the <b>{name}</b> {__mlm_low_goal}
+//                  YSD	You activated the <b>{name}</b> {__mlm_low_goal}
+//                  YSB	You closed the <b>{name}</b> {__mlm_low_goal}
+//                  YSF	Add closing notes
+//                  YSA	You reopened the <b>{name}</b> {__mlm_low_goal}
+//        Tet Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/home/workspaces
+//        1. Login to Workfront 2. Go to Home page and enter New Home
+
+
+        // 2. Go to Home page and enter New Home
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/goal/961e6f96-3907-4168-b081-983320082cbe/progress-indicators");
+        waitForPageToLoadCompletely(driver,60);
+
         // Take SS: YSD
         waitForElementVisible(driver,"//*[name()='path' and contains(@d,'M4.5 9A2.5 2.5 0 107 11.5 2.5 2.5 0')]/ancestor::button");
         clickToElement(driver,"//*[name()='path' and contains(@d,'M4.5 9A2.5 2.5 0 107 11.5 2.5 2.5 0')]/ancestor::button");
         waitForElementVisible(driver,"//li[@data-testid='activate']");
         clickToElement(driver,"//li[@data-testid='activate']");
         takeSnapShotWithHighlight(driver,"//span[@data-testid='body']", GlobalConstants.SCREENSHOTS+folder+"011_YSD.png");
+
+    }
+    @Test
+    public void String_012_013() throws Exception {
+//     s   MockID:  YSC	You deactivated the <b>{name}</b> {__mlm_low_goal}
+//                  YSD	You activated the <b>{name}</b> {__mlm_low_goal}
+//                  YSB	You closed the <b>{name}</b> {__mlm_low_goal}
+//                  YSF	Add closing notes
+//                  YSA	You reopened the <b>{name}</b> {__mlm_low_goal}
+//        Tet Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/home/workspaces
+//        1. Login to Workfront 2. Go to Home page and enter New Home
+
+
+        // 2. Go to Home page and enter New Home
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/goal/961e6f96-3907-4168-b081-983320082cbe/progress-indicators");
+        waitForPageToLoadCompletely(driver,60);
+
         // Take SS: YSB
         waitForElementVisible(driver,"//*[name()='path' and contains(@d,'M4.5 9A2.5 2.5 0 107 11.5 2.5 2.5 0')]/ancestor::button");
         clickToElement(driver,"//*[name()='path' and contains(@d,'M4.5 9A2.5 2.5 0 107 11.5 2.5 2.5 0')]/ancestor::button");
@@ -186,6 +222,24 @@ public class ENU extends AbstractPage {
         clickToElement(driver,"//li[@data-testid='close']");
         takeSnapShotWithHighlight(driver,"//span[@data-testid='body']", GlobalConstants.SCREENSHOTS+folder+"012_YSB.png");
         takeSnapShotWithHighlight(driver,"//a[@data-testid='closing-notes-dialog']", GlobalConstants.SCREENSHOTS+folder+"013_YSF.png");
+
+    }
+    @Test
+    public void String_014() throws Exception {
+//     s   MockID:  YSC	You deactivated the <b>{name}</b> {__mlm_low_goal}
+//                  YSD	You activated the <b>{name}</b> {__mlm_low_goal}
+//                  YSB	You closed the <b>{name}</b> {__mlm_low_goal}
+//                  YSF	Add closing notes
+//                  YSA	You reopened the <b>{name}</b> {__mlm_low_goal}
+//        Tet Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/home/workspaces
+//        1. Login to Workfront 2. Go to Home page and enter New Home
+
+
+        // 2. Go to Home page and enter New Home
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/goal/961e6f96-3907-4168-b081-983320082cbe/progress-indicators");
+        waitForPageToLoadCompletely(driver,60);
+
         // Take SS: YSA
         waitForElementVisible(driver,"//*[name()='path' and contains(@d,'M4.5 9A2.5 2.5 0 107 11.5 2.5 2.5 0')]/ancestor::button");
         clickToElement(driver,"//*[name()='path' and contains(@d,'M4.5 9A2.5 2.5 0 107 11.5 2.5 2.5 0')]/ancestor::button");
