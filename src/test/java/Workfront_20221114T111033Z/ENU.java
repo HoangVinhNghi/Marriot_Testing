@@ -10,11 +10,10 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import java.time.Clock;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
+import java.time.*;
 import java.util.concurrent.TimeUnit;
+
+import static java.time.Instant.ofEpochMilli;
 
 public class ENU extends AbstractPage {
     WebDriver driver;
@@ -30,9 +29,21 @@ public class ENU extends AbstractPage {
 
     @BeforeClass
     public void beforeClass() throws Exception {
-        String instantExpected = "2014-12-22T10:15:30Z";
-        Clock clock = Clock.fixed(Instant.parse(instantExpected), ZoneId.of("UTC"));
-        Instant instant = Instant.now(clock);
+//        String instantExpected = "2022-12-22T15:15:30Z";
+//        Clock clock = Clock.fixed(Instant.parse(instantExpected), ZoneId.of("UTC"));
+//        Instant instant = Instant.now(clock);
+//        Runtime.getRuntime().exec("cmd /C time " + "15:21:20"); // hh:mm:ss
+
+        Clock constantClock = Clock.fixed(ofEpochMilli(0), ZoneId.systemDefault());
+// go to the future:
+        Clock clock = Clock.offset(constantClock, Duration.ofSeconds(10800));
+
+//// rewind back with a negative value:
+//        clock = Clock.offset(constantClock, Duration.ofSeconds(-5));
+//
+//// the 0 duration returns to the same clock:
+//        clock = Clock.offset(constantClock, Duration.ZERO);
+
 
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
@@ -46,6 +57,7 @@ public class ENU extends AbstractPage {
         sendKeyToElement(driver, "//input[@id='password']", GlobalConstants.PASSWORD);
         clickToElement(driver, "//button[@type='submit']");
         waitForElementVisible(driver, "//div[@id='page-content']");
+//        System.out.println(instant.toString());
     }
 
     @Test
@@ -60,7 +72,6 @@ public class ENU extends AbstractPage {
 
         // Take SS: YQy	Custom Data
         takeSnapShotWithHighlight(driver,"//h1", GlobalConstants.SCREENSHOTS+folder+"001_YRs.png");
-
     }
 
     @AfterClass(alwaysRun = true)

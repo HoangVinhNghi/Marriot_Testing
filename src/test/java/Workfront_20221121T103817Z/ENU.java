@@ -138,20 +138,17 @@ public class ENU extends AbstractPage {
         clickToElement(driver,"(//ul[@data-testid='options-container']//child::li)[3]");
         waitForElementVisible(driver,"//div[@data-testid='sliding-pane']");
 
-        sleepInSecond(20);
-        //clickToElement(driver,"//div[@aria-rowindex='1']//div[@data-testid='row-checkbox']");
-        waitForElementClickable(driver,"(//div[contains(@data-testid,'row-checkbox')])[1]");
-        clickToElementByAction(driver,"(//div[contains(@data-testid,'row-checkbox')])[1]");
-        waitForElementClickable(driver,"(//div[contains(@data-testid,'row-checkbox')])[3]");
-        checkToCheckboxOrRadio(driver,"(//div[contains(@data-testid,'row-checkbox')])[3]");
-
-
-
-        //add
-        //clickToElement(driver,"//footer[@data-testid='sliding-pane-footer']//button[@type='button']");
+        sleepInSecond(5);
+        waitForElementClickable(driver,"(//div[@data-testid='sliding-pane']//div[@data-testid='row-checkbox'])[1]");
+        checkToCheckboxOrRadio(driver,"(//div[@data-testid='sliding-pane']//div[@data-testid='row-checkbox'])[1]");
+        sleepInSecond(1);
+        waitForElementClickable(driver,"(//div[@data-testid='sliding-pane']//div[@data-testid='row-checkbox'])[2]");
+        checkToCheckboxOrRadio(driver,"(//div[@data-testid='sliding-pane']//div[@data-testid='row-checkbox'])[2]");
+        // Click Add
+        clickToElement(driver,"//footer[@data-testid='sliding-pane-footer']//button[@type='button']");
 
         // Take SS: YR/	Custom Data
-        //takeSnapShotWithHighlight(driver,"//span[@data-testid='body']", GlobalConstants.SCREENSHOTS+folder+"009_YSE.png");
+        takeSnapShotWithHighlight(driver,"//span[@data-testid='body']", GlobalConstants.SCREENSHOTS+folder+"009_YSE.png");
 
     }
     @Test
