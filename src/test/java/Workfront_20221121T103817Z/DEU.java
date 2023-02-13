@@ -173,7 +173,6 @@ public class DEU extends AbstractPage {
         waitForElementVisible(driver,"//li[@data-testid='deactivate']");
         clickToElement(driver,"//li[@data-testid='deactivate']");
         takeSnapShotWithHighlight(driver,"//span[@data-testid='body']", GlobalConstants.SCREENSHOTS+folder+"010_YSC.png");
-
     }
     @Test
     public void String_011() throws Exception {
