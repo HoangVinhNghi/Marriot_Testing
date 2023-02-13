@@ -137,16 +137,21 @@ public class ENU extends AbstractPage {
         clickToElement(driver,"//button[@id='add-new-indicator-dropdown-dropdown-button']");
         clickToElement(driver,"(//ul[@data-testid='options-container']//child::li)[3]");
         waitForElementVisible(driver,"//div[@data-testid='sliding-pane']");
-        clickToElement(driver,"//div[@aria-rowindex='1']//div[@data-testid='row-checkbox']");
-        sleepInSecond(1);
-        // lỗi chưa click đc sang ô thứ 2
-        clickToElementByJS(driver,"//div[@aria-rowindex='2']//div[@data-testid='row-checkbox']");
+
+        sleepInSecond(20);
+        //clickToElement(driver,"//div[@aria-rowindex='1']//div[@data-testid='row-checkbox']");
+        waitForElementClickable(driver,"(//div[contains(@data-testid,'row-checkbox')])[1]");
+        clickToElementByAction(driver,"(//div[contains(@data-testid,'row-checkbox')])[1]");
+        waitForElementClickable(driver,"(//div[contains(@data-testid,'row-checkbox')])[3]");
+        checkToCheckboxOrRadio(driver,"(//div[contains(@data-testid,'row-checkbox')])[3]");
+
+
 
         //add
-        clickToElement(driver,"//footer[@data-testid='sliding-pane-footer']//button[@type='button']");
+        //clickToElement(driver,"//footer[@data-testid='sliding-pane-footer']//button[@type='button']");
 
         // Take SS: YR/	Custom Data
-        takeSnapShotWithHighlight(driver,"//span[@data-testid='body']", GlobalConstants.SCREENSHOTS+folder+"009_YSE.png");
+        //takeSnapShotWithHighlight(driver,"//span[@data-testid='body']", GlobalConstants.SCREENSHOTS+folder+"009_YSE.png");
 
     }
     @Test
