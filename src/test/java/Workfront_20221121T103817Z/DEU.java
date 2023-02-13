@@ -94,7 +94,6 @@ public class DEU extends AbstractPage {
 
         // Take SS: YR+	Custom Data
         takeSnapShotWithHighlight(driver,"//span[@data-testid='body']", GlobalConstants.SCREENSHOTS+folder+"007_YR+.png");
-
     }
     @Test
     public void String_008() throws Exception {

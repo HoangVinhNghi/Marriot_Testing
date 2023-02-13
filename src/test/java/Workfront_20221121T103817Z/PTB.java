@@ -39,7 +39,6 @@ public class PTB extends AbstractPage {
         clickToElement(driver, "//button[@type='submit']");
         waitForElementVisible(driver, "//div[@id='page-content']");
     }
-
     @Test
     public void String_001_006() throws Exception {
 //        MockID: YSZ,YST,YSf,YSg,YSe,YSU	New issue,{__mlm_up_issue} name,Description,Priority,Documents,Save new {__mlm_low_issue}
