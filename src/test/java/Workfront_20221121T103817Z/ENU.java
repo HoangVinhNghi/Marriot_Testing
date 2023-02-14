@@ -64,10 +64,10 @@ public class ENU extends AbstractPage {
         takeSnapShotWithHighlight(driver,"(//*[name()='path' and contains(@d,'M6.573 6.558c.056.055.092.13 0')])[2]/ancestor::label", GlobalConstants.SCREENSHOTS+folder+"002_YST.png");
 
         // Take SS: YSf
-        takeSnapShotWithHighlight(driver,"(//div[contains(@class,'spectrum-Textfield-wrapper')])[3]//label[contains(@id,'react-aria')]", GlobalConstants.SCREENSHOTS+folder+"003_YSf.png");
+        takeSnapShotWithHighlight(driver,"//section[@role='dialog']//div[@style='height: 120px; width: 90%;']//label[contains(@id,'react-aria')]", GlobalConstants.SCREENSHOTS+folder+"003_YSf.png");
 
         // Take SS: YSg
-        takeSnapShotWithHighlight(driver,"//div[contains(@class,' spectrum-Field--positionTop_')]//span[contains(@id,'react-aria')]", GlobalConstants.SCREENSHOTS+folder+"004_YSg.png");
+        takeSnapShotWithHighlight(driver,"((//section[contains(@class,'spectrum-Dialog-content')]//div[contains(@class,'spectrum-Field--positionTop')])[5]//span[contains(@id,'react-aria')])[1]", GlobalConstants.SCREENSHOTS+folder+"004_YSg.png");;
         // Take SS: YSe
         takeSnapShotWithHighlight(driver,"//div[@class='h-full overflow-hidden relative border-gray-200 transition-all border-2 border-dashed rounded-md']//parent::div//span", GlobalConstants.SCREENSHOTS+folder+"005_YSe.png");
         // Take SS: YSU
