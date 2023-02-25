@@ -217,11 +217,318 @@ public class ENU extends AbstractPage {
         waitForElementVisible(driver,"(//div[contains(@class,'spectrum-HelpText')])[6]");
         takeSnapShotWithHighlight(driver,"(//div[contains(@class,'spectrum-HelpText')])[6]",GlobalConstants.SCREENSHOTS+folder+"007_YT2.png");
 
+    }
 
+    //Template
+    @Test
+    public void String_008() throws Exception {
+//        MockID: YTm	Start typing template name, Reference Number, or enter the template ID
+
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/template/63f75d2c00007794d1f2e2bfa7a7f9cb/tasks
+//        1. Login to Workfront 2. Go to Templates 3. Open any template with tasks 4. Select all template tsks and click on 3 dots (...) 5. Select 'Move to..'
+
+        // Go to Boards and open a new board
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/template/6241ab1e00001921338f03c34ec79beb/tasks");
+        waitForPageToLoadCompletely(driver,60);
+
+        // Click three dots button > Move to
+        sleepInSecond(1);
+        checkToCheckboxOrRadio(driver,"//div[@data-test-id='header-checkbox']");
+        clickToElement(driver,"//button[@data-testid='templatetask-more-dropdown']");
+        clickToElement(driver,"(//li[contains(@data-testid,'option')])[1]");
+
+        //Take YTm
+        waitForElementVisible(driver,"//div[@data-testid='destinationTemplate-input-wrapper']");
+        takeSnapShotWithHighlight(driver,"//div[@data-testid='destinationTemplate-input-wrapper']",GlobalConstants.SCREENSHOTS+folder+"008_YTm.png");
+    }
+    @Test
+    public void String_009() throws Exception {
+//        MockID: YTu	You must select a destination template to view more options
+
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/template/63f75d2c00007794d1f2e2bfa7a7f9cb/tasks
+//        1. Login to Workfront 2. Go to Templates 3. Open any template with tasks
+//        4. Select all template tsks and click on 3 dots (...) 5. Select 'Move to..' 6. Mouse over grayed steps under 'Details'
+
+        // Go to Boards and open a new board
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/template/6241ab1e00001921338f03c34ec79beb/tasks");
+        waitForPageToLoadCompletely(driver,60);
+
+        // Click three dots button > Move to
+        sleepInSecond(1);
+        checkToCheckboxOrRadio(driver,"//div[@data-test-id='header-checkbox']");
+        clickToElement(driver,"//button[@data-testid='templatetask-more-dropdown']");
+        clickToElement(driver,"(//li[contains(@data-testid,'option')])[1]");
+//      6. Mouse over grayed steps under 'Details'
+        hoverToElement(driver,"//div[@data-testid='section-nav-item-parentTemplateTaskSection']");
+
+        //Take YTu
+        waitForElementVisible(driver,"//div[@data-testid='tooltip-styled']");
+        takeSnapShotWithHighlight(driver,"//div[@data-testid='tooltip-styled']",GlobalConstants.SCREENSHOTS+folder+"009_YTu.png");
+    }
+    @Test
+    public void String_010() throws Exception {
+//        MockID: YTj	Any documents attached to these template {__mlm_low_tasks} will be deleted and placed in the Recycle Bin for 30 days. Documents can be recovered only by an administrator.
+        // YTh          Select the destination template {__mlm_low_task} that you want as the parent of this template {__mlm_low_task}.
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/template/63f75d2c00007794d1f2e2bfa7a7f9cb/tasks
+//          1. Login to Workfront
+// 2. Go to Templates
+// 3. Open any template with tasks
+// 4. Select all template tasks and click on 3 dots (...)
+// 5. Select 'Move to..'
+// 6. Select any destination template
+// 7. Uncheck 'Select all' under 'Options'
+
+        // Go to Boards and open a new board
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/template/6241ab1e00001921338f03c34ec79beb/tasks");
+        waitForPageToLoadCompletely(driver,60);
+
+        // Click three dots button > Move to
+        sleepInSecond(1);
+        checkToCheckboxOrRadio(driver,"//div[@data-test-id='header-checkbox']");
+        clickToElement(driver,"//button[@data-testid='templatetask-more-dropdown']");
+        clickToElement(driver,"(//li[contains(@data-testid,'option')])[1]");
+
+        //select Destination Template
+        clickToElement(driver,"//input[@id='field-destinationTemplate']");
+        sendKeyToElement(driver,"//input[@id='field-destinationTemplate']","contracted");
+        clickToElement(driver,"(//span[contains(@data-testid,'option-listoption')])[1]");
+// 7. Uncheck 'Select all' under 'Options'
+        uncheckToCheckbox(driver,"//input[@id='select-all-options']");
+        //Take YTj
+        waitForElementVisible(driver,"//div[@data-testid='options-warning']");
+        sleepInSecond(3);
+        takeSnapShotWithHighlight(driver,"//div[@data-testid='options-warning']",GlobalConstants.SCREENSHOTS+folder+"010_YTj.png");
+
+        takeSnapShotWithHighlight(driver,"//div[@data-testid='toolbar-primary-area__project_parent_tasks']",GlobalConstants.SCREENSHOTS+folder+"010_YTh.png");
+    }
+    @Test
+    public void String_011() throws Exception {
+//        MockID: YTe	Any documents attached to this template {__mlm_low_task} will be deleted and placed in the Recycle Bin for 30 days. Documents can be recovered only by an administrator.
+
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/template/63f75d2c00007794d1f2e2bfa7a7f9cb/tasks
+//          1. Login to Workfront 2. Go to Templates 3. Open any template with tasks 4. Select 1 template task and click on 3 dots (...)
+//          5. Select 'Move to..' 6. Select any destination template 7. Uncheck 'Select all' under 'Options'
+
+        // Go to Boards and open a new board
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/template/6241ab1e00001921338f03c34ec79beb/tasks");
+        waitForPageToLoadCompletely(driver,60);
+
+        //4. Select 1 template task and click on 3 dots (...)
+        //5. Select 'Move to..'
+        sleepInSecond(1);
+        checkToCheckboxOrRadio(driver,"(//div[@data-test-id='row-checkbox'])[1]");
+        clickToElement(driver,"//button[@data-testid='templatetask-more-dropdown']");
+        clickToElement(driver,"(//li[contains(@data-testid,'option')])[1]");
+
+        //select Destination Template
+        clickToElement(driver,"//input[@id='field-destinationTemplate']");
+        sendKeyToElement(driver,"//input[@id='field-destinationTemplate']","contracted");
+        clickToElement(driver,"(//span[contains(@data-testid,'option-listoption')])[1]");
+// 7. Uncheck 'Select all' under 'Options'
+        uncheckToCheckbox(driver,"//input[@id='select-all-options']");
+        //Take YTe
+        waitForElementVisible(driver,"//div[@data-testid='options-warning']");
+        sleepInSecond(3);
+        takeSnapShotWithHighlight(driver,"//div[@data-testid='options-warning']",GlobalConstants.SCREENSHOTS+folder+"011_YTe.png");
+
+            }
+
+    //Need to login with alphawfone+cw@gmail.com/Adobe123#
+    @Test
+    public void String_012_013_014_015() throws Exception {
+//        MockID: YTs	You don't have access to edit this template.
+                // YTi This template {__mlm_low_task} has a different currency than the destination template. If it has financial fields (cost, expenses, etc) set you may need to manually convert them to the new currency
+                // YTg Some of the template {__mlm_low_tasks} have a different currency than the destination template. If they have financial fields (cost, expenses, etc) set you may need to manually convert them to the new currency
+                // YTf You do not have access to add template {__mlm_low_tasks} to this template. Select a different template or
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/template/63f75d2c00007794d1f2e2bfa7a7f9cb/tasks
+//          1. Login to Workfront 2. Go to Templates and create 2 Templates 3. Share first template to alphawfone+cw@gmail.com/Adobe123# user - Edit rights
+//          4. Share second template to alphawfone+cw@gmail.com/Adobe123# user - View rights 5. Login as this user and open first template
+//          6. Add some task, select it and click three dots > Move to 7. Select second template as a destination OR
+//          1. Login as alphawfone+cw@gmail.com/Adobe123# 2. Go to Restricted Access template https://adobeloctesting.devtest.workfront-dev.com/template/63e9f65c000019d2376367b393c34942/tasks
+//          3. Select task and click three dots > Move to 7. Select "Restricted Access 2" template as a destination
+        // Go to Boards and open a new board
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/template/63e9f65c000019d2376367b393c34942/tasks");
+        waitForPageToLoadCompletely(driver,60);
+
+        //4. Select 1 template task and click on 3 dots (...)
+        //5. Select 'Move to..'
+        sleepInSecond(1);
+        checkToCheckboxOrRadio(driver,"(//div[@data-test-id='row-checkbox'])[1]");
+        clickToElement(driver,"//button[@data-testid='templatetask-more-dropdown']");
+        clickToElement(driver,"(//li[contains(@data-testid,'option')])[1]");
+
+        //select Destination Template Restricted Access 3
+        clickToElement(driver,"//input[@id='field-destinationTemplate']");
+        sendKeyToElement(driver,"//input[@id='field-destinationTemplate']","Restricted Access 3");
+        sleepInSecond(3);
+        clickToElement(driver,"(//span[contains(@data-testid,'option-listoption')])[1]");
+
+        //Take YTi
+        waitForElementVisible(driver,"//div[@data-testid='lightbox-alert']");
+        sleepInSecond(3);
+        takeSnapShotWithHighlight(driver,"//div[@data-testid='lightbox-alert']",GlobalConstants.SCREENSHOTS+folder+"012_YTi.png");
+
+        //select Destination Template Restricted Access 2
+        clickToElement(driver,"//input[@id='field-destinationTemplate']");
+        sendKeyToElement(driver,"//input[@id='field-destinationTemplate']","Restricted Access 2");
+        sleepInSecond(3);
+        clickToElement(driver,"(//span[contains(@data-testid,'option-listoption')])[1]");
+
+        //Take YTs & YTf
+        waitForElementVisible(driver,"//div[@data-testid='destinationTemplate-input-error']");
+        sleepInSecond(3);
+        takeSnapShotWithHighlight(driver,"//div[@data-testid='destinationTemplate-input-error']",GlobalConstants.SCREENSHOTS+folder+"013_YTs.png");
+        takeSnapShotWithHighlight(driver,"//div[@data-testid='details-page-error-summary']",GlobalConstants.SCREENSHOTS+folder+"014_YTf.png");
+
+// refresh
+                openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/template/63e9f65c000019d2376367b393c34942/tasks");
+                waitForPageToLoadCompletely(driver,60);
+
+                //4. Select 1 template task and click on 3 dots (...)
+                //5. Select 'Move to..'
+                sleepInSecond(1);
+                checkToCheckboxOrRadio(driver,"//div[@data-test-id='header-checkbox']");
+                clickToElement(driver,"//button[@data-testid='templatetask-more-dropdown']");
+                clickToElement(driver,"(//li[contains(@data-testid,'option')])[1]");
+
+                //select Destination Template Restricted Access 3
+                clickToElement(driver,"//input[@id='field-destinationTemplate']");
+                sendKeyToElement(driver,"//input[@id='field-destinationTemplate']","Restricted Access 3");
+                sleepInSecond(3);
+                clickToElement(driver,"(//span[contains(@data-testid,'option-listoption')])[1]");
+
+                //Take YTg
+                waitForElementVisible(driver,"//div[@data-testid='lightbox-alert']");
+                sleepInSecond(3);
+                takeSnapShotWithHighlight(driver,"//div[@data-testid='lightbox-alert']",GlobalConstants.SCREENSHOTS+folder+"015_YTg.png");
+            }
+
+    //Setup
+    @Test
+    public void String_016_030() throws Exception {
+//        MockID:
+//        R9F   Restrict timesheet editing to owners and administrators.
+        //UiW	Restrict hour editing to owners and administrators.
+        //Rzp	Where users can log time
+        //SCk	Directly on {__mlm_low_projects}.
+        //RJz	On {__mlm_low_projects} that are complete.
+//        SXV	On {__mlm_low_projects} that are dead.
+        //TJ8	Pre-populate timesheets
+        //SIH	{__mlm_up_tasks} and {__mlm_low_issues} that have been completed.
+        //SPQ	{__mlm_up_tasks} and {__mlm_low_issues} that have Planned Dates in timesheet's date range.
+        //SCZ	Deleted {__mlm_low_projects}, {__mlm_low_tasks}, and {__mlm_low_issues}
+//        RY9	{__mlm_up_projects}
+        //Rg1	If the {__mlm_low_project} is later restored, the time remains on the timesheet
+        //SJP	{__mlm_up_tasks} and {__mlm_low_issues}
+        //SFh	Move any logged time to the parent {__mlm_low_project}.
+        //R0W	If the {__mlm_low_task} or {__mlm_low_issue} is later restored, the time remains on the {__mlm_low_project}
+
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/setup/timesheet-preferences
+//          1. Login to Workfront 2. Go to Setup -> Timesheets & Hours -> Preferences 3. Scroll down
+
+        // Go to Boards and open a new board
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/setup/timesheet-preferences");
+        waitForPageToLoadCompletely(driver,60);
+
+
+        //Take screenshot
+        waitForElementVisible(driver,"//div[@data-test-id='timesheet-preferences-restrict-owner-and-admin']");
+        takeSnapShotWithHighlight(driver,"//div[@data-test-id='timesheet-preferences-restrict-owner-and-admin']",GlobalConstants.SCREENSHOTS+folder+"016_017_R9F_UiW.png");
+        sleepInSecond(1);
+        takeSnapShotWithHighlight(driver,"(//h3)[2]",GlobalConstants.SCREENSHOTS+folder+"018_Rzp.png");
+        sleepInSecond(1);
+        takeSnapShotWithHighlight(driver,"//div[@data-test-id='logging-time']",GlobalConstants.SCREENSHOTS+folder+"019_020_021_SCk_RJz_SXV.png");
+        sleepInSecond(1);
+        takeSnapShotWithHighlight(driver,"(//h3)[3]",GlobalConstants.SCREENSHOTS+folder+"022_TJ8.png");
+        sleepInSecond(1);
+        scrollToElement(driver,"//label[@data-testid='timesheet.preferences.prepopulatewith.completed']");
+        takeSnapShotWithHighlight(driver,"//label[@data-testid='timesheet.preferences.prepopulatewith.completed']",GlobalConstants.SCREENSHOTS+folder+"023_SIH.png");
+        scrollToElement(driver,"//label[@data-testid='timesheet.preferences.prepopulatewith.planneddates']");
+        takeSnapShotWithHighlight(driver,"//label[@data-testid='timesheet.preferences.prepopulatewith.planneddates']",GlobalConstants.SCREENSHOTS+folder+"024_SPQ.png");
+        scrollToElement(driver,"(//h3)[4]");
+        takeSnapShotWithHighlight(driver,"(//h3)[4]",GlobalConstants.SCREENSHOTS+folder+"025_SCZ.png");
+        takeSnapShotWithHighlight(driver,"//legend[@id='deleteProjects']",GlobalConstants.SCREENSHOTS+folder+"026_RY9.png");
+        takeSnapShotWithHighlight(driver,"(//div[@data-test-id='alert-component-info'])[1]",GlobalConstants.SCREENSHOTS+folder+"027_Rg1.png");
+        takeSnapShotWithHighlight(driver,"//legend[@id='deleteTasksIssues']",GlobalConstants.SCREENSHOTS+folder+"028_SJP.png");
+        takeSnapShotWithHighlight(driver,"//label[@for='timesheet.preferences.movehours.taskissuedelete.on.new']",GlobalConstants.SCREENSHOTS+folder+"029_SFh.png");
+        takeSnapShotWithHighlight(driver,"(//div[@data-test-id='alert-component-info'])[2]",GlobalConstants.SCREENSHOTS+folder+"030_R0W.png");
+
+    }
+    @Test
+    public void String_031() throws Exception {
+//        MockID:
+//        S9i	General preferences
+
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/setup/system-preferences
+//         1. Login to Workfront 2. Go to Setup 3. Go to System, choose Preferences
+
+        // Go to Boards and open a new board
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/setup/system-preferences");
+        waitForPageToLoadCompletely(driver,60);
+
+
+        //Take screenshot
+        waitForElementVisible(driver,"(//legend)[2]");
+        takeSnapShotWithHighlight(driver,"(//legend)[2]",GlobalConstants.SCREENSHOTS+folder+"031_S9i.png");
+
+    }
+    @Test
+    public void String_032() throws Exception {
+//        MockID:
+//        YT5	Role Tag
+
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/setup/job-roles
+//         1. Login to Workfront 2. Go to Setup -> Job Roles 3. Click on New Job Role 4. Click on "Add new tagged rate"
+
+        // Go to Boards and open a new board
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/setup/job-roles");
+        waitForPageToLoadCompletely(driver,60);
+
+        //step 3 click on New Job Role
+        clickToElement(driver,"//button[@id='addToolbar']");
+        waitForElementVisible(driver,"//div[@id='react-aria-modal-dialog']");
+        clickToElement(driver,"//button[@data-testid theme='default']");
+
+
+        //Take screenshot
+        waitForElementVisible(driver,"//label[@id='roleTag-label']");
+        takeSnapShotWithHighlight(driver,"//label[@id='roleTag-label']",GlobalConstants.SCREENSHOTS+folder+"032_YT5.png");
 
     }
 
+    //Timesheet
+    @Test
+    public void String_033() throws Exception {
+//        MockID:
+//        YU2	For delete row press Control+Alt+Minus
+//        YUw	For remove {0} from timesheet press Alt+P
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/timesheet/63e2184b00010b51c0c01e6a6d89c66f/overview
+//         1. Login to Workfront 2. Go to Timesheets 3. Open any timesheet with 'Open' status
+//         4. If there's no 'Remove' icon under project's title then create new row ('+' icon) 5. Mouse over 'Remove' icon note: string is in Inspector
 
+        // Go to Boards and open a new board
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/timesheet/63e2184b00010b51c0c01e6a6d89c66f/overview");
+        waitForPageToLoadCompletely(driver,60);
+
+        //step 3 click on New Job Role
+        clickToElement(driver,"//img[@alt='Add row']");
+        waitForElementVisible(driver,"//button[@data-testid='delete-entry-button']");
+        inspectElement(driver,"//button[@data-testid='delete-entry-button']");
+
+        //Take screenshot
+        captureScreen(GlobalConstants.SCREENSHOTS+folder+"033_YU2.png");
+
+        //
+    }
     @AfterClass(alwaysRun = true)
     public void afterClass() {
 //        driver.quit();
