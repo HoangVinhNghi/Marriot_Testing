@@ -337,76 +337,7 @@ public class ENU extends AbstractPage {
 
             }
 
-    //Need to login with alphawfone+cw@gmail.com/Adobe123#
-    @Test
-    public void String_012_013_014_015() throws Exception {
-//        MockID: YTs	You don't have access to edit this template.
-                // YTi This template {__mlm_low_task} has a different currency than the destination template. If it has financial fields (cost, expenses, etc) set you may need to manually convert them to the new currency
-                // YTg Some of the template {__mlm_low_tasks} have a different currency than the destination template. If they have financial fields (cost, expenses, etc) set you may need to manually convert them to the new currency
-                // YTf You do not have access to add template {__mlm_low_tasks} to this template. Select a different template or
-//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
-//        Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/template/63f75d2c00007794d1f2e2bfa7a7f9cb/tasks
-//          1. Login to Workfront 2. Go to Templates and create 2 Templates 3. Share first template to alphawfone+cw@gmail.com/Adobe123# user - Edit rights
-//          4. Share second template to alphawfone+cw@gmail.com/Adobe123# user - View rights 5. Login as this user and open first template
-//          6. Add some task, select it and click three dots > Move to 7. Select second template as a destination OR
-//          1. Login as alphawfone+cw@gmail.com/Adobe123# 2. Go to Restricted Access template https://adobeloctesting.devtest.workfront-dev.com/template/63e9f65c000019d2376367b393c34942/tasks
-//          3. Select task and click three dots > Move to 7. Select "Restricted Access 2" template as a destination
-        // Go to Boards and open a new board
-        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/template/63e9f65c000019d2376367b393c34942/tasks");
-        waitForPageToLoadCompletely(driver,60);
 
-        //4. Select 1 template task and click on 3 dots (...)
-        //5. Select 'Move to..'
-        sleepInSecond(1);
-        checkToCheckboxOrRadio(driver,"(//div[@data-test-id='row-checkbox'])[1]");
-        clickToElement(driver,"//button[@data-testid='templatetask-more-dropdown']");
-        clickToElement(driver,"(//li[contains(@data-testid,'option')])[1]");
-
-        //select Destination Template Restricted Access 3
-        clickToElement(driver,"//input[@id='field-destinationTemplate']");
-        sendKeyToElement(driver,"//input[@id='field-destinationTemplate']","Restricted Access 3");
-        sleepInSecond(3);
-        clickToElement(driver,"(//span[contains(@data-testid,'option-listoption')])[1]");
-
-        //Take YTi
-        waitForElementVisible(driver,"//div[@data-testid='lightbox-alert']");
-        sleepInSecond(3);
-        takeSnapShotWithHighlight(driver,"//div[@data-testid='lightbox-alert']",GlobalConstants.SCREENSHOTS+folder+"012_YTi.png");
-
-        //select Destination Template Restricted Access 2
-        clickToElement(driver,"//input[@id='field-destinationTemplate']");
-        sendKeyToElement(driver,"//input[@id='field-destinationTemplate']","Restricted Access 2");
-        sleepInSecond(3);
-        clickToElement(driver,"(//span[contains(@data-testid,'option-listoption')])[1]");
-
-        //Take YTs & YTf
-        waitForElementVisible(driver,"//div[@data-testid='destinationTemplate-input-error']");
-        sleepInSecond(3);
-        takeSnapShotWithHighlight(driver,"//div[@data-testid='destinationTemplate-input-error']",GlobalConstants.SCREENSHOTS+folder+"013_YTs.png");
-        takeSnapShotWithHighlight(driver,"//div[@data-testid='details-page-error-summary']",GlobalConstants.SCREENSHOTS+folder+"014_YTf.png");
-
-// refresh
-                openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/template/63e9f65c000019d2376367b393c34942/tasks");
-                waitForPageToLoadCompletely(driver,60);
-
-                //4. Select 1 template task and click on 3 dots (...)
-                //5. Select 'Move to..'
-                sleepInSecond(1);
-                checkToCheckboxOrRadio(driver,"//div[@data-test-id='header-checkbox']");
-                clickToElement(driver,"//button[@data-testid='templatetask-more-dropdown']");
-                clickToElement(driver,"(//li[contains(@data-testid,'option')])[1]");
-
-                //select Destination Template Restricted Access 3
-                clickToElement(driver,"//input[@id='field-destinationTemplate']");
-                sendKeyToElement(driver,"//input[@id='field-destinationTemplate']","Restricted Access 3");
-                sleepInSecond(3);
-                clickToElement(driver,"(//span[contains(@data-testid,'option-listoption')])[1]");
-
-                //Take YTg
-                waitForElementVisible(driver,"//div[@data-testid='lightbox-alert']");
-                sleepInSecond(3);
-                takeSnapShotWithHighlight(driver,"//div[@data-testid='lightbox-alert']",GlobalConstants.SCREENSHOTS+folder+"015_YTg.png");
-            }
 
     //Setup
     @Test
@@ -445,6 +376,7 @@ public class ENU extends AbstractPage {
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver,"//div[@data-test-id='logging-time']",GlobalConstants.SCREENSHOTS+folder+"019_020_021_SCk_RJz_SXV.png");
         sleepInSecond(1);
+        scrollToElement(driver,"(//h3)[3]");
         takeSnapShotWithHighlight(driver,"(//h3)[3]",GlobalConstants.SCREENSHOTS+folder+"022_TJ8.png");
         sleepInSecond(1);
         scrollToElement(driver,"//label[@data-testid='timesheet.preferences.prepopulatewith.completed']");
@@ -473,8 +405,8 @@ public class ENU extends AbstractPage {
         openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/setup/system-preferences");
         waitForPageToLoadCompletely(driver,60);
 
-
         //Take screenshot
+        switchToIframeByElement(driver,"//iframe[@id='main-frame']");
         waitForElementVisible(driver,"(//legend)[2]");
         takeSnapShotWithHighlight(driver,"(//legend)[2]",GlobalConstants.SCREENSHOTS+folder+"031_S9i.png");
 
@@ -493,9 +425,11 @@ public class ENU extends AbstractPage {
         waitForPageToLoadCompletely(driver,60);
 
         //step 3 click on New Job Role
-        clickToElement(driver,"//button[@id='addToolbar']");
-        waitForElementVisible(driver,"//div[@id='react-aria-modal-dialog']");
-        clickToElement(driver,"//button[@data-testid theme='default']");
+        switchToIframeByElement(driver,"//iframe[@id='main-frame']");
+        waitForElementVisible(driver,"//span[@class='button-icon']");
+        clickToElement(driver,"//span[@class='button-icon']");
+        waitForElementVisible(driver,"//button[@theme='default']");
+        clickToElement(driver,"//button[@theme='default']");
 
 
         //Take screenshot
@@ -879,33 +813,94 @@ public class ENU extends AbstractPage {
 
     }
 
-    //Home
+    //Need to login with alphawfone+cw@gmail.com/Adobe123#
     @Test
-    public void String_054_055() throws Exception {
-//        MockID:
-        //YUN	No mentions
-        //YUM	Mentions will appear here when others add you to updates.
+    public void String_012_013_014_015() throws Exception {
+//        MockID: YTs	You don't have access to edit this template.
+                // YTi This template {__mlm_low_task} has a different currency than the destination template. If it has financial fields (cost, expenses, etc) set you may need to manually convert them to the new currency
+                // YTg Some of the template {__mlm_low_tasks} have a different currency than the destination template. If they have financial fields (cost, expenses, etc) set you may need to manually convert them to the new currency
+                // YTf You do not have access to add template {__mlm_low_tasks} to this template. Select a different template or
 //        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
-//        Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/home/workspaces
-//         1. Login to Workfront 2. Open up the browser JavaScript console
-//         3. In the JavaScript console, type: localStorage.setItem('devtools', true)
-//         4. Refresh the page
-//         5. You should now see a floating icon that when clicked will open the Workfront Inspector
-//         6. Enable feature toggles: new-home-mentions-widget
-//         7.Click Add widget, Add Mentions
-
-        // Go to Home
-        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/home/workspaces");
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/template/63f75d2c00007794d1f2e2bfa7a7f9cb/tasks
+//          1. Login to Workfront 2. Go to Templates and create 2 Templates 3. Share first template to alphawfone+cw@gmail.com/Adobe123# user - Edit rights
+//          4. Share second template to alphawfone+cw@gmail.com/Adobe123# user - View rights 5. Login as this user and open first template
+//          6. Add some task, select it and click three dots > Move to 7. Select second template as a destination OR
+//          1. Login as alphawfone+cw@gmail.com/Adobe123# 2. Go to Restricted Access template https://adobeloctesting.devtest.workfront-dev.com/template/63e9f65c000019d2376367b393c34942/tasks
+//          3. Select task and click three dots > Move to 7. Select "Restricted Access 2" template as a destination
+        // Go to Boards and open a new board
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/template/63e9f65c000019d2376367b393c34942/tasks");
         waitForPageToLoadCompletely(driver,60);
 
-        //4. If there's no 'Remove' icon under project's title then create new row ('+' icon)
-        clickToElement(driver,"(//span[contains(@data-testid,'add-button')])[1]");
-        hoverToElement(driver,"(//button[contains(@data-testid,'delete-entry-button-tooltip')])");
-        waitForElementVisible(driver,"//div[@data-testid='tooltip-styled']");
-        //take screenshots
-        takeSnapShotWithHighlight(driver,"//div[@data-testid='tooltip-styled']",GlobalConstants.SCREENSHOTS+folder+"053_YUm.png");
+        //logout and login with alphawfone+cw@gmail.com/Adobe123#
+        clickToElement(driver,"//button[@data-testid='global-nav-drawer-toggle']");
+        clickToElement(driver,"//a[@data-testid='logout']");
+        waitForPageToLoadCompletely(driver,60);
+        sendKeyToElement(driver,"//input[@id='username']","alphawfone+cw@gmail.com");
+        sendKeyToElement(driver,"//input[@id='password']","Adobe123#");
+        clickToElement(driver, "//button[@type='submit']");
+        waitForElementVisible(driver, "//div[@id='page-content']");
 
-    }
+
+        //4. Select 1 template task and click on 3 dots (...)
+        //5. Select 'Move to..'
+        sleepInSecond(1);
+        checkToCheckboxOrRadio(driver,"(//div[@data-test-id='row-checkbox'])[1]");
+        clickToElement(driver,"//button[@data-testid='templatetask-more-dropdown']");
+        clickToElement(driver,"(//li[contains(@data-testid,'option')])[1]");
+
+        //select Destination Template Restricted Access 3
+        clickToElement(driver,"//input[@id='field-destinationTemplate']");
+        sendKeyToElement(driver,"//input[@id='field-destinationTemplate']","Restricted Access 3");
+        sleepInSecond(3);
+        clickToElement(driver,"(//span[contains(@data-testid,'option-listoption')])[1]");
+
+        //Take YTi
+        waitForElementVisible(driver,"//div[@data-testid='lightbox-alert']");
+        sleepInSecond(3);
+        takeSnapShotWithHighlight(driver,"//div[@data-testid='lightbox-alert']",GlobalConstants.SCREENSHOTS+folder+"012_YTi.png");
+
+
+        refreshCurrentPage(driver);
+        //5. Select 'Move to..'
+        sleepInSecond(1);
+        checkToCheckboxOrRadio(driver,"(//div[@data-test-id='row-checkbox'])[1]");
+        clickToElement(driver,"//button[@data-testid='templatetask-more-dropdown']");
+        clickToElement(driver,"(//li[contains(@data-testid,'option')])[1]");
+        //select Destination Template Restricted Access 2
+        clickToElement(driver,"//input[@id='field-destinationTemplate']");
+        sendKeyToElement(driver,"//input[@id='field-destinationTemplate']","Restricted Access 2");
+        sleepInSecond(3);
+        clickToElement(driver,"(//span[contains(@data-testid,'option-listoption')])[1]");
+
+        //Take YTs & YTf
+        waitForElementVisible(driver,"//div[@data-testid='destinationTemplate-input-error']");
+        sleepInSecond(3);
+        takeSnapShotWithHighlight(driver,"//div[@data-testid='destinationTemplate-input-error']",GlobalConstants.SCREENSHOTS+folder+"013_YTs.png");
+        takeSnapShotWithHighlight(driver,"//div[@data-testid='details-page-error-summary']",GlobalConstants.SCREENSHOTS+folder+"014_YTf.png");
+
+// refresh
+                openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/template/63e9f65c000019d2376367b393c34942/tasks");
+                waitForPageToLoadCompletely(driver,60);
+
+                //4. Select 1 template task and click on 3 dots (...)
+                //5. Select 'Move to..'
+                sleepInSecond(1);
+                checkToCheckboxOrRadio(driver,"//div[@data-test-id='header-checkbox']");
+                clickToElement(driver,"//button[@data-testid='templatetask-more-dropdown']");
+                clickToElement(driver,"(//li[contains(@data-testid,'option')])[1]");
+
+                //select Destination Template Restricted Access 3
+                clickToElement(driver,"//input[@id='field-destinationTemplate']");
+                sendKeyToElement(driver,"//input[@id='field-destinationTemplate']","Restricted Access 3");
+                sleepInSecond(3);
+                clickToElement(driver,"(//span[contains(@data-testid,'option-listoption')])[1]");
+
+                //Take YTg
+                waitForElementVisible(driver,"//div[@data-testid='lightbox-alert']");
+                sleepInSecond(3);
+                takeSnapShotWithHighlight(driver,"//div[@data-testid='lightbox-alert']",GlobalConstants.SCREENSHOTS+folder+"015_YTg.png");
+            }
+
     @AfterClass(alwaysRun = true)
     public void afterClass() {
 //        driver.quit();
