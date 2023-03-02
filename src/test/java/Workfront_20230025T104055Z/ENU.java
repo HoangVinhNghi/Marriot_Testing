@@ -428,6 +428,7 @@ public class ENU extends AbstractPage {
         switchToIframeByElement(driver,"//iframe[@id='main-frame']");
         waitForElementVisible(driver,"//span[@class='button-icon']");
         clickToElement(driver,"//span[@class='button-icon']");
+        switchToDefaultContent(driver);
         waitForElementVisible(driver,"//button[@theme='default']");
         clickToElement(driver,"//button[@theme='default']");
 
@@ -440,12 +441,10 @@ public class ENU extends AbstractPage {
 
     //Timesheet
     @Test
-    public void String_033_034_035_036() throws Exception {
+    public void String_033() throws Exception {
 //        MockID:
-        //YUi   For add row press Control+Alt+Plus
+        //
 //        YU2	For delete row press Control+Alt+Minus
-//        YUw	For remove {0} from timesheet press Alt+P
-//        YUn	For add {0} to timesheet press Alt+P
 //        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
 //        Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/timesheet/63e2184b00010b51c0c01e6a6d89c66f/overview
 //         1. Login to Workfront 2. Go to Timesheets 3. Open any timesheet with 'Open' status
@@ -455,37 +454,132 @@ public class ENU extends AbstractPage {
         openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/timesheet/63e2184b00010b51c0c01e6a6d89c66f/overview");
         waitForPageToLoadCompletely(driver,60);
 
-        //step 3 click on New Job Role
-        clickToElement(driver,"//img[@alt='Add row']");
+        //step 4. If there's no 'Remove' icon under project's title then create new row ('+' icon)
+        clickToElement(driver,"//button[contains(@data-testid,'add-button')]");
         waitForElementVisible(driver,"//button[@data-testid='delete-entry-button']");
         inspectElement(driver,"//button[@data-testid='delete-entry-button']");
 
         //Take screenshot YU2
         captureScreen(GlobalConstants.SCREENSHOTS+folder+"033_YU2.png");
 
+    }
+    @Test
+    public void String_034() throws Exception {
+//        MockID:
+//        YUn	For add {0} to timesheet press Alt+P
+
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/timesheet/63e2184b00010b51c0c01e6a6d89c66f/overview
+//         1. Login to Workfront 2. Go to Timesheets 3. Open any timesheet with 'Open' status
+//         4. If there's no 'Remove' icon under project's title then create new row ('+' icon) 5. Mouse over 'Remove' icon note: string is in Inspector
+
+        // Go to Boards and open a new board
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/timesheet/63e2184b00010b51c0c01e6a6d89c66f/overview");
+        waitForPageToLoadCompletely(driver,60);
+
         //4. Add any project to timesheet (Pin icon)
-        hoverToElement(driver,"//div[@class='row--selected']//img[@alt='IssueHeroIcon']");
-        inspectElement(driver,"//div[@data-testid='screenReaderText']/..");
-
-        //Take screenshot YUw
-        captureScreen(GlobalConstants.SCREENSHOTS+folder+"034_YUw.png");
-
-        //4. Select any task and mouse over Pin icon
-        hoverToElement(driver,"(//span[@data-testid='row-name-text'])[1]");
-        inspectElement(driver,"//div[@data-testid='screenReaderText']/..");
+        clickToElement(driver,"//button[contains(@data-testid,'add-button')]");
+        inspectElement(driver,"(//button[contains(@data-testid,'pinned:false')])[2]");
 
         //Take screenshot YUn
-        captureScreen(GlobalConstants.SCREENSHOTS+folder+"035_YUn.png");
+        Robot robot = new Robot();
+        robot.keyPress(KeyEvent.VK_LEFT); robot.keyRelease(KeyEvent.VK_LEFT);
+        robot.keyPress(KeyEvent.VK_LEFT); robot.keyRelease(KeyEvent.VK_LEFT);
+        robot.keyPress(KeyEvent.VK_LEFT); robot.keyRelease(KeyEvent.VK_LEFT);
+        robot.keyPress(KeyEvent.VK_LEFT); robot.keyRelease(KeyEvent.VK_LEFT);
+        robot.keyPress(KeyEvent.VK_LEFT); robot.keyRelease(KeyEvent.VK_LEFT);
+        sleepInSecond(3);
+        captureScreen(GlobalConstants.SCREENSHOTS+folder+"034_YUn.png");
+
+    }
+    @Test
+    public void String_035() throws Exception {
+//        MockID:
+//        YUw	For remove {0} from timesheet press Alt+P
+
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/timesheet/63e2184b00010b51c0c01e6a6d89c66f/overview
+//         1. Login to Workfront 2. Go to Timesheets 3. Open any timesheet with 'Open' status
+//         4. If there's no 'Remove' icon under project's title then create new row ('+' icon) 5. Mouse over 'Remove' icon note: string is in Inspector
+
+        // Go to Boards and open a new board
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/timesheet/63e2184b00010b51c0c01e6a6d89c66f/overview");
+        waitForPageToLoadCompletely(driver,60);
+
+
+        //4. Select any task and mouse over Pin icon
+
+        inspectElement(driver,"//span[contains(@data-testid,'pinned:true-tooltip')]");
+        Robot robot = new Robot();
+        robot.keyPress(KeyEvent.VK_LEFT); robot.keyRelease(KeyEvent.VK_LEFT);
+        robot.keyPress(KeyEvent.VK_LEFT); robot.keyRelease(KeyEvent.VK_LEFT);
+        robot.keyPress(KeyEvent.VK_LEFT); robot.keyRelease(KeyEvent.VK_LEFT);
+        robot.keyPress(KeyEvent.VK_LEFT); robot.keyRelease(KeyEvent.VK_LEFT);
+        robot.keyPress(KeyEvent.VK_LEFT); robot.keyRelease(KeyEvent.VK_LEFT);
+        //Take screenshot YUn
+        sleepInSecond(3);
+        captureScreen(GlobalConstants.SCREENSHOTS+folder+"035_YUw.png");
+
+
+    }
+    @Test
+    public void String_036() throws Exception {
+//        MockID:
+        //YUi   For add row press Control+Alt+Plus
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/timesheet/63e2184b00010b51c0c01e6a6d89c66f/overview
+//         1. Login to Workfront 2. Go to Timesheets 3. Open any timesheet with 'Open' status
+//         4. If there's no 'Remove' icon under project's title then create new row ('+' icon) 5. Mouse over 'Remove' icon note: string is in Inspector
+
+        // Go to Boards and open a new board
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/timesheet/63e2184b00010b51c0c01e6a6d89c66f/overview");
+        waitForPageToLoadCompletely(driver,60);
 
         //Take screenshot YUi
-        inspectElement(driver,"(//img[contains(@src,'data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' height='16' width='16'%3E%3Cpath fill='%23454B57' d='M19 11h-6V5a1 1 0 00-2 0v6H5a1 1 0 000 2h6v6a1 1 0 002 0v-6h6a1 1 0 000-2z'/%3E%3C/svg%3E')])[1]");
+        waitForElementVisible(driver,"//span[contains(@data-testid,'add-button')]");
+        inspectElement(driver,"//span[contains(@data-testid,'add-button')]");
+        Robot robot = new Robot();
+        robot.keyPress(KeyEvent.VK_LEFT); robot.keyRelease(KeyEvent.VK_LEFT);
+        robot.keyPress(KeyEvent.VK_LEFT); robot.keyRelease(KeyEvent.VK_LEFT);
+        robot.keyPress(KeyEvent.VK_LEFT); robot.keyRelease(KeyEvent.VK_LEFT);
+        robot.keyPress(KeyEvent.VK_LEFT); robot.keyRelease(KeyEvent.VK_LEFT);
+        robot.keyPress(KeyEvent.VK_LEFT); robot.keyRelease(KeyEvent.VK_LEFT);
+        sleepInSecond(3);
         captureScreen(GlobalConstants.SCREENSHOTS+folder+"036_YUi.png");
 
     }
     @Test
-    public void String_037_038_039() throws Exception {
+    public void String_037() throws Exception {
 //        MockID:
         //YU3	Collapse all
+
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/timesheet/63e2184b00010b51c0c01e6a6d89c66f/overview
+//        1. Login to Workfront
+//        2. Go to Timesheets
+//        3. Open any timesheet with 'Open' status
+//        4. Mouse over arrow down icon (Collapse) near to 'Name'
+
+        // 2. Go to Timesheets
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/timesheet/63e2184b00010b51c0c01e6a6d89c66f/overview");
+        waitForPageToLoadCompletely(driver,60);
+
+        //3. Open any timesheet with 'Open' status
+
+        //4. Mouse over arrow down icon (Collapse) near to 'Name'
+        hoverToElement(driver,"//button[@data-testid='expand-button-all']");
+        clickToElement(driver,"//button[contains(@data-testid,'add-button')]");
+        clickToElement(driver,"//button[contains(@data-testid,'add-button')]");
+        clickToElement(driver,"//button[contains(@data-testid,'add-button')]");
+        hoverToElement(driver,"//button[@data-testid='expand-button-all']");
+        waitForElementVisible(driver,"//div[@data-testid='tooltip-styled']");
+        //take screenshots
+        takeSnapShotWithHighlight(driver,"//div[@data-testid='tooltip-styled']",GlobalConstants.SCREENSHOTS+folder+"037_YU3.png");
+
+    }
+    @Test
+    public void String_038() throws Exception {
+//        MockID:
         //YUU	Collapse all (Shift+Alt+Up arrow)
         //YUv	Expand all (Shift+Alt+Down arrow)
 //        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
@@ -500,25 +594,42 @@ public class ENU extends AbstractPage {
         waitForPageToLoadCompletely(driver,60);
 
         //3. Open any timesheet with 'Open' status
+
         //4. Mouse over arrow down icon (Collapse) near to 'Name'
         hoverToElement(driver,"//button[@data-testid='expand-button-all']");
         waitForElementVisible(driver,"//div[@data-testid='tooltip-styled']");
         //take screenshots
-        takeSnapShotWithHighlight(driver,"//div[@data-testid='tooltip-styled']",GlobalConstants.SCREENSHOTS+folder+"037_YU3.png");
+        takeSnapShotWithHighlight(driver,"//div[@data-testid='tooltip-styled']",GlobalConstants.SCREENSHOTS+folder+"038_YUU.png");
 
-        //click again to collapse/expand button
+
+    }
+    @Test
+    public void String_039() throws Exception {
+//        MockID:
+
+        //YUv	Expand all (Shift+Alt+Down arrow)
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/timesheet/63e2184b00010b51c0c01e6a6d89c66f/overview
+//        1. Login to Workfront
+//        2. Go to Timesheets
+//        3. Open any timesheet with 'Open' status
+//        4. Mouse over arrow down icon (Collapse) near to 'Name'
+
+        // 2. Go to Timesheets
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/timesheet/63e2184b00010b51c0c01e6a6d89c66f/overview");
+        waitForPageToLoadCompletely(driver,60);
+
+        //3. Open any timesheet with 'Open' status
+
+        //4. Mouse over arrow down icon (Collapse) near to 'Name'
         clickToElement(driver,"//button[@data-testid='expand-button-all']");
         hoverToElement(driver,"//button[@data-testid='expand-button-all']");
-        waitForElementVisible(driver,"//div[@data-testid='tooltip-styled']");
-        //take screenshots
-        takeSnapShotWithHighlight(driver,"//div[@data-testid='tooltip-styled']",GlobalConstants.SCREENSHOTS+folder+"038_YUv.png");
 
-        //click again to collapse/expand button
-        clickToElement(driver,"//button[@data-testid='expand-button-all']");
-        hoverToElement(driver,"//button[@data-testid='expand-button-all']");
         waitForElementVisible(driver,"//div[@data-testid='tooltip-styled']");
         //take screenshots
-        takeSnapShotWithHighlight(driver,"//div[@data-testid='tooltip-styled']",GlobalConstants.SCREENSHOTS+folder+"039_YUU.png");
+        takeSnapShotWithHighlight(driver,"//div[@data-testid='tooltip-styled']",GlobalConstants.SCREENSHOTS+folder+"039_YUv.png");
+
+
     }
     @Test
     public void String_040() throws Exception {
@@ -537,8 +648,11 @@ public class ENU extends AbstractPage {
 
         //3. Open any timesheet with 'Open' status
         //4. Add any project to timesheet (Pin icon)
+        clickToElement(driver,"//button[contains(@data-testid,'add-button')]");
+
         // 5. Mouse over that Pin icon
-        hoverToElement(driver,"(//span[contains(@data-testid,'--pinned')])[1]");
+
+        hoverToElement(driver,"(//button[contains(@data-testid,'pinned:true')])[1]");
         waitForElementVisible(driver,"//div[@data-testid='tooltip-styled']");
         //take screenshots
         takeSnapShotWithHighlight(driver,"//div[@data-testid='tooltip-styled']",GlobalConstants.SCREENSHOTS+folder+"040_YUz.png");
@@ -562,7 +676,13 @@ public class ENU extends AbstractPage {
 
         //3. Open any timesheet with 'Open' status
         //4. If there's no 'Remove' icon under project's title then create new row ('+' icon)
-        clickToElement(driver,"//img[@alt='Add row']");
+        clickToElement(driver,"//button[contains(@data-testid,'add-button')]");
+        clickToElement(driver,"//button[@data-testid='expand-button-all']");
+        hoverToElement(driver,"//button[@data-testid='expand-button-all']");
+        clickToElement(driver,"//button[@data-testid='expand-button-all']");
+        clickToElement(driver,"(//div[contains(@data-testid,'entry-name-cell')])[2]");
+
+
         // 5. Select row and mouse over 'Remove' icon
         waitForElementVisible(driver,"//button[@data-testid='delete-entry-button']");
         hoverToElement(driver,"//button[@data-testid='delete-entry-button']");
@@ -572,10 +692,9 @@ public class ENU extends AbstractPage {
 
     }
     @Test
-    public void String_042_043() throws Exception {
+    public void String_042() throws Exception {
 //        MockID:
         //YUx	Collapse {0} (Shift+Alt+Up arrow)
-        //YUV	Expand {0} (Shift+Alt+Down arrow)
 //        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
 //        Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/timesheet/63e2184b00010b51c0c01e6a6d89c66f/overview
 //        1. Login to Workfront
@@ -589,10 +708,29 @@ public class ENU extends AbstractPage {
 
         //3. Open any timesheet with 'Open' status
         //4. Mouse over arrow down icon (Collapse) near to project name
+        clickToElement(driver,"(//button[contains(@data-testid,'expand-button')])[1]");
+        clickToElement(driver,"(//button[contains(@data-testid,'expand-button')])[1]");
         hoverToElement(driver,"(//button[contains(@data-testid,'expand-button')])[1]");
         waitForElementVisible(driver,"//div[@data-testid='tooltip-styled']");
         //take screenshots
-        takeSnapShotWithHighlight(driver,"//div[@data-testid='tooltip-styled']",GlobalConstants.SCREENSHOTS+folder+"042_YUy.png");
+        takeSnapShotWithHighlight(driver,"//div[@data-testid='tooltip-styled']",GlobalConstants.SCREENSHOTS+folder+"042_YUx.png");
+
+
+    }
+    @Test
+    public void String_043() throws Exception {
+//        MockID:
+        //YUV	Expand {0} (Shift+Alt+Down arrow)
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/timesheet/63e2184b00010b51c0c01e6a6d89c66f/overview
+//        1. Login to Workfront
+//        2. Go to Timesheets
+//        3. Open any timesheet with 'Open' status
+//        4. Mouse over arrow down icon (Collapse) near to project name
+
+        // 2. Go to Timesheets
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/timesheet/63e2184b00010b51c0c01e6a6d89c66f/overview");
+        waitForPageToLoadCompletely(driver,60);
 
         //click collapse/expand button again
         clickToElement(driver,"(//button[contains(@data-testid,'expand-button')])[1]");
@@ -604,11 +742,10 @@ public class ENU extends AbstractPage {
     }
 
     @Test
-    public void String_044_045_046() throws Exception {
+    public void String_044() throws Exception {
 //        MockID:
         //YUo	Add row
-        //YUa	Add {0} to timesheet (Alt+P)
-//        YUe	Add row (Ctrl+Alt++)
+
 
 //        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
 //        Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/timesheet/63e2184b00010b51c0c01e6a6d89c66f/overview
@@ -623,23 +760,58 @@ public class ENU extends AbstractPage {
 
         //3. Open any timesheet with 'Open' status
         //4. Mouse over plus (' + ') icon
-        hoverToElement(driver,"//img[@alt='Add row']");
+        hoverToElement(driver,"//button[contains(@data-testid,'add-button')]");
         waitForElementVisible(driver,"//div[@data-testid='tooltip-styled']");
         //take screenshots
         takeSnapShotWithHighlight(driver,"//div[@data-testid='tooltip-styled']",GlobalConstants.SCREENSHOTS+folder+"044_YUo.png");
+    }
+    @Test
+    public void String_045() throws Exception {
+//        MockID:
 
+        //YUa	Add {0} to timesheet (Alt+P)
+//
+
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/timesheet/63e2184b00010b51c0c01e6a6d89c66f/overview
+//         1. Login to Workfront 2. Go to Timesheets 3. Open any timesheet with 'Open' status
+//         4. Mouse over plus (' + ') icon
+        //4-1. Select any task and mouse over Pin icon
+        //4-2. Mouse over plus (' + ') icon
+
+        // Go to Timesheet
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/timesheet/63e2184b00010b51c0c01e6a6d89c66f/overview");
+        waitForPageToLoadCompletely(driver,60);
 
         //4-1. Select any task and mouse over Pin icon
-        hoverToElement(driver,"//div[@class='row--selected']//img[@alt='IssueHeroIcon']");
-        hoverToElement(driver,"//div[@data-testid='screenReaderText']/..");
+        clickToElement(driver,"//button[contains(@data-testid,'add-button')]");
+        sleepInSecond(1);
+        hoverToElement(driver,"(//button[contains(@data-testid,'pinned:false')])[2]");
         waitForElementVisible(driver,"//div[@data-testid='tooltip-styled']");
         //take screenshots
         takeSnapShotWithHighlight(driver,"//div[@data-testid='tooltip-styled']",GlobalConstants.SCREENSHOTS+folder+"045_YUa.png");
 
-        //4-2. click and mouse over plus icon
-        clickToElement(driver,"//div[@data-testid='screenReaderText']/..");
 
-        hoverToElement(driver,"//img[@alt='Add row']");
+    }@Test
+    public void String_046() throws Exception {
+//        MockID:
+//        YUe	Add row (Ctrl+Alt++)
+
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/timesheet/63e2184b00010b51c0c01e6a6d89c66f/overview
+//         1. Login to Workfront 2. Go to Timesheets 3. Open any timesheet with 'Open' status
+//         4. Mouse over plus (' + ') icon
+        //4-1. Select any task and mouse over Pin icon
+        //4-2. Mouse over plus (' + ') icon
+
+        // Go to Timesheet
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/timesheet/63e2184b00010b51c0c01e6a6d89c66f/overview");
+        waitForPageToLoadCompletely(driver,60);
+
+        //4-2. click and mouse over plus icon
+        clickToElement(driver,"//img[@alt='IssueHeroIcon']");
+        sleepInSecond(1);
+        hoverToElement(driver,"//button[contains(@data-testid,'add-button')]");
         waitForElementVisible(driver,"//div[@data-testid='tooltip-styled']");
         //take screenshots
         takeSnapShotWithHighlight(driver,"//div[@data-testid='tooltip-styled']",GlobalConstants.SCREENSHOTS+folder+"046_YUe.png");
@@ -687,13 +859,14 @@ public class ENU extends AbstractPage {
         waitForPageToLoadCompletely(driver,60);
 
         //5. Enter some number into time fields and mouse hover the comment button
-        sendKeyToElement(driver,"(//div[@class='grid-cell hour-cell grid-cell--week-end weekend-day'])[1]",""+getRandomNumber());
+        //clickToElement(driver,"(//div[@class='grid-cell hour-cell'])[66]");
+        sendKeyToElement(driver,"(//input[contains(@data-testid,'hour-input')])[20]","2");
+        clickToElement(driver,"(//input[contains(@data-testid,'hour-input')])[20]");
         waitForElementVisible(driver,"//button[contains(@data-testid,'comment-plus-button')]");
         hoverToElement(driver,"//button[contains(@data-testid,'comment-plus-button')]");
 
-        waitForElementVisible(driver,"//div[@data-testid='tooltip-styled']");
         //take screenshots
-        takeSnapShotWithHighlight(driver,"//div[@data-testid='tooltip-styled']",GlobalConstants.SCREENSHOTS+folder+"048_YUd.png");
+        captureScreen(GlobalConstants.SCREENSHOTS+folder+"048_YUd.png");
 
     }
 
@@ -716,6 +889,13 @@ public class ENU extends AbstractPage {
 
         // 4. Mouse over arrow down icon (Collapse) near to 'Name'
         inspectElement(driver,"//button[@data-testid='expand-button-all']");
+        Robot robot = new Robot();
+        robot.keyPress(KeyEvent.VK_LEFT); robot.keyRelease(KeyEvent.VK_LEFT);
+        robot.keyPress(KeyEvent.VK_LEFT); robot.keyRelease(KeyEvent.VK_LEFT);
+        robot.keyPress(KeyEvent.VK_LEFT); robot.keyRelease(KeyEvent.VK_LEFT);
+        robot.keyPress(KeyEvent.VK_LEFT); robot.keyRelease(KeyEvent.VK_LEFT);
+        robot.keyPress(KeyEvent.VK_LEFT); robot.keyRelease(KeyEvent.VK_LEFT);
+        sleepInSecond(3);
 
         //Take screenshot YUc
         captureScreen(GlobalConstants.SCREENSHOTS+folder+"049_YUc.png");
@@ -738,8 +918,11 @@ public class ENU extends AbstractPage {
         waitForPageToLoadCompletely(driver,60);
 
         // 4. Select any project and mouse over arrow icon after project's title note: string is in Inspector
-        inspectElement(driver,"(//a[@data-testid='row-name-link'])[1])");
-
+        inspectElement(driver,"(//a[@data-testid='row-name-link'])[1]");
+        Robot robot = new Robot();
+        robot.keyPress(KeyEvent.VK_LEFT); robot.keyRelease(KeyEvent.VK_LEFT);
+        robot.keyPress(KeyEvent.VK_LEFT); robot.keyRelease(KeyEvent.VK_LEFT);
+        robot.keyPress(KeyEvent.VK_LEFT); robot.keyRelease(KeyEvent.VK_LEFT);
         //Take screenshot YUc
         captureScreen(GlobalConstants.SCREENSHOTS+folder+"050_YUb.png");
 
@@ -765,7 +948,12 @@ public class ENU extends AbstractPage {
         // 4. Click on arrow down icon (Collapse) near to project name
         clickToElement(driver,"(//button[contains(@data-testid,'expand-button')])[2]");
         inspectElement(driver,"(//button[contains(@data-testid,'expand-button')])[2]");
-
+       Robot robot = new Robot();
+       robot.keyPress(KeyEvent.VK_LEFT); robot.keyRelease(KeyEvent.VK_LEFT);
+       robot.keyPress(KeyEvent.VK_LEFT); robot.keyRelease(KeyEvent.VK_LEFT);
+       robot.keyPress(KeyEvent.VK_LEFT); robot.keyRelease(KeyEvent.VK_LEFT);
+       robot.keyPress(KeyEvent.VK_LEFT); robot.keyRelease(KeyEvent.VK_LEFT);
+       robot.keyPress(KeyEvent.VK_LEFT); robot.keyRelease(KeyEvent.VK_LEFT);
         //Take screenshot YUc
         captureScreen(GlobalConstants.SCREENSHOTS+folder+"051_YU5.png");
 
@@ -806,14 +994,53 @@ public class ENU extends AbstractPage {
 
         //4. If there's no 'Remove' icon under project's title then create new row ('+' icon)
         clickToElement(driver,"(//span[contains(@data-testid,'add-button')])[1]");
-        hoverToElement(driver,"(//button[contains(@data-testid,'delete-entry-button-tooltip')])");
+        hoverToElement(driver,"//button[@data-testid='delete-entry-button']");
         waitForElementVisible(driver,"//div[@data-testid='tooltip-styled']");
         //take screenshots
         takeSnapShotWithHighlight(driver,"//div[@data-testid='tooltip-styled']",GlobalConstants.SCREENSHOTS+folder+"053_YUm.png");
 
     }
 
-    //Need to login with alphawfone+cw@gmail.com/Adobe123#
+    //home
+    @Test
+    public void String_054() throws Exception {
+//        MockID:
+        //YTx	{0}'s documents
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/home/workspaces
+//         1. Login to Workfront 2. Go to workspaces
+//         3. add widget "Mention"
+// 5. Mouse over 'Remove' icon
+
+        // Go to Timesheet
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/home/workspaces");
+        waitForPageToLoadCompletely(driver,60);
+
+        //take screenshots
+        takeSnapShotWithHighlight(driver,"//a[@href='/documents']",GlobalConstants.SCREENSHOTS+folder+"054_YTx.png");
+
+    }
+    @Test
+    public void String_055() throws Exception {
+//        MockID:
+        //YTy	{0}'s updates
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/home/workspaces
+//         1. Login to Workfront 2. Go to workspaces
+//         3. add widget "Mention"
+
+
+        // Go to Timesheet
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/home/workspaces");
+        waitForPageToLoadCompletely(driver,60);
+
+        //take screenshots
+        scrollToElement(driver,"//a[contains(@href,'/update')]");
+        takeSnapShotWithHighlight(driver,"//a[contains(@href,'/update')]",GlobalConstants.SCREENSHOTS+folder+"055_YTy.png");
+
+    }
+
+    // Need to login with alphawfone+cw@gmail.com/Adobe123#
     @Test
     public void String_012_013_014_015() throws Exception {
 //        MockID: YTs	You don't have access to edit this template.
@@ -899,6 +1126,32 @@ public class ENU extends AbstractPage {
                 waitForElementVisible(driver,"//div[@data-testid='lightbox-alert']");
                 sleepInSecond(3);
                 takeSnapShotWithHighlight(driver,"//div[@data-testid='lightbox-alert']",GlobalConstants.SCREENSHOTS+folder+"015_YTg.png");
+            }
+    @Test
+    public void String_056() throws Exception {
+//        MockID: YUN	No mentions
+                //YUM	Mentions will appear here when others add you to updates.
+
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//         Test User: alphawfone+cw@gmail.com / Adobe123# Direct link: https://adobeloctesting.devtest.workfront-dev.com/home/workspaces
+////         1. Login to Workfront 2. Go to workspaces
+////         3. add widget "Mention"
+
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/home/workspaces");
+        waitForPageToLoadCompletely(driver,60);
+
+        //logout and login with alphawfone+cw@gmail.com/Adobe123#
+        clickToElement(driver,"//button[@data-testid='global-nav-drawer-toggle']");
+        clickToElement(driver,"//a[@data-testid='logout']");
+        waitForPageToLoadCompletely(driver,60);
+        sendKeyToElement(driver,"//input[@id='username']","alphawfone+cw@gmail.com");
+        sendKeyToElement(driver,"//input[@id='password']","Adobe123#");
+        clickToElement(driver, "//button[@type='submit']");
+        waitForElementVisible(driver, "//div[@id='page-content']");
+
+        //Take screenshot
+        takeSnapShotWithHighlight(driver,"//div[@class='flex flex-col items-center']",GlobalConstants.SCREENSHOTS+folder+"056_YUN_YUM.png");
+
             }
 
     @AfterClass(alwaysRun = true)
