@@ -48,7 +48,7 @@ public class ENU extends AbstractPage {
 //        1. Login to Workfront 2. Go to Boards 3. Click on 3 dots (...) of any 'Untitled Collection' under 'Collections' section 4. Select 'Delete'
 
         // Go to Boards and open a new board
-        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/boards/63e0f237c77c8222346e76a3");
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/form-builder/new?objTypes=PROJ");
         waitForPageToLoadCompletely(driver,60);
 
         // Open any existed Board
