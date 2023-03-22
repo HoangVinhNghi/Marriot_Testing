@@ -12,9 +12,9 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-public class ENU extends AbstractPage {
+public class JPN extends AbstractPage {
     WebDriver driver;
-    String folder = "\\Workfront_20230108T104644Z\\ENU\\"; // the path to store the captured images with  lang code can be changed accordingly
+    String folder = "\\Workfront_20230108T104644Z\\JPN\\3729467\\JPN"; // the path to store the captured images with  lang code can be changed accordingly
     // Select the lang code accordingly
     String lang_EN ="--lang=en\"";
     String lang_DE ="de";
@@ -29,7 +29,7 @@ public class ENU extends AbstractPage {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         // Set language
-        options.addArguments("--lang=en"); //set browser language
+        options.addArguments("--lang=ja-JP"); //set browser language
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(12, TimeUnit.SECONDS);
         driver.manage().window().maximize();
@@ -53,8 +53,6 @@ public class ENU extends AbstractPage {
 
         sleepInSecond(1);
         waitForElementVisible(driver,"//h2[@id='form-title']");
-        sleepInSecond(1);
-        clickToElement(driver,"(//h3)[2]");
 
         // Take SS: YWY	Title is required
         takeSnapShotWithHighlight(driver,"//h2[@id='form-title']",GlobalConstants.SCREENSHOTS+folder+"001_YWY.png");
