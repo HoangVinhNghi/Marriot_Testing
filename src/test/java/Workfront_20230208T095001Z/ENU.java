@@ -57,7 +57,8 @@ public class ENU extends AbstractPage {
 
         //5. Click on a ''...'' button on the right from the ''Workspace'' name
         waitForElementVisible(driver,"(//button[contains(@id,'react-aria')])[2]");
-        clickToElement(driver,"(//button[contains(@id,'react-aria')])[2]");
+        clickToElementByJS(driver,"(//button[contains(@id,'react-aria')])[2]");
+        clickToElement(driver,"//li[@data-key='REMOVE']");
 
         // click on a ''Delete'' from dropdown menu
        /* waitForElementVisible(driver,"//li[@data-key='REMOVE']");
