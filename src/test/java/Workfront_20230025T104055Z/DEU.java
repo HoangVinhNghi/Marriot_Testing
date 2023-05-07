@@ -17,9 +17,9 @@ import java.awt.event.KeyEvent;
 
 import java.util.concurrent.TimeUnit;
 
-public class ENU extends AbstractPage {
+public class DEU extends AbstractPage {
     WebDriver driver;
-    String folder = "\\Workfront_20230025T104055Z\\ENU\\"; // the path to store the captured images with  lang code can be changed accordingly
+    String folder = "\\Workfront_20230025T104055Z\\DEU\\3659567\\DEU\\"; // the path to store the captured images with  lang code can be changed accordingly
     // Select the lang code accordingly
     String lang_EN ="--lang=en\"";
     String lang_DE ="de";
@@ -34,7 +34,7 @@ public class ENU extends AbstractPage {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         // Set language
-        options.addArguments("--lang=en"); //set browser language
+        options.addArguments("--lang=de"); //set browser language
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(12, TimeUnit.SECONDS);
         driver.manage().window().maximize();
@@ -172,8 +172,8 @@ public class ENU extends AbstractPage {
     @Test
     public void String_006() throws Exception {
 //        MockID: YUJ	Label
-    //          YUD Name
-    //          YUG	Instructions
+        //          YUD Name
+        //          YUG	Instructions
 
 //        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
 //        Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/form-builder/new?objTypes=PROJ
@@ -335,7 +335,7 @@ public class ENU extends AbstractPage {
         sleepInSecond(3);
         takeSnapShotWithHighlight(driver,"//div[@data-testid='options-warning']",GlobalConstants.SCREENSHOTS+folder+"011_YTe.png");
 
-            }
+    }
 
 
 
@@ -927,7 +927,7 @@ public class ENU extends AbstractPage {
         captureScreen(GlobalConstants.SCREENSHOTS+folder+"050_YUb.png");
 
     }
-   @Test
+    @Test
     public void String_051() throws Exception {
 //        MockID:
         //YU5	For expand {0} press shift+Alt+Down Arrow and for collapse {0} press Shift+Alt+Up Arrow
@@ -948,12 +948,12 @@ public class ENU extends AbstractPage {
         // 4. Click on arrow down icon (Collapse) near to project name
         clickToElement(driver,"(//button[contains(@data-testid,'expand-button')])[2]");
         inspectElement(driver,"(//button[contains(@data-testid,'expand-button')])[2]");
-       Robot robot = new Robot();
-       robot.keyPress(KeyEvent.VK_LEFT); robot.keyRelease(KeyEvent.VK_LEFT);
-       robot.keyPress(KeyEvent.VK_LEFT); robot.keyRelease(KeyEvent.VK_LEFT);
-       robot.keyPress(KeyEvent.VK_LEFT); robot.keyRelease(KeyEvent.VK_LEFT);
-       robot.keyPress(KeyEvent.VK_LEFT); robot.keyRelease(KeyEvent.VK_LEFT);
-       robot.keyPress(KeyEvent.VK_LEFT); robot.keyRelease(KeyEvent.VK_LEFT);
+        Robot robot = new Robot();
+        robot.keyPress(KeyEvent.VK_LEFT); robot.keyRelease(KeyEvent.VK_LEFT);
+        robot.keyPress(KeyEvent.VK_LEFT); robot.keyRelease(KeyEvent.VK_LEFT);
+        robot.keyPress(KeyEvent.VK_LEFT); robot.keyRelease(KeyEvent.VK_LEFT);
+        robot.keyPress(KeyEvent.VK_LEFT); robot.keyRelease(KeyEvent.VK_LEFT);
+        robot.keyPress(KeyEvent.VK_LEFT); robot.keyRelease(KeyEvent.VK_LEFT);
         //Take screenshot YUc
         captureScreen(GlobalConstants.SCREENSHOTS+folder+"051_YU5.png");
 
@@ -1044,9 +1044,9 @@ public class ENU extends AbstractPage {
     @Test
     public void String_012_013_014_015() throws Exception {
 //        MockID: YTs	You don't have access to edit this template.
-                // YTi This template {__mlm_low_task} has a different currency than the destination template. If it has financial fields (cost, expenses, etc) set you may need to manually convert them to the new currency
-                // YTg Some of the template {__mlm_low_tasks} have a different currency than the destination template. If they have financial fields (cost, expenses, etc) set you may need to manually convert them to the new currency
-                // YTf You do not have access to add template {__mlm_low_tasks} to this template. Select a different template or
+        // YTi This template {__mlm_low_task} has a different currency than the destination template. If it has financial fields (cost, expenses, etc) set you may need to manually convert them to the new currency
+        // YTg Some of the template {__mlm_low_tasks} have a different currency than the destination template. If they have financial fields (cost, expenses, etc) set you may need to manually convert them to the new currency
+        // YTf You do not have access to add template {__mlm_low_tasks} to this template. Select a different template or
 //        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
 //        Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/template/63f75d2c00007794d1f2e2bfa7a7f9cb/tasks
 //          1. Login to Workfront 2. Go to Templates and create 2 Templates 3. Share first template to alphawfone+cw@gmail.com/Adobe123# user - Edit rights
@@ -1106,31 +1106,31 @@ public class ENU extends AbstractPage {
         takeSnapShotWithHighlight(driver,"//div[@data-testid='details-page-error-summary']",GlobalConstants.SCREENSHOTS+folder+"014_YTf.png");
 
 // refresh
-                openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/template/63e9f65c000019d2376367b393c34942/tasks");
-                waitForPageToLoadCompletely(driver,60);
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/template/63e9f65c000019d2376367b393c34942/tasks");
+        waitForPageToLoadCompletely(driver,60);
 
-                //4. Select 1 template task and click on 3 dots (...)
-                //5. Select 'Move to..'
-                sleepInSecond(1);
-                checkToCheckboxOrRadio(driver,"//div[@data-test-id='header-checkbox']");
-                clickToElement(driver,"//button[@data-testid='templatetask-more-dropdown']");
-                clickToElement(driver,"(//li[contains(@data-testid,'option')])[1]");
+        //4. Select 1 template task and click on 3 dots (...)
+        //5. Select 'Move to..'
+        sleepInSecond(1);
+        checkToCheckboxOrRadio(driver,"//div[@data-test-id='header-checkbox']");
+        clickToElement(driver,"//button[@data-testid='templatetask-more-dropdown']");
+        clickToElement(driver,"(//li[contains(@data-testid,'option')])[1]");
 
-                //select Destination Template Restricted Access 3
-                clickToElement(driver,"//input[@id='field-destinationTemplate']");
-                sendKeyToElement(driver,"//input[@id='field-destinationTemplate']","Restricted Access 3");
-                sleepInSecond(3);
-                clickToElement(driver,"(//span[contains(@data-testid,'option-listoption')])[1]");
+        //select Destination Template Restricted Access 3
+        clickToElement(driver,"//input[@id='field-destinationTemplate']");
+        sendKeyToElement(driver,"//input[@id='field-destinationTemplate']","Restricted Access 3");
+        sleepInSecond(3);
+        clickToElement(driver,"(//span[contains(@data-testid,'option-listoption')])[1]");
 
-                //Take YTg
-                waitForElementVisible(driver,"//div[@data-testid='lightbox-alert']");
-                sleepInSecond(3);
-                takeSnapShotWithHighlight(driver,"//div[@data-testid='lightbox-alert']",GlobalConstants.SCREENSHOTS+folder+"015_YTg.png");
-            }
+        //Take YTg
+        waitForElementVisible(driver,"//div[@data-testid='lightbox-alert']");
+        sleepInSecond(3);
+        takeSnapShotWithHighlight(driver,"//div[@data-testid='lightbox-alert']",GlobalConstants.SCREENSHOTS+folder+"015_YTg.png");
+    }
     @Test
     public void String_056() throws Exception {
 //        MockID: YUN	No mentions
-                //YUM	Mentions will appear here when others add you to updates.
+        //YUM	Mentions will appear here when others add you to updates.
 
 //        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
 //         Test User: alphawfone+cw@gmail.com / Adobe123# Direct link: https://adobeloctesting.devtest.workfront-dev.com/home/workspaces
@@ -1152,7 +1152,7 @@ public class ENU extends AbstractPage {
         //Take screenshot
         takeSnapShotWithHighlight(driver,"//div[@class='flex flex-col items-center']",GlobalConstants.SCREENSHOTS+folder+"056_YUN_YUM.png");
 
-            }
+    }
 
     @AfterClass(alwaysRun = true)
     public void afterClass() {
