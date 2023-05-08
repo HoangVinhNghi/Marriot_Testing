@@ -167,6 +167,131 @@ public class ENU extends AbstractPage {
 
 
     }
+
+        /*@Test
+        public void String_004() throws Exception {
+//        Board
+//        MockID:   YcA1	Are you sure you want to delete ...
+//                  YcI1	Delete record type
+//
+//           Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//Direct link: https://adobeloctesting.devtest.workfront-dev.com/maestro/2fd91509-dfed-41c9-9c8b-026b585acf5e/e592ce83-35f9-40da-8c2c-69688e8cff3d/table?view=7a350436-208c-4f74-83b4-a17abade515e
+//
+//1. Login to Workfront
+//2. Go to Main Menu > "Maestro"
+//3. Select any Operational Record type or create a new one
+//4. Click on a ''...'' near the Operational Record Type name > ''Delete''
+
+        // 2. Go to the ''Home'' tab
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/maestro/a38be145-1ca7-44ae-a65b-d4df20d5a9e7/untitled_operational_record_type-58/269b81b6-7521-4936-be55-a55725658dee/view");
+        waitForPageToLoadCompletely(driver,60);
+
+        //click to 3 dot
+        waitForElementVisible(driver,"//button[contains(@class,'spectrum-ActionButton')][2]");
+        clickToElement(driver,"//button[contains(@class,'spectrum-ActionButton')][2]");
+
+        //click to delete
+        waitForElementVisible(driver,"//li[@data-key='REMOVE']");
+        clickToElement(driver,"//li[@data-key='REMOVE']");
+        sleepInSecond(2);
+
+        // Take SS: YcI1
+        waitForElementVisible(driver,"//h2[2]");
+        takeSnapShotWithHighlight(driver,"//h2[2]", GlobalConstants.SCREENSHOTS+folder+"004_YcI1.png");
+
+        // Take SS: YcA1
+        waitForElementVisible(driver,"//section[2]");
+        takeSnapShotWithHighlight(driver,"//section[2]", GlobalConstants.SCREENSHOTS+folder+"004_YcA1.png");
+
+
+    }*/
+        @Test
+        public void String_005() throws Exception {
+//        Board
+//        MockID:
+//            YcG1	Operational Record Types
+//
+//           Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//Direct link: https://adobeloctesting.devtest.workfront-dev.com/maestro/workspaces/28fb7ef5-2572-4387-95e1-cc3a57d52ab6
+//
+//1. Login to Workfront
+//2. Go to Main Menu > ''Maestro''
+//3. Near the ''Workspace'' name click on a down arrow button > ''Create workspace''
+//4. Click on a ''Preview'' button of any workspace template card
+
+        // 2. Go to the ''Home'' tab
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/maestro/workspaces/a38be145-1ca7-44ae-a65b-d4df20d5a9e7");
+        waitForPageToLoadCompletely(driver,60);
+
+        // Take SS: YcG1
+        waitForElementVisible(driver,"(//div[@class='RecordTypeItemNew clickable'])[2]");
+        takeSnapShotWithHighlight(driver,"(//div[@class='RecordTypeItemNew clickable'])[2]", GlobalConstants.SCREENSHOTS+folder+"005_YcG1.png");
+
+        }
+        @Test
+        public void String_006() throws Exception {
+//        Board
+//        MockID:   YcB1	{0} workspace preview
+//
+//           Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//Direct link: https://adobeloctesting.devtest.workfront-dev.com/maestro/workspaces/28fb7ef5-2572-4387-95e1-cc3a57d52ab6
+//
+//1. Login to Workfront
+//2. Go to Main Menu > ''Maestro''
+//3. Near the ''Workspace'' name click on a down arrow button > ''Create workspace''
+//4. Click on a ''Preview'' button of any workspace template card
+
+        // 2. Go to the ''Home'' tab
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/maestro/workspaces/a38be145-1ca7-44ae-a65b-d4df20d5a9e7");
+        waitForPageToLoadCompletely(driver,60);
+
+        //create new workspace
+        waitForElementVisible(driver,"//button[@data-testid='header-object-selection']");
+        clickToElement(driver,"//button[@data-testid='header-object-selection']");
+        waitForElementVisible(driver,"//li[@data-key='new-workspace']");
+        clickToElement(driver,"//li[@data-key='new-workspace']");
+        waitForElementVisible(driver,"(//section[@class='spectrum-Card spectrum-Card--sizeL spectrum-Card--workspace'])[3]");
+        waitForElementVisible(driver,"(//button[@data-variant='secondary'])[2]");
+        clickToElement(driver,"(//button[@data-variant='secondary'])[2]");
+
+        //take screenshot
+        waitForElementVisible(driver,"(//div[@data-testid='modal']//h2)[2]");
+        takeSnapShotWithHighlight(driver,"(//div[@data-testid='modal']//h2)[2]", GlobalConstants.SCREENSHOTS+folder+"006_YcB1.png");
+
+    }
+        @Test
+        public void String_007() throws Exception {
+//        Board
+//        MockID:
+//            YcM1	Active workstreams
+//            YcN1	Archived workstreams
+//
+//           Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//Direct link: https://adobeloctesting.devtest.workfront-dev.com/boards
+//
+//1. Login to Workfront
+//2. Go to Main Menu > ''Boards''
+//3. Click on a ''Filter'' for ''Workstreams'' section
+
+        // 2. Go to the ''Home'' tab
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/boards");
+        waitForPageToLoadCompletely(driver,60);
+
+        //3. Click on a ''Filter'' for ''Workstreams'' section
+        waitForElementVisible(driver,"//button[@data-testid='dashboard-workspace-section-filter-button']");
+        clickToElement(driver,"//button[@data-testid='dashboard-workspace-section-filter-button']");
+
+        //take screenshot
+        waitForElementVisible(driver,"//li[@data-key='active']");
+        takeSnapShotWithHighlight(driver,"//li[@data-key='active']", GlobalConstants.SCREENSHOTS+folder+"007_YcM1.png");
+        waitForElementVisible(driver,"//li[@data-key='archived']");
+        takeSnapShotWithHighlight(driver,"//li[@data-key='archived']", GlobalConstants.SCREENSHOTS+folder+"007_YcN1.png");
+
+    }
     @AfterClass(alwaysRun = true)
     public void afterClass() {
 //        driver.quit();
