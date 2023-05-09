@@ -1,4 +1,4 @@
-package Workfront_20221021T194141Z_NewHome.Workfront_20221021T194141Z;
+package Workfront_20221021T194141Z_NewHome;
 
 import common.AbstractPage;
 import common.GlobalConstants;
@@ -16,16 +16,16 @@ import java.awt.event.KeyEvent;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class DEU extends AbstractPage {
+public class ITA extends AbstractPage {
     WebDriver driver;
-    String folder = "\\Workfront_20221021T194141Z_Update\\DEU\\3500831\\DEU\\"; // the path to store the captured images with  lang code can be changed accordingly
+    String folder = "\\Workfront_20221021T194141Z_Update\\ITA\\3500815\\ITA\\"; // the path to store the captured images with  lang code can be changed accordingly
 
     @BeforeClass
     public void beforeClass() throws Exception {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         // Set language
-        options.addArguments("--lang=de"); //set browser language
+        options.addArguments("--lang=it"); //set browser language
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(12, TimeUnit.SECONDS);
         driver.manage().window().maximize();
@@ -46,7 +46,7 @@ public class DEU extends AbstractPage {
 //        Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/timesheets
 //        1. Login to Workfront 2. Switch to New Home
 
-        waitForPageToLoadCompletely(driver,30);
+        waitForPageToLoadCompletely(driver,60);
 
         // Take SS: YMl	Welcome to the new Home
         takeSnapShotWithHighlight(driver,"//h2[contains(@class,'Dialog-heading')]", GlobalConstants.SCREENSHOTS+folder+"045_YMl.png");
