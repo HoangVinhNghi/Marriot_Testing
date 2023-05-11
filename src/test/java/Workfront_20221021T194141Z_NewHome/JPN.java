@@ -1,4 +1,4 @@
-package Workfront_20221021T194141Z_NewHome.Workfront_20221021T194141Z;
+package Workfront_20221021T194141Z_NewHome;
 
 import common.AbstractPage;
 import common.GlobalConstants;
@@ -16,16 +16,16 @@ import java.awt.event.KeyEvent;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class FRA extends AbstractPage {
+public class JPN extends AbstractPage {
     WebDriver driver;
-    String folder = "\\Workfront_20221021T194141Z_Update\\FRA\\3500829\\FRA\\"; // the path to store the captured images with  lang code can be changed accordingly
+    String folder = "\\Workfront_20221021T194141Z_Update\\JPN\\3500827\\JPN\\"; // the path to store the captured images with  lang code can be changed accordingly
 
     @BeforeClass
     public void beforeClass() throws Exception {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         // Set language
-        options.addArguments("--lang=fr"); //set browser language
+        options.addArguments("--lang=ja-JP"); //set browser language
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(12, TimeUnit.SECONDS);
         driver.manage().window().maximize();
