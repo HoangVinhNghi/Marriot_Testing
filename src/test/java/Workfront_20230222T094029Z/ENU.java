@@ -1,6 +1,7 @@
 package Workfront_20230222T094029Z;
 
 import com.github.javafaker.HowIMetYourMother;
+import com.relevantcodes.extentreports.model.ScreenCapture;
 import common.AbstractPage;
 import common.GlobalConstants;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -42,7 +43,6 @@ public class ENU extends AbstractPage {
             clickToElement(driver, "//button[@type='submit']");
             waitForElementVisible(driver, "//div[@id='page-content']");
         }
-
         @Test
         public void String_001() throws Exception {
 //        Board
@@ -69,7 +69,7 @@ public class ENU extends AbstractPage {
 //11. Open dropdown(Year/Quarter/Month) on the right side
 
             // 2. Go to the ''Home'' tab
-            openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/maestro/84160726-3e3f-4591-a7af-a93eff93f221/untitled_taxonomy-2/b2efa003-b8e9-411d-b716-73dc68804571/view");
+            openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/maestro/38e832b8-07ce-4ae2-a17a-5c29c6c7ff67/untitled_taxonomy-7/63763c40-f9d0-43df-86de-9e4ebbe67de7/view");
             waitForPageToLoadCompletely(driver,60);
 
             // Take SS: Yci
@@ -129,9 +129,7 @@ public class ENU extends AbstractPage {
         @Test
         public void String_003() throws Exception {
 //        Board
-//        MockID:   YcA1	Are you sure you want to delete ...
-//                  YcC1	View name
-//                  YcI1	Delete record type
+//        MockID:   YcC1	View name
 //                  YYd	    Create new view
 //                  YZf	    Events display in chronological ...
 //           Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
@@ -145,14 +143,17 @@ public class ENU extends AbstractPage {
 //5. Click on a "Default View - View" on the right side
 
         // 2. Go to the ''Home'' tab
-        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/maestro/84160726-3e3f-4591-a7af-a93eff93f221/untitled_taxonomy-2/b2efa003-b8e9-411d-b716-73dc68804571/view");
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/maestro/workspaces");
         waitForPageToLoadCompletely(driver,60);
-
+        //4. Under the "Taxonomies" click on a "+ Add Taxonomy"
+        waitForElementVisible(driver,"//div[@data-omega-element='add-new-taxonomy']");
+        clickToElement(driver,"//div[@data-omega-element='add-new-taxonomy']");
         //click to dropdown
         waitForElementVisible(driver,"//button[@data-testid='view-widget-button']");
         clickToElement(driver,"//button[@data-testid='view-widget-button']");
-
+        sleepInSecond(1);
         // Take SS: YYd
+
         waitForElementVisible(driver,"//button[@data-testid='rich-picker-action-button']");
         takeSnapShotWithHighlight(driver,"//button[@data-testid='rich-picker-action-button']", GlobalConstants.SCREENSHOTS+folder+"003_YYd.png");
 
@@ -165,6 +166,38 @@ public class ENU extends AbstractPage {
         sleepInSecond(1);
         takeSnapShotWithHighlight(driver,"(//form[@data-testid='create-view-form']//input[@type='radio'])[2]", GlobalConstants.SCREENSHOTS+folder+"003_YZf.png");
 
+
+    }
+    @Test
+    public void String_004() throws Exception {
+//        Board
+//        MockID:   Yc1	Name
+//                  Ycz	Due on
+//           Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//Direct link: https://adobeloctesting.devtest.workfront-dev.com/home/workspaces
+//
+//1. Login to Workfront
+//2. Go to the ''Home'' tab
+//3. Click on a ''Try out new Home'' button on the down right corner
+//4. Click on a ''Manage widgets'' button on the top right corner > ''+ Add widget''
+//5. Select ''Team Requests'' and click on an ''Add'' button
+//6. Find ''Team Requests'' widget on ''Home'' screen
+
+        // 2. Go to the ''Home'' tab
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/home/workspaces");
+        waitForPageToLoadCompletely(driver,60);
+        sleepInSecond(2);
+        // Take SS: Yc1
+        waitForElementVisible(driver,"(//div[@role='presentation']//div[@role='columnheader'])[1]");
+        scrollToElement(driver,"(//div[@role='presentation']//div[@role='columnheader'])[1]");
+        sleepInSecond(5);
+        takeSnapShotWithHighlight(driver,"(//div[@role='presentation']//div[@role='columnheader'])[1]", GlobalConstants.SCREENSHOTS+folder+"004_Yc1.png");
+
+        // Take SS: Ycz
+        waitForElementVisible(driver,"(//div[@role='presentation']//div[@role='columnheader'])[3]");
+        scrollToElement(driver,"(//div[@role='presentation']//div[@role='columnheader'])[3]");
+        takeSnapShotWithHighlight(driver,"(//div[@role='presentation']//div[@role='columnheader'])[3]", GlobalConstants.SCREENSHOTS+folder+"004_Ycz.png");
 
     }
 
@@ -222,7 +255,7 @@ public class ENU extends AbstractPage {
 //4. Click on a ''Preview'' button of any workspace template card
 
         // 2. Go to the ''Home'' tab
-        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/maestro/workspaces/a38be145-1ca7-44ae-a65b-d4df20d5a9e7");
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/maestro/workspaces/d5537cf5-03f5-4f51-bcd6-e71ca9160b2a");
         waitForPageToLoadCompletely(driver,60);
 
         // Take SS: YcG1
@@ -245,7 +278,7 @@ public class ENU extends AbstractPage {
 //4. Click on a ''Preview'' button of any workspace template card
 
         // 2. Go to the ''Home'' tab
-        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/maestro/workspaces/a38be145-1ca7-44ae-a65b-d4df20d5a9e7");
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/maestro/workspaces/d5537cf5-03f5-4f51-bcd6-e71ca9160b2a");
         waitForPageToLoadCompletely(driver,60);
 
         //create new workspace
@@ -292,6 +325,183 @@ public class ENU extends AbstractPage {
         takeSnapShotWithHighlight(driver,"//li[@data-key='archived']", GlobalConstants.SCREENSHOTS+folder+"007_YcN1.png");
 
     }
+        @Test
+        public void String_008() throws Exception {
+//        Board
+//        MockID:
+//            Ycq	Add a form name
+//            Yco	Add a form description
+//
+//           Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//Direct link: https://adobeloctesting.devtest.workfront-dev.com/form-builder/new?objTypes=PROJ
+//
+//1. Login to Workfront
+//2. Go to Main Menu > click on a ''Setup''
+//3. On the right menu select ''Custom Forms''
+//4. Go to ''Forms'' tab and click on a ''+ New Custom Form'' button
+
+        // 2. Go to the ''Home'' tab
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/form-builder/new?objTypes=PROJ");
+        waitForPageToLoadCompletely(driver,60);
+
+        //take screenshot
+        waitForElementVisible(driver,"//h2");
+        takeSnapShotWithHighlight(driver,"//h2", GlobalConstants.SCREENSHOTS+folder+"008_Ycq.png");
+        waitForElementVisible(driver,"(//h3)[1]");
+        takeSnapShotWithHighlight(driver,"(//h3)[1]", GlobalConstants.SCREENSHOTS+folder+"008_Yco.png");
+
+    }
+        @Test
+        public void String_009() throws Exception {
+//        Board
+//        MockID: Ycp	You must enter a form name
+//
+//Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//Direct link: https://adobeloctesting.devtest.workfront-dev.com/form-builder/new?objTypes=PROJ
+//
+//1. Login to Workfront
+//2. Go to Main Menu > click on a ''Setup''
+//3. On the right menu select ''Custom Forms''
+//4. Go to ''Forms'' tab and click on a ''+ New Custom Form'' button
+//5. Click on an ''Apply'' button
+
+        // 2. Go to the ''Home'' tab
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/form-builder/new?objTypes=PROJ");
+        waitForPageToLoadCompletely(driver,60);
+
+        //Click on an "Apply" button
+        waitForElementVisible(driver,"//button[@data-tracking-id='apply']");
+        clickToElement(driver,"//button[@data-tracking-id='apply']");
+
+        //take screenshot
+        waitForElementVisible(driver,"//div[@data-testid='toast-notification']");
+        takeSnapShotWithHighlight(driver,"//div[@data-testid='toast-notification']", GlobalConstants.SCREENSHOTS+folder+"009_Ycp.png");
+
+    }
+        /*@Test
+        public void String_010() throws Exception {
+//        Board
+//        MockID:   YcL1	Try out the Commenting Beta
+//                  YcJ1	Go back to the current Commentin...
+//Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//Direct link: https://adobeloctesting.devtest.workfront-dev.com/issue/625d4630000393933c1b80897e2cf401/updates
+//
+//1. Login to Workfront
+//2. Go to ''Projects'' tab
+//3. Open any project or create a new one
+//4. On the left sidebar select ''Requests''
+//5. Open any request or create a new one
+//6. On the left sidebar select ''Updates''
+
+        // 2. Go to the ''Home'' tab
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/issue/625d4630000393933c1b80897e2cf401/updates");
+        waitForPageToLoadCompletely(driver,60);
+
+
+    }*/
+
+        @Test
+        public void String_012() throws Exception {
+//        Board
+//        MockID:   YWn	You must assign a new auto-upgra...
+//            Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//Direct link: https://adobeloctesting.devtest.workfront-dev.com/setup/access-levels
+//
+//1. Login to Workfront
+//2. Go to Setup -> Access Levels
+//3. Select 'Light' access level and click Delete
+
+        // 2. Go to the ''Home'' tab
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/setup/access-levels");
+        waitForPageToLoadCompletely(driver,60);
+
+        //3. Select 'Light' access level and click Delete
+        waitForElementVisible(driver,"(//div[@class='CheckBox '])[7]");
+        checkToCheckboxOrRadio(driver,"(//div[@class='CheckBox '])[7]");
+        waitForElementVisible(driver,"//button[@id='deleteToolbar']");
+        clickToElement(driver,"//button[@id='deleteToolbar']");
+
+        // Take SS: YWn
+            captureScreen(GlobalConstants.SCREENSHOTS+folder+"012_YWn.png");
+        }
+        @Test
+        public void String_013() throws Exception {
+//        Board
+//        MockID:   Ycd	All Approvals
+//Ycc	Requests Sent To My Team
+//Ycb	All approval items
+//Yca	Team Requests
+//
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//Direct link: https://adobeloctesting.devtest.workfront-dev.com/home/workspaces
+//
+//1. Login to Workfront
+//2. Go to the ''Home'' tab
+//3. Click on a ''Try out new Home'' button on the down right corner
+//4. Click on a ''Manage widgets'' button on the top right corner > ''+ Add widget''
+
+        // 2. Go to the ''Home'' tab
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/home/workspaces");
+        waitForPageToLoadCompletely(driver,60);
+
+        //remove team request first
+            //Click customize
+        waitForElementVisible(driver,"//button[@data-omega-element='customize']");
+        clickToElement(driver,"//button[@data-omega-element='customize']");
+
+        // Take SS: Yca Ycc
+        takeSnapShotWithHighlight(driver,"(//div[@class='spectrum-Card-body'])[1]", GlobalConstants.SCREENSHOTS+folder+"013_Yca_Ycc.png");
+        takeSnapShotWithHighlight(driver,"(//div[@class='spectrum-Card-body'])[2]", GlobalConstants.SCREENSHOTS+folder+"013_Ycb_Ycd.png");
+        }
+
+
+    @Test
+    public void String_017() throws Exception {
+//        Board
+//        MockID:   Ych	Previous
+//                  Ycj	Next
+//            Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//Direct link: https://adobeloctesting.devtest.workfront-dev.com/maestro/workspaces
+//
+//1. Login to Workfront
+//2. Go to Main Menu
+//3. Go to "Maestro"
+//4. Under the "Taxonomies" click on a "+ Add Taxonomy"
+//5. Click on a "Default View - View" on the right side
+//6. Click on a "+ Create a new view" button
+//7. Enter "View name"
+//8. Choose "Timeline"
+//9. Click on a "Default View - View" on the right side
+//10. Choose created timeline
+//11. Open inspect
+
+        // 2. Go to the ''Home'' tab
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/maestro/38e832b8-07ce-4ae2-a17a-5c29c6c7ff67/untitled_taxonomy-7/63763c40-f9d0-43df-86de-9e4ebbe67de7/view");
+        waitForPageToLoadCompletely(driver,60);
+
+        // Take SS: Ych
+        waitForElementVisible(driver,"//*[name()='path' and contains(@d,'M12,18v0a1.988,1.988,0,0,0,.585')]/ancestor::button')]");
+        inspectElement(driver,"//*[name()='path' and contains(@d,'M12,18v0a1.988,1.988,0,0,0,.585')]/ancestor::button')]");
+        Robot rb = new Robot();
+        rb.keyPress(KeyEvent.VK_UP);        rb.keyRelease(KeyEvent.VK_UP);
+        rb.keyPress(KeyEvent.VK_UP);        rb.keyRelease(KeyEvent.VK_UP);
+        captureScreen(GlobalConstants.SCREENSHOTS+folder+"011_Ych.png");
+        // Take SS: Ycj
+        waitForElementVisible(driver,"//*[name()='path' and contains(@d,'M24,18v0a1.988,1.988,0,0,1-.585,1.409l-7.983,7.98a2')]/ancestor::button')]");
+        inspectElement(driver,"//*[name()='path' and contains(@d,'M24,18v0a1.988,1.988,0,0,1-.585,1.409l-7.983,7.98a2')]/ancestor::button')]");
+        rb.keyPress(KeyEvent.VK_UP);        rb.keyRelease(KeyEvent.VK_UP);
+        rb.keyPress(KeyEvent.VK_UP);        rb.keyRelease(KeyEvent.VK_UP);
+        captureScreen(GlobalConstants.SCREENSHOTS+folder+"011_Ycj.png");
+
+
+    }
+
     @AfterClass(alwaysRun = true)
     public void afterClass() {
 //        driver.quit();
