@@ -455,7 +455,7 @@ public class ENU extends AbstractPage {
         sleepInSecond(1);
         sendKeyToElement(driver,"//button[@data-testid='dashboard-workspace-section-filter-button']/following-sibling::div//input","JK_01");
         sleepInSecond(1);
-
+        waitForElementVisible(driver,"(//div[@data-testid='collection-dashboard-collection-container']//h3)[2]");
         takeSnapShotWithHighlight(driver, "(//div[@data-testid='collection-dashboard-collection-container']//h3)[2]", GlobalConstants.SCREENSHOTS + folder + "39_Yao.png");
         takeSnapShotWithHighlight(driver, "(//div[@data-testid='collection-dashboard-collection-container']//h3)[2]/following-sibling::span", GlobalConstants.SCREENSHOTS + folder + "40_Ya5.png");
     }
@@ -479,7 +479,7 @@ public class ENU extends AbstractPage {
         clickToElement(driver,"//button[@data-testid='dashboard-workspace-section-filter-button']/following-sibling::div");
         sleepInSecond(1);
         sendKeyToElement(driver,"//button[@data-testid='dashboard-workspace-section-filter-button']/following-sibling::div//input","jk_02");
-        sleepInSecond(1);
+        sleepInSecond(5);
         waitForElementVisible(driver,"//div[@class='workstream-metrics']//h5");
         takeSnapShotWithHighlight(driver, "//div[@class='workstream-metrics']//h5", GlobalConstants.SCREENSHOTS + folder + "41_Yaz.png");
     }
