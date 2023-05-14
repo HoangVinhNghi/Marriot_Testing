@@ -12,9 +12,9 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-public class ENU extends AbstractPage {
+public class FRA extends AbstractPage {
     WebDriver driver;
-    String folder = "\\Workfront_20230215T190531Z\\ENU\\"; // the path to store the captured images with  lang code can be changed accordingly
+    String folder = "\\Workfront_20230215T190531Z\\FRA\\3828761\\fr-FR\\"; // the path to store the captured images with  lang code can be changed accordingly
     // Select the lang code accordingly
     String lang_EN = "--lang=en";
     String lang_DE = "--lang=de";
@@ -29,7 +29,7 @@ public class ENU extends AbstractPage {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         // Set language
-        options.addArguments("--lang=en"); //set browser language
+        options.addArguments("--lang=fr"); //set browser language
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(12, TimeUnit.SECONDS);
         driver.manage().window().maximize();
@@ -39,7 +39,6 @@ public class ENU extends AbstractPage {
         clickToElement(driver, "//button[@type='submit']");
         waitForElementVisible(driver, "//div[@id='page-content']");
     }
-
     @Test
     public void String_01() throws Exception {
 //        MockID: YbC	Restore workstream
@@ -426,9 +425,8 @@ public class ENU extends AbstractPage {
         clickToElement(driver,"//button[@data-testid='dashboard-create-workstream-button']");
         waitForElementVisible(driver,"//div[@data-testid='workstream-card-list']");
         clickToElement(driver,"//div[@data-testid='workstream-card-list']");
-        sleepInSecond(5);
         waitForElementVisible(driver,"(//div[contains(@class,'react-spectrum-ListViewItem')])[2]");
-        takeSnapShotWithHighlight(driver, "//div[contains(@class,'ListViewItem-grid')]/div/div", GlobalConstants.SCREENSHOTS + folder + "37_38_Yag_Yah.png");
+        takeSnapShotWithHighlight(driver, "(//div[contains(@class,'react-spectrum-ListViewItem')])[2]", GlobalConstants.SCREENSHOTS + folder + "37_38_Yag_Yah.png");
     }
     @Test
     public void String_42_43() throws Exception {
