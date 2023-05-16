@@ -119,11 +119,91 @@ public class ENU extends AbstractPage {
         //click to None
         waitForElementVisible(driver,"//div[contains(@class,'flex_')]/label[contains(@class,'is-checked')]/following-sibling::button");
         clickToElementByJS(driver,"//div[contains(@class,'flex_')]/label[contains(@class,'is-checked')]/following-sibling::button");
-//        waitForElementVisible(driver,"//div[@aria-posinset='2']");
-//        clickToElementByJS(driver,"//div[@aria-posinset='2']");
-        // Take SS: YT+
+
+        // Take SS: Yed	MAX
         waitForElementVisible(driver,"(//div[contains(@class,'Menu-itemGrid')])[1]");
         takeSnapShotWithHighlight(driver,"(//div[contains(@class,'Menu-itemGrid')])[1]", GlobalConstants.SCREENSHOTS+folder+"002_Yed.png");
+        // Yec	MIN
+        takeSnapShotWithHighlight(driver,"(//div[contains(@class,'Menu-itemGrid')])[2]", GlobalConstants.SCREENSHOTS+folder+"002_Yec.png");
+        // Yeb	SUM
+        takeSnapShotWithHighlight(driver,"(//div[contains(@class,'Menu-itemGrid')])[3]", GlobalConstants.SCREENSHOTS+folder+"002_Yeb.png");
+        // YeX	None
+        takeSnapShotWithHighlight(driver,"(//div[contains(@class,'Menu-itemGrid')])[5]", GlobalConstants.SCREENSHOTS+folder+"002_YeX.png");
+        // YeW	AVG
+        takeSnapShotWithHighlight(driver,"(//div[contains(@class,'Menu-itemGrid')])[4]", GlobalConstants.SCREENSHOTS+folder+"002_YeW.png");
+
+
+    }
+    @Test
+    public void String_003() throws Exception {
+//        Board
+//        MockID:   YeQ	No {0} added yet
+//                  YeP	Click "Add {0}" to get started.
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//Direct link: https://adobeloctesting.devtest.workfront-dev.com/boards
+//
+//1.1 Login to Workfront
+//2.1 Go to Main Menu > ''Boards''
+//3.1 Сreate a new workstream by cliking on an ''Add workstream'' button
+//4.2 Click on a ''Card List'' tab
+//5.3 Go back to ''Boards'' tab > ''Add board''
+//6.3 Click on a ''Select'' button on a ''Basic board'' card
+//7.3 Delete all Columns by cliking on a ''...'' button > ''Delete''
+
+        // Go to board Preferences
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/boards");
+        waitForPageToLoadCompletely(driver,60);
+
+        //Click to Add workstream
+        waitForElementVisible(driver,"//button[@data-testid='dashboard-create-workstream-button']");
+        clickToElement(driver,"//button[@data-testid='dashboard-create-workstream-button']");
+
+        // Take SS: YeQ
+        waitForElementVisible(driver,"(//div[contains(@class,'spectrum-TabsPanel-tabpanel')]//div[contains(@class,'flex')])[6]");
+        takeSnapShotWithHighlight(driver,"(//div[contains(@class,'spectrum-TabsPanel-tabpanel')]//div[contains(@class,'flex')])[6]", GlobalConstants.SCREENSHOTS+folder+"002_YeQ_YeP.png");
+        // YeP
+       // takeSnapShotWithHighlight(driver,"(//div[contains(@class,'Menu-itemGrid')])[2]", GlobalConstants.SCREENSHOTS+folder+"002_Yec.png");
+
+    }
+    @Test
+    public void String_004() throws Exception {
+//        Board
+//        MockID:   YeK1	No results found
+//                  YeR1	Try adjusting your search or fil...
+//                  Xo8	No results found
+//       Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//Direct link: https://adobeloctesting.devtest.workfront-dev.com/boards
+//
+//1. Login to Workfront
+//2. Go to Main Menu > ''Boards''
+//3. Enter not matching name in ''Search'' field
+
+        // Go to board Preferences
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/boards");
+        waitForPageToLoadCompletely(driver,60);
+
+        //Click to search boards
+        waitForElementVisible(driver,"(//*[name()='path' and contains(@d,'M33.173,30.215,25.4,22.443A12.826,12.8')])[2]/ancestor::button");
+        clickToElement(driver,"(//*[name()='path' and contains(@d,'M33.173,30.215,25.4,22.443A12.826,12.8')])[2]/ancestor::button");
+        //send random key
+        waitForElementVisible(driver,"//input[contains(@class,'spectrum-Textfield-input_')]");
+        sendKeyToElement(driver,"//input[contains(@class,'spectrum-Textfield-input_')]","asdasdafgqweqwe");
+        //Click to search workstream
+        waitForElementVisible(driver,"(//*[name()='path' and contains(@d,'M33.173,30.215,25.4,22.443A12.826,12.8')])[2]/ancestor::button");
+        clickToElement(driver,"(//*[name()='path' and contains(@d,'M33.173,30.215,25.4,22.443A12.826,12.8')])[2]/ancestor::button");
+        //send random key
+        waitForElementVisible(driver,"(//input[contains(@class,'spectrum-Textfield-input_')])[2]");
+        sendKeyToElement(driver,"(//input[contains(@class,'spectrum-Textfield-input_')])[2]","asdasdafgqweqwe");
+
+        sleepInSecond(5);
+        // Take SS: YeK, YeR
+        waitForElementVisible(driver,"//div[@data-testid='collection-dashboard-board-container']");
+        takeSnapShotWithHighlight(driver,"//div[@data-testid='collection-dashboard-board-container']", GlobalConstants.SCREENSHOTS+folder+"004_YeK_YeR.png");
+        // Take SS: Xo8
+        waitForElementVisible(driver,"//div[@data-testid='collection-dashboard-collection-container']");
+        takeSnapShotWithHighlight(driver,"//div[@data-testid='collection-dashboard-collection-container']", GlobalConstants.SCREENSHOTS+folder+"004_Xo8.png");
 
 
     }
