@@ -77,10 +77,10 @@ public class ENU extends AbstractPage {
     public void String_002() throws Exception {
 //        Board
 //        MockID: Yed	MAX
-//Yec	MIN
-//Yeb	SUM
-//        YeX	None
-//        YeW	AVG
+//                Yec	MIN
+//                Yeb	SUM
+//                YeX	None
+//                YeW	AVG
 //        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
 //Test User: adobeloctesting@workfront.com / 2wsx#EDC
 //Direct link: https://adobeloctesting.devtest.workfront-dev.com/maestro/workspaces/8c48a3d1-7caa-480f-84d9-8ebbccd8db40
@@ -115,19 +115,17 @@ public class ENU extends AbstractPage {
         //check box 123
         waitForElementVisible(driver,"(//div[@data-omega-widget='maestro-table-new-field-creation-widget']//input[@type='checkbox'])[7]");
         checkToCheckboxOrRadio(driver,"(//div[@data-omega-widget='maestro-table-new-field-creation-widget']//input[@type='checkbox'])[7]");
-        sleepInSecond(1);
+        sleepInSecond(2);
         //click to None
-        waitForElementVisible(driver,"(//div{@style=\"justify-content: space-between;\"])[6]//button");
-        clickToElementByJS(driver,"(//div{@style=\"justify-content: space-between;\"])[6]//button//*[name()='path' and contains(@d,'M8,14.02a2,2,0,0,1,3.411-1.411l6')]/ancestor::button)[7]");
-        waitForElementVisible(driver,"//div[@aria-posinset='2']");
-        clickToElementByJS(driver,"//div[@aria-posinset='2']");
+        waitForElementVisible(driver,"//div[contains(@class,'flex_')]/label[contains(@class,'is-checked')]/following-sibling::button");
+        clickToElementByJS(driver,"//div[contains(@class,'flex_')]/label[contains(@class,'is-checked')]/following-sibling::button");
+//        waitForElementVisible(driver,"//div[@aria-posinset='2']");
+//        clickToElementByJS(driver,"//div[@aria-posinset='2']");
         // Take SS: YT+
-        /*waitForElementVisible(driver,"//h2[contains(@class,'spectrum-Dialog-heading')]");
-        takeSnapShotWithHighlight(driver,"//h2[contains(@class,'spectrum-Dialog-heading')]", GlobalConstants.SCREENSHOTS+folder+"001_YeN1.png");
-        takeSnapShotWithHighlight(driver,"(//span[contains(@class,'spectrum-ToggleSwitch-label')]/child::h4)[1]", GlobalConstants.SCREENSHOTS+folder+"001_YdB.png");
-        takeSnapShotWithHighlight(driver,"(//span[contains(@class,'spectrum-ToggleSwitch-label')]/child::h4)[2]", GlobalConstants.SCREENSHOTS+folder+"001_YdM.png");
-        takeSnapShotWithHighlight(driver,"(//section[contains(@class,'spectrum-Dialog-content')]//div[contains(@class,'flex')]//span)[1]", GlobalConstants.SCREENSHOTS+folder+"001_Yd0.png");
-*/
+        waitForElementVisible(driver,"(//div[contains(@class,'Menu-itemGrid')])[1]");
+        takeSnapShotWithHighlight(driver,"(//div[contains(@class,'Menu-itemGrid')])[1]", GlobalConstants.SCREENSHOTS+folder+"002_Yed.png");
+
+
     }
 
 
