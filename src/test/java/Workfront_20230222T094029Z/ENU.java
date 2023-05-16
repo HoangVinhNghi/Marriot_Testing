@@ -129,9 +129,7 @@ public class ENU extends AbstractPage {
         @Test
         public void String_003() throws Exception {
 //        Board
-//        MockID:   YcA1	Are you sure you want to delete ...
-//                  YcC1	View name
-//                  YcI1	Delete record type
+//        MockID:   YcC1	View name
 //                  YYd	    Create new view
 //                  YZf	    Events display in chronological ...
 //           Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
@@ -145,14 +143,17 @@ public class ENU extends AbstractPage {
 //5. Click on a "Default View - View" on the right side
 
         // 2. Go to the ''Home'' tab
-        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/maestro/38e832b8-07ce-4ae2-a17a-5c29c6c7ff67/untitled_taxonomy-7/63763c40-f9d0-43df-86de-9e4ebbe67de7/view");
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/maestro/workspaces");
         waitForPageToLoadCompletely(driver,60);
-
+        //4. Under the "Taxonomies" click on a "+ Add Taxonomy"
+        waitForElementVisible(driver,"//div[@data-omega-element='add-new-taxonomy']");
+        clickToElement(driver,"//div[@data-omega-element='add-new-taxonomy']");
         //click to dropdown
         waitForElementVisible(driver,"//button[@data-testid='view-widget-button']");
         clickToElement(driver,"//button[@data-testid='view-widget-button']");
         sleepInSecond(1);
         // Take SS: YYd
+
         waitForElementVisible(driver,"//button[@data-testid='rich-picker-action-button']");
         takeSnapShotWithHighlight(driver,"//button[@data-testid='rich-picker-action-button']", GlobalConstants.SCREENSHOTS+folder+"003_YYd.png");
 
@@ -167,8 +168,8 @@ public class ENU extends AbstractPage {
 
 
     }
-       /* @Test
-        public void String_004() throws Exception {
+    @Test
+    public void String_004() throws Exception {
 //        Board
 //        MockID:   Yc1	Name
 //                  Ycz	Due on
@@ -186,16 +187,19 @@ public class ENU extends AbstractPage {
         // 2. Go to the ''Home'' tab
         openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/home/workspaces");
         waitForPageToLoadCompletely(driver,60);
-
+        sleepInSecond(2);
         // Take SS: Yc1
         waitForElementVisible(driver,"(//div[@role='presentation']//div[@role='columnheader'])[1]");
+        scrollToElement(driver,"(//div[@role='presentation']//div[@role='columnheader'])[1]");
+        sleepInSecond(5);
         takeSnapShotWithHighlight(driver,"(//div[@role='presentation']//div[@role='columnheader'])[1]", GlobalConstants.SCREENSHOTS+folder+"004_Yc1.png");
 
         // Take SS: Ycz
         waitForElementVisible(driver,"(//div[@role='presentation']//div[@role='columnheader'])[3]");
+        scrollToElement(driver,"(//div[@role='presentation']//div[@role='columnheader'])[3]");
         takeSnapShotWithHighlight(driver,"(//div[@role='presentation']//div[@role='columnheader'])[3]", GlobalConstants.SCREENSHOTS+folder+"004_Ycz.png");
 
-    }*/
+    }
 
         /*@Test
         public void String_004() throws Exception {
@@ -376,7 +380,7 @@ public class ENU extends AbstractPage {
         takeSnapShotWithHighlight(driver,"//div[@data-testid='toast-notification']", GlobalConstants.SCREENSHOTS+folder+"009_Ycp.png");
 
     }
-        @Test
+        /*@Test
         public void String_010() throws Exception {
 //        Board
 //        MockID:   YcL1	Try out the Commenting Beta
@@ -396,56 +400,9 @@ public class ENU extends AbstractPage {
         openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/issue/625d4630000393933c1b80897e2cf401/updates");
         waitForPageToLoadCompletely(driver,60);
 
-        //Click on an "Apply" button
-        waitForElementVisible(driver,"//button[@data-tracking-id='apply']");
-        clickToElement(driver,"//button[@data-tracking-id='apply']");
 
-        //take screenshot
-        waitForElementVisible(driver,"//div[@data-testid='toast-notification']");
-        takeSnapShotWithHighlight(driver,"//div[@data-testid='toast-notification']", GlobalConstants.SCREENSHOTS+folder+"009_Ycp.png");
+    }*/
 
-    }
-        @Test
-        public void String_011() throws Exception {
-//        Board
-//        MockID:   Ych	Previous
-//                  Ycj	Next
-//            Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
-//Test User: adobeloctesting@workfront.com / 2wsx#EDC
-//Direct link: https://adobeloctesting.devtest.workfront-dev.com/maestro/workspaces
-//
-//1. Login to Workfront
-//2. Go to Main Menu
-//3. Go to "Maestro"
-//4. Under the "Taxonomies" click on a "+ Add Taxonomy"
-//5. Click on a "Default View - View" on the right side
-//6. Click on a "+ Create a new view" button
-//7. Enter "View name"
-//8. Choose "Timeline"
-//9. Click on a "Default View - View" on the right side
-//10. Choose created timeline
-//11. Open inspect
-
-        // 2. Go to the ''Home'' tab
-        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/maestro/38e832b8-07ce-4ae2-a17a-5c29c6c7ff67/untitled_taxonomy-7/63763c40-f9d0-43df-86de-9e4ebbe67de7/view");
-        waitForPageToLoadCompletely(driver,60);
-
-        // Take SS: Ych
-        waitForElementVisible(driver,"//*[name()='path' and contains(@d,'M12,18v0a1.988,1.988,0,0,0,.585')]/ancestor::button')]");
-        inspectElement(driver,"//*[name()='path' and contains(@d,'M12,18v0a1.988,1.988,0,0,0,.585')]/ancestor::button')]");
-            Robot rb = new Robot();
-            rb.keyPress(KeyEvent.VK_UP);        rb.keyRelease(KeyEvent.VK_UP);
-            rb.keyPress(KeyEvent.VK_UP);        rb.keyRelease(KeyEvent.VK_UP);
-        captureScreen(GlobalConstants.SCREENSHOTS+folder+"011_Ych.png");
-        // Take SS: Ycj
-        waitForElementVisible(driver,"//*[name()='path' and contains(@d,'M24,18v0a1.988,1.988,0,0,1-.585,1.409l-7.983,7.98a2')]/ancestor::button')]");
-        inspectElement(driver,"//*[name()='path' and contains(@d,'M24,18v0a1.988,1.988,0,0,1-.585,1.409l-7.983,7.98a2')]/ancestor::button')]");
-            rb.keyPress(KeyEvent.VK_UP);        rb.keyRelease(KeyEvent.VK_UP);
-            rb.keyPress(KeyEvent.VK_UP);        rb.keyRelease(KeyEvent.VK_UP);
-        captureScreen(GlobalConstants.SCREENSHOTS+folder+"011_Ycj.png");
-
-
-        }
         @Test
         public void String_012() throws Exception {
 //        Board
@@ -494,14 +451,56 @@ public class ENU extends AbstractPage {
 
         //remove team request first
             //Click customize
-        waitForElementVisible(driver,"//*[name()='path' and contains(@d,'M33.567,8.2,27.8,2.432a1.215,1.215,0,0')]/ancestor::button')]");
-        clickToElement(driver,"//*[name()='path' and contains(@d,'M33.567,8.2,27.8,2.432a1.215,1.215,0,0')]/ancestor::button')]");
+        waitForElementVisible(driver,"//button[@data-omega-element='customize']");
+        clickToElement(driver,"//button[@data-omega-element='customize']");
 
         // Take SS: Yca Ycc
-        takeSnapShotWithHighlight(driver,"//g[@clip-path='url(#Team_Requests_svg__e)']/ancestor::div[contains(@id,'react-spectrum')]", GlobalConstants.SCREENSHOTS+folder+"013_Yca_Ycc.png");
-        takeSnapShotWithHighlight(driver,"//g[@clip-path='url(#All_Approvals_svg__D)']/ancestor::div[contains(@id,'react-spectrum')]", GlobalConstants.SCREENSHOTS+folder+"013_Yca_Ycc.png");
+        takeSnapShotWithHighlight(driver,"(//div[@class='spectrum-Card-body'])[1]", GlobalConstants.SCREENSHOTS+folder+"013_Yca_Ycc.png");
+        takeSnapShotWithHighlight(driver,"(//div[@class='spectrum-Card-body'])[2]", GlobalConstants.SCREENSHOTS+folder+"013_Ycb_Ycd.png");
         }
 
+
+    @Test
+    public void String_017() throws Exception {
+//        Board
+//        MockID:   Ych	Previous
+//                  Ycj	Next
+//            Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//Direct link: https://adobeloctesting.devtest.workfront-dev.com/maestro/workspaces
+//
+//1. Login to Workfront
+//2. Go to Main Menu
+//3. Go to "Maestro"
+//4. Under the "Taxonomies" click on a "+ Add Taxonomy"
+//5. Click on a "Default View - View" on the right side
+//6. Click on a "+ Create a new view" button
+//7. Enter "View name"
+//8. Choose "Timeline"
+//9. Click on a "Default View - View" on the right side
+//10. Choose created timeline
+//11. Open inspect
+
+        // 2. Go to the ''Home'' tab
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/maestro/38e832b8-07ce-4ae2-a17a-5c29c6c7ff67/untitled_taxonomy-7/63763c40-f9d0-43df-86de-9e4ebbe67de7/view");
+        waitForPageToLoadCompletely(driver,60);
+
+        // Take SS: Ych
+        waitForElementVisible(driver,"//*[name()='path' and contains(@d,'M12,18v0a1.988,1.988,0,0,0,.585')]/ancestor::button')]");
+        inspectElement(driver,"//*[name()='path' and contains(@d,'M12,18v0a1.988,1.988,0,0,0,.585')]/ancestor::button')]");
+        Robot rb = new Robot();
+        rb.keyPress(KeyEvent.VK_UP);        rb.keyRelease(KeyEvent.VK_UP);
+        rb.keyPress(KeyEvent.VK_UP);        rb.keyRelease(KeyEvent.VK_UP);
+        captureScreen(GlobalConstants.SCREENSHOTS+folder+"011_Ych.png");
+        // Take SS: Ycj
+        waitForElementVisible(driver,"//*[name()='path' and contains(@d,'M24,18v0a1.988,1.988,0,0,1-.585,1.409l-7.983,7.98a2')]/ancestor::button')]");
+        inspectElement(driver,"//*[name()='path' and contains(@d,'M24,18v0a1.988,1.988,0,0,1-.585,1.409l-7.983,7.98a2')]/ancestor::button')]");
+        rb.keyPress(KeyEvent.VK_UP);        rb.keyRelease(KeyEvent.VK_UP);
+        rb.keyPress(KeyEvent.VK_UP);        rb.keyRelease(KeyEvent.VK_UP);
+        captureScreen(GlobalConstants.SCREENSHOTS+folder+"011_Ycj.png");
+
+
+    }
 
     @AfterClass(alwaysRun = true)
     public void afterClass() {

@@ -12,9 +12,9 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-public class ENU extends AbstractPage {
+public class DEU extends AbstractPage {
     WebDriver driver;
-    String folder = "\\Workfront_20230215T190531Z\\ENU\\"; // the path to store the captured images with  lang code can be changed accordingly
+    String folder = "\\Workfront_20230215T190531Z\\DEU\\3828763\\de-DE\\"; // the path to store the captured images with  lang code can be changed accordingly
     // Select the lang code accordingly
     String lang_EN = "--lang=en";
     String lang_DE = "--lang=de";
@@ -29,7 +29,7 @@ public class ENU extends AbstractPage {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         // Set language
-        options.addArguments("--lang=en"); //set browser language
+        options.addArguments("--lang=de"); //set browser language
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(12, TimeUnit.SECONDS);
         driver.manage().window().maximize();
@@ -54,52 +54,23 @@ public class ENU extends AbstractPage {
 //4. Add some board and open it
 //5. Click on three dots -> Move to workstream
 
-        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/boards");
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/boards/");
         waitForPageToLoadCompletely(driver, 60);
-        sleepInSecond(10);
-        takeSnapShotWithHighlight(driver, "(//h2[@data-testid='workspace-section-heading'])[2]", GlobalConstants.SCREENSHOTS + folder + "46_Ybq.png");
-
         clickToElement(driver, "//button[@data-testid='dashboard-workspace-section-filter-button']");
         sleepInSecond(2);
-        takeSnapShotWithHighlight(driver, "(//li[@role='menuitemradio'])[2]", GlobalConstants.SCREENSHOTS + folder + "24_YbW.png");
         clickToElement(driver, "(//li[@role='menuitemradio'])[2]");
-        sleepInSecond(40);
-        waitForElementVisible(driver,"(//div[@data-testid='collection-dashboard-collection-container']//span)[1]/parent::div");
-        takeSnapShotWithHighlight(driver, "(//div[@data-testid='collection-dashboard-collection-container']//span)[1]/parent::div", GlobalConstants.SCREENSHOTS + folder + "25_Yb4.png");
-
+        waitForElementVisible(driver, "(//button[contains(@data-testid,'workspace-options')])[1]");
         clickToElement(driver, "(//button[contains(@data-testid,'workspace-options')])[1]");
         waitForElementVisible(driver, "(//li[@role='menuitem'])[1]");
         takeSnapShotWithHighlight(driver, "(//li[@role='menuitem'])[1]", GlobalConstants.SCREENSHOTS + folder + "01_YbC.png");
-        clickToElementByJS(driver, "(//button[contains(@data-testid,'workspace-options')])[1]");
 
+        clickToElement(driver, "(//li[@role='menuitem'])[1]");
         clickToElement(driver, "//button[@data-testid='dashboard-workspace-section-filter-button']");
+        sleepInSecond(2);
         clickToElement(driver, "(//li[@role='menuitemradio'])[3]");
-        sleepInSecond(2);
-        clickToElement(driver,"//button[@data-testid='dashboard-workspace-section-filter-button']/following-sibling::div");
-        sleepInSecond(1);
-        sendKeyToElement(driver,"//button[@data-testid='dashboard-workspace-section-filter-button']/following-sibling::div//input","JK_01");
-        sleepInSecond(1);
-        waitForElementVisible(driver,"(//div[@data-testid='collection-dashboard-collection-container']//h3)[2]");
-        takeSnapShotWithHighlight(driver, "(//div[@data-testid='collection-dashboard-collection-container']//h3)[2]", GlobalConstants.SCREENSHOTS + folder + "39_Yao.png");
-        takeSnapShotWithHighlight(driver, "(//div[@data-testid='collection-dashboard-collection-container']//h3)[2]/following-sibling::span", GlobalConstants.SCREENSHOTS + folder + "40_Ya5.png");
-
-        clickToElement(driver,"//button[@data-testid='board-search-button']");
-        sleepInSecond(2);
-
-
-        clickToElement(driver,"//button[@data-testid='dashboard-workspace-section-filter-button']/following-sibling::div");
-        sleepInSecond(1);
-        sendKeyToElement(driver,"//button[@data-testid='dashboard-workspace-section-filter-button']/following-sibling::div//input","jk_02");
-        sleepInSecond(3);
-
-        waitForElementVisible(driver,"//div[@class='workstream-metrics']//h5");
-        takeSnapShotWithHighlight(driver, "//div[@class='workstream-metrics']//h5", GlobalConstants.SCREENSHOTS + folder + "41_Yaz.png");
-
-        waitForElementVisible(driver, "(//button[contains(@data-testid,'workspace-options')])[1]/preceding-sibling::button");
-        takeSnapShotWithHighlight(driver, "(//button[contains(@data-testid,'workspace-options')])[1]/preceding-sibling::button", GlobalConstants.SCREENSHOTS + folder + "45_Ybd.png");
-        takeSnapShotWithHighlight(driver, "(//h2[@data-testid='workspace-section-heading'])[2]", GlobalConstants.SCREENSHOTS + folder + "46_Ybq.png");
 
     }
+
     @Test
     public void String_02() throws Exception {
 //        MockID: YbX Backlog
@@ -116,6 +87,7 @@ public class ENU extends AbstractPage {
         waitForElementVisible(driver, "//div[contains(@data-testid,'column-backlog')]//h3");
         takeSnapShotWithHighlight(driver, "//div[contains(@data-testid,'column-backlog')]//h3", GlobalConstants.SCREENSHOTS + folder + "02_YbX.png");
     }
+
     @Test
     public void String_03_4_5() throws Exception {
 //        MockID: Yar	Restore all fields to default
@@ -139,6 +111,7 @@ public class ENU extends AbstractPage {
         takeSnapShotWithHighlight(driver, "//span[@role='link']", GlobalConstants.SCREENSHOTS + folder + "03_Yar.png");
         takeSnapShotWithHighlight(driver, "//div[contains(@style,'width: 100%; flex-direction: row; gap: var(--spectrum-global-dimension-size-150, var(--spectrum-alias-size-150));')]", GlobalConstants.SCREENSHOTS + folder + "04_05_Yb1_Ybi.png");
     }
+
     @Test
     public void String_06_9() throws Exception {
 //        MockID: YbG	Card List
@@ -165,6 +138,7 @@ public class ENU extends AbstractPage {
         takeSnapShotWithHighlight(driver, "(//div[@style='background-color: rgb(244, 244, 244); margin: 6px; padding: var(--spectrum-global-dimension-size-85, var(--spectrum-alias-size-85)); border-radius: var(--spectrum-alias-border-radius-medium);'])[2]",
                 GlobalConstants.SCREENSHOTS + folder + "09_YbD.png");
     }
+
     @Test
     public void String_10() throws Exception {
 //        MockID: YbO	Are you sure you want to delete ...
@@ -186,6 +160,7 @@ public class ENU extends AbstractPage {
         clickToElement(driver, "(//button[contains(@class,'ButtonGroup-Button')])[2]");
         takeSnapShotWithHighlight(driver, "//section[contains(@class,'spectrum-Dialog-content')]", GlobalConstants.SCREENSHOTS + folder + "10_YbO.png");
     }
+
     @Test
     public void String_11_12() throws Exception {
 //        MockID: Ybo	Custom statuses
@@ -216,6 +191,7 @@ public class ENU extends AbstractPage {
         clickToElement(driver, "//button[contains(@class,'react-spectrum-ContextualHelp-button')]");
         takeSnapShotWithHighlight(driver, "//section[contains(@class,'ContextualHelp-content')]", GlobalConstants.SCREENSHOTS + folder + "12_YbB.png");
     }
+
     @Test
     public void String_13() throws Exception {
 //        MockID: Yau	End date
@@ -236,6 +212,7 @@ public class ENU extends AbstractPage {
         waitForElementVisible(driver, "(//div[contains(@class,'react-spectrum-Datepicker-fieldWrapper')]/span)[3]");
         takeSnapShotWithHighlight(driver, "(//div[contains(@class,'react-spectrum-Datepicker-fieldWrapper')]/span)[3]", GlobalConstants.SCREENSHOTS + folder + "13_Yau.png");
     }
+
     @Test
     public void String_14_15() throws Exception {
 //        MockID: YbE	Board status
@@ -256,6 +233,7 @@ public class ENU extends AbstractPage {
         takeSnapShotWithHighlight(driver, "//div[@data-testid='filter-rail-group-heading-status']", GlobalConstants.SCREENSHOTS + folder + "14_YbE.png");
         takeSnapShotWithHighlight(driver, "//div[@data-testid='filter-rail-group-heading-template']", GlobalConstants.SCREENSHOTS + folder + "15_Yb3.png");
     }
+
     @Test
     public void String_16_17_18_19() throws Exception {
 //        MockID: Yak	Configure iterations
@@ -295,6 +273,7 @@ public class ENU extends AbstractPage {
         clickToElement(driver, "(//div[contains(@class,'spectrum-Menu-itemGrid')])[2]");
         takeSnapShotWithHighlight(driver, "(//div[.='Workfront']/following-sibling::div//span)[1]", GlobalConstants.SCREENSHOTS + folder + "19_Ya8.png");
     }
+
     @Test
     public void String_20_21_22() throws Exception {
 //        MockID: Ya6	Iteration Execution Board
@@ -336,6 +315,44 @@ public class ENU extends AbstractPage {
         waitForElementVisible(driver, "//h5[@data-testid='workstream-heading-label']");
         takeSnapShotWithHighlight(driver, "//h5[@data-testid='workstream-heading-label']", GlobalConstants.SCREENSHOTS + folder + "23_Ybu.png");
     }
+    @Test
+    public void String_24_25() throws Exception {
+//        MockID: YbS	Archived workstream
+//        Yb4	This workstream has been archive...
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//        Direct link: https://adobeloctesting.devtest.workfront-dev.com/boards
+//
+//        1. Login to Workfront
+//        2. Go to Main Menu > ''Boards''
+//        3. Click on a ''Add workstream'' and leave workstream empty
+//        4. Go back to the ''Boards''
+//        5. Find newly created workstream
+//        6. Click on a ''...'' button on the workstream card > and select ''Archive''
+//        7. Click on a filter and select ''Archived boards''
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/boards");
+        waitForPageToLoadCompletely(driver, 60);
+        clickToElement(driver, "//button[@data-testid='dashboard-workspace-section-filter-button']");
+        sleepInSecond(1);
+        takeSnapShotWithHighlight(driver, "(//li[@role='menuitemradio'])[2]", GlobalConstants.SCREENSHOTS + folder + "24_YbW.png");
+        clickToElement(driver, "(//li[@role='menuitemradio'])[2]");
+        sleepInSecond(1);
+        waitForElementVisible(driver,"(//div[@data-testid='collection-dashboard-collection-container']//span)[1]");
+        sleepInSecond(5);
+        waitForElementVisible(driver,"(//button[contains(@data-testid,'workspace-options-button')])[1]");
+
+        clickToElement(driver, "//button[@data-testid='dashboard-workspace-section-filter-button']");
+        clickToElement(driver, "(//li[@role='menuitemradio'])[1]");
+        sleepInSecond(2);
+
+        clickToElement(driver, "//button[@data-testid='dashboard-workspace-section-filter-button']");
+        clickToElement(driver, "(//li[@role='menuitemradio'])[2]");
+
+        waitForElementVisible(driver,"(//button[contains(@data-testid,'workspace-options-button')])[1]");
+        sleepInSecond(40);
+        takeSnapShotWithHighlight(driver, "(//div[@data-testid='collection-dashboard-collection-container']//span)[1]/parent::div", GlobalConstants.SCREENSHOTS + folder + "25_Yb4.png");
+    }
+
     @Test
     public void String_26_27() throws Exception {
 //        MockID: Ybv	Iteration view
@@ -426,9 +443,58 @@ public class ENU extends AbstractPage {
         clickToElement(driver,"//button[@data-testid='dashboard-create-workstream-button']");
         waitForElementVisible(driver,"//div[@data-testid='workstream-card-list']");
         clickToElement(driver,"//div[@data-testid='workstream-card-list']");
-        sleepInSecond(5);
         waitForElementVisible(driver,"(//div[contains(@class,'react-spectrum-ListViewItem')])[2]");
-        takeSnapShotWithHighlight(driver, "//div[contains(@class,'ListViewItem-grid')]/div/div", GlobalConstants.SCREENSHOTS + folder + "37_38_Yag_Yah.png");
+        takeSnapShotWithHighlight(driver, "(//div[contains(@class,'react-spectrum-ListViewItem')])[2]", GlobalConstants.SCREENSHOTS + folder + "37_38_Yag_Yah.png");
+    }
+    @Test
+    public void String_39_40() throws Exception {
+//        MockID: Ya5	Open the workstream to create a ...
+//                Yao	No boards added yet
+
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//        Direct link: https://adobeloctesting.devtest.workfront-dev.com/boards
+//
+//        1. Login to Workfront
+//        2. Go to Main Menu > ''Boards''
+//        3. Click on a ''Add workstream'' button
+//        4. Click on a ''Card List'' tab
+//        5. Click on ''Iteration view'' button
+
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/boards");
+        waitForPageToLoadCompletely(driver, 60);
+        sleepInSecond(1);
+        clickToElement(driver,"//button[@data-testid='dashboard-workspace-section-filter-button']/following-sibling::div");
+        sleepInSecond(1);
+        sendKeyToElement(driver,"//button[@data-testid='dashboard-workspace-section-filter-button']/following-sibling::div//input","JK_01");
+        sleepInSecond(1);
+        waitForElementVisible(driver,"(//div[@data-testid='collection-dashboard-collection-container']//h3)[2]");
+        takeSnapShotWithHighlight(driver, "(//div[@data-testid='collection-dashboard-collection-container']//h3)[2]", GlobalConstants.SCREENSHOTS + folder + "39_Yao.png");
+        takeSnapShotWithHighlight(driver, "(//div[@data-testid='collection-dashboard-collection-container']//h3)[2]/following-sibling::span", GlobalConstants.SCREENSHOTS + folder + "40_Ya5.png");
+    }
+@Test
+    public void String_41() throws Exception {
+//        MockID: Yaz	Metrics
+//    Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//    Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//    Direct link: https://adobeloctesting.devtest.workfront-dev.com/boards
+//
+//    1. Login to Workfront
+//    2. Go to Main Menu > ''Boards''
+//    3. Click on a ''Add workstream''
+//    4. In ''Boards'' tab click on a ''Add board'' button > click on ''Use board template'' button on ''Iteration Process'' card
+//    5. Go back to the ''Boards'' page
+//    6. Find newly created workstream
+
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/boards");
+        waitForPageToLoadCompletely(driver, 60);
+        sleepInSecond(1);
+        clickToElement(driver,"//button[@data-testid='dashboard-workspace-section-filter-button']/following-sibling::div");
+        sleepInSecond(1);
+        sendKeyToElement(driver,"//button[@data-testid='dashboard-workspace-section-filter-button']/following-sibling::div//input","jk_02");
+        sleepInSecond(5);
+        waitForElementVisible(driver,"//div[@class='workstream-metrics']//h5");
+        takeSnapShotWithHighlight(driver, "//div[@class='workstream-metrics']//h5", GlobalConstants.SCREENSHOTS + folder + "41_Yaz.png");
     }
     @Test
     public void String_42_43() throws Exception {
@@ -454,6 +520,39 @@ public class ENU extends AbstractPage {
         waitForElementVisible(driver,"//section[contains(@class,'spectrum-Dialog-content')]");
         takeSnapShotWithHighlight(driver, "//section[contains(@class,'spectrum-Dialog-content')]", GlobalConstants.SCREENSHOTS + folder + "42_43_Ya7_Yae.png");
         takeSnapShotWithHighlight(driver, "//div[contains(@class,'spectrum-Dialog-buttonGroup')]//button[1]", GlobalConstants.SCREENSHOTS + folder + "44_Ybd.png");
+    }
+
+    @Test
+    public void String_45() throws Exception {
+//        MockID: Ybd	View all workstreams
+//Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//Direct link: https://adobeloctesting.devtest.workfront-dev.com/boards
+
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/boards/");
+        waitForPageToLoadCompletely(driver, 60);
+        waitForElementVisible(driver, "//button[@data-testid='dashboard-workspace-section-filter-button']");
+        clickToElement(driver, "//button[@data-testid='dashboard-workspace-section-filter-button']");
+        sleepInSecond(2);
+        clickToElement(driver, "(//li[@role='menuitemradio'])[1]");
+
+        waitForElementVisible(driver, "(//button[contains(@data-testid,'workspace-options')])[1]/preceding-sibling::button");
+        takeSnapShotWithHighlight(driver, "(//button[contains(@data-testid,'workspace-options')])[1]/preceding-sibling::button", GlobalConstants.SCREENSHOTS + folder + "45_Ybd.png");
+
+    }
+    @Test
+    public void String_46() throws Exception {
+//        MockID: Ybq	Workstreams
+//Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
+//Test User: adobeloctesting@workfront.com / 2wsx#EDC
+//Direct link: https://adobeloctesting.devtest.workfront-dev.com/boards
+
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/boards/");
+        waitForPageToLoadCompletely(driver, 60);
+
+        waitForElementVisible(driver, "(//h2[@data-testid='workspace-section-heading'])[2]");
+        takeSnapShotWithHighlight(driver, "(//h2[@data-testid='workspace-section-heading'])[2]", GlobalConstants.SCREENSHOTS + folder + "46_Ybq.png");
+
     }
 
     @AfterClass(alwaysRun = true)
