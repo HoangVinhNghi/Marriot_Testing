@@ -12,9 +12,9 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-public class ENU extends AbstractPage {
+public class JPN extends AbstractPage {
     WebDriver driver;
-    String folder = "\\Workfront_20230229T100133Z\\ENU\\"; // the path to store the captured images with  lang code can be changed accordingly
+    String folder = "\\Workfront_20230229T100133Z\\JPN\\3866723\\ja-JP\\"; // the path to store the captured images with  lang code can be changed accordingly
     // Select the lang code accordingly
     String lang_EN ="--lang=en\"";
     String lang_DE ="de";
@@ -29,7 +29,7 @@ public class ENU extends AbstractPage {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         // Set language
-        options.addArguments("--lang=en"); //set browser language
+        options.addArguments("--lang=ja-JP"); //set browser language
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(12, TimeUnit.SECONDS);
         driver.manage().window().maximize();
@@ -87,7 +87,7 @@ public class ENU extends AbstractPage {
         // Take SS:
         waitForElementVisible(driver,"(//button[@data-testid='close-rail-button']//parent::div)[4]");
         takeSnapShotWithHighlight(driver,"(//button[@data-testid='close-rail-button']//parent::div)[4]", GlobalConstants.SCREENSHOTS+folder+"002_Yde.png");
-        takeSnapShotWithHighlight(driver,"//img[@alt='Workfront lion image']//ancestor::button", GlobalConstants.SCREENSHOTS+folder+"002_Ydi.png");
+        takeSnapShotWithHighlight(driver,"//img[contains(@alt,'Workfront')]//ancestor::button", GlobalConstants.SCREENSHOTS+folder+"002_Ydi.png");
 
 
     }
@@ -126,7 +126,7 @@ public class ENU extends AbstractPage {
         takeSnapShotWithHighlight(driver,"(//span[contains(@id,'react-aria')])[3]", GlobalConstants.SCREENSHOTS+folder+"003_Ydq.png");
         takeSnapShotWithHighlight(driver,"((//span[contains(@id,'react-aria')])[1]//parent::div//parent::div//parent::div//span)[1]", GlobalConstants.SCREENSHOTS+folder+"003_Ydr.png");
     }
-@Test
+    @Test
     public void String_004() throws Exception {
 //        Board
 //        MockID:   Yds	Search...
@@ -151,15 +151,15 @@ public class ENU extends AbstractPage {
         //Add card
         clickToElement(driver,"//button[@data-variant='accent']");
         // Take SS:
-    waitForElementVisible(driver,"(//div[contains(@id,'react-select-')])[1]");
-    takeSnapShotWithHighlight(driver,"(//div[contains(@id,'react-select-')])[1]", GlobalConstants.SCREENSHOTS+folder+"004_Yds.png");
+        waitForElementVisible(driver,"(//div[contains(@id,'react-select-')])[1]");
+        takeSnapShotWithHighlight(driver,"(//div[contains(@id,'react-select-')])[1]", GlobalConstants.SCREENSHOTS+folder+"004_Yds.png");
 
-    //click to Create Iteration
-    clickToElement(driver,"//button[@data-testid='action-bar-create-iteration-button']");
+        //click to Create Iteration
+        clickToElement(driver,"//button[@data-testid='action-bar-create-iteration-button']");
 
-    // Take SS:
-    waitForElementVisible(driver,"(//label[contains(@id,'react-aria')])[4]");
-    takeSnapShotWithHighlight(driver,"(//label[contains(@id,'react-aria')])[4]", GlobalConstants.SCREENSHOTS+folder+"004_Ydj.png");
+        // Take SS:
+        waitForElementVisible(driver,"(//label[contains(@id,'react-aria')])[4]");
+        takeSnapShotWithHighlight(driver,"(//label[contains(@id,'react-aria')])[4]", GlobalConstants.SCREENSHOTS+folder+"004_Ydj.png");
 
     }
     @Test
@@ -220,7 +220,7 @@ public class ENU extends AbstractPage {
 
 
     }
-@Test
+    @Test
     public void String_006() throws Exception {
 //        Board
 //        MockID: YXX	Locale ({0})
@@ -245,21 +245,21 @@ public class ENU extends AbstractPage {
         waitForElementVisible(driver,"//*[name()='path' and contains(@d,'M29,16H20V7a1,1,0,0,0-1-1H17a1,1,0,0,0-1,1v9H7a1,1')]/ancestor::button");
         clickToElement(driver,"//*[name()='path' and contains(@d,'M29,16H20V7a1,1,0,0,0-1-1H17a1,1,0,0,0-1,1v9H7a1,1')]/ancestor::button");
 
-    //click to dropdown, choose "Date"
-    waitForElementVisible(driver,"//div[@data-omega-widget='maestro-table-new-field-creation-widget']//button[contains(@class,'spectrum-Dropdown-trigger')]");
-    clickToElementByJS(driver,"//div[@data-omega-widget='maestro-table-new-field-creation-widget']//button[contains(@class,'spectrum-Dropdown-trigger')]");
-    waitForElementVisible(driver,"//div[@aria-posinset='8']");
+        //click to dropdown, choose "Date"
+        waitForElementVisible(driver,"//div[@data-omega-widget='maestro-table-new-field-creation-widget']//button[contains(@class,'spectrum-Dropdown-trigger')]");
+        clickToElementByJS(driver,"//div[@data-omega-widget='maestro-table-new-field-creation-widget']//button[contains(@class,'spectrum-Dropdown-trigger')]");
+        waitForElementVisible(driver,"//div[@aria-posinset='8']");
 
-    //select Date
-    clickToElementByJS(driver,"//div[@aria-posinset='8']");
-    sleepInSecond(1);
+        //select Date
+        clickToElementByJS(driver,"//div[@aria-posinset='8']");
+        sleepInSecond(1);
 
-    // Take SS: YXX	Locale ({0})
-    waitForElementVisible(driver,"(//div[@data-omega-widget='maestro-table-new-field-creation-widget']//button[contains(@class,'spectrum-FieldButton')])[2]");
-    takeSnapShotWithHighlight(driver,"(//div[@data-omega-widget='maestro-table-new-field-creation-widget']//button[contains(@class,'spectrum-FieldButton')])[2]", GlobalConstants.SCREENSHOTS+folder+"006_YXX.png");
+        // Take SS: YXX	Locale ({0})
+        waitForElementVisible(driver,"(//div[@data-omega-widget='maestro-table-new-field-creation-widget']//button[contains(@class,'spectrum-FieldButton')])[2]");
+        takeSnapShotWithHighlight(driver,"(//div[@data-omega-widget='maestro-table-new-field-creation-widget']//button[contains(@class,'spectrum-FieldButton')])[2]", GlobalConstants.SCREENSHOTS+folder+"006_YXX.png");
 
     }
-@Test
+    @Test
     public void String_007() throws Exception {
 //        Board
 //        MockID: YXX	Locale ({0})
@@ -287,7 +287,7 @@ public class ENU extends AbstractPage {
         takeSnapShotWithHighlight(driver,"(//div[contains(@class,'Menu-itemGrid')])[1]", GlobalConstants.SCREENSHOTS+folder+"007_YdY.png");
 
     }
-@Test
+    @Test
     public void String_008() throws Exception {
 //        Board
 //        MockID: YdV	You're already using this value ...
@@ -312,29 +312,29 @@ public class ENU extends AbstractPage {
         waitForElementVisible(driver,"//div[@title='test']");
         clickToElement(driver,"//div[@title='test']");
         //Take SS UIa
-    waitForElementVisible(driver,"//input[@id='field.required']//parent::label");
-    takeSnapShotWithHighlight(driver,"//input[@id='field.required']//parent::label", GlobalConstants.SCREENSHOTS+folder+"008_UIa.png");
-    //click to gear choice
-    waitForElementVisible(driver,"//button[@data-tracking-id='open-settings-dropdown']");
-    clickToElement(driver,"//button[@data-tracking-id='open-settings-dropdown']");
+        waitForElementVisible(driver,"//input[@id='field.required']//parent::label");
+        takeSnapShotWithHighlight(driver,"//input[@id='field.required']//parent::label", GlobalConstants.SCREENSHOTS+folder+"008_UIa.png");
+        //click to gear choice
+        waitForElementVisible(driver,"//button[@data-tracking-id='open-settings-dropdown']");
+        clickToElement(driver,"//button[@data-tracking-id='open-settings-dropdown']");
 //Take SS YdT
-    waitForElementVisible(driver,"//li[@data-key='removeChoice']");
-    takeSnapShotWithHighlight(driver,"//li[@data-key='removeChoice']", GlobalConstants.SCREENSHOTS+folder+"008_YdT.png");
+        waitForElementVisible(driver,"//li[@data-key='removeChoice']");
+        takeSnapShotWithHighlight(driver,"//li[@data-key='removeChoice']", GlobalConstants.SCREENSHOTS+folder+"008_YdT.png");
 //add choice
-    refreshCurrentPage(driver);
-    waitForPageToLoadCompletely(driver,60);
-    //click to dropdow field
-    waitForElementVisible(driver,"//div[@title='test']");
-    clickToElement(driver,"//div[@title='test']");
-    waitForElementVisible(driver,"//button[@data-tracking-id='add-choice']");
-    clickToElement(driver,"//button[@data-tracking-id='add-choice']");
-    sleepInSecond(1);
-    sendKeyToElement(driver,"(//input[@name='field.options'])[2]","Choice 2");
+        refreshCurrentPage(driver);
+        waitForPageToLoadCompletely(driver,60);
+        //click to dropdow field
+        waitForElementVisible(driver,"//div[@title='test']");
+        clickToElement(driver,"//div[@title='test']");
+        waitForElementVisible(driver,"//button[@data-tracking-id='add-choice']");
+        clickToElement(driver,"//button[@data-tracking-id='add-choice']");
+        sleepInSecond(1);
+        sendKeyToElement(driver,"(//input[@name='field.options'])[2]","Choice 2");
 
-    // YdV	You're already using this value ...
-    takeSnapShotWithHighlight(driver,"(//div[contains(@class,'spectrum-HelpText-text_')])[1]", GlobalConstants.SCREENSHOTS+folder+"008_YdV.png");
-}
-@Test
+        // YdV	You're already using this value ...
+        takeSnapShotWithHighlight(driver,"(//div[contains(@class,'spectrum-HelpText-text_')])[1]", GlobalConstants.SCREENSHOTS+folder+"008_YdV.png");
+    }
+    @Test
     public void String_009() throws Exception {
 //        Board
 //        MockID: YdE1	New
@@ -353,11 +353,11 @@ public class ENU extends AbstractPage {
         waitForPageToLoadCompletely(driver,60);
 
         //Take SS YdE
-    waitForElementVisible(driver,"(//span[@color='71A1FF'])[1]/parent::div");
-    takeSnapShotWithHighlight(driver,"(//span[@color='71A1FF'])[1]/parent::div", GlobalConstants.SCREENSHOTS+folder+"009_YdE.png");
+        waitForElementVisible(driver,"(//span[@color='71A1FF'])[1]/parent::div");
+        takeSnapShotWithHighlight(driver,"(//span[@color='71A1FF'])[1]/parent::div", GlobalConstants.SCREENSHOTS+folder+"009_YdE.png");
 
-}
-@Test
+    }
+    @Test
     public void String_010() throws Exception {
 //        Board
 //        MockID: YdF1	Assignments
@@ -378,21 +378,21 @@ public class ENU extends AbstractPage {
         waitForPageToLoadCompletely(driver,60);
 
         //log in a new user
-    waitForElementVisible(driver,"//div[contains(@data-testid,'phoenix-input-select')]");
-    sendKeyToElement(driver,"//input[@data-testid='phoenix-input-select-0']","tuan");
-    sleepInSecond(1);
-    clickToElement(driver,"//ul[@data-testid='options-container']");
-    sleepInSecond(1);
-    clickToElement(driver,"//button[@data-variant='accent']");
-    sleepInSecond(10);
-    //click to new button
-    waitForPageToLoadCompletely(driver,60);
-    clickToElement(driver,"//button[@data-omega-element='new-issue-button']");
-    //take SS
-    sleepInSecond(2);
-    captureScreen(GlobalConstants.SCREENSHOTS+folder+"010_YdF.png");
+        waitForElementVisible(driver,"//div[contains(@data-testid,'phoenix-input-select')]");
+        sendKeyToElement(driver,"//input[@data-testid='phoenix-input-select-0']","tuan");
+        sleepInSecond(1);
+        clickToElement(driver,"//ul[@data-testid='options-container']");
+        sleepInSecond(1);
+        clickToElement(driver,"//button[@data-variant='accent']");
+        sleepInSecond(10);
+        //click to new button
+        waitForPageToLoadCompletely(driver,60);
+        clickToElement(driver,"//button[@data-omega-element='new-issue-button']");
+        //take SS
+        sleepInSecond(2);
+        captureScreen(GlobalConstants.SCREENSHOTS+folder+"010_YdF.png");
 
-}
+    }
 
 
 
