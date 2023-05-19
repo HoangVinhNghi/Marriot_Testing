@@ -105,9 +105,9 @@ public class ENU extends AbstractPage {
         takeSnapShotWithHighlight(driver,"//button[@data-testid='dynamic-setup-next-button']", GlobalConstants.SCREENSHOTS+folder+"002_Yf9.png");
         //click to Next
         clickToElement(driver,"//button[@data-testid='dynamic-setup-next-button']");
-        clickToElement(driver,"//input[contains(@data-testid,'phoenix-input-select']");
-        sendKeyToElement(driver,"//input[contains(@data-testid,'phoenix-input-select']","2023 spring marketing");
-        clickToElement(driver,"//h3[@data-testid='dynamic-setup-board-source']");
+        clickToElement(driver,"(//div[contains(@data-testid,'phoenix-input-select-')])[1]");
+        sleepInSecond(10);
+        clickToElement(driver,"(//li[contains(@id,'listoption')])[1]");
         sleepInSecond(3);
         clickToElement(driver,"//button[@data-testid='dynamic-setup-create-board-button']");
         //take SS: Yf6
@@ -119,23 +119,23 @@ public class ENU extends AbstractPage {
     @Test
     public void String_003() throws Exception {
 //        Board
-//        MockID:
-//Ydr	Set a recuirring work cycle
-//Ydq	Cadence
-//Ydn	Iterations cycle every
-//Ydk	Number
-//Ydh	Cycle start date
+//        MockID:YfH1	Add a widget name
+//YfG1	Add a section name
+//YfF	Add a field name
+//YfK	Add a descriptive text
+//YZN	Previous configurations will con...
 //    Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
 //Test User: adobeloctesting@workfront.com / 2wsx#EDC
-//Direct link: https://adobeloctesting.devtest.workfront-dev.com/boards
+//Direct link: https://adobeloctesting.devtest.workfront-dev.com/form-builder/new?objTypes=PROJ
 //
 //1. Login to Workfront
-//2. Go to Main Menu > ''Boards''
-//3. Click on a ''Add workstream'' button
-//4. Click on a ''Configure'' button > open ''Iterations'' menu
+//2. Go to Main Menu > click on a ''Setup''
+//3. On the right menu select ''Custom Forms''
+//4. Go to ''Forms'' tab and click on a ''+ New Custom Form'' button
+//5. Click on ''Adobe XD''
 
         // Go to a board
-        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/boards/workstream/64644a3541cbf041d60099c8");
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/form-builder/new?objTypes=PROJ");
         waitForPageToLoadCompletely(driver,60);
 
 
