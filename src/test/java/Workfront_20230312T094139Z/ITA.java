@@ -12,9 +12,9 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-public class ENU extends AbstractPage {
+public class ITA extends AbstractPage {
     WebDriver driver;
-    String folder = "\\Workfront_20230312T094139Z\\ENU\\"; // the path to store the captured images with  lang code can be changed accordingly
+    String folder = "\\Workfront_20230312T094139Z\\ITA\\3913891\\it-IT\\"; // the path to store the captured images with  lang code can be changed accordingly
     // Select the lang code accordingly
     String lang_EN ="--lang=en\"";
     String lang_DE ="de";
@@ -29,7 +29,7 @@ public class ENU extends AbstractPage {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         // Set language
-        options.addArguments("--lang=en"); //set browser language
+        options.addArguments("--lang=it"); //set browser language
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(12, TimeUnit.SECONDS);
         driver.manage().window().maximize();
@@ -58,13 +58,13 @@ public class ENU extends AbstractPage {
 //6. On the second tab click refresh the page
 
         // Go to board Preferences
-        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/maestro/8669757a-4ba1-41ca-ba10-0cdd74effa7c/untitled_operational_record_type-126/c8e7b60e-74a6-4e8b-a56a-91450457aaf9/view");
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/maestro/8669757a-4ba1-41ca-ba10-0cdd74effa7c/untitled_operational_record_type-113/a18ec943-7ec5-4f4d-833b-109d838e17f4/view");
         waitForPageToLoadCompletely(driver,60);
 
         // Take SS:
         waitForElementVisible(driver,"//div[@data-testid='modal']");
         takeSnapShotWithHighlight(driver,"//div[@data-testid='modal']", GlobalConstants.SCREENSHOTS+folder+"001_Yf0_Yfz_Yfo.png");
-        }
+    }
     @Test
     public void String_002() throws Exception {
 //        Board
@@ -89,7 +89,7 @@ public class ENU extends AbstractPage {
         openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/boards");
         waitForPageToLoadCompletely(driver,60);
         //3. Click on an ''Add Board'' button
-        sleepInSecond(10);
+        sleepInSecond(80);
         clickToElement(driver,"//button[@data-testid='dashboard-create-board-button']");
         // Take SS: YfE	Select; Yf+	Dynamic board
         waitForElementVisible(driver,"(//div[contains(@style,'cursor: pointer; width: min-content; place-self: end; margin-right:')])[4]");
@@ -139,6 +139,7 @@ public class ENU extends AbstractPage {
         waitForPageToLoadCompletely(driver,60);
 
         //Drag and drop Single Line text
+        waitForElementVisible(driver,"//div[@data-testid='section-container']");
         clickToElement(driver,"//div[@data-testid='section-container']");
         clickToElement(driver,"//button[@data-tracking-id='new-field-SNGL']");
 
@@ -167,7 +168,6 @@ public class ENU extends AbstractPage {
         takeSnapShotWithHighlight(driver,"(//div[@data-testid='section-container'])[2]//div[@role='button']", GlobalConstants.SCREENSHOTS+folder+"003_YfH.png");
 
     }
-
     @Test
     public void String_004() throws Exception {
 //        Board
