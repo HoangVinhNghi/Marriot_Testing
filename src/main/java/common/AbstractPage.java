@@ -1073,26 +1073,49 @@ public class AbstractPage {
         try {
             clickToElement(webdriver, locator);
             robot = new Robot();
-            robot.keyPress(KeyEvent.VK_CONTROL);
-            robot.keyPress(KeyEvent.VK_A);
-            robot.keyRelease(KeyEvent.VK_CONTROL);
-            robot.keyRelease(KeyEvent.VK_A);
-            robot.keyPress(KeyEvent.VK_BACK_SPACE);
-            robot.keyRelease(KeyEvent.VK_BACK_SPACE);
+            robot.keyPress(KeyEvent.VK_CONTROL);            robot.keyPress(KeyEvent.VK_A);
+            robot.keyRelease(KeyEvent.VK_CONTROL);          robot.keyRelease(KeyEvent.VK_A);
+            robot.keyPress(KeyEvent.VK_BACK_SPACE);         robot.keyRelease(KeyEvent.VK_BACK_SPACE);
+        } catch (AWTException e) {
+            e.printStackTrace();
+        }
+    }
+    public void pressEnterKeyByRobot(WebDriver webDriver) {
+        try {
+            robot = new Robot();
+            robot.keyPress(KeyEvent.VK_ENTER);
+            robot.keyRelease(KeyEvent.VK_ENTER);
+        } catch (AWTException e) {
+            e.printStackTrace();
+        }
+    }
+    public void openCurrentUrlNewTabByRobot(WebDriver webdriver) {
+        try {
+        robot = new Robot();
+        robot.keyPress(KeyEvent.VK_CONTROL);        robot.keyPress(KeyEvent.VK_T);
+        robot.keyRelease(KeyEvent.VK_CONTROL);        robot.keyRelease(KeyEvent.VK_T);
+        sleepInSecond(2);
+        robot.keyPress(KeyEvent.VK_CONTROL);        robot.keyPress(KeyEvent.VK_V);
+        robot.keyRelease(KeyEvent.VK_CONTROL);        robot.keyRelease(KeyEvent.VK_V);
+        sleepInSecond(1);
+        pressEnterKeyByRobot(webdriver);
+
+        }
+        catch (AWTException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void closeTabByRobot(WebDriver webDriver) {
+        try {
+        robot = new Robot();
+        robot.keyPress(KeyEvent.VK_CONTROL);        robot.keyPress(KeyEvent.VK_W);
+        robot.keyRelease(KeyEvent.VK_CONTROL);        robot.keyRelease(KeyEvent.VK_W);
         } catch (AWTException e) {
             e.printStackTrace();
         }
     }
 
-    public void pressEnterKeyByRobot(WebDriver webDriver) {
-        try {
-        robot = new Robot();
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.keyRelease(KeyEvent.VK_ENTER);
-        } catch (AWTException e) {
-            e.printStackTrace();
-        }
-    }
 
     public void pressPasteKeyByRobot(WebDriver webDriver) {
         try {

@@ -117,8 +117,8 @@ public class ENU extends AbstractPage {
         checkToCheckboxOrRadio(driver,"(//div[@data-omega-widget='maestro-table-new-field-creation-widget']//input[@type='checkbox'])[7]");
         sleepInSecond(2);
         //click to None
-        waitForElementVisible(driver,"//div[contains(@class,'flex_')]/label[contains(@class,'is-checked')]/following-sibling::button");
-        clickToElementByJS(driver,"//div[contains(@class,'flex_')]/label[contains(@class,'is-checked')]/following-sibling::button");
+        waitForElementVisible(driver,"//label[contains(@class,'is-checked')]/parent::div[contains(@class,'flex_')]/button");
+        clickToElementByJS(driver,"//label[contains(@class,'is-checked')]/parent::div[contains(@class,'flex_')]/button");
 
         // Take SS: Yed	MAX
         waitForElementVisible(driver,"(//div[contains(@class,'Menu-itemGrid')])[1]");

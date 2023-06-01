@@ -29,7 +29,7 @@ public class PTB extends AbstractPage {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         // Set language
-        options.addArguments("--lang=ja-JP"); //set browser language
+        options.addArguments("--lang=pt-BR"); //set browser language
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(12, TimeUnit.SECONDS);
         driver.manage().window().maximize();
@@ -64,8 +64,9 @@ public class PTB extends AbstractPage {
         takeSnapShotWithHighlight(driver, "(//li[@role='menuitemradio'])[2]", GlobalConstants.SCREENSHOTS + folder + "24_YbW.png");
         clickToElement(driver, "(//li[@role='menuitemradio'])[2]");
         sleepInSecond(40);
-        waitForElementVisible(driver,"(//div[@data-testid='collection-dashboard-collection-container']//span)[1]/parent::div");
-        takeSnapShotWithHighlight(driver, "(//div[@data-testid='collection-dashboard-collection-container']//span)[1]/parent::div", GlobalConstants.SCREENSHOTS + folder + "25_Yb4.png");
+
+        waitForElementVisible(driver,"(//div[@data-testid='workstream-dashboard-workstream-container']//span)[1]/parent::div");
+        takeSnapShotWithHighlight(driver, "(//div[@data-testid='workstream-dashboard-workstream-container']//span)[1]/parent::div", GlobalConstants.SCREENSHOTS + folder + "25_Yb4.png");
 
         clickToElement(driver, "(//button[contains(@data-testid,'workspace-options')])[1]");
         waitForElementVisible(driver, "(//li[@role='menuitem'])[1]");
@@ -79,13 +80,12 @@ public class PTB extends AbstractPage {
         sleepInSecond(1);
         sendKeyToElement(driver,"//button[@data-testid='dashboard-workspace-section-filter-button']/following-sibling::div//input","JK_01");
         sleepInSecond(1);
-        waitForElementVisible(driver,"(//div[@data-testid='collection-dashboard-collection-container']//h3)[2]");
-        takeSnapShotWithHighlight(driver, "(//div[@data-testid='collection-dashboard-collection-container']//h3)[2]", GlobalConstants.SCREENSHOTS + folder + "39_Yao.png");
-        takeSnapShotWithHighlight(driver, "(//div[@data-testid='collection-dashboard-collection-container']//h3)[2]/following-sibling::span", GlobalConstants.SCREENSHOTS + folder + "40_Ya5.png");
+        waitForElementVisible(driver,"(//div[@data-testid='workstream-dashboard-workstream-container']//h3)[2]");
+        takeSnapShotWithHighlight(driver, "(//div[@data-testid='workstream-dashboard-workstream-container']//h3)[2]", GlobalConstants.SCREENSHOTS + folder + "39_Yao.png");
+        takeSnapShotWithHighlight(driver, "(//div[@data-testid='workstream-dashboard-workstream-container']//h3)[2]/following-sibling::span", GlobalConstants.SCREENSHOTS + folder + "40_Ya5.png");
 
         clickToElement(driver,"//button[@data-testid='board-search-button']");
         sleepInSecond(2);
-
 
         clickToElement(driver,"//button[@data-testid='dashboard-workspace-section-filter-button']/following-sibling::div");
         sleepInSecond(1);
