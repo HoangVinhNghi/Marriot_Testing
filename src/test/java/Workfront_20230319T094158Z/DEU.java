@@ -4,25 +4,20 @@ import common.AbstractPage;
 import common.GlobalConstants;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import org.testng.util.Strings;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-public class ENU extends AbstractPage {
+public class DEU extends AbstractPage {
     WebDriver driver;
-    String folder = "\\Workfront_20230319T094158Z\\ENU\\"; // the path to store the captured images with  lang code can be changed accordingly
+    String folder = "\\Workfront_20230319T094158Z\\DEU\\3937805\\DEU\\"; // the path to store the captured images with  lang code can be changed accordingly
     // Select the lang code accordingly
     String lang_EN ="--lang=en\"";
     String lang_DE ="de";
@@ -37,7 +32,7 @@ public class ENU extends AbstractPage {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         // Set language
-        options.addArguments("--lang=en"); //set browser language
+        options.addArguments("--lang=de"); //set browser language
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(12, TimeUnit.SECONDS);
         driver.manage().window().maximize();
@@ -72,11 +67,29 @@ public class ENU extends AbstractPage {
         openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/team/62a874e70003b82a98ad2b11cc300fbe/kanbanboard");
         waitForPageToLoadCompletely(driver,60);
 
-        clickToElement(driver,"//button[@data-testid='button-label']");
-        waitForElementVisible(driver,"//li[@data-testid='option-1']");
+        if(isElementDisplayed(driver,"//button[@data-testid='toast-close-btn']")){
+            clickToElement(driver,"//button[@data-testid='toast-close-btn']");
+        }
 
-        takeSnapShotWithHighlight(driver,"//li[@data-testid='option-0']", GlobalConstants.SCREENSHOTS+folder+"01_Ygu.png");
-        takeSnapShotWithHighlight(driver,"//li[@data-testid='option-1']", GlobalConstants.SCREENSHOTS+folder+"02_Ygu.png");
+        waitForElementVisible(driver,"//button[@data-testid='button-label']");
+        clickToElement(driver,"//button[@data-testid='button-label']");
+
+        waitForElementVisible(driver,"//ul[@data-testid='options-container']/li[1]");
+        String option1 = "//ul[@data-testid='options-container']/li[1]";
+        String option2 = "//ul[@data-testid='options-container']/li[2]";
+
+// Using for loop, it tries for 3 times.
+// If the element is located for the first time then it breaks from the for loop nad comeout of the loop
+        for(int i=0; i<=2;i++){
+            try{
+                takeSnapShotWithHighlight(driver,option1, GlobalConstants.SCREENSHOTS+folder+"01_Ygu.png");
+                takeSnapShotWithHighlight(driver,option2, GlobalConstants.SCREENSHOTS+folder+"02_Ygu.png");
+                break;
+            }
+            catch(Exception e){
+                System.out.println(e.getMessage());
+            }
+        }
 
         clickToElement(driver,"//li[@data-testid='option-1']");
 
@@ -415,7 +428,18 @@ public class ENU extends AbstractPage {
         sleepInSecond(1);
         clickToElement(driver,"//button[contains(@data-omega-element,'maestro-table-add-record-button')]");
         waitForElementVisible(driver,"//div[contains(@data-testid,'notification-container')]");
-        takeSnapShotWithHighlight(driver,"//div[contains(@data-testid,'notification-container')]", GlobalConstants.SCREENSHOTS+folder+"16_Yfr.png");
+
+// Using for loop, it tries for 3 times.
+// If the element is located for the first time then it breaks from the for loop nad comeout of the loop
+        for(int i=0; i<=2;i++){
+            try{
+                takeSnapShotWithHighlight(driver,"//div[contains(@data-testid,'notification-container')]", GlobalConstants.SCREENSHOTS+folder+"16_Yfr.png");
+                break;
+            }
+            catch(Exception e){
+                System.out.println(e.getMessage());
+            }
+        }
     }
     @Test
     public void String_17() throws Exception {
@@ -467,9 +491,11 @@ public class ENU extends AbstractPage {
         }
         waitForElementVisible(driver,"//div[@id='toolbar-portal-middle-slot']//button");
         clickToElement(driver,"//div[@id='toolbar-portal-middle-slot']//button");
+        sleepInSecond(1);
+        waitForElementVisible(driver,"//div[@data-testid='timeline-settings-record-details-link']");
         clickToElement(driver,"//div[@data-testid='timeline-settings-record-details-link']");
+        sleepInSecond(1);
 
-        waitForElementVisible(driver,"//div[@data-testid='record-details-tab']/h3");
         takeSnapShotWithHighlight(driver,"//div[@data-testid='record-details-tab']/h3", GlobalConstants.SCREENSHOTS+folder+"18_YgS.png");
         takeSnapShotWithHighlight(driver,"//div[@data-testid='record-details-tab']//h5", GlobalConstants.SCREENSHOTS+folder+"19_YgT.png");
         takeSnapShotWithHighlight(driver,"//button[@data-testid='record-details-tab--reset-card-fields-button']", GlobalConstants.SCREENSHOTS+folder+"20_YgW.png");

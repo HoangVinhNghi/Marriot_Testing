@@ -596,6 +596,11 @@ public class AbstractPage {
         action.sendKeys(getElement(driver, locator), key).perform();
     }
 
+    public void clickCenterElement(WebDriver driver, WebElement element){
+        Actions ac = new Actions(driver);
+        ac.moveToElement(element,0,0).click().build().perform();
+    }
+
     public void pressKeyToElement(WebDriver driver, String locator, Keys key, String... params) {
         action = new Actions(driver);
         locator = getDynamicLocator(locator, params);
@@ -787,6 +792,10 @@ public class AbstractPage {
     }
 
     public void waitForElementVisible(WebDriver driver, String locator) {
+        explicitWait = new WebDriverWait(driver, longTimeout);
+        explicitWait.until(ExpectedConditions.visibilityOfElementLocated(getByXpath(locator)));
+    }
+    public void waitForElementRefreshed(WebDriver driver, String locator) {
         explicitWait = new WebDriverWait(driver, longTimeout);
         explicitWait.until(ExpectedConditions.visibilityOfElementLocated(getByXpath(locator)));
     }
