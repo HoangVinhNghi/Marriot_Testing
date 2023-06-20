@@ -1,4 +1,4 @@
-package Workfront_20221030T170213Z;
+package Workfront_20221030T170213Z.P1;
 
 import common.AbstractPage;
 import common.GlobalConstants;
@@ -14,9 +14,9 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.concurrent.TimeUnit;
 
-public class PTB extends AbstractPage {
+public class ITA extends AbstractPage {
     WebDriver driver;
-    String folder = "\\Workfront_20221030T170213Z\\PTB\\3526555\\PTB\\"; // the path to store the captured images with  lang code can be changed accordingly
+    String folder = "\\Workfront_20221030T170213Z\\ITA\\3526549\\ITA\\"; // the path to store the captured images with  lang code can be changed accordingly
     // Select the lang code accordingly
     String lang_EN ="--lang=en\"";
     String lang_DE ="de";
@@ -31,7 +31,7 @@ public class PTB extends AbstractPage {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         // Set language
-        options.addArguments("--lang=pt-BR"); //set browser language
+        options.addArguments("--lang=it"); //set browser language
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(12, TimeUnit.SECONDS);
         driver.manage().window().maximize();
@@ -259,6 +259,7 @@ public class PTB extends AbstractPage {
         // Take SS: YRT	{author} converted the {__mlm_low_activity} {title} to {__mlm_low_goal} {goalName}
         takeSnapShotWithHighlight(driver,"(//div[contains(@style,'color: var(--spectrum-gray-600);')])[3]", GlobalConstants.SCREENSHOTS+folder+"018_YRT.png");
     }
+
     @AfterClass(alwaysRun = true)
     public void afterClass() {
         driver.quit();

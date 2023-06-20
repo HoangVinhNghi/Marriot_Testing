@@ -1,4 +1,4 @@
-package Workfront_20221030T170213Z;
+package Workfront_20221030T170213Z.P1;
 
 import common.AbstractPage;
 import common.GlobalConstants;
@@ -14,9 +14,9 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.concurrent.TimeUnit;
 
-public class FRA extends AbstractPage {
+public class ENU extends AbstractPage {
     WebDriver driver;
-    String folder = "\\Workfront_20221030T170213Z\\FRA\\3526563\\FRA\\"; // the path to store the captured images with  lang code can be changed accordingly
+    String folder = "\\Workfront_20221030T170213Z\\ENU\\"; // the path to store the captured images with  lang code can be changed accordingly
     // Select the lang code accordingly
     String lang_EN ="--lang=en\"";
     String lang_DE ="de";
@@ -31,7 +31,7 @@ public class FRA extends AbstractPage {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         // Set language
-        options.addArguments("--lang=fr"); //set browser language
+        options.addArguments("--lang=en"); //set browser language
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(12, TimeUnit.SECONDS);
         driver.manage().window().maximize();
@@ -155,7 +155,7 @@ public class FRA extends AbstractPage {
         captureScreen(GlobalConstants.SCREENSHOTS+folder+"008_YRK.png");
 
         // Take SS: YRL	To-do name
-        inspectElement(driver,"(//div[contains(@class,'spectrum-Field--positionTop')]/div/textarea)[1]");
+        inspectElement(driver,"(//textarea[contains(@aria-label,'To-do')])[1]");
         captureScreen(GlobalConstants.SCREENSHOTS+folder+"009_YRL.png");
 
         // Take SS: YRO	Is complete?
@@ -259,9 +259,12 @@ public class FRA extends AbstractPage {
         // Take SS: YRT	{author} converted the {__mlm_low_activity} {title} to {__mlm_low_goal} {goalName}
         takeSnapShotWithHighlight(driver,"(//div[contains(@style,'color: var(--spectrum-gray-600);')])[3]", GlobalConstants.SCREENSHOTS+folder+"018_YRT.png");
     }
+
+
+
     @AfterClass(alwaysRun = true)
     public void afterClass() {
-        driver.quit();
+//        driver.quit();
     }
 
 }
