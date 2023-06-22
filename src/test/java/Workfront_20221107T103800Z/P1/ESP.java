@@ -1,4 +1,4 @@
-package Workfront_20221107T103800Z;
+package Workfront_20221107T103800Z.P1;
 
 import common.AbstractPage;
 import common.GlobalConstants;
@@ -12,9 +12,9 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-public class ENU extends AbstractPage {
+public class ESP extends AbstractPage {
     WebDriver driver;
-    String folder = "\\Workfront_20221107T103800Z\\ENU\\"; // the path to store the captured images with  lang code can be changed accordingly
+    String folder = "\\Workfront_20221107T103800Z\\ESP\\3548149\\ESP"; // the path to store the captured images with  lang code can be changed accordingly
     // Select the lang code accordingly
     String lang_EN ="--lang=en\"";
     String lang_DE ="de";
@@ -29,7 +29,7 @@ public class ENU extends AbstractPage {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         // Set language
-        options.addArguments("--lang=en"); //set browser language
+        options.addArguments("--lang=es"); //set browser language
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(12, TimeUnit.SECONDS);
         driver.manage().window().maximize();
@@ -163,7 +163,6 @@ public class ENU extends AbstractPage {
         takeSnapShotWithHighlight(driver,"//*[name()='path' and contains(@d,'M34,10H2V3A1,1,0,0,1,3,2H33a1,1,0,0,1,1,1Z')]/ancestor::button", GlobalConstants.SCREENSHOTS+folder+"007_YRg.png");
         checkToCheckboxOrRadio(driver,"//div[@id='widget-list-all-tasks-sidepanel']//input[@type='radio'])[1]");
     }
-
     @AfterClass(alwaysRun = true)
     public void afterClass() {
 //        driver.quit();

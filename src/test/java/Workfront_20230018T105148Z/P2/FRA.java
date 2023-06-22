@@ -1,4 +1,4 @@
-package Workfront_20230018T105148Z;
+package Workfront_20230018T105148Z.P2;
 
 import common.AbstractPage;
 import common.GlobalConstants;
@@ -12,9 +12,9 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-public class ENU extends AbstractPage {
+public class FRA extends AbstractPage {
     WebDriver driver;
-    String folder = "\\Workfront_20230018T105148Z\\ENU\\"; // the path to store the captured images with  lang code can be changed accordingly
+    String folder = "\\Workfront_20230018T105148Z\\FRA\\3637345\\FRA\\"; // the path to store the captured images with  lang code can be changed accordingly
     // Select the lang code accordingly
     String lang_EN ="--lang=en\"";
     String lang_DE ="de";
@@ -29,7 +29,7 @@ public class ENU extends AbstractPage {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         // Set language
-        options.addArguments("--lang=en"); //set browser language
+        options.addArguments("--lang=fr"); //set browser language
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(12, TimeUnit.SECONDS);
         driver.manage().window().maximize();
@@ -48,7 +48,7 @@ public class ENU extends AbstractPage {
 //        1. Login to Workfront 2. Go to Boards 3. Click on 3 dots (...) of any 'Untitled Collection' under 'Collections' section 4. Select 'Delete'
 
         // Go to Boards and open a new board
-        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/form-builder/new?objTypes=PROJ");
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/boards/63e0f237c77c8222346e76a3");
         waitForPageToLoadCompletely(driver,60);
 
         // Open any existed Board
@@ -82,6 +82,7 @@ public class ENU extends AbstractPage {
         // Click three dots button > Move to
         sleepInSecond(1);
         checkToCheckboxOrRadio(driver,"(//div[@data-test-id='row-checkbox'])[1]");
+        checkToCheckboxOrRadio(driver,"(//div[@data-test-id='row-checkbox'])[2]");
         clickToElement(driver,"//button[@data-testid='templatetask-more-dropdown']");
         clickToElement(driver,"(//li[contains(@data-testid,'option')])[1]");
 
@@ -248,6 +249,7 @@ public class ENU extends AbstractPage {
 
         // Take SS: YTF
         waitForElementVisible(driver,"//span[@id='PROJECT_PARENT_TASK_LIST-hint']");
+        sleepInSecond(2);
         takeSnapShotWithHighlight(driver,"//span[@id='PROJECT_PARENT_TASK_LIST-hint']", GlobalConstants.SCREENSHOTS+folder+"008_YTF.png");
 
     }

@@ -39,16 +39,15 @@ public class PTB extends AbstractPage {
         clickToElement(driver, "//button[@type='submit']");
         waitForElementVisible(driver, "//div[@id='page-content']");
     }
-
     @Test
     public void String_001_005() throws Exception {
 //        MockID:   YTC	Kanban board
 //        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome
-//        Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/boards/collection/63cfff24074a430a3f989996
+//        Test User: adobeloctesting@workfront.com / 2wsx#EDC Direct link: https://adobeloctesting.devtest.workfront-dev.com/boards/workstream/64575dd5fd92681780115d53
 //        1. Login to Workfront 2. Go to Boards 3. Click on Create New button near Collection panel 4. Click Create New
 
         // Go to Boards
-        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/boards/collection/63cfff24074a430a3f989996");
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/boards/workstream/64575dd5fd92681780115d53");
         waitForPageToLoadCompletely(driver,60);
 
         sleepInSecond(1);
@@ -76,7 +75,6 @@ public class PTB extends AbstractPage {
                 GlobalConstants.SCREENSHOTS+folder+"005_YTA.png");
 
     }
-
     @Test
     public void String_006() throws Exception {
 //        MockID: YS6	Another indent/outdent operation is in progress.	None
@@ -85,20 +83,73 @@ public class PTB extends AbstractPage {
 //        1. Login to Workfront 2. Open any project 3. Go to Tasks and open any task 4. Go to Subtask and create some subtasks 5. Select any subtask and start spamming any intent button(in the toolbar)
 
         // Go to Boards and open a new board
-        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/project/62668d0f00007fab94235ee296969bc6/tasks");
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/task/6475a7cd0002a0562b03d69b30b1de96/tasks");
         waitForPageToLoadCompletely(driver,60);
-
         sleepInSecond(1);
+        waitForElementVisible(driver,"//div[@data-test-id='header-checkbox']");
         checkToCheckboxOrRadio(driver,"//div[@data-test-id='header-checkbox']");
+        sleepInSecond(2);
         waitForElementVisible(driver,"//button[@data-testid='indent' or @data-testid='outdent']");
         clickToElementByJS(driver,"//button[@data-testid='indent' or @data-testid='outdent']");
         clickToElementByJS(driver,"//button[@data-testid='indent' or @data-testid='outdent']");
         clickToElementByJS(driver,"//button[@data-testid='indent' or @data-testid='outdent']");
 
+        // Take SS: YS6	Another indent/outdent operation is in progress.
+        takeSnapShotWithHighlight(driver,"(//div[@data-testid='toast-notification'])[1]", GlobalConstants.SCREENSHOTS+folder+"006_YS6.png");
 
+    }
+    @Test
+    public void String_007() throws Exception {
+//        MockID: Xgg
+//        {selectedUser} replaced {changeFrom} {rolesCount, plural, =0 {} =1 {in the {roleNames} role} other {in the {roleNames} roles}} on { count, plural, one {# work item} other {# work items}}
+//        Test Environment: https://adobeloctesting.devtest.workfront-dev.com/login?nextURL=%2Fhome Test User: alp02c@alp.ee / Alp123
+//        DL: https://adobeloctesting.devtest.workfront-dev.com/resourcemanagement/scheduling
+//        1. Go to Projects and create a new project 2. Create 2 tasks and assign them to Consultant role 3. Go to Resource Management and click on Bulk Assignments button
+//        4. In the filter select project id - and select your created project 5. In "Role Assignment" select role Consultant 6. In "User to assign" select Buzz Lightyear and click Assign
+//        7. Select Replace User radio box 8. In "Currently assigned user" select Buzz Lightyear 9. In "User to assign" select Alpha Worker-Grabber 10. Click Replace
+
+        // Go to Resource Management and click on Bulk Assignments button
+        openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/resourcemanagement/scheduling");
+        waitForPageToLoadCompletely(driver,60);
+        sleepInSecond(1);
+        waitForElementVisible(driver,"//button[@data-testid='bulk-assignments-button']");
+        clickToElement(driver,"//button[@data-testid='bulk-assignments-button']");
+        sleepInSecond(2);
+        sendKeyToElement(driver,"//div[@data-testid='select-component-wrapper']//input","jk_test_prj01");
+        sleepInSecond(2);
+        clickToElement(driver,"//span[@data-label='JK_Test_prj01']");
+        sleepInSecond(1);
+        checkToCheckboxOrRadio(driver,"//input[@data-testid='replace-user']");
+        sleepInSecond(1);
+        sendKeyToElement(driver,"//input[@data-testid='replace-user-user-select-input']","Alpha Consultant 2");
+        sleepInSecond(1);
+        clickToElement(driver,"//span[@aria-label='Alpha Consultant 2']");
+        sendKeyToElement(driver,"//input[@id='assign-user-user-select']","Alpha Worker");
+        sleepInSecond(1);
+        clickToElement(driver,"//span[@aria-label='Alpha Worker 100']");
+        clickToElement(driver,"//button[@data-testid='bulk-assignment-assign-user']");
 
         // Take SS: YS6	Another indent/outdent operation is in progress.
-        takeSnapShotWithHighlight(driver,"(//div[@data-testid='toast-notification'])[1]", GlobalConstants.SCREENSHOTS+folder+"002_YS6.png");
+        waitForElementVisible(driver,"//div[@data-testid='toast-notification']");
+        takeSnapShotWithHighlight(driver,"//div[@data-testid='toast-notification']//span[@data-testid='body']", GlobalConstants.SCREENSHOTS+folder+"007_Xgg.png");
+
+        //Reset assignment for other round
+        clickToElement(driver,"//button[@data-testid='bulk-assignments-button']");
+        sleepInSecond(2);
+        sendKeyToElement(driver,"//div[@data-testid='select-component-wrapper']//input","jk_test_prj01");
+        sleepInSecond(2);
+        clickToElement(driver,"//span[@data-label='JK_Test_prj01']");
+        sleepInSecond(1);
+        checkToCheckboxOrRadio(driver,"//input[@data-testid='replace-user']");
+        sleepInSecond(1);
+        sendKeyToElement(driver,"//input[@data-testid='replace-user-user-select-input']","Alpha Worker");
+        sleepInSecond(1);
+        clickToElement(driver,"//span[@aria-label='Alpha Worker 100']");
+
+        sendKeyToElement(driver,"//input[@id='assign-user-user-select']","Alpha Consultant 2");
+        sleepInSecond(1);
+        clickToElement(driver,"//span[@aria-label='Alpha Consultant 2']");
+        clickToElement(driver,"//button[@data-testid='bulk-assignment-assign-user']");
 
     }
 

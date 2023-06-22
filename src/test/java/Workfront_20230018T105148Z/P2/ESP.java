@@ -1,4 +1,4 @@
-package Workfront_20230018T105148Z;
+package Workfront_20230018T105148Z.P2;
 
 import common.AbstractPage;
 import common.GlobalConstants;
@@ -12,9 +12,9 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-public class FRA extends AbstractPage {
+public class ESP extends AbstractPage {
     WebDriver driver;
-    String folder = "\\Workfront_20230018T105148Z\\FRA\\3637345\\FRA\\"; // the path to store the captured images with  lang code can be changed accordingly
+    String folder = "\\Workfront_20230018T105148Z\\ESP\\3637339\\ESP\\"; // the path to store the captured images with  lang code can be changed accordingly
     // Select the lang code accordingly
     String lang_EN ="--lang=en\"";
     String lang_DE ="de";
@@ -29,7 +29,7 @@ public class FRA extends AbstractPage {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         // Set language
-        options.addArguments("--lang=fr"); //set browser language
+        options.addArguments("--lang=es"); //set browser language
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(12, TimeUnit.SECONDS);
         driver.manage().window().maximize();

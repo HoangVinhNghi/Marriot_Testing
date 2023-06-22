@@ -12,9 +12,9 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-public class ENU extends AbstractPage {
+public class FRA extends AbstractPage {
     WebDriver driver;
-    String folder = "\\Workfront_20230011T103159Z\\ENU\\"; // the path to store the captured images with  lang code can be changed accordingly
+    String folder = "\\Workfront_20230011T103159Z\\FRA\\3616629\\FRA"; // the path to store the captured images with  lang code can be changed accordingly
     // Select the lang code accordingly
     String lang_EN ="--lang=en\"";
     String lang_DE ="de";
@@ -29,7 +29,7 @@ public class ENU extends AbstractPage {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         // Set language
-        options.addArguments("--lang=en"); //set browser language
+        options.addArguments("--lang=fr"); //set browser language
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(12, TimeUnit.SECONDS);
         driver.manage().window().maximize();
@@ -39,7 +39,6 @@ public class ENU extends AbstractPage {
         clickToElement(driver, "//button[@type='submit']");
         waitForElementVisible(driver, "//div[@id='page-content']");
     }
-
     @Test
     public void String_001_005() throws Exception {
 //        MockID:   YTC	Kanban board
@@ -76,7 +75,6 @@ public class ENU extends AbstractPage {
                 GlobalConstants.SCREENSHOTS+folder+"005_YTA.png");
 
     }
-
     @Test
     public void String_006() throws Exception {
 //        MockID: YS6	Another indent/outdent operation is in progress.	None

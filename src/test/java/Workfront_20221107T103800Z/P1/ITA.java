@@ -1,4 +1,4 @@
-package Workfront_20221107T103800Z;
+package Workfront_20221107T103800Z.P1;
 
 import common.AbstractPage;
 import common.GlobalConstants;

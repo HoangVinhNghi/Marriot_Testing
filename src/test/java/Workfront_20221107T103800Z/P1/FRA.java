@@ -1,4 +1,4 @@
-package Workfront_20221107T103800Z;
+package Workfront_20221107T103800Z.P1;
 
 import common.AbstractPage;
 import common.GlobalConstants;
@@ -12,9 +12,9 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-public class DEU extends AbstractPage {
+public class FRA extends AbstractPage {
     WebDriver driver;
-    String folder = "\\Workfront_20221107T103800Z\\DEU\\3548157\\DEU"; // the path to store the captured images with  lang code can be changed accordingly
+    String folder = "\\Workfront_20221107T103800Z\\FRA\\3548155\\FRA"; // the path to store the captured images with  lang code can be changed accordingly
     // Select the lang code accordingly
     String lang_EN ="--lang=en\"";
     String lang_DE ="de";
@@ -29,7 +29,7 @@ public class DEU extends AbstractPage {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         // Set language
-        options.addArguments("--lang=de"); //set browser language
+        options.addArguments("--lang=fr"); //set browser language
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(12, TimeUnit.SECONDS);
         driver.manage().window().maximize();
@@ -127,7 +127,7 @@ public class DEU extends AbstractPage {
         // 2. Go to Home page and enter New Home
         openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/home/workspaces");
         waitForPageToLoadCompletely(driver,60);
-// Note: switch button should be enable first
+
         // Take SS: YRh	1
         waitForElementVisible(driver,"//*[name()='path' and contains(@d,'M30.946,2H3.054a1')]/ancestor::button");
         scrollToElement(driver,"//*[name()='path' and contains(@d,'M30.946,2H3.054a1')]/ancestor::button");
@@ -136,7 +136,7 @@ public class DEU extends AbstractPage {
         clickToElement(driver,"//input[contains(@value,'task.active')]");
         takeSnapShotWithHighlight(driver,"//*[name()='path' and contains(@d,'M30.946,2H3.054a1')]/ancestor::button", GlobalConstants.SCREENSHOTS+folder+"005_YRh.png");
 
-        // Take SS: YRh	2
+
         clickToElement(driver,"//input[contains(@value,'task.unassigned')]");
         takeSnapShotWithHighlight(driver,"//*[name()='path' and contains(@d,'M30.946,2H3.054a1')]/ancestor::button", GlobalConstants.SCREENSHOTS+folder+"006_YRh.png");
         clickToElement(driver,"//input[contains(@value,'task.active')]");
@@ -153,15 +153,20 @@ public class DEU extends AbstractPage {
         // 2. Go to Home page and enter New Home
         openPageUrl(driver, "https://adobeloctesting.devtest.workfront-dev.com/home/workspaces");
         waitForPageToLoadCompletely(driver,60);
-
+// Note: switch button should be enable first
         // Take SS: YRh	1
-        waitForElementVisible(driver,"//*[name()='path' and contains(@d,'M34,10H2V3A1,1,0,0,1,3,2H33a1,1,0,0,1,1,1Z')]/ancestor::button");
-        scrollToElement(driver,"//*[name()='path' and contains(@d,'M34,10H2V3A1,1,0,0,1,3,2H33a1,1,0,0,1,1,1Z')]/ancestor::button");
-        clickToElement(driver,"//*[name()='path' and contains(@d,'M34,10H2V3A1,1,0,0,1,3,2H33a1,1,0,0,1,1,1Z')]/ancestor::button");
+        waitForElementVisible(driver,"//*[name()='path' and contains(@d,'M30.946,2H3.054a1')]/ancestor::button");
+        scrollToElement(driver,"//*[name()='path' and contains(@d,'M30.946,2H3.054a1')]/ancestor::button");
+        clickToElement(driver,"//*[name()='path' and contains(@d,'M30.946,2H3.054a1')]/ancestor::button");
         sleepInSecond(10);
-        checkToCheckboxOrRadio(driver,"(//div[@id='widget-list-all-tasks-sidepanel']//input[@type='radio'])[2]");
-        takeSnapShotWithHighlight(driver,"//*[name()='path' and contains(@d,'M34,10H2V3A1,1,0,0,1,3,2H33a1,1,0,0,1,1,1Z')]/ancestor::button", GlobalConstants.SCREENSHOTS+folder+"007_YRg.png");
-        checkToCheckboxOrRadio(driver,"//div[@id='widget-list-all-tasks-sidepanel']//input[@type='radio'])[1]");
+        clickToElement(driver,"//input[contains(@value,'task.active')]");
+        takeSnapShotWithHighlight(driver,"//*[name()='path' and contains(@d,'M30.946,2H3.054a1')]/ancestor::button", GlobalConstants.SCREENSHOTS+folder+"005_YRh.png");
+
+        // Take SS: YRh	2
+        clickToElement(driver,"//input[contains(@value,'task.unassigned')]");
+        takeSnapShotWithHighlight(driver,"//*[name()='path' and contains(@d,'M30.946,2H3.054a1')]/ancestor::button", GlobalConstants.SCREENSHOTS+folder+"006_YRh.png");
+        clickToElement(driver,"//input[contains(@value,'task.active')]");
+        clickToElement(driver,"//input[contains(@value,'task.unassigned')]");
     }
     @AfterClass(alwaysRun = true)
     public void afterClass() {
