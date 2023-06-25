@@ -78,8 +78,8 @@ public class ProductionReleaseValidations extends AbstractPage {
         clickToElement(driver,"//span[@class='DayPicker-NavButton DayPicker-NavButton--next']"); sleepInSecond(1);
         clickToElement(driver,"//span[@class='DayPicker-NavButton DayPicker-NavButton--next']"); sleepInSecond(1);
         clickToElement(driver,"//span[@class='DayPicker-NavButton DayPicker-NavButton--next']"); sleepInSecond(1);
-        clickToElement(driver,"//span[@class='DayPicker-Day-value'][normalize-space()='7']");
-        clickToElement(driver,"//span[@class='DayPicker-Day-value'][normalize-space()='8']");
+        clickToElement(driver,"//span[@class='DayPicker-Day-value'][normalize-space()='12']");
+        clickToElement(driver,"//span[@class='DayPicker-Day-value'][normalize-space()='13']");
         sleepInSecond(1);
         clickToElement(driver,"//button[@class='m-button-secondary']");
         sleepInSecond(1);
@@ -160,12 +160,12 @@ public class ProductionReleaseValidations extends AbstractPage {
         System.out.println("Confirmation number: "+Confirmation_number);
 
 // First name Last name
-        String FirstLast_name = getElementText(driver,"//div[contains(@id,'ResConfirmationMessage')]/p/text()[1]");
+        String FirstLast_name = getElementText(driver,"//div[contains(@id,'ResConfirmationMessage')]/p");
         System.out.println("First name Last name: "+FirstLast_name);
 
 // Alternative email
-        String FirstLast_name = getElementText(driver,"//div[contains(@id,'ResConfirmationMessage')]/p/span[@class='t-font-weight-bold t-lowercase']");
-        System.out.println("First name Last name: "+FirstLast_name);
+        String Alternative_email = getElementText(driver,"//div[contains(@id,'ResConfirmationMessage')]/p/span[@class='t-font-weight-bold t-lowercase']");
+        System.out.println("Alternative email: "+Alternative_email);
 
 // for the approved dates,
         //Start_date
